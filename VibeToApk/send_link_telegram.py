@@ -28,14 +28,17 @@ def main():
     cloud_url = "https://rolled-pmc-ver-greatest.trycloudflare.com"
 
     caption = (
-        "🎧 <b>CYBERBIRD LINGO PRO v2.5.1 - TỐI ƯU HÓA ÂM THANH TINH GỌN!</b>\n\n"
-        "✨ <i>Em đã tinh chỉnh toàn bộ hệ thống âm thanh theo đúng chỉ đạo tinh tế của Sếp:</i>\n\n"
-        "1️⃣ <b>Chống Loạn Âm Khi Bay:</b> Trong lúc bay ở chế độ Hội Thoại, loa chỉ đọc câu hỏi của xưởng. Câu trả lời không đọc khi bay để tránh đè âm — tập trung phản xạ mắt và căn cánh bay!\n"
-        "2️⃣ <b>Chuông Arcade 'Ting Ting' Trong Veo:</b> Thay thế các tiếng nói động viên ('đạt', 'lợi hại') bằng chuông đôi pha lê <i>Ting Ting</i> cổ điển, cực kỳ đã tai và không làm mất tập trung.\n"
-        "3️⃣ <b>Xóa Bỏ 100% Tạp Âm & Tiếng Nhiễu:</b> Khử sạch tiếng xì xào ngẫu nhiên khi đập cánh và tiếng bíp radio rè rè.\n"
-        "4️⃣ <b>Nghe Câu Trả Lời Khi Ôn Tập:</b> Nút <i>'🔊 Nghe lại câu trả lời chuẩn'</i> nằm trọn vẹn ở bảng Flashcard khi dừng game để tĩnh tâm tiếp thu sâu.\n\n"
+        "🚀 <b>CYBERBIRD LINGO PRO v2.5.2 - NÂNG CẤP TOÀN DIỆN!</b>\n\n"
+        "✨ <i>Em đã rà soát và giải quyết trọn vẹn 3 yêu cầu của Sếp:</i>\n\n"
+        "1️⃣ <b>Khắc Phục Triệt Để 2 Giọng Đọc Xen Kẽ:</b> Chuẩn hóa luồng sinh cổng & câu hỏi duy nhất. Tích hợp bộ ngắt âm <code>stopCurrentVoice()</code> độc quyền — tuyệt đối không còn hiện tượng 2 giọng đọc đè lên nhau khi mới bắt đầu!\n"
+        "2️⃣ <b>Nút Đổi Chế Độ & Chủ Đề 1-Chạm:</b>\n"
+        "   • Thêm nút <b>🏠 Menu</b> ngay trên thanh điều khiển lúc đang bay.\n"
+        "   • Thêm nút <b>🏠 ĐỔI CHẾ ĐỘ & CHỦ ĐỀ</b> ở màn hình kết thúc. Sếp có thể tự do chuyển đổi qua lại giữa Hội Thoại Xưởng và Luyện Từ Vựng mà <b>không cần tải lại trang</b>!\n"
+        "3️⃣ <b>Nâng Cấp UI/UX Cyberpunk Glassmorphism:</b> Bố cục thẻ kính mờ sang trọng, tự động căn chỉnh và cuộn mượt mà trên mọi màn hình điện thoại.\n"
+        "4️⃣ <b>Tích Hợp Tình Huống Xưởng Từ Ảnh Sếp Gửi:</b>\n"
+        "   🛠️ <i>'是不是4号吸塑模有问题？'</i> ➔ ✅ <i>'我现在做的也是4号模，问题严重！'</i> (Đã nạp audio Xiaoxiao chuẩn).\n\n"
         f"🔗 <b>Bấm vào đây để trải nghiệm ngay:</b>\n{cloud_url}\n\n"
-        "💡 <i>Quét mã QR đính kèm hoặc bấm link để test thử âm thanh mới nhé Sếp!</i>"
+        "💡 <i>Quét mã QR đính kèm hoặc bấm link để test ngay nhé Sếp!</i>"
     )
 
     url = f"https://api.telegram.org/bot{token}/sendPhoto"
