@@ -503,11 +503,12 @@
       </div>
     </div>
 
-    <!-- Active Vocabulary Target Quest -->
+    <!-- Active Vocabulary / Dialogue Target Quest -->
     <div id="quest-banner" class="quest-banner">
-      <div class="quest-info">
-        <span class="quest-label">Bay vào cổng:</span>
-        <span id="quest-target" class="quest-target">Quả Táo</span>
+      <div class="quest-info" style="max-width: 275px;">
+        <span id="quest-speaker" class="quest-label">💬 HỘI THOẠI XƯỞNG:</span>
+        <span id="quest-target" class="quest-target" style="font-size: 16px; line-height: 1.25;">今天能按时交货吗？</span>
+        <span id="quest-sub" style="font-size: 10.5px; color: #94a3b8; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">Nghĩa: Hôm nay có giao hàng đúng hạn không?</span>
       </div>
       <div class="quest-streak">
         <span id="streak-badge" class="streak-badge">🔥 Chuỗi: 0</span>
@@ -517,7 +518,7 @@
 
     <!-- 100% Offline PWA Indicator -->
     <div class="offline-tag">
-      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN STUDIO</b> • v2.4.0
+      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN STUDIO</b> • v2.5.0 PRO
     </div>
 
     <!-- Main Game Canvas -->
@@ -531,13 +532,13 @@
       
       <!-- Category Selector -->
       <div class="category-bar">
-        <button class="cat-pill active" onclick="switchCategory('factory', this)">🏭 Xưởng Mũ Bảo Hiểm (27)</button>
+        <button class="cat-pill active" onclick="switchCategory('dialogue', this)">💬 Hội Thoại Xưởng (Mới!)</button>
+        <button class="cat-pill" onclick="switchCategory('factory', this)">🏭 Từ Vựng Xưởng Mũ (27)</button>
         <button class="cat-pill" onclick="switchCategory('all', this)">🌟 Tất Cả (67)</button>
         <button class="cat-pill" onclick="switchCategory('tech', this)">💻 Công Nghệ</button>
         <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực</button>
         <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật</button>
         <button class="cat-pill" onclick="switchCategory('greet', this)">💬 Giao Tiếp</button>
-        <button class="cat-pill" onclick="switchCategory('nature', this)">☀️ Tự Nhiên</button>
       </div>
 
       <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
@@ -551,10 +552,10 @@
       </div>
 
       <div class="how-to-box">
-        🕹️ <b>Quy tắc cực đơn giản:</b><br>
-        1. Nhìn từ tiếng Việt mục tiêu ở trên banner đỉnh.<br>
-        2. Chạm màn hình bay lướt vào giữa <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có từ đúng.<br>
-        3. Có <b>mũi tên xanh 👉 VÀO ĐÂY</b> chỉ dẫn trực tiếp cho bạn!
+        🕹️ <b>Quy tắc cực cuốn:</b><br>
+        1. Đọc câu hỏi tình huống của Giám đốc hoặc QC trên thanh đỉnh.<br>
+        2. Chạm màn hình bay lướt vào giữa <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có <b>CÂU TRẢ LỜI LOGIC</b>.<br>
+        3. Bay vào câu trả lời vô lý là sai! Luyện phản xạ đối đáp công xưởng tức thì!
       </div>
     </div>
 
@@ -567,18 +568,18 @@
         <div class="tut-step">
           <div class="tut-num">1</div>
           <div class="tut-body">
-            <b>Nhìn mục tiêu tiếng Việt ở thanh trên đỉnh:</b>
-            <div class="tut-badge">Ví dụ: [ Mũ Bảo Hiểm ]</div>
+            <b>Đọc câu hỏi tình huống ở thanh trên đỉnh:</b>
+            <div class="tut-badge">Ví dụ: 👨‍💼 "今天能按时交货吗？" (Hôm nay có giao kịp không?)</div>
           </div>
         </div>
 
         <div class="tut-step">
           <div class="tut-num">2</div>
           <div class="tut-body">
-            <b>Trước mặt bạn có 2 Cổng Lượn Mở Rộng:</b>
-            <div style="display: flex; gap: 6px; margin-top: 4px;">
-              <span class="lane-demo lane-up">▲ LÀN TRÊN: 头盔</span>
-              <span class="lane-demo lane-down">▼ LÀN DƯỚI: 安全帽</span>
+            <b>Trước mặt bạn có 2 Cổng Lượn Song Ngữ:</b>
+            <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
+              <span class="lane-demo lane-up">▲ LÀN 1: 可以，已经打包好了。 (Đạt Logic: Đã đóng gói xong)</span>
+              <span class="lane-demo lane-down">▼ LÀN 2: 我不喜欢吃苹果。 (Vô lý: Tôi không thích ăn táo)</span>
             </div>
           </div>
         </div>
@@ -589,7 +590,7 @@
             <b>Cách điều khiển chim vào vị trí chính xác:</b>
             <p style="margin-top:2px;">• <b>Chạm màn hình (Tap):</b> Chim bay bổng lên để vào <b>LÀN TRÊN</b>.</p>
             <p>• <b>Thả tay (Không bấm):</b> Chim tự hạ độ cao lướt vào <b>LÀN DƯỚI</b>.</p>
-            <p style="color:#10b981; font-weight:700;">• Mũi tên xanh <b>👉 VÀO ĐÂY</b> sẽ chỉ ngay làn đúng cho sếp!</p>
+            <p style="color:#10b981; font-weight:700;">• Đọc hiểu nhanh và chọn câu trả lời có tính logic cao nhất!</p>
           </div>
         </div>
 
@@ -718,17 +719,207 @@
       { cat: "greet", vi: "Bạn Bè", en: "Friend", zh: "朋友", pinyin: "péngyou", dist_en: "Teacher", dist_zh: "老师", dist_pinyin: "lǎoshī" }
     ];
 
-    let currentCategory = "factory";
-    let activeVocabList = FULL_VOCAB_DATABASE.filter(v => v.cat === "factory");
+    // ==========================================
+    // FACTORY DIALOGUE SCENARIOS (HỘI THOẠI THỰC CHIẾN)
+    // ==========================================
+    const FACTORY_DIALOGUES = [
+      {
+        id: 1,
+        speaker: "👨‍💼 Giám Đốc Xưởng",
+        q_zh: "今天能按时交货吗？",
+        q_pinyin: "Jīntiān néng ànshí jiāohuò ma?",
+        q_vi: "Hôm nay có giao hàng đúng hạn không?",
+        q_audio: "audio/dlg_01_q.mp3",
+        correct_zh: "可以，已经打包好了。",
+        correct_pinyin: "Kěyǐ, yǐjīng dǎbāo hǎole.",
+        correct_vi: "Có thể, đã đóng thùng xong.",
+        wrong_zh: "我不喜欢吃苹果。",
+        wrong_pinyin: "Wǒ bù xǐhuān chī píngguǒ.",
+        wrong_vi: "Tôi không thích ăn táo.",
+        a_audio: "audio/dlg_01_a.mp3"
+      },
+      {
+        id: 2,
+        speaker: "🔍 Quản Lý KCS (QC)",
+        q_zh: "这批盔壳合格了吗？",
+        q_pinyin: "Zhè pī kuīké hégé le ma?",
+        q_vi: "Lô vỏ mũ này đã đạt tiêu chuẩn chưa?",
+        q_audio: "audio/dlg_02_q.mp3",
+        correct_zh: "都合格，没有划伤。",
+        correct_pinyin: "Dōu hégé, méiyǒu huáshāng.",
+        correct_vi: "Đều đạt, không có vết xước.",
+        wrong_zh: "外面正在下大雨。",
+        wrong_pinyin: "Wàimiàn zhèngzài xià dàyǔ.",
+        wrong_vi: "Bên ngoài đang mưa to.",
+        a_audio: "audio/dlg_02_a.mp3"
+      },
+      {
+        id: 3,
+        speaker: "👷 Tổ Trưởng Sản Xuất",
+        q_zh: "今晚需要加班吗？",
+        q_pinyin: "Jīnwǎn xūyào jiābān ma?",
+        q_vi: "Tối nay có cần tăng ca không?",
+        q_audio: "audio/dlg_03_q.mp3",
+        correct_zh: "要加班两小时赶订单。",
+        correct_pinyin: "Yào jiābān liǎng xiǎoshí gǎn dìngdān.",
+        correct_vi: "Phải tăng ca 2 tiếng để kịp đơn hàng.",
+        wrong_zh: "明天我想去动物园。",
+        wrong_pinyin: "Míngtiān wǒ xiǎng qù dòngwùyuán.",
+        wrong_vi: "Ngày mai tôi muốn đi sở thú.",
+        a_audio: "audio/dlg_03_a.mp3"
+      },
+      {
+        id: 4,
+        speaker: "👨‍🔧 Kỹ Thuật Máy Móc",
+        q_zh: "注塑机为什么停了？",
+        q_pinyin: "Zhùsùjī wèishénme tíng le?",
+        q_vi: "Máy ép nhựa tại sao lại dừng?",
+        q_audio: "audio/dlg_04_q.mp3",
+        correct_zh: "正在换模具，马上好。",
+        correct_pinyin: "Zhèngzài huàn mújù, mǎshàng hǎo.",
+        correct_vi: "Đang thay khuôn ép, sắp xong ngay.",
+        wrong_zh: "这杯咖啡很甜。",
+        wrong_pinyin: "Zhè bēi kāfēi hěn tián.",
+        wrong_vi: "Ly cà phê này rất ngọt.",
+        a_audio: "audio/dlg_04_a.mp3"
+      },
+      {
+        id: 5,
+        speaker: "🔍 Nhân Viên KCS",
+        q_zh: "卡扣的方向装反了吗？",
+        q_pinyin: "Kǎkòu de fāngxiàng zhuāng fǎn le ma?",
+        q_vi: "Khóa cài mũ có bị lắp ngược chiều không?",
+        q_audio: "audio/dlg_05_q.mp3",
+        correct_zh: "没有，方向是对的。",
+        correct_pinyin: "Méiyǒu, fāngxiàng shì duì de.",
+        correct_vi: "Không, chiều lắp đúng rồi.",
+        wrong_zh: "我想买一台新手机。",
+        wrong_pinyin: "Wǒ xiǎng mǎi yī tái xīn shǒujī.",
+        wrong_vi: "Tôi muốn mua điện thoại mới.",
+        a_audio: "audio/dlg_05_a.mp3"
+      },
+      {
+        id: 6,
+        speaker: "🦺 Cán Bộ An Toàn Lao Động",
+        q_zh: "进车间必须戴什么？",
+        q_pinyin: "Jìn chējiān bìxū dài shénme?",
+        q_vi: "Vào xưởng bắt buộc phải đội gì?",
+        q_audio: "audio/dlg_06_q.mp3",
+        correct_zh: "必须戴好安全帽。",
+        correct_pinyin: "Bìxū dài hǎo ānquánmào.",
+        correct_vi: "Bắt buộc phải đội mũ bảo hộ.",
+        wrong_zh: "今天中午吃牛肉面。",
+        wrong_pinyin: "Jīntiān zhōngwǔ chī niúròumiàn.",
+        wrong_vi: "Trưa nay ăn mì bò.",
+        a_audio: "audio/dlg_06_a.mp3"
+      },
+      {
+        id: 7,
+        speaker: "📦 Bộ Phận Đóng Gói",
+        q_zh: "一箱装多少个头盔？",
+        q_pinyin: "Yī xiāng zhuāng duōshǎo gè tóukuī?",
+        q_vi: "Một thùng đóng bao nhiêu chiếc mũ?",
+        q_audio: "audio/dlg_07_q.mp3",
+        correct_zh: "一箱装20个，已装完。",
+        correct_pinyin: "Yī xiāng zhuāng èrshí gè, yǐ zhuāng wán.",
+        correct_vi: "Một thùng 20 chiếc, đã đóng xong.",
+        wrong_zh: "天上有好多小鸟。",
+        wrong_pinyin: "Tiānshàng yǒu hǎoduō xiǎoniǎo.",
+        wrong_vi: "Trên trời có nhiều chú chim.",
+        a_audio: "audio/dlg_07_a.mp3"
+      },
+      {
+        id: 8,
+        speaker: "🔍 Kiểm Soát Chất Lượng",
+        q_zh: "这顶头盔风镜有划痕！",
+        q_pinyin: "Zhè dǐng tóukuī fēngjìng yǒu huáhén!",
+        q_vi: "Chiếc mũ này kính chắn gió bị xước!",
+        q_audio: "audio/dlg_08_q.mp3",
+        correct_zh: "马上换一个新风镜。",
+        correct_pinyin: "Mǎshàng huàn yī gè xīn fēngjìng.",
+        correct_vi: "Đổi ngay một chiếc kính mới.",
+        wrong_zh: "我会说一点点英语。",
+        wrong_pinyin: "Wǒ huì shuō yīdiǎndiǎn yīngyǔ.",
+        wrong_vi: "Tôi biết nói một chút tiếng Anh.",
+        a_audio: "audio/dlg_08_a.mp3"
+      },
+      {
+        id: 9,
+        speaker: "👨‍💼 Giám Đốc Xưởng",
+        q_zh: "今天的早会几点开？",
+        q_pinyin: "Jīntiān de zǎohuì jǐ diǎn kāi?",
+        q_vi: "Họp giao ban sáng nay mấy giờ bắt đầu?",
+        q_audio: "audio/dlg_09_q.mp3",
+        correct_zh: "八点整准时在车间开。",
+        correct_pinyin: "Bā diǎn zhěng zhǔnshí zài chējiān kāi.",
+        correct_vi: "Đúng 8 giờ họp tại xưởng.",
+        wrong_zh: "昨天晚上我睡得很早。",
+        wrong_pinyin: "Zuótiān wǎnshang wǒ shuì de hěn zǎo.",
+        wrong_vi: "Tối qua tôi đi ngủ rất sớm.",
+        a_audio: "audio/dlg_09_a.mp3"
+      },
+      {
+        id: 10,
+        speaker: "🔬 Phòng Thử Nghiệm",
+        q_zh: "撞击测试结果怎么样？",
+        q_pinyin: "Zhuàngjī cèshì jiéguǒ zěnmeyàng?",
+        q_vi: "Kết quả thử nghiệm va đập thế nào?",
+        q_audio: "audio/dlg_10_q.mp3",
+        correct_zh: "缓冲层良好，测试通过！",
+        correct_pinyin: "Huǎnchōngcéng liánghǎo, cèshì tōngguò!",
+        correct_vi: "Lớp đệm xốp tốt, thử nghiệm đạt chuẩn!",
+        wrong_zh: "我的自行车坏了。",
+        wrong_pinyin: "Wǒ de zìxíngchē huài le.",
+        wrong_vi: "Xe đạp của tôi bị hỏng rồi.",
+        a_audio: "audio/dlg_10_a.mp3"
+      },
+      {
+        id: 11,
+        speaker: "👷 Quản Đốc Chuyền Ráp",
+        q_zh: "还有多少个下巴带没装？",
+        q_pinyin: "Hái yǒu duōshǎo gè xiàbadài méi zhuāng?",
+        q_vi: "Còn bao nhiêu dây quai mũ chưa lắp?",
+        q_audio: "audio/dlg_11_q.mp3",
+        correct_zh: "还剩最后50条。",
+        correct_pinyin: "Hái shèng zuìhòu wǔshí tiáo.",
+        correct_vi: "Còn lại 50 sợi cuối cùng.",
+        wrong_zh: "月亮在夜晚很明亮。",
+        wrong_pinyin: "Yuèliang zài yèwǎn hěn míngliàng.",
+        wrong_vi: "Mặt trăng ban đêm rất sáng.",
+        a_audio: "audio/dlg_11_a.mp3"
+      },
+      {
+        id: 12,
+        speaker: "🎨 Tổ Trưởng Sơn Phủ",
+        q_zh: "这批喷漆颜色对不对？",
+        q_pinyin: "Zhè pī pēnqī yánsè duì bu duì?",
+        q_vi: "Màu sơn phun đợt này chuẩn chưa?",
+        q_audio: "audio/dlg_12_q.mp3",
+        correct_zh: "跟客户样板完全一致。",
+        correct_pinyin: "Gēn kèhù yàngbǎn wánquán yīzhì.",
+        correct_vi: "Hoàn toàn trùng khớp mẫu của khách.",
+        wrong_zh: "这本小说非常有意思。",
+        wrong_pinyin: "Zhè běn xiǎoshuō fēicháng yǒu yìsi.",
+        wrong_vi: "Quyển tiểu thuyết này rất thú vị.",
+        a_audio: "audio/dlg_12_a.mp3"
+      }
+    ];
+
+    let currentCategory = "dialogue";
+    let activeVocabList = [...FACTORY_DIALOGUES];
 
     function switchCategory(cat, btn) {
       currentCategory = cat;
       document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
-      activeVocabList = (cat === 'all') 
-        ? [...FULL_VOCAB_DATABASE] 
-        : FULL_VOCAB_DATABASE.filter(v => v.cat === cat);
-      if (activeVocabList.length === 0) activeVocabList = [...FULL_VOCAB_DATABASE];
+      if (cat === 'dialogue') {
+        activeVocabList = [...FACTORY_DIALOGUES];
+      } else if (cat === 'all') { 
+        activeVocabList = [...FULL_VOCAB_DATABASE];
+      } else {
+        activeVocabList = FULL_VOCAB_DATABASE.filter(v => v.cat === cat);
+      }
+      if (activeVocabList.length === 0) activeVocabList = [...FACTORY_DIALOGUES];
     }
 
     // ==========================================
@@ -890,6 +1081,24 @@
         } catch(e) {}
       }
 
+      // 4b. Factory Radio Walkie-talkie Chirp
+      playRadioBeep() {
+        if (!this.sfxEnabled) return;
+        this.init();
+        const t = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1760, t);
+        osc.frequency.setValueAtTime(2349, t + 0.035);
+        gain.gain.setValueAtTime(0.12, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.08);
+      }
+
       // 5. Procedural Cyber Lo-fi Ambient Synth BGM
       startBGM() {
         if (!this.bgmEnabled || this.bgmTimer) return;
@@ -991,6 +1200,21 @@
       a.play().catch(() => {});
     }
 
+    // Studio Neural Edge Audio Player for Dialogue Scenarios
+    function playDialogueAudio(path, onEnd) {
+      if (!soundEngine.sfxEnabled || !path) {
+        if (onEnd) onEnd();
+        return;
+      }
+      const a = new Audio(path);
+      a.volume = 1.0;
+      a.play().then(() => {
+        if (onEnd) a.onended = onEnd;
+      }).catch(() => {
+        if (onEnd) setTimeout(onEnd, 700);
+      });
+    }
+
     // Game State
     let currentMode = 'zh'; // 'zh', 'en', 'duo'
     let score = 0;
@@ -1011,7 +1235,9 @@
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     const questBanner = document.getElementById('quest-banner');
+    const questSpeaker = document.getElementById('quest-speaker');
     const questTarget = document.getElementById('quest-target');
+    const questSub = document.getElementById('quest-sub');
     const streakBadge = document.getElementById('streak-badge');
     const scoreVal = document.getElementById('score-val');
     const screenStart = document.getElementById('screen-start');
@@ -1065,15 +1291,25 @@
       }
     }
 
-    // Pick new vocabulary target
+    // Pick new vocabulary target or workplace dialogue question
     function pickNewQuestion() {
       const q = activeVocabList[Math.floor(Math.random() * activeVocabList.length)];
       currentQuestion = q;
-      questTarget.textContent = q.vi;
       questBanner.classList.add('pulse');
       setTimeout(() => questBanner.classList.remove('pulse'), 250);
-      // Kích hoạt phát âm chuẩn ngay khi xuất hiện cổng (Thính giác + Thị giác song hành)
-      playWordAudio(q);
+
+      if (currentCategory === 'dialogue') {
+        if (questSpeaker) questSpeaker.textContent = `${q.speaker}:`;
+        questTarget.textContent = q.q_zh;
+        if (questSub) questSub.textContent = `Nghĩa: ${q.q_vi}`;
+        soundEngine.playRadioBeep();
+        setTimeout(() => playDialogueAudio(q.q_audio), 120);
+      } else {
+        if (questSpeaker) questSpeaker.textContent = "🎯 BAY VÀO TỪ:";
+        questTarget.textContent = q.vi;
+        if (questSub) questSub.textContent = `${q.zh} (${q.pinyin}) • ${q.en}`;
+        playWordAudio(q);
+      }
       return q;
     }
 
@@ -1161,7 +1397,7 @@
       }
     }
 
-    // Spawn Gates with Vocabulary Choices
+    // Spawn Gates with Vocabulary Choices or Dialogue Responses
     let frameCount = 0;
     function spawnGate() {
       const q = pickNewQuestion();
@@ -1169,7 +1405,10 @@
       const correctAtTop = Math.random() > 0.5;
 
       let topLabel = "", botLabel = "";
-      if (currentMode === 'zh') {
+      if (currentCategory === 'dialogue') {
+        topLabel = correctAtTop ? q.correct_zh : q.wrong_zh;
+        botLabel = correctAtTop ? q.wrong_zh : q.correct_zh;
+      } else if (currentMode === 'zh') {
         topLabel = correctAtTop ? `${q.zh} (${q.pinyin})` : `${q.dist_zh} (${q.dist_pinyin})`;
         botLabel = correctAtTop ? `${q.dist_zh} (${q.dist_pinyin})` : `${q.zh} (${q.pinyin})`;
       } else if (currentMode === 'en') {
@@ -1207,7 +1446,11 @@
           vibrate([60, 40, 80]);
         } else {
           soundEngine.playCorrect(streak);
-          addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} (x2!)` : `+${pts}`, isOverdrive ? "#ec4899" : "#10b981", 17);
+          if (currentCategory === 'dialogue') {
+            addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} ĐÁP LOGIC! x2 👏` : `+${pts} ĐÁP LOGIC! 👏`, isOverdrive ? "#ec4899" : "#10b981", 16);
+          } else {
+            addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} (x2!)` : `+${pts}`, isOverdrive ? "#ec4899" : "#10b981", 17);
+          }
           triggerShake(4);
           vibrate([30, 40]);
         }
@@ -1215,11 +1458,15 @@
         updateScoreHUD();
 
         // Native Pronunciation Aloud with Studio Quality + Praise
-        playWordAudio(pipe.question, () => {
-          if (currentMode === 'en' || currentMode === 'duo') {
-            speakText(pipe.question.en, 'en-US');
-          }
-        });
+        if (currentCategory === 'dialogue') {
+          playDialogueAudio(pipe.question.a_audio);
+        } else {
+          playWordAudio(pipe.question, () => {
+            if (currentMode === 'en' || currentMode === 'duo') {
+              speakText(pipe.question.en, 'en-US');
+            }
+          });
+        }
 
         // Praise Voice on Combo Streak
         if (streak >= 3 && streak % 3 === 0) {
@@ -1272,18 +1519,31 @@
 
       // Populate Flashcard
       if (q) {
-        fcTargetWord.textContent = `${q.zh} / ${q.en}`;
-        fcPinyin.textContent = `${q.pinyin}`;
-        fcMeaning.textContent = `Nghĩa: ${q.vi}`;
+        const fcTitle = document.querySelector('.fc-title');
+        if (currentCategory === 'dialogue') {
+          if (fcTitle) fcTitle.textContent = "HỘI THOẠI XƯỞNG THỰC CHIẾN:";
+          fcTargetWord.innerHTML = `<span style="font-size:14px; color:#fde68a;">${q.speaker}:</span><br>"${q.q_zh}"`;
+          fcPinyin.textContent = `Nghĩa: ${q.q_vi}`;
+          fcMeaning.innerHTML = `<span style="color:#10b981; font-weight:800;">✅ ĐÁP LOGIC:</span> "${q.correct_zh}"<br><span style="color:#94a3b8; font-size:11.5px;">(${q.correct_vi})</span><br><span style="color:#ef4444; font-size:11.5px;">❌ VÔ LÝ: "${q.wrong_zh}"</span>`;
+        } else {
+          if (fcTitle) fcTitle.textContent = "GHI NHỚ TỪ VỪNG:";
+          fcTargetWord.textContent = `${q.zh} / ${q.en}`;
+          fcPinyin.textContent = `${q.pinyin}`;
+          fcMeaning.textContent = `Nghĩa: ${q.vi}`;
+        }
       }
       screenOver.classList.remove('hidden');
     }
 
     function replayPronunciation() {
       if (!lastWrongQuestion) return;
-      playWordAudio(lastWrongQuestion, () => {
-        speakText(lastWrongQuestion.en, 'en-US');
-      });
+      if (currentCategory === 'dialogue') {
+        playDialogueAudio(lastWrongQuestion.a_audio);
+      } else {
+        playWordAudio(lastWrongQuestion, () => {
+          speakText(lastWrongQuestion.en, 'en-US');
+        });
+      }
     }
 
     // Parallax City Skylines & Stars
@@ -1408,8 +1668,10 @@
           const midY = p.top + gateGap / 2;
           const upperCenterY = p.top + (gateGap / 4);
           const lowerCenterY = midY + (gateGap / 4);
-          const tunnelW = 160;
+          const isDlg = (currentCategory === 'dialogue');
+          const tunnelW = isDlg ? 210 : 165;
           const tunnelH = (gateGap / 2) - 18;
+          const tunnelX = p.x - (isDlg ? 80 : 55);
 
           // 2. UPPER CYBER PORTAL (LÀN TRÊN)
           const upBorderColor = p.passed 
@@ -1422,16 +1684,16 @@
           ctx.shadowColor = upBorderColor;
           ctx.shadowBlur = (p.passed && p.correctAtTop) ? 14 : 6;
           ctx.beginPath();
-          ctx.roundRect(p.x - 55, p.top + 8, tunnelW, tunnelH, 12);
+          ctx.roundRect(tunnelX, p.top + 8, tunnelW, tunnelH, 12);
           ctx.fill();
           ctx.stroke();
 
           // Upper Lane Text
           ctx.fillStyle = '#ffffff';
-          ctx.font = 'bold 13px system-ui, sans-serif';
+          ctx.font = isDlg ? 'bold 12.5px system-ui, sans-serif' : 'bold 13px system-ui, sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText(`▲ TRÊN: ${p.topLabel}`, p.x - 55 + tunnelW / 2, upperCenterY);
+          ctx.fillText(`▲ ${p.topLabel}`, tunnelX + tunnelW / 2, upperCenterY);
           ctx.restore();
 
           // 3. LOWER CYBER PORTAL (LÀN DƯỚI)
@@ -1445,16 +1707,16 @@
           ctx.shadowColor = botBorderColor;
           ctx.shadowBlur = (p.passed && !p.correctAtTop) ? 14 : 6;
           ctx.beginPath();
-          ctx.roundRect(p.x - 55, midY + 8, tunnelW, tunnelH, 12);
+          ctx.roundRect(tunnelX, midY + 8, tunnelW, tunnelH, 12);
           ctx.fill();
           ctx.stroke();
 
           // Lower Lane Text
           ctx.fillStyle = '#ffffff';
-          ctx.font = 'bold 13px system-ui, sans-serif';
+          ctx.font = isDlg ? 'bold 12.5px system-ui, sans-serif' : 'bold 13px system-ui, sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.fillText(`▼ DƯỚI: ${p.botLabel}`, p.x - 55 + tunnelW / 2, lowerCenterY);
+          ctx.fillText(`▼ ${p.botLabel}`, tunnelX + tunnelW / 2, lowerCenterY);
           ctx.restore();
 
           // 4. Laser Divider between Upper and Lower Portals (at midY)
@@ -1465,33 +1727,16 @@
           ctx.shadowBlur = 8;
           ctx.setLineDash([6, 6]);
           ctx.beginPath();
-          ctx.moveTo(p.x - 65, midY);
-          ctx.lineTo(p.x + p.w + 45, midY);
+          ctx.moveTo(tunnelX - 10, midY);
+          ctx.lineTo(tunnelX + tunnelW + 10, midY);
           ctx.stroke();
 
           // Center Warning Badge
           ctx.fillStyle = '#f43f5e';
           ctx.font = 'bold 9.5px system-ui, sans-serif';
           ctx.textAlign = 'center';
-          ctx.fillText("⚡ PHÂN CÁCH 2 LÀN ⚡", p.x + 10, midY - 4);
+          ctx.fillText("⚡ PHÂN CÁCH 2 LÀN ⚡", tunnelX + tunnelW / 2, midY - 4);
           ctx.restore();
-
-          // 5. Blinking Guideline Arrow (👉 VÀO ĐÂY)
-          if (!p.passed && p.x > bird.x && p.x < canvas.width + 50) {
-            const targetY = p.correctAtTop ? upperCenterY : lowerCenterY;
-            const blink = Math.sin(frameCount * 0.18) > -0.2;
-            if (blink) {
-              ctx.save();
-              ctx.font = '900 12.5px system-ui, sans-serif';
-              ctx.fillStyle = '#10b981';
-              ctx.shadowColor = '#10b981';
-              ctx.shadowBlur = 10;
-              ctx.textAlign = 'right';
-              ctx.textBaseline = 'middle';
-              ctx.fillText('👉 VÀO ĐÂY', p.x - 62, targetY);
-              ctx.restore();
-            }
-          }
 
           // Check Passage & Answer
           if (!p.passed && p.x + p.w < bird.x) {

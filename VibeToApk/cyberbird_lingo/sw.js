@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cyberbird-lingo-v2-dean';
+const CACHE_NAME = 'cyberbird-lingo-v3-dialogue';
 const ASSETS = [
   './',
   './index.html',
@@ -35,7 +35,19 @@ const ASSETS = [
   './audio/anshijiaohuo.mp3',
   './audio/praise_taibangle.mp3',
   './audio/praise_zhengque.mp3',
-  './audio/praise_lihai.mp3'
+  './audio/praise_lihai.mp3',
+  './audio/dlg_01_q.mp3', './audio/dlg_01_a.mp3',
+  './audio/dlg_02_q.mp3', './audio/dlg_02_a.mp3',
+  './audio/dlg_03_q.mp3', './audio/dlg_03_a.mp3',
+  './audio/dlg_04_q.mp3', './audio/dlg_04_a.mp3',
+  './audio/dlg_05_q.mp3', './audio/dlg_05_a.mp3',
+  './audio/dlg_06_q.mp3', './audio/dlg_06_a.mp3',
+  './audio/dlg_07_q.mp3', './audio/dlg_07_a.mp3',
+  './audio/dlg_08_q.mp3', './audio/dlg_08_a.mp3',
+  './audio/dlg_09_q.mp3', './audio/dlg_09_a.mp3',
+  './audio/dlg_10_q.mp3', './audio/dlg_10_a.mp3',
+  './audio/dlg_11_q.mp3', './audio/dlg_11_a.mp3',
+  './audio/dlg_12_q.mp3', './audio/dlg_12_a.mp3'
 ];
 
 self.addEventListener('install', (e) => {

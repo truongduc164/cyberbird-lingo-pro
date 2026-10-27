@@ -253,6 +253,7 @@ def process_background_frame(frame: np.ndarray, frame_idx: int, total_frames: in
 def draw_doodle_text_ui(doodle_draw: ImageDraw.ImageDraw, scene: dict, f: int):
     """Renders the top badge, subtitles box, and vocab sticky notes."""
     font_badge = ImageFont.truetype(FONT_YAHEI, 28)
+    font_brand = ImageFont.truetype(FONT_SEGOE, 26)
     font_pinyin = ImageFont.truetype(FONT_SEGOE, 32)
     font_hanzi = ImageFont.truetype(FONT_YAHEI, 54)
     font_vi = ImageFont.truetype(FONT_SEGOE, 34)
@@ -264,26 +265,32 @@ def draw_doodle_text_ui(doodle_draw: ImageDraw.ImageDraw, scene: dict, f: int):
     doodle_draw.rounded_rectangle([badge_x1, badge_y1, badge_x2, badge_y2], radius=22, fill=(18, 22, 32, 220), outline=(255, 255, 255, 240), width=3)
     doodle_draw.text((badge_x1 + 30, badge_y1 + 18), scene["tag"], font=font_badge, fill=(255, 230, 140, 255))
 
+    # Top Right Brand Badge: DEAN OPTIMIZE
+    brand_x1, brand_y1 = 660, 110
+    brand_x2, brand_y2 = 1020, 180
+    doodle_draw.rounded_rectangle([brand_x1, brand_y1, brand_x2, brand_y2], radius=22, fill=(18, 22, 32, 220), outline=(246, 211, 101, 230), width=2)
+    doodle_draw.text((brand_x1 + 25, brand_y1 + 18), "💎 DEAN OPTIMIZE", font=font_brand, fill=(255, 230, 140, 255))
+
     # 2. Subtitle Box (Frosted Glass Pill in Safe Zone)
-    sub_x1, sub_y1 = 55, 1400
-    sub_x2, sub_y2 = 1025, 1630
-    doodle_draw.rounded_rectangle([sub_x1, sub_y1, sub_x2, sub_y2], radius=28, fill=(12, 16, 26, 225), outline=(246, 211, 101, 210), width=3)
+    sub_x1, sub_y1 = 55, 1370
+    sub_x2, sub_y2 = 1025, 1600
+    doodle_draw.rounded_rectangle([sub_x1, sub_y1, sub_x2, sub_y2], radius=28, fill=(12, 16, 26, 230), outline=(246, 211, 101, 220), width=3)
 
     # Subtle inner gold border
     doodle_draw.rounded_rectangle([sub_x1 + 5, sub_y1 + 5, sub_x2 - 5, sub_y2 - 5], radius=24, outline=(255, 255, 255, 60), width=1)
 
     # Line 1: Pinyin
-    doodle_draw.text((540, 1422), scene["pinyin"], font=font_pinyin, fill=(254, 230, 138), anchor="mt")
+    doodle_draw.text((540, 1390), scene["pinyin"], font=font_pinyin, fill=(254, 230, 138), anchor="mt")
 
     # Line 2: Hanzi (Big, crisp, YaHei)
-    doodle_draw.text((540, 1475), scene["cn"], font=font_hanzi, fill=(255, 255, 255), anchor="mt")
+    doodle_draw.text((540, 1445), scene["cn"], font=font_hanzi, fill=(255, 255, 255), anchor="mt")
 
     # Line 3: Vietnamese Translation (Gentle healing tone)
-    doodle_draw.text((540, 1555), scene["vi"], font=font_vi, fill=(226, 232, 240), anchor="mt")
+    doodle_draw.text((540, 1525), scene["vi"], font=font_vi, fill=(226, 232, 240), anchor="mt")
 
     # 3. Vocab Sticky Notes (2 bottom chips)
-    chip1_box = [80, 1655, 520, 1725]
-    chip2_box = [560, 1655, 1000, 1725]
+    chip1_box = [60, 1625, 525, 1695]
+    chip2_box = [555, 1625, 1020, 1695]
 
     doodle_draw.rounded_rectangle(chip1_box, radius=18, fill=(22, 28, 40, 235), outline=(255, 255, 255, 190), width=2)
     doodle_draw.text((chip1_box[0] + 25, chip1_box[1] + 18), f"🏷️ {scene['chip1']}", font=font_chip, fill=(255, 255, 255))
@@ -605,18 +612,34 @@ def main():
     print("\n[2/5] Tạo giọng đọc bản xứ tiếng Trung Douyin chuẩn Bắc Kinh (Xiaoxiao)...")
     durations = asyncio.run(generate_voices(WORK_DIR))
 
-    # Concatenate voice tracks with pad
-    voice_files = [WORK_DIR / f"voice_{s['id']}.mp3" for s in SCENES]
+    # Pad each voice track with silence so its duration matches scene duration exactly
+    padded_voice_files = []
+    for idx, s in enumerate(SCENES):
+        raw_vf = WORK_DIR / f"voice_{s['id']}.mp3"
+        padded_vf = WORK_DIR / f"padded_voice_{s['id']}.wav"
+        target_dur = durations[idx]
+        
+        # 120ms initial delay for breathing room, then apad, and trim to exact scene target duration
+        cmd_pad = [
+            FFMPEG, "-y",
+            "-i", str(raw_vf),
+            "-af", f"adelay=120|120,apad,atrim=0:{target_dur}",
+            "-ar", "44100", "-ac", "2",
+            str(padded_vf)
+        ]
+        subprocess.run(cmd_pad, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+        padded_voice_files.append(padded_vf)
+
     audio_list = WORK_DIR / "audio_list.txt"
     with open(audio_list, "w", encoding="utf-8") as f:
-        for vf in voice_files:
+        for vf in padded_voice_files:
             f.write(f"file '{vf.resolve().as_posix()}'\n")
 
-    raw_voice = WORK_DIR / "raw_voice.mp3"
+    raw_voice = WORK_DIR / "raw_voice.wav"
     subprocess.run([
         FFMPEG, "-y", "-f", "concat", "-safe", "0",
         "-i", str(audio_list),
-        "-c", "copy",
+        "-c:a", "pcm_s16le",
         str(raw_voice)
     ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
     total_audio_dur = sum(durations)
@@ -628,15 +651,11 @@ def main():
     if not bgm_source.exists():
         bgm_source = WORKSPACE_ROOT / "MoneyPrinterTurbo" / "resource" / "songs" / "output001.mp3"
 
-    # Calculate exact delays for SFX based on scene durations
-    # Scene 1 start: 0s -> sfx_whoosh at 0.3s
-    # Scene 2 start: durations[0] -> sfx_battery at durations[0] + 0.8s
-    # Scene 3 start: durations[0] + durations[1] -> sfx_pop at durations[0] + durations[1] + 1.0s
-    # Scene 4 start: sum(durations[:3]) -> sfx_ding at sum(durations[:3]) + 1.8s
+    # Exact delays for SFX based on scene durations
     d1 = int(300)
-    d2 = int((durations[0] + 0.8) * 1000)
-    d3 = int((durations[0] + durations[1] + 1.0) * 1000)
-    d4 = int((sum(durations[:3]) + 1.8) * 1000)
+    d2 = int((durations[0] + 0.6) * 1000)
+    d3 = int((durations[0] + durations[1] + 0.8) * 1000)
+    d4 = int((sum(durations[:3]) + 1.2) * 1000)
 
     master_audio = WORK_DIR / "master_audio.mp3"
     cmd_audio_mix = [
@@ -648,7 +667,7 @@ def main():
         "-i", str(WORK_DIR / "sfx_pop.wav"),
         "-i", str(WORK_DIR / "sfx_ding.wav"),
         "-filter_complex",
-        f"[1:a]volume=0.18,atrim=0:{total_audio_dur},afade=t=out:st={total_audio_dur - 2.5}:d=2.5[bgm];"
+        f"[1:a]volume=0.22,atrim=0:{total_audio_dur},afade=t=out:st={total_audio_dur - 2.5}:d=2.5[bgm];"
         f"[2:a]adelay={d1}|{d1},volume=0.6[sfx1];"
         f"[3:a]adelay={d2}|{d2},volume=0.7[sfx2];"
         f"[4:a]adelay={d3}|{d3},volume=0.8[sfx3];"
