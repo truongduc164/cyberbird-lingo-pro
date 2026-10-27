@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>CyberBird Lingo • by DEAN OPTIMIZE (v3.0.1 PRO)</title>
+  <title>CyberBird Lingo • by DEAN OPTIMIZE (v3.0.2 PRO)</title>
   <meta name="author" content="DEAN OPTIMIZE">
-  <meta name="version" content="3.0.1">
+  <meta name="version" content="3.0.2">
   <meta name="copyright" content="DEAN OPTIMIZE">
   <!-- PWA & iOS Standalone Support -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,7 +16,9 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(() => {});
+        navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
+          .then((reg) => { try { reg.update(); } catch (e) {} })
+          .catch(() => {});
         if (navigator.storage && navigator.storage.persist) {
           navigator.storage.persist().catch(() => {});
         }
@@ -383,8 +385,57 @@
       border-radius: 8px;
       padding: 6px 8px;
       margin-top: 6px;
-      max-height: 58px;
+      max-height: 54px;
       overflow-y: auto;
+    }
+    .offline-vault-box {
+      margin-top: 6px;
+      padding: 6px 8px;
+      border-radius: 9px;
+      background: rgba(2, 132, 199, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+    .offline-vault-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      color: #e2e8f0;
+    }
+    .offline-bar-track {
+      width: 100%;
+      height: 5px;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 4px 0 5px;
+    }
+    .offline-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #38bdf8, #10b981);
+      transition: width 0.2s ease;
+    }
+    .offline-btn-row {
+      display: flex;
+      gap: 5px;
+    }
+    .offline-mini-btn {
+      flex: 1;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #38bdf8;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 6px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .offline-mini-btn.test-ok {
+      border-color: rgba(16, 185, 129, 0.55);
+      color: #10b981;
     }
     /* Settings Panel: Flight Speed, Voice Speed, Font Size */
     .settings-panel {
@@ -682,7 +733,7 @@
 
     <!-- 100% Offline PWA Indicator -->
     <div class="offline-tag">
-      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN OPTIMIZE</b> • v3.0.0 PRO
+      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN OPTIMIZE</b> • v3.0.2 PRO
     </div>
 
     <!-- Main Game Canvas -->
@@ -721,6 +772,19 @@
         </div>
         <div id="timeline-summary-card" class="timeline-digest">
           📌 Đang nạp tóm tắt nhật ký thao tác & giao tiếp trong ngày...
+        </div>
+        <div id="offline-vault-box" class="offline-vault-box">
+          <div class="offline-vault-row">
+            <span id="offline-vault-status">💾 Kho Offline iPhone: Đang kiểm tra...</span>
+            <span id="offline-vault-mb" style="color:#fde047;">0.0 MB</span>
+          </div>
+          <div class="offline-bar-track">
+            <div id="offline-bar-fill" class="offline-bar-fill"></div>
+          </div>
+          <div class="offline-btn-row">
+            <button class="offline-mini-btn" onclick="manualSyncOffline()">📥 Tải / Cập Nhật Offline</button>
+            <button class="offline-mini-btn test-ok" onclick="testOfflineVoiceSample()">🔊 Nghe Thử Offline ✈️</button>
+          </div>
         </div>
       </div>
 
@@ -782,7 +846,7 @@
 
       <div class="dev-credits">
         <span>Kiến tạo & Tối ưu bởi <b>DEAN OPTIMIZE</b></span>
-        <span class="ver-badge">v3.0.0 PRO • TIMELINE</span>
+        <span class="ver-badge">v3.0.2 PRO • OFFLINE VAULT</span>
       </div>
 
       <div id="how-to-box" class="how-to-box">
@@ -1598,7 +1662,10 @@
       dateBar.innerHTML = '';
       if (!tl.days || tl.days.length === 0) return;
 
-      tl.days.forEach((d, idx) => {
+      const recentDays = tl.days.slice(0, 5);
+      const olderDays = tl.days.slice(5);
+
+      recentDays.forEach((d, idx) => {
         const btn = document.createElement('button');
         const isActive = (selectedTimelineDate === 'latest' && idx === 0) || (selectedTimelineDate === d.date);
         btn.className = 'cat-pill tl-date-pill' + (isActive ? ' active' : '');
@@ -1606,6 +1673,27 @@
         btn.onclick = () => selectTimelineDate(d.date, btn);
         dateBar.appendChild(btn);
       });
+
+      if (olderDays.length > 0) {
+        const sel = document.createElement('select');
+        sel.className = 'cat-pill tl-date-pill';
+        sel.style.background = '#0f172a';
+        const defOpt = document.createElement('option');
+        defOpt.value = '';
+        defOpt.textContent = `📚 Ngày cũ (${olderDays.length})...`;
+        sel.appendChild(defOpt);
+        olderDays.forEach((d) => {
+          const opt = document.createElement('option');
+          opt.value = d.date;
+          opt.selected = (selectedTimelineDate === d.date);
+          opt.textContent = `${d.label} (${(d.vocab || []).length + (d.dialogues || []).length})`;
+          sel.appendChild(opt);
+        });
+        sel.onchange = () => {
+          if (sel.value) selectTimelineDate(sel.value, sel);
+        };
+        dateBar.appendChild(sel);
+      }
 
       if (tl.days.length > 1) {
         const allBtn = document.createElement('button');
@@ -1629,6 +1717,50 @@
       document.querySelectorAll('.tl-mix-pill').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
       rebuildTimelinePool();
+    }
+
+    const offlineBlobMap = new Map();
+    const offlineSizeMap = new Map();
+    let offlineVaultBytes = 0;
+
+    function updateOfflineVaultHUD(done, total) {
+      const statusEl = document.getElementById('offline-vault-status');
+      const mbEl = document.getElementById('offline-vault-mb');
+      const barEl = document.getElementById('offline-bar-fill');
+      const syncBadge = document.getElementById('tl-sync-badge');
+      const mbStr = `${(offlineVaultBytes / (1024 * 1024)).toFixed(2)} MB`;
+      const pct = total > 0 ? Math.min(100, Math.round((done / total) * 100)) : 0;
+
+      if (mbEl) mbEl.textContent = mbStr;
+      if (barEl) barEl.style.width = `${pct}%`;
+
+      if (done >= total && total > 0) {
+        if (statusEl) statusEl.textContent = `✅ Đã lưu Offline 100% (${done}/${total} MP3)`;
+        if (syncBadge) syncBadge.textContent = `✅ OFFLINE SẴN SÀNG • ${mbStr}`;
+      } else if (navigator.onLine) {
+        if (statusEl) statusEl.textContent = `📥 Đang tải Offline (${done}/${total} MP3)...`;
+        if (syncBadge) syncBadge.textContent = `📥 ĐANG TẢI (${pct}%)`;
+      } else {
+        if (statusEl) statusEl.textContent = `✈️ Chế độ Máy bay (${done}/${total} MP3 sẵn sàng)`;
+        if (syncBadge) syncBadge.textContent = `✈️ ĐANG CHẠY OFFLINE (${mbStr})`;
+      }
+    }
+
+    async function hydrateBlobFromResponse(rel, res) {
+      try {
+        const blob = await res.blob();
+        if (blob && blob.size > 0) {
+          if (!offlineSizeMap.has(rel)) {
+            offlineSizeMap.set(rel, blob.size);
+            offlineVaultBytes += blob.size;
+          }
+          if (!offlineBlobMap.has(rel)) {
+            offlineBlobMap.set(rel, URL.createObjectURL(blob));
+          }
+          return true;
+        }
+      } catch (e) {}
+      return false;
     }
 
     async function syncOfflineAudioVault() {
@@ -1661,44 +1793,81 @@
         const allList = Array.from(urls);
         const cache = await caches.open(OFFLINE_VAULT_CACHE);
         const missing = [];
+        let ready = 0;
+
         for (const rel of allList) {
+          if (offlineBlobMap.has(rel)) {
+            ready++;
+            continue;
+          }
           const absUrl = new URL(rel, location.href).href;
           const hit = await cache.match(absUrl, { ignoreSearch: true });
-          if (!hit) missing.push(absUrl);
+          if (hit) {
+            await hydrateBlobFromResponse(rel, hit);
+            ready++;
+          } else {
+            missing.push({ rel, absUrl });
+          }
         }
 
-        const syncBadge = document.getElementById('tl-sync-badge');
+        updateOfflineVaultHUD(ready, allList.length);
+
         if (missing.length > 0 && navigator.onLine) {
-          let done = allList.length - missing.length;
           const batchSize = 6;
           for (let i = 0; i < missing.length; i += batchSize) {
             const chunk = missing.slice(i, i + batchSize);
-            await Promise.all(chunk.map(async (u) => {
+            await Promise.all(chunk.map(async (item) => {
               try {
-                const req = new Request(u, { method: 'GET' });
+                const req = new Request(item.absUrl, { method: 'GET' });
                 const res = await fetch(req);
                 if (res && res.status === 200) {
-                  await cache.put(req, res);
-                  done++;
+                  await cache.put(req, res.clone());
+                  await hydrateBlobFromResponse(item.rel, res);
+                  ready++;
                 }
               } catch (e) {}
             }));
-            if (syncBadge) {
-              syncBadge.textContent = `📥 TẢI OFFLINE (${done}/${allList.length})`;
-            }
+            updateOfflineVaultHUD(ready, allList.length);
           }
-          offlineVaultReadyCount = done;
-        } else if (missing.length === 0) {
-          offlineVaultReadyCount = allList.length;
         }
 
-        if (syncBadge && offlineVaultReadyCount > 0) {
-          syncBadge.textContent = `✅ OFFLINE 100% (${offlineVaultReadyCount} MP3)`;
-        }
+        offlineVaultReadyCount = ready;
+        updateOfflineVaultHUD(ready, allList.length);
       } catch (e) {
       } finally {
         offlineVaultSyncing = false;
       }
+    }
+
+    function manualSyncOffline() {
+      const statusEl = document.getElementById('offline-vault-status');
+      if (statusEl) statusEl.textContent = '🔄 Đang kiểm tra bản cập nhật mới nhất...';
+      refreshDailyTimelineLive();
+    }
+
+    function testOfflineVoiceSample() {
+      soundEngine.init();
+      const tl = getTimelineData();
+      const statusEl = document.getElementById('offline-vault-status');
+      let samplePath = 'audio/anquandiyi.mp3';
+      let sampleLabel = '安全第一';
+      if (tl.days && tl.days.length > 0) {
+        const d0 = tl.days[0];
+        if (d0.dialogues && d0.dialogues.length > 0) {
+          samplePath = d0.dialogues[0].q_audio;
+          sampleLabel = d0.dialogues[0].q_zh.slice(0, 14) + '...';
+        } else if (d0.vocab && d0.vocab.length > 0) {
+          samplePath = d0.vocab[0].audio;
+          sampleLabel = d0.vocab[0].zh;
+        }
+      }
+      const fromVault = offlineBlobMap.has(samplePath);
+      if (statusEl) {
+        statusEl.textContent = fromVault
+          ? `🔊 Đang phát từ bộ nhớ iPhone: "${sampleLabel}" (Sẵn sàng ✈️!)`
+          : `🔊 Đang phát thử: "${sampleLabel}"`;
+      }
+      playDialogueAudio(samplePath);
     }
 
     function refreshDailyTimelineLive() {
@@ -1971,21 +2140,19 @@
       }
     }
 
-    let currentVoiceAudio = null;
+    const sharedVoicePlayer = new Audio();
+    sharedVoicePlayer.preload = 'auto';
+    let currentVoiceAudio = sharedVoicePlayer;
 
     function stopCurrentVoice() {
-      if (currentVoiceAudio) {
-        try {
-          currentVoiceAudio.pause();
-          currentVoiceAudio.currentTime = 0;
-          currentVoiceAudio.src = "";
-        } catch(e) {}
-        currentVoiceAudio = null;
-      }
+      try {
+        sharedVoicePlayer.onended = null;
+        sharedVoicePlayer.pause();
+      } catch (e) {}
       if ('speechSynthesis' in window) {
         try {
           window.speechSynthesis.cancel();
-        } catch(e) {}
+        } catch (e) {}
       }
     }
 
@@ -2001,33 +2168,42 @@
       } catch (e) {}
     }
 
-    // Studio Neural Edge Audio Player with Web Speech fallback
+    function playSmartAudioPath(relPath, fallbackZh, onEnd) {
+      if (!soundEngine.sfxEnabled || !relPath) {
+        if (onEnd) onEnd();
+        return;
+      }
+      stopCurrentVoice();
+      try {
+        const playSrc = offlineBlobMap.get(relPath) || relPath;
+        currentVoiceAudio = sharedVoicePlayer;
+        sharedVoicePlayer.src = playSrc;
+        sharedVoicePlayer.volume = 1.0;
+        sharedVoicePlayer.playbackRate = currentVoiceSpeed;
+        sharedVoicePlayer.onended = onEnd || null;
+        const p = sharedVoicePlayer.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            if (fallbackZh) speakText(fallbackZh, 'zh-CN');
+            if (onEnd) setTimeout(onEnd, 600);
+          });
+        }
+      } catch (e) {
+        if (fallbackZh) speakText(fallbackZh, 'zh-CN');
+        if (onEnd) setTimeout(onEnd, 600);
+      }
+    }
+
+    // Studio Neural Edge Audio Player with Offline Vault + Web Speech fallback
     function playWordAudio(q, onEnd) {
       if (!soundEngine.sfxEnabled || !q) {
         if (onEnd) onEnd();
         return;
       }
-      stopCurrentVoice();
       if (q.audio) {
-        try {
-          const a = new Audio(q.audio);
-          currentVoiceAudio = a;
-          a.volume = 1.0;
-          a.playbackRate = currentVoiceSpeed;
-          const p = a.play();
-          if (p !== undefined) {
-            p.then(() => {
-              if (onEnd) a.onended = onEnd;
-            }).catch(() => {
-              speakText(q.zh, 'zh-CN');
-              if (onEnd) setTimeout(onEnd, 600);
-            });
-          }
-        } catch(e) {
-          speakText(q.zh, 'zh-CN');
-          if (onEnd) setTimeout(onEnd, 600);
-        }
+        playSmartAudioPath(q.audio, q.zh, onEnd);
       } else {
+        stopCurrentVoice();
         speakText(q.zh, 'zh-CN');
         if (onEnd) setTimeout(onEnd, 600);
       }
@@ -2038,27 +2214,7 @@
 
     // Studio Neural Edge Audio Player for Dialogue Scenarios
     function playDialogueAudio(path, onEnd) {
-      if (!soundEngine.sfxEnabled || !path) {
-        if (onEnd) onEnd();
-        return;
-      }
-      stopCurrentVoice();
-      try {
-        const a = new Audio(path);
-        currentVoiceAudio = a;
-        a.volume = 1.0;
-        a.playbackRate = currentVoiceSpeed;
-        const p = a.play();
-        if (p !== undefined) {
-          p.then(() => {
-            if (onEnd) a.onended = onEnd;
-          }).catch(() => {
-            if (onEnd) setTimeout(onEnd, 600);
-          });
-        }
-      } catch(e) {
-        if (onEnd) setTimeout(onEnd, 600);
-      }
+      playSmartAudioPath(path, '', onEnd);
     }
 
     // Game State
@@ -2771,6 +2927,16 @@
 
       ctx.restore();
     }
+
+    window.addEventListener('online', () => refreshDailyTimelineLive());
+    window.addEventListener('offline', () => {
+      updateOfflineVaultHUD(offlineVaultReadyCount, Math.max(offlineVaultReadyCount, offlineBlobMap.size));
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && gameState !== 'playing') {
+        refreshDailyTimelineLive();
+      }
+    });
 
     // Initialize Daily Diary Timeline & Start Animation Loop
     selectPlayMode('timeline');
