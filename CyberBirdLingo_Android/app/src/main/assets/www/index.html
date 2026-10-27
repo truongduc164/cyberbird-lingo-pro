@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>CyberBird Lingo • by DEAN (v2.4.0 PRO)</title>
-  <meta name="author" content="DEAN">
-  <meta name="version" content="2.4.0">
-  <meta name="copyright" content="DEAN STUDIO">
+  <title>CyberBird Lingo • by DEAN OPTIMIZE (v3.0.1 PRO)</title>
+  <meta name="author" content="DEAN OPTIMIZE">
+  <meta name="version" content="3.0.1">
+  <meta name="copyright" content="DEAN OPTIMIZE">
   <!-- PWA & iOS Standalone Support -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,6 +17,9 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js').catch(() => {});
+        if (navigator.storage && navigator.storage.persist) {
+          navigator.storage.persist().catch(() => {});
+        }
       });
     }
   </script>
@@ -1416,9 +1419,25 @@
       return Boolean(q && q.q_zh);
     }
 
+    const OFFLINE_VAULT_CACHE = 'cyberbird-lingo-v3.1-offline-vault';
+    let offlineVaultSyncing = false;
+    let offlineVaultReadyCount = 0;
+
     function getTimelineData() {
-      const tl = window.CYBERBIRD_DAILY_TIMELINE;
-      if (tl && Array.isArray(tl.days) && tl.days.length > 0) return tl;
+      let mem = window.CYBERBIRD_DAILY_TIMELINE;
+      try {
+        const raw = localStorage.getItem('cyberlingo_timeline_backup');
+        if (raw) {
+          const saved = JSON.parse(raw);
+          if (saved && Array.isArray(saved.days) && saved.days.length > 0) {
+            if (!mem || !Array.isArray(mem.days) || (saved.updated_at || '') > (mem.updated_at || '')) {
+              mem = saved;
+              window.CYBERBIRD_DAILY_TIMELINE = saved;
+            }
+          }
+        }
+      } catch (e) {}
+      if (mem && Array.isArray(mem.days) && mem.days.length > 0) return mem;
       return { updated_at: "", total_days: 0, total_vocab: 0, total_dialogues: 0, days: [] };
     }
 
@@ -1563,8 +1582,12 @@
       if (activeVocabList.length === 0) activeVocabList = [...FACTORY_DIALOGUES];
       if (summaryEl) summaryEl.textContent = digestText;
       if (countBadge) countBadge.textContent = `${vPool.length} từ • ${dPool.length} câu`;
-      if (syncBadge && tl.updated_at) {
-        syncBadge.textContent = `🕵️‍♂️ WATCHDOG SYNC • ${tl.updated_at.slice(11, 16)}`;
+      if (syncBadge) {
+        if (offlineVaultReadyCount > 0) {
+          syncBadge.textContent = `✅ OFFLINE 100% (${offlineVaultReadyCount} MP3)`;
+        } else if (tl.updated_at) {
+          syncBadge.textContent = `🕵️‍♂️ WATCHDOG SYNC • ${tl.updated_at.slice(11, 16)}`;
+        }
       }
     }
 
@@ -1608,6 +1631,76 @@
       rebuildTimelinePool();
     }
 
+    async function syncOfflineAudioVault() {
+      if (!location.protocol.startsWith('http') || !('caches' in window) || offlineVaultSyncing) return;
+      offlineVaultSyncing = true;
+      try {
+        const urls = new Set([
+          'audio/praise_taibangle.mp3',
+          'audio/praise_zhengque.mp3',
+          'audio/praise_lihai.mp3'
+        ]);
+        for (const v of FULL_VOCAB_DATABASE) {
+          if (v && v.audio) urls.add(v.audio);
+        }
+        for (const d of FACTORY_DIALOGUES) {
+          if (d && d.q_audio) urls.add(d.q_audio);
+          if (d && d.a_audio) urls.add(d.a_audio);
+        }
+        const tl = getTimelineData();
+        for (const day of (tl.days || [])) {
+          for (const v of (day.vocab || [])) {
+            if (v && v.audio) urls.add(v.audio);
+          }
+          for (const dlg of (day.dialogues || [])) {
+            if (dlg && dlg.q_audio) urls.add(dlg.q_audio);
+            if (dlg && dlg.a_audio) urls.add(dlg.a_audio);
+          }
+        }
+
+        const allList = Array.from(urls);
+        const cache = await caches.open(OFFLINE_VAULT_CACHE);
+        const missing = [];
+        for (const rel of allList) {
+          const absUrl = new URL(rel, location.href).href;
+          const hit = await cache.match(absUrl, { ignoreSearch: true });
+          if (!hit) missing.push(absUrl);
+        }
+
+        const syncBadge = document.getElementById('tl-sync-badge');
+        if (missing.length > 0 && navigator.onLine) {
+          let done = allList.length - missing.length;
+          const batchSize = 6;
+          for (let i = 0; i < missing.length; i += batchSize) {
+            const chunk = missing.slice(i, i + batchSize);
+            await Promise.all(chunk.map(async (u) => {
+              try {
+                const req = new Request(u, { method: 'GET' });
+                const res = await fetch(req);
+                if (res && res.status === 200) {
+                  await cache.put(req, res);
+                  done++;
+                }
+              } catch (e) {}
+            }));
+            if (syncBadge) {
+              syncBadge.textContent = `📥 TẢI OFFLINE (${done}/${allList.length})`;
+            }
+          }
+          offlineVaultReadyCount = done;
+        } else if (missing.length === 0) {
+          offlineVaultReadyCount = allList.length;
+        }
+
+        if (syncBadge && offlineVaultReadyCount > 0) {
+          syncBadge.textContent = `✅ OFFLINE 100% (${offlineVaultReadyCount} MP3)`;
+        }
+      } catch (e) {
+      } finally {
+        offlineVaultSyncing = false;
+      }
+    }
+
     function refreshDailyTimelineLive() {
       if (!location.protocol.startsWith('http')) return;
       fetch('daily_timeline.json?t=' + Date.now(), { cache: 'no-store' })
@@ -1615,10 +1708,17 @@
         .then(data => {
           if (data && Array.isArray(data.days) && data.days.length > 0) {
             window.CYBERBIRD_DAILY_TIMELINE = data;
+            try {
+              localStorage.setItem('cyberlingo_timeline_backup', JSON.stringify(data));
+            } catch (e) {}
             renderTimelineUI();
           }
+          syncOfflineAudioVault();
         })
-        .catch(() => {});
+        .catch(() => {
+          renderTimelineUI();
+          syncOfflineAudioVault();
+        });
     }
 
     function switchDialogueTopic(topic, btn) {
