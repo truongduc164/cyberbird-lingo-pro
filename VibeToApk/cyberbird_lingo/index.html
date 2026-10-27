@@ -402,6 +402,90 @@
       padding: 2px 7px;
       border-radius: 8px;
     }
+    .tutorial-card {
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      border-radius: 16px;
+      padding: 13px 15px;
+      max-width: 360px;
+      width: 100%;
+      text-align: left;
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: #cbd5e1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.7);
+    }
+    .tut-step {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .tut-num {
+      background: #0284c7;
+      color: #fff;
+      font-weight: 900;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
+    }
+    .tut-body b {
+      color: #fff;
+    }
+    .tut-badge {
+      display: inline-block;
+      margin-top: 3px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 8px;
+      font-size: 11px;
+    }
+    .lane-demo {
+      padding: 4px 8px;
+      border-radius: 8px;
+      font-size: 10.5px;
+      font-weight: 800;
+    }
+    .lane-up {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #10b981;
+    }
+    .lane-down {
+      background: rgba(244, 63, 94, 0.2);
+      border: 1px solid #f43f5e;
+      color: #f43f5e;
+    }
+    .guide-btn {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .guide-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -456,20 +540,71 @@
         <button class="cat-pill" onclick="switchCategory('nature', this)">☀️ Tự Nhiên</button>
       </div>
 
-      <button class="play-btn" onclick="startGame()">BẮT ĐẦU BAY 🚀</button>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <button class="play-btn" onclick="startGame()">BẮT ĐẦU BAY 🚀</button>
+        <button class="guide-btn" onclick="openTutorial()">📖 HƯỚNG DẪN CÁCH ĐIỀU KHIỂN & LUẬT CHƠI</button>
+      </div>
 
       <div class="dev-credits">
         <span>Kiến tạo & Tối ưu bởi <b>DEAN OPTIMIZE</b></span>
-        <span class="ver-badge">v2.4.0 PRO BUILD</span>
+        <span class="ver-badge">v2.5.0 PRO BUILD</span>
       </div>
 
       <div class="how-to-box">
-        🕹️ <b>Cách chơi đỉnh cao:</b><br>
-        1. Nhìn từ tiếng Việt mục tiêu ở trên banner.<br>
-        2. Chạm màn hình bay qua <b>cổng có từ dịch ĐÚNG</b>.<br>
-        3. <b>Chuỗi 5+</b> kích hoạt chế độ <b>⚡ CYBER OVERDRIVE (x2 điểm)</b>!<br>
-        4. Giọng đọc bản xứ tự động phát âm chuẩn xác khi bay qua.
+        🕹️ <b>Quy tắc cực đơn giản:</b><br>
+        1. Nhìn từ tiếng Việt mục tiêu ở trên banner đỉnh.<br>
+        2. Chạm màn hình bay lướt vào giữa <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có từ đúng.<br>
+        3. Có <b>mũi tên xanh 👉 VÀO ĐÂY</b> chỉ dẫn trực tiếp cho bạn!
       </div>
+    </div>
+
+    <!-- Tutorial / Game Rules Modal -->
+    <div id="modal-tutorial" class="overlay-screen hidden" style="z-index: 40; padding: 14px;">
+      <div style="font-size: 20px; font-weight: 900; color: #38bdf8; margin-bottom: 8px;">
+        📖 LUẬT CHƠI & CÁCH LÁI CHIM
+      </div>
+      <div class="tutorial-card">
+        <div class="tut-step">
+          <div class="tut-num">1</div>
+          <div class="tut-body">
+            <b>Nhìn mục tiêu tiếng Việt ở thanh trên đỉnh:</b>
+            <div class="tut-badge">Ví dụ: [ Mũ Bảo Hiểm ]</div>
+          </div>
+        </div>
+
+        <div class="tut-step">
+          <div class="tut-num">2</div>
+          <div class="tut-body">
+            <b>Trước mặt bạn có 2 Cổng Lượn Mở Rộng:</b>
+            <div style="display: flex; gap: 6px; margin-top: 4px;">
+              <span class="lane-demo lane-up">▲ LÀN TRÊN: 头盔</span>
+              <span class="lane-demo lane-down">▼ LÀN DƯỚI: 安全帽</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tut-step">
+          <div class="tut-num">3</div>
+          <div class="tut-body">
+            <b>Cách điều khiển chim vào vị trí chính xác:</b>
+            <p style="margin-top:2px;">• <b>Chạm màn hình (Tap):</b> Chim bay bổng lên để vào <b>LÀN TRÊN</b>.</p>
+            <p>• <b>Thả tay (Không bấm):</b> Chim tự hạ độ cao lướt vào <b>LÀN DƯỚI</b>.</p>
+            <p style="color:#10b981; font-weight:700;">• Mũi tên xanh <b>👉 VÀO ĐÂY</b> sẽ chỉ ngay làn đúng cho sếp!</p>
+          </div>
+        </div>
+
+        <div class="tut-step">
+          <div class="tut-num">4</div>
+          <div class="tut-body">
+            <b>Khu vực an toàn:</b>
+            <p>Khoảng trống mở rộng tới 260px cực kỳ thoáng! Chỉ cần tránh đâm vào trần hoặc sàn nhà.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="play-btn" style="margin-top: 14px; padding: 11px 36px; font-size: 15px;" onclick="closeTutorial()">
+        ĐÃ HIỂU, VÀO CHƠI NGAY 🚀
+      </button>
     </div>
 
     <!-- Game Over Screen Overlay -->
@@ -886,6 +1021,14 @@
     const fcTargetWord = document.getElementById('fc-target-word');
     const fcPinyin = document.getElementById('fc-pinyin');
     const fcMeaning = document.getElementById('fc-meaning');
+    const modalTutorial = document.getElementById('modal-tutorial');
+
+    function openTutorial() {
+      if (modalTutorial) modalTutorial.classList.remove('hidden');
+    }
+    function closeTutorial() {
+      if (modalTutorial) modalTutorial.classList.add('hidden');
+    }
 
     function resize() {
       const rect = canvas.getBoundingClientRect();
@@ -973,7 +1116,7 @@
     });
 
     window.addEventListener('pointerdown', (e) => {
-      if (e.target.closest('.top-bar') || e.target.closest('.play-btn') || e.target.closest('.cat-pill') || e.target.closest('.replay-voice-btn')) return;
+      if (e.target.closest('.top-bar') || e.target.closest('.play-btn') || e.target.closest('.cat-pill') || e.target.closest('.replay-voice-btn') || e.target.closest('.guide-btn') || e.target.closest('#modal-tutorial')) return;
       flap();
     });
 
@@ -1244,36 +1387,111 @@
           const botY = p.top + gateGap;
           const botH = canvas.height - botY;
 
-          // Gate Pillars (Top & Bottom)
-          ctx.fillStyle = '#0f172a';
-          ctx.strokeStyle = isOverdrive ? `hsl(${(frameCount * 8) % 360}, 90%, 65%)` : '#38bdf8';
+          // 1. Solid Pillars at Top and Bottom Ceiling/Floor
+          ctx.fillStyle = '#0a0f1d';
+          ctx.strokeStyle = '#1e293b';
           ctx.lineWidth = 3;
 
-          // Top Pillar
+          // Top Solid Pillar
           ctx.fillRect(p.x, 0, p.w, p.top);
           ctx.strokeRect(p.x, 0, p.w, p.top);
 
-          // Bottom Pillar
+          // Bottom Solid Pillar
           ctx.fillRect(p.x, botY, p.w, botH);
           ctx.strokeRect(p.x, botY, p.w, botH);
 
-          // Neon Divider Laser Line between Upper Lane & Lower Lane
+          // Red Hazard Stripes on solid walls so player knows NOT to touch them
+          ctx.fillStyle = 'rgba(239, 68, 68, 0.4)';
+          ctx.fillRect(p.x, p.top - 12, p.w, 12);
+          ctx.fillRect(p.x, botY, p.w, 12);
+
           const midY = p.top + gateGap / 2;
+          const upperCenterY = p.top + (gateGap / 4);
+          const lowerCenterY = midY + (gateGap / 4);
+          const tunnelW = 160;
+          const tunnelH = (gateGap / 2) - 18;
+
+          // 2. UPPER CYBER PORTAL (LÀN TRÊN)
+          const upBorderColor = p.passed 
+            ? (p.correctAtTop ? '#10b981' : 'rgba(100, 116, 139, 0.3)') 
+            : (isOverdrive ? '#ec4899' : '#38bdf8');
           ctx.save();
-          ctx.setLineDash([5, 6]);
-          ctx.strokeStyle = isOverdrive ? 'rgba(236, 72, 153, 0.65)' : 'rgba(56, 189, 248, 0.45)';
-          ctx.lineWidth = 1.5;
+          ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+          ctx.strokeStyle = upBorderColor;
+          ctx.lineWidth = 2.5;
+          ctx.shadowColor = upBorderColor;
+          ctx.shadowBlur = (p.passed && p.correctAtTop) ? 14 : 6;
           ctx.beginPath();
-          ctx.moveTo(p.x - 35, midY);
-          ctx.lineTo(p.x + p.w + 35, midY);
+          ctx.roundRect(p.x - 55, p.top + 8, tunnelW, tunnelH, 12);
+          ctx.fill();
           ctx.stroke();
+
+          // Upper Lane Text
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 13px system-ui, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(`▲ TRÊN: ${p.topLabel}`, p.x - 55 + tunnelW / 2, upperCenterY);
           ctx.restore();
 
-          // DRAW VOCABULARY PILLS INSIDE GATES
-          // Top Gate Pill
-          drawGateLabel(p.x - 45, p.top - 36, p.topLabel, p.correctAtTop, p.passed);
-          // Bottom Gate Pill
-          drawGateLabel(p.x - 45, botY + 14, p.botLabel, !p.correctAtTop, p.passed);
+          // 3. LOWER CYBER PORTAL (LÀN DƯỚI)
+          const botBorderColor = p.passed 
+            ? (!p.correctAtTop ? '#10b981' : 'rgba(100, 116, 139, 0.3)') 
+            : (isOverdrive ? '#ec4899' : '#38bdf8');
+          ctx.save();
+          ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+          ctx.strokeStyle = botBorderColor;
+          ctx.lineWidth = 2.5;
+          ctx.shadowColor = botBorderColor;
+          ctx.shadowBlur = (p.passed && !p.correctAtTop) ? 14 : 6;
+          ctx.beginPath();
+          ctx.roundRect(p.x - 55, midY + 8, tunnelW, tunnelH, 12);
+          ctx.fill();
+          ctx.stroke();
+
+          // Lower Lane Text
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 13px system-ui, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(`▼ DƯỚI: ${p.botLabel}`, p.x - 55 + tunnelW / 2, lowerCenterY);
+          ctx.restore();
+
+          // 4. Laser Divider between Upper and Lower Portals (at midY)
+          ctx.save();
+          ctx.strokeStyle = '#f43f5e';
+          ctx.lineWidth = 2;
+          ctx.shadowColor = '#f43f5e';
+          ctx.shadowBlur = 8;
+          ctx.setLineDash([6, 6]);
+          ctx.beginPath();
+          ctx.moveTo(p.x - 65, midY);
+          ctx.lineTo(p.x + p.w + 45, midY);
+          ctx.stroke();
+
+          // Center Warning Badge
+          ctx.fillStyle = '#f43f5e';
+          ctx.font = 'bold 9.5px system-ui, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText("⚡ PHÂN CÁCH 2 LÀN ⚡", p.x + 10, midY - 4);
+          ctx.restore();
+
+          // 5. Blinking Guideline Arrow (👉 VÀO ĐÂY)
+          if (!p.passed && p.x > bird.x && p.x < canvas.width + 50) {
+            const targetY = p.correctAtTop ? upperCenterY : lowerCenterY;
+            const blink = Math.sin(frameCount * 0.18) > -0.2;
+            if (blink) {
+              ctx.save();
+              ctx.font = '900 12.5px system-ui, sans-serif';
+              ctx.fillStyle = '#10b981';
+              ctx.shadowColor = '#10b981';
+              ctx.shadowBlur = 10;
+              ctx.textAlign = 'right';
+              ctx.textBaseline = 'middle';
+              ctx.fillText('👉 VÀO ĐÂY', p.x - 62, targetY);
+              ctx.restore();
+            }
+          }
 
           // Check Passage & Answer
           if (!p.passed && p.x + p.w < bird.x) {
