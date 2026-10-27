@@ -338,29 +338,51 @@
       color: #fff;
       box-shadow: 0 4px 15px rgba(2, 132, 199, 0.5);
     }
-    .diff-bar {
+    /* Settings Panel: Flight Speed, Voice Speed, Font Size */
+    .settings-panel {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 9px 12px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      width: 100%;
+      max-width: 330px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+    }
+    .setting-row {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 6px;
-      margin-bottom: 16px;
+    }
+    .setting-title {
       font-size: 11px;
-    }
-    .diff-label {
+      font-weight: 800;
       color: #94a3b8;
-      font-weight: 700;
+      width: 58px;
+      text-align: left;
     }
-    .diff-btn {
+    .setting-pills {
+      display: flex;
+      gap: 5px;
+      flex: 1;
+      justify-content: flex-end;
+    }
+    .opt-btn {
       background: rgba(30, 41, 59, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #cbd5e1;
       font-size: 11px;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 9px;
       border-radius: 10px;
       cursor: pointer;
       transition: all 0.15s;
     }
-    .diff-btn.active {
+    .opt-btn.active {
       background: rgba(56, 189, 248, 0.25);
       border-color: #38bdf8;
       color: #38bdf8;
@@ -601,8 +623,8 @@
     <div id="quest-banner" class="quest-banner">
       <div class="quest-info" style="max-width: 275px;">
         <span id="quest-speaker" class="quest-label">💬 HỘI THOẠI XƯỞNG:</span>
-        <span id="quest-target" class="quest-target" style="font-size: 16px; line-height: 1.25;">今天能按时交货吗？</span>
-        <span id="quest-sub" style="font-size: 10.5px; color: #94a3b8; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">Nghĩa: Hôm nay có giao hàng đúng hạn không?</span>
+        <span id="quest-target" class="quest-target" style="font-size: 18.5px; line-height: 1.25; font-weight: 900;">今天能按时交货吗？</span>
+        <span id="quest-sub" style="font-size: 11.5px; color: #cbd5e1; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">Nghĩa: Hôm nay có giao hàng đúng hạn không?</span>
       </div>
       <div class="quest-streak">
         <span id="streak-badge" class="streak-badge">🔥 Chuỗi: 0</span>
@@ -644,12 +666,34 @@
         <button class="cat-pill" onclick="switchCategory('greet', this)">💬 Giao Tiếp</button>
       </div>
 
-      <!-- Difficulty Level Selector -->
-      <div class="diff-bar">
-        <span class="diff-label">Tốc độ:</span>
-        <button class="diff-btn" onclick="setDifficulty('easy', this)">🟢 Dễ (Chill)</button>
-        <button class="diff-btn active" onclick="setDifficulty('normal', this)">🟡 Vừa (Chuẩn)</button>
-        <button class="diff-btn" onclick="setDifficulty('hard', this)">🔴 Siêu Tốc (Pro)</button>
+      <!-- Settings Panel: Flight Speed, Voice Speed, Font Size -->
+      <div class="settings-panel">
+        <div class="setting-row">
+          <span class="setting-title">🎮 Tốc Độ:</span>
+          <div class="setting-pills">
+            <button class="opt-btn diff-btn" onclick="setDifficulty('easy', this)">🟢 Dễ</button>
+            <button class="opt-btn diff-btn active" onclick="setDifficulty('normal', this)">🟡 Vừa</button>
+            <button class="opt-btn diff-btn" onclick="setDifficulty('hard', this)">🔴 Pro</button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-title">🗣️ Giọng:</span>
+          <div class="setting-pills">
+            <button id="vspeed-slow" class="opt-btn vspeed-btn" onclick="setVoiceSpeed(0.85, this)">🐢 0.85x</button>
+            <button id="vspeed-norm" class="opt-btn vspeed-btn active" onclick="setVoiceSpeed(1.0, this)">⚡ 1.0x</button>
+            <button id="vspeed-fast" class="opt-btn vspeed-btn" onclick="setVoiceSpeed(1.2, this)">🚀 1.2x</button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-title">🔤 Cỡ Chữ:</span>
+          <div class="setting-pills">
+            <button id="fsize-norm" class="opt-btn fsize-btn" onclick="setFontSize('norm', this)">14px</button>
+            <button id="fsize-lg" class="opt-btn fsize-btn active" onclick="setFontSize('large', this)">16.5px (Lớn)</button>
+            <button id="fsize-xl" class="opt-btn fsize-btn" onclick="setFontSize('huge', this)">19px (To)</button>
+          </div>
+        </div>
       </div>
 
       <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
@@ -1040,13 +1084,59 @@
     let currentPlayMode = "dialogue"; // 'dialogue' or 'vocab'
     let currentCategory = "dialogue";
     let currentDifficulty = "normal"; // 'easy', 'normal', 'hard'
+    let currentVoiceSpeed = 1.0;
+    let currentFontSizeMode = 'large'; // 'norm', 'large', 'huge'
+    let currentFontSizePx = 16.5;
     let activeVocabList = [...FACTORY_DIALOGUES];
 
     function setDifficulty(lvl, btn) {
       currentDifficulty = lvl;
       document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
+      else {
+        const found = document.querySelector(`.diff-btn[onclick*="'${lvl}'"]`);
+        if (found) found.classList.add('active');
+      }
       applyDifficultySettings();
+
+      // Auto-calibrate voice speed based on difficulty level
+      if (lvl === 'easy') {
+        setVoiceSpeed(0.85);
+      } else if (lvl === 'hard') {
+        setVoiceSpeed(1.20);
+      } else {
+        setVoiceSpeed(1.00);
+      }
+    }
+
+    function setVoiceSpeed(spd, btn) {
+      currentVoiceSpeed = spd;
+      document.querySelectorAll('.vspeed-btn').forEach(b => b.classList.remove('active'));
+      if (btn) {
+        btn.classList.add('active');
+      } else {
+        if (spd <= 0.9) document.getElementById('vspeed-slow')?.classList.add('active');
+        else if (spd >= 1.15) document.getElementById('vspeed-fast')?.classList.add('active');
+        else document.getElementById('vspeed-norm')?.classList.add('active');
+      }
+      if (currentVoiceAudio) {
+        try { currentVoiceAudio.playbackRate = currentVoiceSpeed; } catch(e) {}
+      }
+    }
+
+    function setFontSize(mode, btn) {
+      currentFontSizeMode = mode;
+      document.querySelectorAll('.fsize-btn').forEach(b => b.classList.remove('active'));
+      if (btn) {
+        btn.classList.add('active');
+      } else {
+        if (mode === 'norm') document.getElementById('fsize-norm')?.classList.add('active');
+        else if (mode === 'huge') document.getElementById('fsize-xl')?.classList.add('active');
+        else document.getElementById('fsize-lg')?.classList.add('active');
+      }
+      if (mode === 'norm') currentFontSizePx = 14;
+      else if (mode === 'huge') currentFontSizePx = 19;
+      else currentFontSizePx = 16.5; // Large (default)
     }
 
     function applyDifficultySettings() {
@@ -1310,7 +1400,7 @@
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = lang;
-        u.rate = 0.90;
+        u.rate = currentVoiceSpeed * 0.90;
         window.speechSynthesis.speak(u);
       } catch (e) {}
     }
@@ -1327,6 +1417,7 @@
           const a = new Audio(q.audio);
           currentVoiceAudio = a;
           a.volume = 1.0;
+          a.playbackRate = currentVoiceSpeed;
           const p = a.play();
           if (p !== undefined) {
             p.then(() => {
@@ -1360,6 +1451,7 @@
         const a = new Audio(path);
         currentVoiceAudio = a;
         a.volume = 1.0;
+        a.playbackRate = currentVoiceSpeed;
         const p = a.play();
         if (p !== undefined) {
           p.then(() => {
@@ -1519,6 +1611,10 @@
           e.target.closest('.cat-pill') || 
           e.target.closest('.mode-tab-btn') || 
           e.target.closest('.diff-btn') || 
+          e.target.closest('.vspeed-btn') || 
+          e.target.closest('.fsize-btn') || 
+          e.target.closest('.settings-panel') || 
+          e.target.closest('.opt-btn') || 
           e.target.closest('.replay-voice-btn') || 
           e.target.closest('.guide-btn') || 
           e.target.closest('#modal-tutorial')) return;
@@ -1860,16 +1956,18 @@
           const upperCenterY = p.top + (gateGap / 4);
           const lowerCenterY = midY + (gateGap / 4);
           const isDlg = (currentPlayMode === 'dialogue');
-          const tunnelW = isDlg ? 210 : 165;
-          const tunnelH = (gateGap / 2) - 18;
-          const tunnelX = p.x - (isDlg ? 80 : 55);
+          // Scale tunnel width and font size based on currentFontSizeMode
+          const extraW = (currentFontSizeMode === 'huge') ? 35 : ((currentFontSizeMode === 'large') ? 18 : 0);
+          const tunnelW = (isDlg ? 220 : 170) + extraW;
+          const tunnelH = Math.max(38, (gateGap / 2) - 16);
+          const tunnelX = p.x - (isDlg ? (85 + extraW / 2) : (58 + extraW / 2));
 
           // 2. UPPER CYBER PORTAL (LÀN TRÊN)
           const upBorderColor = p.passed 
             ? (p.correctAtTop ? '#10b981' : 'rgba(100, 116, 139, 0.3)') 
             : (isOverdrive ? '#ec4899' : '#38bdf8');
           ctx.save();
-          ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+          ctx.fillStyle = 'rgba(15, 23, 42, 0.92)';
           ctx.strokeStyle = upBorderColor;
           ctx.lineWidth = 2.5;
           ctx.shadowColor = upBorderColor;
@@ -1879,11 +1977,13 @@
           ctx.fill();
           ctx.stroke();
 
-          // Upper Lane Text
+          // Upper Lane Text (Crisp, high-contrast, scalable font!)
           ctx.fillStyle = '#ffffff';
-          ctx.font = isDlg ? 'bold 12.5px system-ui, sans-serif' : 'bold 13px system-ui, sans-serif';
+          ctx.font = `bold ${currentFontSizePx}px system-ui, -apple-system, sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+          ctx.shadowBlur = 4;
           ctx.fillText(`▲ ${p.topLabel}`, tunnelX + tunnelW / 2, upperCenterY);
           ctx.restore();
 
@@ -1892,7 +1992,7 @@
             ? (!p.correctAtTop ? '#10b981' : 'rgba(100, 116, 139, 0.3)') 
             : (isOverdrive ? '#ec4899' : '#38bdf8');
           ctx.save();
-          ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+          ctx.fillStyle = 'rgba(15, 23, 42, 0.92)';
           ctx.strokeStyle = botBorderColor;
           ctx.lineWidth = 2.5;
           ctx.shadowColor = botBorderColor;
@@ -1902,11 +2002,13 @@
           ctx.fill();
           ctx.stroke();
 
-          // Lower Lane Text
+          // Lower Lane Text (Crisp, high-contrast, scalable font!)
           ctx.fillStyle = '#ffffff';
-          ctx.font = isDlg ? 'bold 12.5px system-ui, sans-serif' : 'bold 13px system-ui, sans-serif';
+          ctx.font = `bold ${currentFontSizePx}px system-ui, -apple-system, sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+          ctx.shadowBlur = 4;
           ctx.fillText(`▼ ${p.botLabel}`, tunnelX + tunnelW / 2, lowerCenterY);
           ctx.restore();
 
