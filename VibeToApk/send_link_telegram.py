@@ -28,10 +28,11 @@ def main():
     cloud_url = "https://rolled-pmc-ver-greatest.trycloudflare.com"
 
     caption = (
-        "🚀 <b>CYBERBIRD LINGO PRO v2.5.0 ĐÃ TRỰC TUYẾN 100%!</b>\n\n"
-        "✨ <b>Chế độ mới:</b> Hội Thoại Thực Chiến Công Xưởng (12 Tình Huống Logic)\n"
-        "⚡ <b>Đường truyền:</b> Cloudflare Tunnel Toàn Cầu (Hong Kong Edge tốc độ cao)\n\n"
-        f"🔗 <b>Link chơi trực tiếp trên mọi thiết bị:</b>\n{cloud_url}\n\n"
+        "✨ <b>CYBERBIRD LINGO PRO v2.5.0 - SONG KIẾM HỢP BÍCH!</b>\n\n"
+        "1️⃣ <b>💬 Hội Thoại Thực Chiến:</b> Hiện tình huống xưởng của Giám Đốc/QC, bay vào câu trả lời logic!\n"
+        "2️⃣ <b>🎯 Luyện Từ Vựng Nhè Nhẹ:</b> Hiện nghĩa Tiếng Việt trên đỉnh, bay đúng vào chữ Hán & Pinyin!\n"
+        "🎮 <b>3 Cấp Độ Tốc Độ:</b> 🟢 Dễ (Chill) • 🟡 Vừa (Chuẩn) • 🔴 Siêu Tốc (Pro)!\n\n"
+        f"🔗 <b>Bấm vào đây để chơi ngay:</b>\n{cloud_url}\n\n"
         "💡 <i>Hoặc quét mã QR đính kèm để mở ngay trên điện thoại!</i>"
     )
 

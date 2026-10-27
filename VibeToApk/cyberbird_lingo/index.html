@@ -274,6 +274,60 @@
       border-color: #38bdf8;
       box-shadow: 0 0 12px rgba(14, 165, 233, 0.5);
     }
+    .mode-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      padding: 4px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .mode-tab-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-tab-btn.active {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.5);
+    }
+    .diff-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      font-size: 11px;
+    }
+    .diff-label {
+      color: #94a3b8;
+      font-weight: 700;
+    }
+    .diff-btn {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .diff-btn.active {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: #38bdf8;
+      color: #38bdf8;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+    }
     .how-to-box {
       margin-top: 18px;
       background: rgba(30, 41, 59, 0.55);
@@ -530,15 +584,32 @@
       <div class="game-logo">CYBERBIRD LINGO</div>
       <div class="game-subtitle">Vừa chơi Flappy Bird vừa luyện phản xạ từ vựng Tiếng Anh & Tiếng Trung siêu cuốn!</div>
       
-      <!-- Category Selector -->
-      <div class="category-bar">
-        <button class="cat-pill active" onclick="switchCategory('dialogue', this)">💬 Hội Thoại Xưởng (Mới!)</button>
-        <button class="cat-pill" onclick="switchCategory('factory', this)">🏭 Từ Vựng Xưởng Mũ (27)</button>
+      <!-- Main Game Mode Tabs -->
+      <div class="mode-tabs">
+        <button id="tab-dialogue" class="mode-tab-btn active" onclick="selectPlayMode('dialogue')">
+          💬 Hội Thoại Xưởng
+        </button>
+        <button id="tab-vocab" class="mode-tab-btn" onclick="selectPlayMode('vocab')">
+          🎯 Bay Vào Từ Vựng
+        </button>
+      </div>
+
+      <!-- Category Selector for Vocab Mode -->
+      <div id="vocab-category-bar" class="category-bar hidden">
+        <button class="cat-pill active" onclick="switchCategory('factory', this)">🏭 Xưởng Mũ (27)</button>
         <button class="cat-pill" onclick="switchCategory('all', this)">🌟 Tất Cả (67)</button>
         <button class="cat-pill" onclick="switchCategory('tech', this)">💻 Công Nghệ</button>
         <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực</button>
         <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật</button>
         <button class="cat-pill" onclick="switchCategory('greet', this)">💬 Giao Tiếp</button>
+      </div>
+
+      <!-- Difficulty Level Selector -->
+      <div class="diff-bar">
+        <span class="diff-label">Tốc độ:</span>
+        <button class="diff-btn" onclick="setDifficulty('easy', this)">🟢 Dễ (Chill)</button>
+        <button class="diff-btn active" onclick="setDifficulty('normal', this)">🟡 Vừa (Chuẩn)</button>
+        <button class="diff-btn" onclick="setDifficulty('hard', this)">🔴 Siêu Tốc (Pro)</button>
       </div>
 
       <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
@@ -551,11 +622,13 @@
         <span class="ver-badge">v2.5.0 PRO BUILD</span>
       </div>
 
-      <div class="how-to-box">
-        🕹️ <b>Quy tắc cực cuốn:</b><br>
-        1. Đọc câu hỏi tình huống của Giám đốc hoặc QC trên thanh đỉnh.<br>
-        2. Chạm màn hình bay lướt vào giữa <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có <b>CÂU TRẢ LỜI LOGIC</b>.<br>
-        3. Bay vào câu trả lời vô lý là sai! Luyện phản xạ đối đáp công xưởng tức thì!
+      <div id="how-to-box" class="how-to-box">
+        <div id="how-to-text">
+          🕹️ <b>Quy tắc Hội Thoại Xưởng:</b><br>
+          1. Đọc câu hỏi tình huống của Giám đốc hoặc QC trên thanh đỉnh.<br>
+          2. Chạm màn hình bay lướt vào giữa <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có <b>CÂU TRẢ LỜI LOGIC</b>.<br>
+          3. Bay vào câu trả lời vô lý là sai! Luyện phản xạ đối đáp công xưởng!
+        </div>
       </div>
     </div>
 
@@ -568,18 +641,20 @@
         <div class="tut-step">
           <div class="tut-num">1</div>
           <div class="tut-body">
-            <b>Đọc câu hỏi tình huống ở thanh trên đỉnh:</b>
-            <div class="tut-badge">Ví dụ: 👨‍💼 "今天能按时交货吗？" (Hôm nay có giao kịp không?)</div>
+            <b>2 Chế Độ Chơi Độc Đáo:</b>
+            <p>• <b>💬 Hội Thoại Xưởng:</b> Đọc câu hỏi tình huống trên đỉnh, chọn câu đáp chuẩn logic thực tế.</p>
+            <p>• <b>🎯 Bay Vào Từ Vựng:</b> Đọc nghĩa Tiếng Việt trên đỉnh, bay vào chữ Hán / Pinyin chuẩn.</p>
           </div>
         </div>
 
         <div class="tut-step">
           <div class="tut-num">2</div>
           <div class="tut-body">
-            <b>Trước mặt bạn có 2 Cổng Lượn Song Ngữ:</b>
+            <b>3 Mức Độ Khó Linh Hoạt:</b>
             <div style="display: flex; flex-direction: column; gap: 4px; margin-top: 4px;">
-              <span class="lane-demo lane-up">▲ LÀN 1: 可以，已经打包好了。 (Đạt Logic: Đã đóng gói xong)</span>
-              <span class="lane-demo lane-down">▼ LÀN 2: 我不喜欢吃苹果。 (Vô lý: Tôi không thích ăn táo)</span>
+              <span class="lane-demo lane-up">🟢 DỄ: Lướt êm ái, cổng rộng 260px, học từ tốn.</span>
+              <span class="lane-demo lane-up" style="border-color:#38bdf8;">🟡 VỪA: Tốc độ chuẩn, phản xạ nhịp nhàng.</span>
+              <span class="lane-demo lane-down">🔴 SIÊU TỐC: Tốc độ nhanh 2.85x, cổng hẹp 210px, thử thách Pro!</span>
             </div>
           </div>
         </div>
@@ -587,10 +662,9 @@
         <div class="tut-step">
           <div class="tut-num">3</div>
           <div class="tut-body">
-            <b>Cách điều khiển chim vào vị trí chính xác:</b>
+            <b>Cách điều khiển chim:</b>
             <p style="margin-top:2px;">• <b>Chạm màn hình (Tap):</b> Chim bay bổng lên để vào <b>LÀN TRÊN</b>.</p>
             <p>• <b>Thả tay (Không bấm):</b> Chim tự hạ độ cao lướt vào <b>LÀN DƯỚI</b>.</p>
-            <p style="color:#10b981; font-weight:700;">• Đọc hiểu nhanh và chọn câu trả lời có tính logic cao nhất!</p>
           </div>
         </div>
 
@@ -905,21 +979,84 @@
       }
     ];
 
+    let currentPlayMode = "dialogue"; // 'dialogue' or 'vocab'
     let currentCategory = "dialogue";
+    let currentDifficulty = "normal"; // 'easy', 'normal', 'hard'
     let activeVocabList = [...FACTORY_DIALOGUES];
+
+    function setDifficulty(lvl, btn) {
+      currentDifficulty = lvl;
+      document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      applyDifficultySettings();
+    }
+
+    function applyDifficultySettings() {
+      if (currentDifficulty === 'easy') {
+        pipeSpeed = 1.75;
+        gateGap = 260;
+        gravity = 0.34;
+        jump = -6.5;
+      } else if (currentDifficulty === 'hard') {
+        pipeSpeed = 2.85;
+        gateGap = 210;
+        gravity = 0.44;
+        jump = -7.3;
+      } else { // normal
+        pipeSpeed = 2.2;
+        gateGap = 235;
+        gravity = 0.38;
+        jump = -6.9;
+      }
+    }
+
+    function selectPlayMode(mode) {
+      currentPlayMode = mode;
+      document.querySelectorAll('.mode-tab-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById(`tab-${mode}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const vocabBar = document.getElementById('vocab-category-bar');
+      const howToText = document.getElementById('how-to-text');
+
+      if (mode === 'vocab') {
+        if (vocabBar) vocabBar.classList.remove('hidden');
+        switchCategory('factory');
+        if (howToText) {
+          howToText.innerHTML = `
+            🕹️ <b>Quy tắc Luyện Từ Vựng:</b><br>
+            1. Nhìn từ tiếng Việt mục tiêu ở trên banner đỉnh.<br>
+            2. Chạm màn hình lái chim lướt vào <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có chữ Hán đúng.<br>
+            3. Bay vào từ đúng để ghi điểm & nghe phát âm chuẩn Xiaoxiao!
+          `;
+        }
+      } else {
+        if (vocabBar) vocabBar.classList.add('hidden');
+        currentCategory = 'dialogue';
+        activeVocabList = [...FACTORY_DIALOGUES];
+        if (howToText) {
+          howToText.innerHTML = `
+            🕹️ <b>Quy tắc Hội Thoại Xưởng:</b><br>
+            1. Đọc câu hỏi tình huống của Giám đốc hoặc QC trên thanh đỉnh.<br>
+            2. Chạm màn hình bay lướt vào giữa <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có <b>CÂU TRẢ LỜI LOGIC</b>.<br>
+            3. Bay vào câu trả lời vô lý là sai! Luyện phản xạ đối đáp công xưởng!
+          `;
+        }
+      }
+    }
 
     function switchCategory(cat, btn) {
       currentCategory = cat;
       document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
-      if (cat === 'dialogue') {
+      if (currentPlayMode === 'dialogue') {
         activeVocabList = [...FACTORY_DIALOGUES];
       } else if (cat === 'all') { 
         activeVocabList = [...FULL_VOCAB_DATABASE];
       } else {
         activeVocabList = FULL_VOCAB_DATABASE.filter(v => v.cat === cat);
       }
-      if (activeVocabList.length === 0) activeVocabList = [...FACTORY_DIALOGUES];
+      if (activeVocabList.length === 0) activeVocabList = [...FULL_VOCAB_DATABASE];
     }
 
     // ==========================================
@@ -1298,16 +1435,16 @@
       questBanner.classList.add('pulse');
       setTimeout(() => questBanner.classList.remove('pulse'), 250);
 
-      if (currentCategory === 'dialogue') {
+      if (currentPlayMode === 'dialogue') {
         if (questSpeaker) questSpeaker.textContent = `${q.speaker}:`;
         questTarget.textContent = q.q_zh;
         if (questSub) questSub.textContent = `Nghĩa: ${q.q_vi}`;
         soundEngine.playRadioBeep();
-        setTimeout(() => playDialogueAudio(q.q_audio), 120);
+        setTimeout(() => playDialogueAudio(q.q_audio, q.q_zh), 120);
       } else {
         if (questSpeaker) questSpeaker.textContent = "🎯 BAY VÀO TỪ:";
         questTarget.textContent = q.vi;
-        if (questSub) questSub.textContent = `${q.zh} (${q.pinyin}) • ${q.en}`;
+        if (questSub) questSub.textContent = `Tìm: ${q.zh} (${q.pinyin}) • ${q.en}`;
         playWordAudio(q);
       }
       return q;
@@ -1316,10 +1453,10 @@
     // Bird & Physics (Tuned for Relaxed Learning & Cyber Glide)
     let bird = { x: 75, y: 360, vy: 0, r: 18, angle: 0 };
     let pipes = [];
-    const gravity = 0.38;   // Rơi êm ái hơn 15% để kịp đọc chữ Hán
-    const jump = -6.9;      // Cú đập cánh mềm, kiểm soát độ cao cực dễ
-    const gateGap = 240;    // Cổng mở rộng 240px lượn cực thoáng
-    let pipeSpeed = 2.1;    // Tốc độ lướt vừa tầm mắt
+    let gravity = 0.38;   // Rơi êm ái hơn 15% để kịp đọc chữ Hán
+    let jump = -6.9;      // Cú đập cánh mềm, kiểm soát độ cao cực dễ
+    let gateGap = 240;    // Cổng mở rộng 240px lượn cực thoáng
+    let pipeSpeed = 2.1;  // Tốc độ lướt vừa tầm mắt
 
     function flap() {
       if (gameState === 'playing') {
@@ -1377,6 +1514,7 @@
       isOverdrive = false;
       questBanner.classList.remove('overdrive');
       streakBadge.classList.remove('fever');
+      applyDifficultySettings();
       updateScoreHUD();
       pickNewQuestion();
       gameState = 'playing';
@@ -1405,7 +1543,7 @@
       const correctAtTop = Math.random() > 0.5;
 
       let topLabel = "", botLabel = "";
-      if (currentCategory === 'dialogue') {
+      if (currentPlayMode === 'dialogue') {
         topLabel = correctAtTop ? q.correct_zh : q.wrong_zh;
         botLabel = correctAtTop ? q.wrong_zh : q.correct_zh;
       } else if (currentMode === 'zh') {
@@ -1446,10 +1584,10 @@
           vibrate([60, 40, 80]);
         } else {
           soundEngine.playCorrect(streak);
-          if (currentCategory === 'dialogue') {
+          if (currentPlayMode === 'dialogue') {
             addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} ĐÁP LOGIC! x2 👏` : `+${pts} ĐÁP LOGIC! 👏`, isOverdrive ? "#ec4899" : "#10b981", 16);
           } else {
-            addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} (x2!)` : `+${pts}`, isOverdrive ? "#ec4899" : "#10b981", 17);
+            addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} CHÍNH XÁC! x2 🎯` : `+${pts} CHÍNH XÁC! 🎯`, isOverdrive ? "#ec4899" : "#10b981", 17);
           }
           triggerShake(4);
           vibrate([30, 40]);
@@ -1458,8 +1596,8 @@
         updateScoreHUD();
 
         // Native Pronunciation Aloud with Studio Quality + Praise
-        if (currentCategory === 'dialogue') {
-          playDialogueAudio(pipe.question.a_audio);
+        if (currentPlayMode === 'dialogue') {
+          playDialogueAudio(pipe.question.a_audio, pipe.question.correct_zh);
         } else {
           playWordAudio(pipe.question, () => {
             if (currentMode === 'en' || currentMode === 'duo') {
@@ -1520,15 +1658,15 @@
       // Populate Flashcard
       if (q) {
         const fcTitle = document.querySelector('.fc-title');
-        if (currentCategory === 'dialogue') {
+        if (currentPlayMode === 'dialogue') {
           if (fcTitle) fcTitle.textContent = "HỘI THOẠI XƯỞNG THỰC CHIẾN:";
           fcTargetWord.innerHTML = `<span style="font-size:14px; color:#fde68a;">${q.speaker}:</span><br>"${q.q_zh}"`;
           fcPinyin.textContent = `Nghĩa: ${q.q_vi}`;
           fcMeaning.innerHTML = `<span style="color:#10b981; font-weight:800;">✅ ĐÁP LOGIC:</span> "${q.correct_zh}"<br><span style="color:#94a3b8; font-size:11.5px;">(${q.correct_vi})</span><br><span style="color:#ef4444; font-size:11.5px;">❌ VÔ LÝ: "${q.wrong_zh}"</span>`;
         } else {
           if (fcTitle) fcTitle.textContent = "GHI NHỚ TỪ VỪNG:";
-          fcTargetWord.textContent = `${q.zh} / ${q.en}`;
-          fcPinyin.textContent = `${q.pinyin}`;
+          fcTargetWord.textContent = `${q.zh} (${q.pinyin})`;
+          fcPinyin.textContent = `${q.en || ''}`;
           fcMeaning.textContent = `Nghĩa: ${q.vi}`;
         }
       }
@@ -1537,8 +1675,8 @@
 
     function replayPronunciation() {
       if (!lastWrongQuestion) return;
-      if (currentCategory === 'dialogue') {
-        playDialogueAudio(lastWrongQuestion.a_audio);
+      if (currentPlayMode === 'dialogue') {
+        playDialogueAudio(lastWrongQuestion.a_audio, lastWrongQuestion.correct_zh);
       } else {
         playWordAudio(lastWrongQuestion, () => {
           speakText(lastWrongQuestion.en, 'en-US');
@@ -1668,7 +1806,7 @@
           const midY = p.top + gateGap / 2;
           const upperCenterY = p.top + (gateGap / 4);
           const lowerCenterY = midY + (gateGap / 4);
-          const isDlg = (currentCategory === 'dialogue');
+          const isDlg = (currentPlayMode === 'dialogue');
           const tunnelW = isDlg ? 210 : 165;
           const tunnelH = (gateGap / 2) - 18;
           const tunnelX = p.x - (isDlg ? 80 : 55);

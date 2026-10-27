@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cyberbird-lingo-v3-dialogue';
+const CACHE_NAME = 'cyberbird-lingo-v3-dualmodes';
 const ASSETS = [
   './',
   './index.html',
