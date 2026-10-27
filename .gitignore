@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary rendering directories
+temp_*/
+.telegravity_uploads/
+*.log
+
+# Media binaries (avoid git bloat)
+storage/*.mp4
+storage/*.avi
+realistic_assets/*.mp4
+*.mp4
+
+# Python virtual envs
+venv/
+.venv/
+env/
+
+# Nested git repositories / submodules
+MoneyPrinterTurbo/
+VibeToApk/demo2apk_repo/
+
+# OS artifacts
+Thumbs.db
+Desktop.ini
+.DS_Store

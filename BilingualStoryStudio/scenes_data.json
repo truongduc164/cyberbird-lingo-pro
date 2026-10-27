@@ -1,0 +1,65 @@
+{
+  "total_duration": 28.73,
+  "scenes": [
+    {
+      "id": 1,
+      "hanzi_ruby": "<ruby>有<rt>yǒu</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>天<rt>tiān</rt></ruby>，<ruby>森<rt>sēn</rt></ruby><ruby>林<rt>lín</rt></ruby><ruby>里<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>兔<rt>tù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>嘲<rt>cháo</rt></ruby><ruby>笑<rt>xiào</rt></ruby><ruby>乌<rt>wū</rt></ruby><ruby>龟<rt>guī</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>慢<rt>màn</rt></ruby>。",
+      "hanzi_plain": "有一天，森林里的兔子嘲笑乌龟走得慢。",
+      "pinyin_plain": "Yǒu yì tiān, sēnlín lǐ de tùzi cháoxiào wūguī zǒu de màn.",
+      "vi": "Một ngày nọ, thỏ trong rừng cười nhạo rùa vì đi chậm.",
+      "vocab_word": "乌龟 (wūguī)",
+      "vocab_meaning": "Con Rùa",
+      "vocab_word2": "兔子 (tùzi)",
+      "vocab_meaning2": "Con Thỏ",
+      "audio_file": "audio/voice_1.mp3",
+      "audio_duration": 5.66,
+      "scene_start": 0.0,
+      "scene_duration": 6.46
+    },
+    {
+      "id": 2,
+      "hanzi_ruby": "<ruby>乌<rt>wū</rt></ruby><ruby>龟<rt>guī</rt></ruby><ruby>说<rt>shuō</rt></ruby>：“<ruby>我<rt>wǒ</rt></ruby><ruby>们<rt>men</rt></ruby><ruby>来<rt>lái</rt></ruby><ruby>比<rt>bǐ</rt></ruby><ruby>赛<rt>sài</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>吧<rt>ba</rt></ruby>，<ruby>看<rt>kàn</rt></ruby><ruby>谁<rt>shéi</rt></ruby><ruby>先<rt>xiān</rt></ruby><ruby>到<rt>dào</rt></ruby><ruby>山<rt>shān</rt></ruby><ruby>顶<rt>dǐng</rt></ruby>。”",
+      "hanzi_plain": "乌龟说：我们来比赛跑吧，看谁先到山顶。",
+      "pinyin_plain": "Wūguī shuō: Wǒmen lái bǐ sàipǎo ba, kàn shéi xiān dào shāndǐng.",
+      "vi": "Rùa nói: Chúng ta thi chạy xem ai đến đỉnh núi trước.",
+      "vocab_word": "比赛 (bǐsài)",
+      "vocab_meaning": "Thi Đấu",
+      "vocab_word2": "山顶 (shāndǐng)",
+      "vocab_meaning2": "Đỉnh Núi",
+      "audio_file": "audio/voice_2.mp3",
+      "audio_duration": 6.38,
+      "scene_start": 6.46,
+      "scene_duration": 7.18
+    },
+    {
+      "id": 3,
+      "hanzi_ruby": "<ruby>兔<rt>tù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>飞<rt>fēi</rt></ruby><ruby>快<rt>kuài</rt></ruby><ruby>地<rt>de</rt></ruby><ruby>跑<rt>pǎo</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>面<rt>mian</rt></ruby>，<ruby>跑<rt>pǎo</rt></ruby><ruby>了<rt>le</rt></ruby><ruby>一<rt>yí</rt></ruby><ruby>半<rt>bàn</rt></ruby><ruby>便<rt>biàn</rt></ruby><ruby>在<rt>zài</rt></ruby><ruby>树<rt>shù</rt></ruby><ruby>下<rt>xià</rt></ruby><ruby>睡<rt>shuì</rt></ruby><ruby>午<rt>wǔ</rt></ruby><ruby>觉<rt>jiào</rt></ruby>。",
+      "hanzi_plain": "兔子飞快地跑在前面，跑了一半便在树下睡午觉。",
+      "pinyin_plain": "Tùzi fēikuài de pǎo zài qiánmian, pǎo le yíbàn biàn zài shù xià shuì wǔjiào.",
+      "vi": "Thỏ chạy nhanh dẫn trước, được một nửa đường liền ngủ trưa dưới gốc cây.",
+      "vocab_word": "飞快 (fēikuài)",
+      "vocab_meaning": "Nhanh Như Bay",
+      "vocab_word2": "睡午觉 (shuì wǔjiào)",
+      "vocab_meaning2": "Ngủ Trưa",
+      "audio_file": "audio/voice_3.mp3",
+      "audio_duration": 6.72,
+      "scene_start": 13.64,
+      "scene_duration": 7.52
+    },
+    {
+      "id": 4,
+      "hanzi_ruby": "<ruby>乌<rt>wū</rt></ruby><ruby>龟<rt>guī</rt></ruby><ruby>坚<rt>jiān</rt></ruby><ruby>持<rt>chí</rt></ruby><ruby>往<rt>wǎng</rt></ruby><ruby>前<rt>qián</rt></ruby><ruby>爬<rt>pá</rt></ruby>，<ruby>终<rt>zhōng</rt></ruby><ruby>于<rt>yú</rt></ruby><ruby>赢<rt>yíng</rt></ruby><ruby>得<rt>dé</rt></ruby><ruby>胜<rt>shèng</rt></ruby><ruby>利<rt>lì</rt></ruby>。<ruby>坚<rt>jiān</rt></ruby><ruby>持<rt>chí</rt></ruby><ruby>就<rt>jiù</rt></ruby><ruby>能<rt>néng</rt></ruby><ruby>成<rt>chéng</rt></ruby><ruby>功<rt>gōng</rt></ruby>！",
+      "hanzi_plain": "乌龟坚持往前爬，终于赢得胜利。坚持就能成功！",
+      "pinyin_plain": "Wūguī jiānchí wǎng qián pá, zhōngyú yíngdé shènglì. Jiānchí jiù néng chénggōng!",
+      "vi": "Rùa kiên trì bò về phía trước, cuối cùng giành chiến thắng. Kiên trì ắt thành công!",
+      "vocab_word": "坚持 (jiānchí)",
+      "vocab_meaning": "Kiên Trì",
+      "vocab_word2": "成功 (chénggōng)",
+      "vocab_meaning2": "Thành Công",
+      "audio_file": "audio/voice_4.mp3",
+      "audio_duration": 6.77,
+      "scene_start": 21.16,
+      "scene_duration": 7.57
+    }
+  ]
+}

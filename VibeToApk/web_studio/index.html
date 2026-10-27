@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeToApk Studio • Trình đóng gói & Giả lập Mobile App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .code-font { font-family: 'JetBrains Mono', monospace; }
+    /* Phone frame chassis styling */
+    .phone-mockup {
+      width: 380px;
+      height: 780px;
+      background: #000;
+      border-radius: 54px;
+      padding: 12px;
+      box-shadow: 0 0 0 4px #262626, 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 42px;
+      overflow: hidden;
+      background: #090d16;
+      position: relative;
+    }
+    /* Dynamic Island Notch */
+    .notch {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 28px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between">
+  <!-- Top Navigation Bar -->
+  <header class="border-b border-slate-800/80 bg-slate-900/50 backdrop-blur-xl px-8 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+        <span class="text-xl">📱</span>
+      </div>
+      <div>
+        <h1 class="text-lg font-extrabold tracking-tight flex items-center gap-2">
+          VibeToApk Studio
+          <span class="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">v1.0 Pro</span>
+        </h1>
+        <p class="text-xs text-slate-400">Biến ý tưởng Vibe Coding thành ứng dụng Android APK hoàn chỉnh</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-xs text-slate-400 flex items-center gap-1.5 bg-slate-800/60 px-3 py-1.5 rounded-xl border border-slate-700/60">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        Giả lập thiết bị: Pixel 8 / iPhone 16
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="max-w-7xl mx-auto w-full px-6 py-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+    
+    <!-- Left Column: Controls & Configuration -->
+    <div class="flex-1 w-full max-w-xl space-y-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-bold mb-3">
+          🔥 TREND HOT NHẤT CỦA DÂN VIBE CODING
+        </div>
+        <h2 class="text-3xl font-extrabold tracking-tight leading-tight">
+          Đóng gói mã Web thành file APK <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">cài trực tiếp lên điện thoại</span>
+        </h2>
+        <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+          Không cần cài 15GB Android Studio hay thiết lập Gradle phức tạp. Bạn chỉ cần viết code web (HTML/JS/React), VibeToApk sẽ tự động cấu hình WebView, quyền Android, và tạo sẵn quy trình build APK trên Cloud.
+        </p>
+      </div>
+
+      <!-- App Configuration Form -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 space-y-4 backdrop-blur-md">
+        <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+          ⚙️ Cấu hình Ứng dụng Android
+        </h3>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-semibold text-slate-400 block mb-1">Tên ứng dụng (App Name)</label>
+            <input type="text" id="appName" value="VibeFocus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:border-emerald-500 transition-colors">
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-slate-400 block mb-1">Mã định danh (Package ID)</label>
+            <input type="text" id="pkgName" value="com.vibecoding.vibefocus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm font-medium code-font focus:outline-none focus:border-emerald-500 transition-colors">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+          <div class="flex items-center gap-2 text-xs text-slate-400">
+            <span>🛡️ Quyền bật sẵn:</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">INTERNET</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">VIBRATE</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pt-2 flex flex-col gap-3">
+          <button onclick="runPackager()" id="btn-pack" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/25 active:scale-98 transition-all">
+            ⚡ 1-Click Đóng Gói Android Project & Build Cloud APK
+          </button>
+          
+          <div id="status-box" class="hidden p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium space-y-1">
+            <div class="flex items-center gap-2 font-bold">
+              <span>✓</span> Đã đóng gói thành công: <span class="code-font text-white">VibeFocus_Android_Project.zip</span>
+            </div>
+            <p class="text-slate-400 text-[11px]">Đã sẵn sàng tải lên GitHub để kích hoạt GitHub Actions build ra file .apk trong 2 phút!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Platform Breakdown: Android vs iPhone -->
+      <div class="grid grid-cols-2 gap-3 text-xs">
+        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-emerald-500/30">
+          <div class="flex items-center gap-1.5 font-bold text-emerald-400 mb-1">
+            <span class="text-sm">🤖</span> Android (Dễ dàng nhất)
+          </div>
+          <p class="text-slate-300 text-[11px] leading-relaxed">
+            Hệ điều hành mở: Chỉ cần xuất ra file <span class="font-mono text-emerald-300">.apk</span>, gửi qua Zalo/Telegram là bất kỳ ai cũng bấm cài được ngay lập tức.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-slate-900/60 border border-indigo-500/30">
+          <div class="flex items-center gap-1.5 font-bold text-indigo-400 mb-1">
+            <span class="text-sm">🍏</span> iPhone / iOS (Bảo mật cao)
+          </div>
+          <p class="text-slate-300 text-[11px] leading-relaxed">
+            Apple không cho cài tự do file <span class="font-mono text-indigo-300">.ipa</span>. Dân Vibe Coding dùng giải pháp <span class="text-amber-300 font-semibold">PWA (Thêm vào Màn hình chính)</span>: Mở Safari bấm Share ➔ Add to Home Screen là thành App full-screen 100%!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Mobile Mockup Simulator -->
+    <div class="flex flex-col items-center">
+      <div class="phone-mockup">
+        <!-- Dynamic Island -->
+        <div class="notch">
+          <div class="w-3 h-3 rounded-full bg-slate-900/80"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-indigo-500/60"></div>
+        </div>
+
+        <!-- Phone Screen Frame -->
+        <div class="phone-screen pt-7">
+          <!-- Live App Iframe -->
+          <iframe id="app-frame" src="../sample_vibe_app/index.html" class="w-full h-full border-none"></iframe>
+        </div>
+      </div>
+      <p class="text-xs text-slate-500 mt-3 flex items-center gap-1.5">
+        <span>👆</span> Bạn có thể bấm thử trực tiếp giao diện ứng dụng bên trong màn hình điện thoại
+      </p>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-900 px-8 py-4 text-center text-xs text-slate-500">
+    VibeToApk • Hỗ trợ cộng đồng Vibe Coding biến ý tưởng thành ứng dụng di động thực tế.
+  </footer>
+
+  <script>
+    function runPackager() {
+      const btn = document.getElementById('btn-pack');
+      const box = document.getElementById('status-box');
+      btn.innerHTML = '⏳ Đang đóng gói project...';
+      btn.classList.add('opacity-75');
+      
+      setTimeout(() => {
+        btn.innerHTML = '✓ Đã đóng gói xong! Bấm để tải lại';
+        btn.classList.remove('opacity-75');
+        box.classList.remove('hidden');
+      }, 800);
+    }
+  </script>
+</body>
+</html>

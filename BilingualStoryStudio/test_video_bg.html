@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh" data-resolution="portrait">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@600;700;900&family=Plus+Jakarta+Sans:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1080px; height: 1920px; overflow: hidden; background: #000;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+    #root {
+      width: 100%; height: 100%; position: relative; color: #fff;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 80px 60px 70px 60px; overflow: hidden;
+    }
+    .video-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0; opacity: 0.5;
+    }
+    .bg-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(circle at 50% 50%, rgba(10, 15, 25, 0.4) 0%, rgba(5, 8, 15, 0.85) 100%);
+    }
+    .header-bar {
+      display: flex; justify-content: space-between; align-items: center; z-index: 10;
+    }
+    .series-tag {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(15px);
+      border: 1px solid rgba(246, 211, 101, 0.5);
+      padding: 14px 30px; border-radius: 40px; font-size: 26px; font-weight: 700; color: #f6d365;
+    }
+    .level-badge {
+      background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 10px 24px; border-radius: 20px; font-size: 22px; color: #cbd5e1; font-weight: 600;
+    }
+    .story-stage {
+      position: relative; width: 100%; height: 1280px;
+      display: flex; align-items: center; justify-content: center; z-index: 10;
+    }
+    .scene-wrap { position: absolute; width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .content-card {
+      width: 100%; background: rgba(10, 15, 28, 0.78); backdrop-filter: blur(25px);
+      border: 2px solid rgba(246, 211, 101, 0.4);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), inset 0 0 35px rgba(246, 211, 101, 0.08);
+      border-radius: 36px; padding: 60px 48px; text-align: center;
+    }
+    .hanzi-box {
+      font-family: 'Noto Serif SC', 'Ma Shan Zheng', serif;
+      line-height: 2.1; text-align: center; margin-bottom: 28px;
+    }
+    ruby {
+      font-size: 58px; font-weight: 700; color: #ffffff; ruby-position: over; margin: 0 4px;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
+    }
+    rt {
+      font-size: 26px; font-weight: 600; color: #f6d365;
+      font-family: 'Plus Jakarta Sans', sans-serif; letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    }
+    .vi-box {
+      background: rgba(255, 255, 255, 0.08); border-left: 4px solid #f6d365;
+      padding: 24px 32px; border-radius: 16px; width: 100%; text-align: left;
+    }
+    .vi-text { font-size: 34px; line-height: 1.5; color: #f1f5f9; font-style: italic; font-weight: 500; }
+    .footer-bar { display: flex; flex-direction: column; gap: 16px; z-index: 10; }
+    .progress-track { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; overflow: hidden; }
+    .progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #f6d365, #fda085); border-radius: 4px; }
+    .cta-text { text-align: center; font-size: 20px; color: #94a3b8; letter-spacing: 2px; }
+  </style>
+</head>
+<body>
+  <div id="root" data-composition-id="main" data-start="0" data-duration="6.0" data-width="1080" data-height="1920">
+    <!-- Moving Video Background (Footage B-roll) -->
+    <video class="video-bg clip" src="video_bg/bg_mountain.mp4" data-start="0" data-duration="6.0" muted autoplay loop></video>
+    <div class="bg-overlay"></div>
+
+    <audio id="voice" src="audio/voice_1.mp3" data-start="0.0" data-duration="6.0"></audio>
+
+    <div class="header-bar clip" data-start="0" data-duration="6.0" data-track-index="0">
+      <div class="series-tag"><span>🏮</span> 龟兔赛跑 • CINEMATIC EDITION</div>
+      <div class="level-badge">HSK 2-3 STORY</div>
+    </div>
+
+    <div class="story-stage">
+      <div id="scene-1" class="scene-wrap clip" data-start="0" data-duration="6.0" data-track-index="1">
+        <div class="content-card">
+          <div class="hanzi-box">
+            <ruby>有<rt>yǒu</rt></ruby><ruby>一<rt>yì</rt></ruby><ruby>天<rt>tiān</rt></ruby>，<ruby>森<rt>sēn</rt></ruby><ruby>林<rt>lín</rt></ruby><ruby>里<rt>lǐ</rt></ruby><ruby>的<rt>de</rt></ruby><ruby>兔<rt>tù</rt></ruby><ruby>子<rt>zi</rt></ruby><ruby>嘲<rt>cháo</rt></ruby><ruby>笑<rt>xiào</rt></ruby><ruby>乌<rt>wū</rt></ruby><ruby>龟<rt>guī</rt></ruby><ruby>走<rt>zǒu</rt></ruby><ruby>得<rt>de</rt></ruby><ruby>慢<rt>màn</rt></ruby>。
+          </div>
+          <div class="vi-box">
+            <div class="vi-text">“Một ngày nọ, thỏ trong rừng cười nhạo rùa vì đi chậm.”</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bar clip" data-start="0" data-duration="6.0" data-track-index="2">
+      <div class="progress-track"><div id="prog-bar" class="progress-fill"></div></div>
+      <div class="cta-text">CHIA SẺ ĐỂ CÙNG NHAU HỌC TIẾNG TRUNG MỖI NGÀY</div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#scene-1", { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }, 0.2);
+    tl.fromTo("#prog-bar", { width: "0%" }, { width: "100%", duration: 6.0, ease: "none" }, 0);
+    window.__timelines = window.__timelines || {};
+    window.__timelines["main"] = tl;
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeRadar — Radar Xu Hướng & Bắt Trọn Ý Tưởng Bất Chợt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navigation Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">⚡</div>
+                <div class="brand-text">
+                    <h1>VibeRadar <span class="badge-vibe">v1.0</span></h1>
+                    <p class="subtitle">Bắt trọn xu hướng công nghệ & tia sáng ý tưởng nảy ra</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="status-indicator">
+                    <span class="pulse-dot"></span>
+                    <span id="lastUpdated">Đang tải dữ liệu...</span>
+                </div>
+                <button id="btnDice" class="btn btn-secondary" title="Sinh lại bộ ý tưởng mới">
+                    <span>🎲</span> Nảy Ý Tưởng Mới
+                </button>
+                <button id="btnScan" class="btn btn-primary" title="Quét toàn bộ nguồn">
+                    <span class="btn-icon">⚡</span> Quét Lại Ngay
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Overview Banner -->
+        <section class="stats-grid">
+            <div class="stat-card" data-tab="sparks">
+                <div class="stat-icon sparks-icon">💡</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="statSparks">0</span>
+                    <span class="stat-label">Ý Tưởng Nảy Ra</span>
+                </div>
+            </div>
+            <div class="stat-card" data-tab="github">
+                <div class="stat-icon gh-icon">🐱</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="statGitHub">0</span>
+                    <span class="stat-label">GitHub Trending</span>
+                </div>
+            </div>
+            <div class="stat-card" data-tab="hn">
+                <div class="stat-icon hn-icon">📰</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="statHN">0</span>
+                    <span class="stat-label">Hacker News & Show HN</span>
+                </div>
+            </div>
+            <div class="stat-card" data-tab="hf">
+                <div class="stat-icon hf-icon">🤗</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="statHF">0</span>
+                    <span class="stat-label">Hugging Face AI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hot Keywords Pill Bar -->
+        <div class="keywords-bar">
+            <span class="kw-title">🔥 Xu Hướng Nóng:</span>
+            <div id="keywordsList" class="kw-tags">
+                <span class="kw-tag">#AI</span>
+                <span class="kw-tag">#Agent</span>
+                <span class="kw-tag">#Automation</span>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="sparks">
+                <span>⚡</span> Tia Sáng Ý Tưởng (Vibe Sparks)
+            </button>
+            <button class="tab-btn" data-tab="video">
+                <span>🎬</span> Video Studio (Lõi REA)
+            </button>
+            <button class="tab-btn" data-tab="vault">
+                <span>📝</span> Két Ý Tưởng Của Bạn (<span id="userIdeaCount">0</span>)
+            </button>
+            <button class="tab-btn" data-tab="github">
+                <span>🐱</span> GitHub Trending
+            </button>
+            <button class="tab-btn" data-tab="hn">
+                <span>📰</span> Hacker News
+            </button>
+            <button class="tab-btn" data-tab="hf">
+                <span>🤗</span> Hugging Face
+            </button>
+            <button class="tab-btn" data-tab="report">
+                <span>📄</span> Báo Cáo Markdown
+            </button>
+        </nav>
+
+        <!-- Tab Contents -->
+        <main class="content-area">
+            <!-- Tab 1: Vibe Sparks -->
+            <section id="tab-sparks" class="tab-content active">
+                <div class="tab-header">
+                    <h2>💡 Ý Tưởng Dự Án Nảy Ra Từ Các Trend Nóng</h2>
+                    <p class="section-desc">Hệ thống phân tích xu hướng hôm nay và đề xuất các dự án nhỏ có thể build trong 1 buổi tối hoặc 1 cuối tuần.</p>
+                </div>
+                <div id="sparksGrid" class="cards-grid">
+                    <!-- Dynamic Spark Cards injected here -->
+                </div>
+            </section>
+
+            <!-- Tab: Video Automation Studio (REA Core) -->
+            <section id="tab-video" class="tab-content">
+                <div class="tab-header flex-between">
+                    <div>
+                        <h2>🎬 Antigravity Video Automation Studio (Lõi REA)</h2>
+                        <p class="section-desc">Biến ý tưởng hoặc truyện ngắn thành video ngắn (Shorts / TikTok) với giọng đọc AI, hiệu ứng Ken Burns và typography tự động.</p>
+                    </div>
+                </div>
+
+                <div class="video-creator-box">
+                    <div class="input-group">
+                        <label class="form-label">💡 Chủ đề hoặc nội dung câu chuyện:</label>
+                        <textarea id="videoInputContent" rows="4" placeholder="Nhập chủ đề (vd: 3 Bí Mật Về Trí Tuệ Nhân Tạo) hoặc dán toàn bộ văn bản truyện/bài viết của bạn vào đây..."></textarea>
+                    </div>
+                    <div class="video-controls-row">
+                        <div class="control-item">
+                            <label class="form-label">Loại nội dung:</label>
+                            <select id="videoContentType" class="form-select">
+                                <option value="topic">Chủ đề (Tự sinh 4 phân cảnh)</option>
+                                <option value="text">Văn bản thô / Truyện ngắn</option>
+                            </select>
+                        </div>
+                        <div class="control-item">
+                            <label class="form-label">Ngôn ngữ đọc:</label>
+                            <select id="videoLang" class="form-select">
+                                <option value="vi">Tiếng Việt (vi)</option>
+                                <option value="en">Tiếng Anh (en)</option>
+                                <option value="zh-CN">Tiếng Trung (zh-CN)</option>
+                            </select>
+                        </div>
+                        <div class="control-item">
+                            <label class="form-label">Khung hình:</label>
+                            <select id="videoRatio" class="form-select">
+                                <option value="9:16">Dọc 9:16 (TikTok, Shorts, Reels)</option>
+                                <option value="16:9">Ngang 16:9 (YouTube)</option>
+                            </select>
+                        </div>
+                        <button id="btnGenerateVideo" class="btn btn-primary btn-render">
+                            <span>🚀</span> Bắt Đầu Tạo Video
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Video Preview Box -->
+                <div id="videoResultSection" class="video-result-container" style="display: none;">
+                    <h3>🎉 Video Của Bạn Đã Sẵn Sàng!</h3>
+                    <div class="video-player-wrapper">
+                        <video id="videoPlayer" controls autoplay></video>
+                        <div class="video-meta-box" id="videoMetaBox"></div>
+                    </div>
+                </div>
+
+                <!-- Gallery of Rendered Videos -->
+                <div class="past-videos-section">
+                    <h3 style="margin-bottom: 14px; font-size: 17px;">📁 Video Đã Xuất Bản Trong Kho</h3>
+                    <div id="pastVideosGrid" class="cards-grid">
+                        <!-- Past videos loaded dynamically -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 2: User Idea Vault -->
+            <section id="tab-vault" class="tab-content">
+                <div class="tab-header flex-between">
+                    <div>
+                        <h2>📝 Két Lưu Trữ Ý Tưởng Bất Chợt</h2>
+                        <p class="section-desc">Khi có bất kỳ ý tưởng "vibe" nào nảy ra trong đầu, hãy ghi ngay vào đây trước khi quên!</p>
+                    </div>
+                </div>
+
+                <!-- Idea Quick Input Box -->
+                <div class="idea-input-box">
+                    <input type="text" id="inputIdeaTitle" placeholder="✨ Ý tưởng bất chợt của bạn là gì? (Ví dụ: Tool tóm tắt file PDF bằng giọng nói...)">
+                    <textarea id="inputIdeaDesc" rows="2" placeholder="Ghi chú thêm chi tiết, tính năng cốt lõi hoặc stack dự định dùng (tùy chọn)..."></textarea>
+                    <div class="input-actions">
+                        <input type="text" id="inputIdeaTags" placeholder="Tags (cách nhau bởi dấu phẩy, vd: AI, Automation, CLI)">
+                        <button id="btnAddIdea" class="btn btn-primary">
+                            <span>➕</span> Lưu Ý Tưởng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User Ideas List -->
+                <div id="userIdeasList" class="user-ideas-grid">
+                    <!-- User cards injected here -->
+                </div>
+            </section>
+
+            <!-- Tab 3: GitHub Trending -->
+            <section id="tab-github" class="tab-content">
+                <div class="tab-header">
+                    <h2>🐱 GitHub Trending & Rising Repositories</h2>
+                    <p class="section-desc">Các kho mã nguồn mở có lượng tương tác và số sao tăng vọt hôm nay.</p>
+                </div>
+                <div id="githubGrid" class="cards-grid">
+                    <!-- GitHub cards injected here -->
+                </div>
+            </section>
+
+            <!-- Tab 4: Hacker News -->
+            <section id="tab-hn" class="tab-content">
+                <div class="tab-header">
+                    <h2>📰 Hacker News & Show HN</h2>
+                    <p class="section-desc">Các sản phẩm do cộng đồng lập trình viên thế giới tự tay xây dựng và các chủ đề công nghệ được bàn luận nhiều nhất.</p>
+                </div>
+                <div id="hnGrid" class="cards-grid">
+                    <!-- HN cards injected here -->
+                </div>
+            </section>
+
+            <!-- Tab 5: Hugging Face -->
+            <section id="tab-hf" class="tab-content">
+                <div class="tab-header">
+                    <h2>🤗 Hugging Face AI Trending</h2>
+                    <p class="section-desc">Các Model AI và Interactive Spaces đang nhận được nhiều lượt likes & tải nhất.</p>
+                </div>
+                <div id="hfGrid" class="cards-grid">
+                    <!-- HF cards injected here -->
+                </div>
+            </section>
+
+            <!-- Tab 6: Markdown Report -->
+            <section id="tab-report" class="tab-content">
+                <div class="tab-header flex-between">
+                    <div>
+                        <h2>📄 Báo Cáo Xu Hướng Markdown</h2>
+                        <p class="section-desc">Bản tổng hợp chi tiết dạng Markdown, có thể copy lưu vào Obsidian, Notion hoặc chia sẻ.</p>
+                    </div>
+                    <button id="btnCopyReport" class="btn btn-secondary">
+                        📋 Sao chép Markdown
+                    </button>
+                </div>
+                <pre id="reportViewer" class="code-viewer">Đang tải báo cáo...</pre>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

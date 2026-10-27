@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CyberBird Lingo • Game Học Tiếng Anh & Trung Offline</title>
+  <!-- PWA & iOS Standalone Support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CyberLingo">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    body {
+      background: #030712;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #fff;
+    }
+    #game-container {
+      position: relative;
+      width: 100vw;
+      max-width: 440px;
+      height: 100vh;
+      max-height: 840px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.85);
+      overflow: hidden;
+      background: #050814;
+      border-radius: 14px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    /* Top Bar: Mode Selector & Audio Toggles */
+    .top-bar {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 12px;
+      z-index: 20;
+    }
+    .mode-pills {
+      display: flex;
+      gap: 4px;
+      background: rgba(15, 23, 42, 0.85);
+      padding: 3px 5px;
+      border-radius: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    .mode-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 8px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-btn.active {
+      background: #0284c7;
+      color: #fff;
+      box-shadow: 0 0 12px rgba(2, 132, 199, 0.8);
+    }
+    .audio-group {
+      display: flex;
+      gap: 5px;
+    }
+    .sound-toggle {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #38bdf8;
+      padding: 5px 9px;
+      border-radius: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+    .sound-toggle.muted {
+      color: #64748b;
+      border-color: rgba(100, 116, 139, 0.3);
+    }
+
+    /* Vocabulary Quest Banner */
+    .quest-banner {
+      position: absolute;
+      top: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 92%;
+      max-width: 400px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.98));
+      border: 2px solid #38bdf8;
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 9px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 15;
+      backdrop-filter: blur(12px);
+      transition: transform 0.2s;
+    }
+    .quest-banner.pulse {
+      transform: translateX(-50%) scale(1.05);
+      border-color: #f59e0b;
+      box-shadow: 0 8px 35px rgba(245, 158, 11, 0.4);
+    }
+    .quest-banner.overdrive {
+      border-color: #ec4899;
+      box-shadow: 0 0 35px rgba(236, 72, 153, 0.6);
+      animation: rainbowGlow 2s infinite linear;
+    }
+    @keyframes rainbowGlow {
+      0% { border-color: #ec4899; }
+      33% { border-color: #eab308; }
+      66% { border-color: #06b6d4; }
+      100% { border-color: #ec4899; }
+    }
+    .quest-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .quest-label {
+      font-size: 10px;
+      color: #38bdf8;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .quest-target {
+      font-size: 20px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    }
+    .quest-streak {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .streak-badge {
+      font-size: 12px;
+      font-weight: 800;
+      color: #f59e0b;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 3px 8px;
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .streak-badge.fever {
+      color: #ec4899;
+      background: rgba(236, 72, 153, 0.2);
+      border-color: #ec4899;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+    }
+    .score-txt {
+      font-size: 18px;
+      font-weight: 900;
+      color: #10b981;
+      margin-top: 1px;
+    }
+
+    /* Start & Game Over Screen Overlay */
+    .overlay-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 8, 20, 0.92);
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+      z-index: 30;
+      transition: opacity 0.3s;
+    }
+    .overlay-screen.hidden {
+      display: none;
+    }
+    .game-logo {
+      font-size: 34px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+    }
+    .game-subtitle {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 18px;
+      max-width: 300px;
+      line-height: 1.4;
+    }
+    .play-btn {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #fff;
+      border: none;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 13px 40px;
+      border-radius: 28px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.6);
+      transition: transform 0.1s, box-shadow 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .play-btn:active {
+      transform: scale(0.96);
+    }
+    .category-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 20px;
+      max-width: 340px;
+    }
+    .cat-pill {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cat-pill.active {
+      background: #0ea5e9;
+      color: #fff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 12px rgba(14, 165, 233, 0.5);
+    }
+    .how-to-box {
+      margin-top: 18px;
+      background: rgba(30, 41, 59, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 11px 16px;
+      font-size: 11.5px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      text-align: left;
+      max-width: 320px;
+    }
+    .how-to-box b {
+      color: #38bdf8;
+    }
+    /* Vocabulary Flashcard upon Game Over */
+    .flashcard {
+      background: rgba(30, 41, 59, 0.95);
+      border: 2px solid #ef4444;
+      border-radius: 16px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      width: 100%;
+      max-width: 320px;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+    }
+    .fc-title {
+      font-size: 10px;
+      color: #ef4444;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .fc-word {
+      font-size: 24px;
+      font-weight: 900;
+      color: #fde047;
+      margin: 3px 0;
+    }
+    .fc-pinyin {
+      font-size: 14px;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+    .fc-meaning {
+      font-size: 14px;
+      color: #e2e8f0;
+      margin-top: 4px;
+    }
+    .replay-voice-btn {
+      margin-top: 10px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    /* Offline indicator */
+    .offline-tag {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 3px 10px;
+      border-radius: 14px;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 10;
+    }
+    .offline-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <!-- Top Bar: Mode Selector & Audio Toggles -->
+    <div class="top-bar">
+      <div class="mode-pills">
+        <button id="mode-zh" class="mode-btn active" onclick="switchMode('zh')">🇨🇳 Trung</button>
+        <button id="mode-en" class="mode-btn" onclick="switchMode('en')">🇬🇧 Anh</button>
+        <button id="mode-duo" class="mode-btn" onclick="switchMode('duo')">🌐 Song Ngữ</button>
+      </div>
+      <div class="audio-group">
+        <button id="btn-audio" class="sound-toggle" onclick="toggleAudio()">🔊 SFX</button>
+        <button id="btn-bgm" class="sound-toggle muted" onclick="toggleBGM()">🎵 BGM</button>
+      </div>
+    </div>
+
+    <!-- Active Vocabulary Target Quest -->
+    <div id="quest-banner" class="quest-banner">
+      <div class="quest-info">
+        <span class="quest-label">Bay vào cổng:</span>
+        <span id="quest-target" class="quest-target">Quả Táo</span>
+      </div>
+      <div class="quest-streak">
+        <span id="streak-badge" class="streak-badge">🔥 Chuỗi: 0</span>
+        <span id="score-val" class="score-txt">0 pts</span>
+      </div>
+    </div>
+
+    <!-- 100% Offline PWA Indicator -->
+    <div class="offline-tag">
+      <span class="offline-dot"></span> 100% Chơi Offline PWA (iPhone & Android)
+    </div>
+
+    <!-- Main Game Canvas -->
+    <canvas id="canvas"></canvas>
+
+    <!-- Start Screen Overlay -->
+    <div id="screen-start" class="overlay-screen">
+      <div class="game-logo">CYBERBIRD LINGO</div>
+      <div class="game-subtitle">Vừa chơi Flappy Bird vừa luyện phản xạ từ vựng Tiếng Anh & Tiếng Trung siêu cuốn!</div>
+      
+      <!-- Category Selector -->
+      <div class="category-bar">
+        <button class="cat-pill active" onclick="switchCategory('all', this)">🌟 Tất Cả (40)</button>
+        <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật</button>
+        <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực</button>
+        <button class="cat-pill" onclick="switchCategory('tech', this)">💻 Công Nghệ</button>
+        <button class="cat-pill" onclick="switchCategory('greet', this)">💬 Giao Tiếp</button>
+        <button class="cat-pill" onclick="switchCategory('nature', this)">☀️ Tự Nhiên</button>
+      </div>
+
+      <button class="play-btn" onclick="startGame()">BẮT ĐẦU BAY 🚀</button>
+      <div class="how-to-box">
+        🕹️ <b>Cách chơi đỉnh cao:</b><br>
+        1. Nhìn từ tiếng Việt mục tiêu ở trên banner.<br>
+        2. Chạm màn hình bay qua <b>cổng có từ dịch ĐÚNG</b>.<br>
+        3. <b>Chuỗi 5+</b> kích hoạt chế độ <b>⚡ CYBER OVERDRIVE (x2 điểm)</b>!<br>
+        4. Giọng đọc bản xứ tự động phát âm chuẩn xác khi bay qua.
+      </div>
+    </div>
+
+    <!-- Game Over Screen Overlay -->
+    <div id="screen-over" class="overlay-screen hidden">
+      <div style="font-size: 24px; font-weight: 900; color: #ef4444; margin-bottom: 2px;">CHƯA CHÍNH XÁC!</div>
+      <div id="over-score-txt" style="font-size: 13px; color: #94a3b8;">Điểm số: 0 | Kỷ lục: 0</div>
+      
+      <!-- Mistake Flashcard -->
+      <div id="flashcard-box" class="flashcard">
+        <div class="fc-title">GHI NHỚ TỪ VỪNG:</div>
+        <div id="fc-target-word" class="fc-word">苹果 / Apple</div>
+        <div id="fc-pinyin" class="fc-pinyin">píngguǒ</div>
+        <div id="fc-meaning" class="fc-meaning">Nghĩa: Quả táo</div>
+        <button class="replay-voice-btn" onclick="replayPronunciation()">
+          🔊 Nghe lại phát âm
+        </button>
+      </div>
+
+      <button class="play-btn" onclick="startGame()">CHƠI LẠI NGAY ⚡</button>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // RICH VOCABULARY DATABASE (BILINGUAL)
+    // ==========================================
+    const FULL_VOCAB_DATABASE = [
+      // 1. Animals
+      { cat: "animal", vi: "Con Mèo", en: "Cat", zh: "猫", pinyin: "māo", dist_en: "Dog", dist_zh: "狗", dist_pinyin: "gǒu" },
+      { cat: "animal", vi: "Con Chó", en: "Dog", zh: "狗", pinyin: "gǒu", dist_en: "Cat", dist_zh: "猫", dist_pinyin: "māo" },
+      { cat: "animal", vi: "Con Chim", en: "Bird", zh: "鸟", pinyin: "niǎo", dist_en: "Fish", dist_zh: "鱼", dist_pinyin: "yú" },
+      { cat: "animal", vi: "Con Cá", en: "Fish", zh: "鱼", pinyin: "yú", dist_en: "Rabbit", dist_zh: "兔子", dist_pinyin: "tùzi" },
+      { cat: "animal", vi: "Con Thỏ", en: "Rabbit", zh: "兔子", pinyin: "tùzi", dist_en: "Tiger", dist_zh: "老虎", dist_pinyin: "lǎohǔ" },
+      { cat: "animal", vi: "Con Hổ", en: "Tiger", zh: "老虎", pinyin: "lǎohǔ", dist_en: "Bear", dist_zh: "熊", dist_pinyin: "xióng" },
+
+      // 2. Food & Drinks
+      { cat: "food", vi: "Quả Táo", en: "Apple", zh: "苹果", pinyin: "píngguǒ", dist_en: "Banana", dist_zh: "香蕉", dist_pinyin: "xiāngjiāo" },
+      { cat: "food", vi: "Cà Phê", en: "Coffee", zh: "咖啡", pinyin: "kāfēi", dist_en: "Milk Tea", dist_zh: "奶茶", dist_pinyin: "nǎichá" },
+      { cat: "food", vi: "Trà Sữa", en: "Milk Tea", zh: "奶茶", pinyin: "nǎichá", dist_en: "Water", dist_zh: "水", dist_pinyin: "shuǐ" },
+      { cat: "food", vi: "Nước Uống", en: "Water", zh: "水", pinyin: "shuǐ", dist_en: "Bread", dist_zh: "面包", dist_pinyin: "miànbāo" },
+      { cat: "food", vi: "Bánh Mì", en: "Bread", zh: "面包", pinyin: "miànbāo", dist_en: "Apple", dist_zh: "苹果", dist_pinyin: "píngguǒ" },
+      { cat: "food", vi: "Quả Chuối", en: "Banana", zh: "香蕉", pinyin: "xiāngjiāo", dist_en: "Coffee", dist_zh: "咖啡", dist_pinyin: "kāfēi" },
+
+      // 3. Tech & Daily Life
+      { cat: "tech", vi: "Điện Thoại", en: "Phone", zh: "手机", pinyin: "shǒujī", dist_en: "Computer", dist_zh: "电脑", dist_pinyin: "diànnǎo" },
+      { cat: "tech", vi: "Máy Tính", en: "Computer", zh: "电脑", pinyin: "diànnǎo", dist_en: "Book", dist_zh: "书", dist_pinyin: "shū" },
+      { cat: "tech", vi: "Cuốn Sách", en: "Book", zh: "书", pinyin: "shū", dist_en: "Pen", dist_zh: "笔", dist_pinyin: "bǐ" },
+      { cat: "tech", vi: "Cái Bút", en: "Pen", zh: "笔", pinyin: "bǐ", dist_en: "Car", dist_zh: "汽车", dist_pinyin: "qìchē" },
+      { cat: "tech", vi: "Xe Hơi", en: "Car", zh: "汽车", pinyin: "qìchē", dist_en: "Phone", dist_zh: "手机", dist_pinyin: "shǒujī" },
+
+      // 4. Greetings & Emotions
+      { cat: "greet", vi: "Xin Chào", en: "Hello", zh: "你好", pinyin: "nǐhǎo", dist_en: "Goodbye", dist_zh: "再见", dist_pinyin: "zàijiàn" },
+      { cat: "greet", vi: "Cảm Ơn", en: "Thank you", zh: "谢谢", pinyin: "xièxie", dist_en: "Sorry", dist_zh: "对不起", dist_pinyin: "duìbuqǐ" },
+      { cat: "greet", vi: "Tạm Biệt", en: "Goodbye", zh: "再见", pinyin: "zàijiàn", dist_en: "Hello", dist_zh: "你好", dist_pinyin: "nǐhǎo" },
+      { cat: "greet", vi: "Vui Vẻ", en: "Happy", zh: "快乐", pinyin: "kuàilè", dist_en: "Sleepy", dist_zh: "困", dist_pinyin: "kùn" },
+      { cat: "greet", vi: "Yêu Thương", en: "Love", zh: "爱", pinyin: "ài", dist_en: "Study", dist_zh: "学习", dist_pinyin: "xuéxí" },
+      { cat: "greet", vi: "Bay Lên", en: "Fly", zh: "飞", pinyin: "fēi", dist_en: "Run", dist_zh: "跑", dist_pinyin: "pǎo" },
+
+      // 5. Nature & Environment
+      { cat: "nature", vi: "Mặt Trời", en: "Sun", zh: "太阳", pinyin: "tàiyáng", dist_en: "Moon", dist_zh: "月亮", dist_pinyin: "yuèliang" },
+      { cat: "nature", vi: "Mặt Trăng", en: "Moon", zh: "月亮", pinyin: "yuèliang", dist_en: "Star", dist_zh: "星星", dist_pinyin: "xīngxing" },
+      { cat: "nature", vi: "Ngôi Sao", en: "Star", zh: "星星", pinyin: "xīngxing", dist_en: "Sun", dist_zh: "太阳", dist_pinyin: "tàiyáng" },
+      { cat: "nature", vi: "Trời Mưa", en: "Rain", zh: "下雨", pinyin: "xiàyǔ", dist_en: "Wind", dist_zh: "刮风", dist_pinyin: "guāfēng" },
+
+      // 6. Common Adjectives & States
+      { cat: "greet", vi: "To Lớn", en: "Big", zh: "大", pinyin: "dà", dist_en: "Small", dist_zh: "小", dist_pinyin: "xiǎo" },
+      { cat: "greet", vi: "Nhỏ Bé", en: "Small", zh: "小", pinyin: "xiǎo", dist_en: "Big", dist_zh: "大", dist_pinyin: "dà" },
+      { cat: "nature", vi: "Nóng", en: "Hot", zh: "热", pinyin: "rè", dist_en: "Cold", dist_zh: "冷", dist_pinyin: "lěng" },
+      { cat: "nature", vi: "Lạnh", en: "Cold", zh: "冷", pinyin: "lěng", dist_en: "Hot", dist_zh: "热", dist_pinyin: "rè" },
+      { cat: "greet", vi: "Nhiều", en: "Many", zh: "多", pinyin: "duō", dist_en: "Few", dist_zh: "少", dist_pinyin: "shǎo" },
+      { cat: "greet", vi: "Đẹp", en: "Beautiful", zh: "漂亮", pinyin: "piàoliang", dist_en: "Happy", dist_zh: "快乐", dist_pinyin: "kuàilè" },
+
+      // 7. Everyday Actions & Things
+      { cat: "food", vi: "Ăn Cơm", en: "Eat", zh: "吃饭", pinyin: "chīfàn", dist_en: "Drink", dist_zh: "喝水", dist_pinyin: "hēshuǐ" },
+      { cat: "food", vi: "Uống Nước", en: "Drink", zh: "喝水", pinyin: "hēshuǐ", dist_en: "Sleep", dist_zh: "睡觉", dist_pinyin: "shuìjiào" },
+      { cat: "greet", vi: "Đi Ngủ", en: "Sleep", zh: "睡觉", pinyin: "shuìjiào", dist_en: "Work", dist_zh: "工作", dist_pinyin: "gōngzuò" },
+      { cat: "tech", vi: "Làm Việc", en: "Work", zh: "工作", pinyin: "gōngzuò", dist_en: "Study", dist_zh: "学习", dist_pinyin: "xuéxí" },
+      { cat: "tech", vi: "Học Tập", en: "Study", zh: "学习", pinyin: "xuéxí", dist_en: "Play", dist_zh: "玩", dist_pinyin: "wán" },
+      { cat: "greet", vi: "Bạn Bè", en: "Friend", zh: "朋友", pinyin: "péngyou", dist_en: "Teacher", dist_zh: "老师", dist_pinyin: "lǎoshī" }
+    ];
+
+    let currentCategory = "all";
+    let activeVocabList = [...FULL_VOCAB_DATABASE];
+
+    function switchCategory(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      activeVocabList = (cat === 'all') 
+        ? [...FULL_VOCAB_DATABASE] 
+        : FULL_VOCAB_DATABASE.filter(v => v.cat === cat);
+      if (activeVocabList.length === 0) activeVocabList = [...FULL_VOCAB_DATABASE];
+    }
+
+    // ==========================================
+    // PROCEDURAL AUDIO ENGINE (AAA SYNTHESIZER)
+    // ==========================================
+    class CyberAudioEngine {
+      constructor() {
+        this.ctx = null;
+        this.sfxEnabled = true;
+        this.bgmEnabled = false;
+        this.bgmTimer = null;
+        this.bgmStep = 0;
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      // 1. Jet Thruster Flap
+      playFlap() {
+        if (!this.sfxEnabled) return;
+        this.init();
+        const t = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(360, t);
+        osc.frequency.exponentialRampToValueAtTime(75, t + 0.12);
+        gain.gain.setValueAtTime(0.2, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.12);
+
+        // Noise puff
+        try {
+          const bufSize = Math.floor(this.ctx.sampleRate * 0.07);
+          const buf = this.ctx.createBuffer(1, bufSize, this.ctx.sampleRate);
+          const data = buf.getChannelData(0);
+          for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+          const noise = this.ctx.createBufferSource();
+          noise.buffer = buf;
+          const filter = this.ctx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.setValueAtTime(1000, t);
+          filter.Q.setValueAtTime(2.5, t);
+          const nGain = this.ctx.createGain();
+          nGain.gain.setValueAtTime(0.12, t);
+          nGain.gain.exponentialRampToValueAtTime(0.001, t + 0.07);
+          noise.connect(filter);
+          filter.connect(nGain);
+          nGain.connect(this.ctx.destination);
+          noise.start(t);
+        } catch(e) {}
+      }
+
+      // 2. Multi-note Crystal Harmonic Chime (Scales with Streak)
+      playCorrect(streak = 0) {
+        if (!this.sfxEnabled) return;
+        this.init();
+        const t = this.ctx.currentTime;
+        const freqs = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+        const offset = Math.min(streak * 28, 280);
+
+        freqs.forEach((f, idx) => {
+          const nt = t + idx * 0.04;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f + offset, nt);
+          gain.gain.setValueAtTime(0.22, nt);
+          gain.gain.exponentialRampToValueAtTime(0.001, nt + 0.32);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(nt);
+          osc.stop(nt + 0.32);
+        });
+
+        // Sub bass drop punch
+        const sub = this.ctx.createOscillator();
+        const subGain = this.ctx.createGain();
+        sub.type = 'sine';
+        sub.frequency.setValueAtTime(130, t);
+        sub.frequency.exponentialRampToValueAtTime(45, t + 0.2);
+        subGain.gain.setValueAtTime(0.35, t);
+        subGain.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+        sub.connect(subGain);
+        subGain.connect(this.ctx.destination);
+        sub.start(t);
+        sub.stop(t + 0.2);
+      }
+
+      // 3. Cyber Overdrive Fanfare
+      playOverdriveFanfare() {
+        if (!this.sfxEnabled) return;
+        this.init();
+        const t = this.ctx.currentTime;
+        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+        notes.forEach((f, idx) => {
+          const nt = t + idx * 0.055;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, nt);
+          gain.gain.setValueAtTime(0.25, nt);
+          gain.gain.exponentialRampToValueAtTime(0.001, nt + 0.4);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(nt);
+          osc.stop(nt + 0.4);
+        });
+      }
+
+      // 4. Glitch Crash
+      playCrash() {
+        if (!this.sfxEnabled) return;
+        this.init();
+        const t = this.ctx.currentTime;
+        
+        // Low distorted bass drop
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(260, t);
+        osc.frequency.exponentialRampToValueAtTime(32, t + 0.45);
+        gain.gain.setValueAtTime(0.4, t);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(t);
+        osc.stop(t + 0.45);
+
+        // Crunch noise
+        try {
+          const bufSize = Math.floor(this.ctx.sampleRate * 0.35);
+          const buf = this.ctx.createBuffer(1, bufSize, this.ctx.sampleRate);
+          const data = buf.getChannelData(0);
+          for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufSize * 0.25));
+          const noise = this.ctx.createBufferSource();
+          noise.buffer = buf;
+          const filter = this.ctx.createBiquadFilter();
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(850, t);
+          filter.frequency.exponentialRampToValueAtTime(90, t + 0.35);
+          const nGain = this.ctx.createGain();
+          nGain.gain.setValueAtTime(0.45, t);
+          nGain.gain.exponentialRampToValueAtTime(0.001, t + 0.35);
+          noise.connect(filter);
+          filter.connect(nGain);
+          nGain.connect(this.ctx.destination);
+          noise.start(t);
+        } catch(e) {}
+      }
+
+      // 5. Procedural Cyber Lo-fi Ambient Synth BGM
+      startBGM() {
+        if (!this.bgmEnabled || this.bgmTimer) return;
+        this.init();
+        const notes = [146.83, 174.61, 220.0, 261.63, 293.66, 349.23, 440.0, 523.25]; // D-minor scale
+        const bass = [73.42, 87.31, 110.0, 130.81];
+
+        this.bgmTimer = setInterval(() => {
+          if (!this.bgmEnabled || !this.ctx) return;
+          const t = this.ctx.currentTime;
+          const arpIdx = [0, 2, 4, 1, 3, 5, 2, 6][this.bgmStep % 8];
+          
+          // Arpeggiator note
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(notes[arpIdx], t);
+          gain.gain.setValueAtTime(0.038, t);
+          gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.16);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(t);
+          osc.stop(t + 0.16);
+
+          // Sub bass thump every 4 beats
+          if (this.bgmStep % 4 === 0) {
+            const bOsc = this.ctx.createOscillator();
+            const bGain = this.ctx.createGain();
+            bOsc.type = 'triangle';
+            bOsc.frequency.setValueAtTime(bass[Math.floor(this.bgmStep / 4) % 4], t);
+            bGain.gain.setValueAtTime(0.05, t);
+            bGain.gain.exponentialRampToValueAtTime(0.0001, t + 0.55);
+            bOsc.connect(bGain);
+            bGain.connect(this.ctx.destination);
+            bOsc.start(t);
+            bOsc.stop(t + 0.55);
+          }
+
+          this.bgmStep++;
+        }, 175);
+      }
+
+      stopBGM() {
+        if (this.bgmTimer) {
+          clearInterval(this.bgmTimer);
+          this.bgmTimer = null;
+        }
+      }
+    }
+
+    const soundEngine = new CyberAudioEngine();
+
+    // Haptic Feedback for Mobile Devices
+    function vibrate(pattern) {
+      if ('vibrate' in navigator) {
+        try { navigator.vibrate(pattern); } catch (e) {}
+      }
+    }
+
+    // Native Speech Synthesis (Offline 100%)
+    function speakText(text, lang) {
+      if (!soundEngine.sfxEnabled || !('speechSynthesis' in window)) return;
+      try {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang;
+        u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      } catch (e) {}
+    }
+
+    // Game State
+    let currentMode = 'zh'; // 'zh', 'en', 'duo'
+    let score = 0;
+    let streak = 0;
+    let highscore = parseInt(localStorage.getItem('cyberlingo_high') || '0', 10);
+    let gameState = 'ready'; // 'ready', 'playing', 'over'
+
+    let currentQuestion = null;
+    let lastWrongQuestion = null;
+    let isOverdrive = false;
+
+    // Visual Effects Arrays
+    let particles = [];
+    let floatingTexts = [];
+    let screenShake = 0;
+
+    // DOM Elements
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const questBanner = document.getElementById('quest-banner');
+    const questTarget = document.getElementById('quest-target');
+    const streakBadge = document.getElementById('streak-badge');
+    const scoreVal = document.getElementById('score-val');
+    const screenStart = document.getElementById('screen-start');
+    const screenOver = document.getElementById('screen-over');
+    const overScoreTxt = document.getElementById('over-score-txt');
+
+    const fcTargetWord = document.getElementById('fc-target-word');
+    const fcPinyin = document.getElementById('fc-pinyin');
+    const fcMeaning = document.getElementById('fc-meaning');
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Mode Switcher
+    function switchMode(m) {
+      currentMode = m;
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(`mode-${m}`).classList.add('active');
+      if (gameState === 'playing') pickNewQuestion();
+    }
+
+    function toggleAudio() {
+      soundEngine.sfxEnabled = !soundEngine.sfxEnabled;
+      const btn = document.getElementById('btn-audio');
+      btn.textContent = soundEngine.sfxEnabled ? '🔊 SFX' : '🔇 Tắt';
+      btn.classList.toggle('muted', !soundEngine.sfxEnabled);
+    }
+
+    function toggleBGM() {
+      soundEngine.bgmEnabled = !soundEngine.bgmEnabled;
+      const btn = document.getElementById('btn-bgm');
+      btn.textContent = soundEngine.bgmEnabled ? '🎵 BGM' : '🎵 Tắt';
+      btn.classList.toggle('muted', !soundEngine.bgmEnabled);
+      if (soundEngine.bgmEnabled) {
+        soundEngine.startBGM();
+      } else {
+        soundEngine.stopBGM();
+      }
+    }
+
+    // Pick new vocabulary target
+    function pickNewQuestion() {
+      const q = activeVocabList[Math.floor(Math.random() * activeVocabList.length)];
+      currentQuestion = q;
+      questTarget.textContent = q.vi;
+      questBanner.classList.add('pulse');
+      setTimeout(() => questBanner.classList.remove('pulse'), 250);
+      return q;
+    }
+
+    // Bird & Physics
+    let bird = { x: 75, y: 360, vy: 0, r: 18, angle: 0 };
+    let pipes = [];
+    const gravity = 0.44;
+    const jump = -7.8;
+    const gateGap = 210;
+    const pipeSpeed = 2.4;
+
+    function flap() {
+      if (gameState === 'playing') {
+        bird.vy = jump;
+        soundEngine.playFlap();
+        vibrate(18);
+
+        // Thruster flame particles
+        for (let i = 0; i < 6; i++) {
+          particles.push({
+            x: bird.x - 14,
+            y: bird.y + (Math.random() - 0.5) * 8,
+            vx: -3.5 - Math.random() * 2.5,
+            vy: (Math.random() - 0.5) * 2,
+            color: isOverdrive ? `hsl(${(frameCount * 12) % 360}, 100%, 65%)` : '#38bdf8',
+            size: isOverdrive ? 4 : 2.8,
+            life: 22
+          });
+        }
+      }
+    }
+
+    window.addEventListener('keydown', (e) => { 
+      if (e.code === 'Space') { 
+        e.preventDefault(); 
+        if (gameState === 'ready') startGame();
+        else if (gameState === 'over') startGame();
+        else flap(); 
+      } 
+    });
+
+    window.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('.top-bar') || e.target.closest('.play-btn') || e.target.closest('.cat-pill') || e.target.closest('.replay-voice-btn')) return;
+      flap();
+    });
+
+    function addFloatingText(x, y, text, color = '#38bdf8', size = 16) {
+      floatingTexts.push({ x, y, text, color, size, life: 42, vy: -1.7 });
+    }
+
+    function triggerShake(amt) {
+      screenShake = Math.max(screenShake, amt);
+    }
+
+    function startGame() {
+      screenStart.classList.add('hidden');
+      screenOver.classList.add('hidden');
+      bird.y = canvas.height / 2;
+      bird.vy = 0;
+      pipes = [];
+      particles = [];
+      floatingTexts = [];
+      score = 0;
+      streak = 0;
+      isOverdrive = false;
+      questBanner.classList.remove('overdrive');
+      streakBadge.classList.remove('fever');
+      updateScoreHUD();
+      pickNewQuestion();
+      gameState = 'playing';
+      soundEngine.playCorrect(0);
+      vibrate([25, 40]);
+      if (soundEngine.bgmEnabled) soundEngine.startBGM();
+    }
+
+    function updateScoreHUD() {
+      scoreVal.textContent = `${score} pts`;
+      streakBadge.textContent = isOverdrive ? `⚡ OVERDRIVE: ${streak}` : `🔥 Chuỗi: ${streak}`;
+      if (isOverdrive) {
+        streakBadge.classList.add('fever');
+        questBanner.classList.add('overdrive');
+      } else {
+        streakBadge.classList.remove('fever');
+        questBanner.classList.remove('overdrive');
+      }
+    }
+
+    // Spawn Gates with Vocabulary Choices
+    let frameCount = 0;
+    function spawnGate() {
+      const q = pickNewQuestion();
+      const topH = Math.random() * (canvas.height - gateGap - 220) + 100;
+      const correctAtTop = Math.random() > 0.5;
+
+      let topLabel = "", botLabel = "";
+      if (currentMode === 'zh') {
+        topLabel = correctAtTop ? `${q.zh} (${q.pinyin})` : `${q.dist_zh} (${q.dist_pinyin})`;
+        botLabel = correctAtTop ? `${q.dist_zh} (${q.dist_pinyin})` : `${q.zh} (${q.pinyin})`;
+      } else if (currentMode === 'en') {
+        topLabel = correctAtTop ? q.en : q.dist_en;
+        botLabel = correctAtTop ? q.dist_en : q.en;
+      } else { // Duo
+        topLabel = correctAtTop ? `${q.en} • ${q.zh}` : `${q.dist_en} • ${q.dist_zh}`;
+        botLabel = correctAtTop ? `${q.dist_en} • ${q.dist_zh}` : `${q.en} • ${q.zh}`;
+      }
+
+      pipes.push({
+        x: canvas.width + 20,
+        top: topH,
+        passed: false,
+        question: q,
+        correctAtTop: correctAtTop,
+        topLabel: topLabel,
+        botLabel: botLabel,
+        w: 52
+      });
+    }
+
+    function onAnswer(isCorrect, pipe) {
+      if (isCorrect) {
+        const pts = isOverdrive ? 20 : 10;
+        score += pts;
+        streak += 1;
+
+        // Check Overdrive threshold (5+)
+        if (streak >= 5 && !isOverdrive) {
+          isOverdrive = true;
+          soundEngine.playOverdriveFanfare();
+          addFloatingText(bird.x, bird.y - 45, "⚡ OVERDRIVE x2!", "#ec4899", 22);
+          triggerShake(10);
+          vibrate([60, 40, 80]);
+        } else {
+          soundEngine.playCorrect(streak);
+          addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} (x2!)` : `+${pts}`, isOverdrive ? "#ec4899" : "#10b981", 17);
+          triggerShake(4);
+          vibrate([30, 40]);
+        }
+
+        updateScoreHUD();
+
+        // Native Pronunciation Aloud!
+        const q = pipe.question;
+        if (currentMode === 'zh') {
+          speakText(q.zh, 'zh-CN');
+        } else if (currentMode === 'en') {
+          speakText(q.en, 'en-US');
+        } else {
+          speakText(q.zh, 'zh-CN');
+          setTimeout(() => speakText(q.en, 'en-US'), 700);
+        }
+
+        // Particle Starburst
+        const burstColor = isOverdrive ? `hsl(${(frameCount * 15) % 360}, 100%, 65%)` : '#10b981';
+        for (let i = 0; i < 28; i++) {
+          particles.push({
+            x: bird.x,
+            y: bird.y,
+            vx: (Math.random() - 0.5) * 9,
+            vy: (Math.random() - 0.5) * 9,
+            color: burstColor,
+            size: Math.random() * 4 + 2,
+            life: 35
+          });
+        }
+
+        if (score > highscore) {
+          highscore = score;
+          localStorage.setItem('cyberlingo_high', highscore);
+        }
+      } else {
+        gameOver(pipe.question);
+      }
+    }
+
+    function gameOver(q) {
+      gameState = 'over';
+      lastWrongQuestion = q;
+      soundEngine.playCrash();
+      triggerShake(18);
+      vibrate([120, 60, 140]);
+      overScoreTxt.textContent = `Điểm số: ${score} | Kỷ lục: ${highscore}`;
+
+      // Crash particles
+      for (let i = 0; i < 40; i++) {
+        particles.push({
+          x: bird.x,
+          y: bird.y,
+          vx: (Math.random() - 0.5) * 12,
+          vy: (Math.random() - 0.5) * 12,
+          color: '#ef4444',
+          size: Math.random() * 4 + 2,
+          life: 45
+        });
+      }
+
+      // Populate Flashcard
+      if (q) {
+        fcTargetWord.textContent = `${q.zh} / ${q.en}`;
+        fcPinyin.textContent = `${q.pinyin}`;
+        fcMeaning.textContent = `Nghĩa: ${q.vi}`;
+      }
+      screenOver.classList.remove('hidden');
+    }
+
+    function replayPronunciation() {
+      if (!lastWrongQuestion) return;
+      speakText(lastWrongQuestion.zh, 'zh-CN');
+      setTimeout(() => speakText(lastWrongQuestion.en, 'en-US'), 750);
+    }
+
+    // Parallax City Skylines & Stars
+    const stars = Array.from({ length: 45 }, () => ({
+      x: Math.random() * 440,
+      y: Math.random() * 500,
+      speed: Math.random() * 0.4 + 0.1,
+      size: Math.random() * 2 + 1,
+      alpha: Math.random() * 0.7 + 0.3
+    }));
+
+    // City Buildings (X, Width, Height)
+    const buildings = [
+      { x: 0, w: 45, h: 140 }, { x: 50, w: 60, h: 180 }, { x: 115, w: 40, h: 120 },
+      { x: 160, w: 70, h: 210 }, { x: 235, w: 55, h: 160 }, { x: 295, w: 65, h: 190 },
+      { x: 365, w: 80, h: 150 }, { x: 450, w: 60, h: 175 }
+    ];
+    let cityScroll = 0;
+
+    // Main Game Loop (60 FPS)
+    function loop() {
+      ctx.save();
+
+      // Screen Shake recoil
+      if (screenShake > 0) {
+        const sx = (Math.random() - 0.5) * screenShake;
+        const sy = (Math.random() - 0.5) * screenShake;
+        ctx.translate(sx, sy);
+        screenShake *= 0.88;
+        if (screenShake < 0.4) screenShake = 0;
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // 1. Draw Starfield & Sky Gradient
+      const skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      skyGrad.addColorStop(0, '#040714');
+      skyGrad.addColorStop(1, '#090e24');
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Drifting stars
+      for (const st of stars) {
+        if (gameState === 'playing') st.x -= st.speed;
+        if (st.x < 0) st.x = canvas.width;
+        ctx.fillStyle = `rgba(255, 255, 255, ${st.alpha})`;
+        ctx.fillRect(st.x, st.y, st.size, st.size);
+      }
+
+      // 2. Parallax Cyber City Silhouette (Layer 2)
+      if (gameState === 'playing') cityScroll = (cityScroll + 0.6) % 500;
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.4)';
+      for (const b of buildings) {
+        const bx = (b.x - cityScroll + 600) % (canvas.width + 120) - 60;
+        const by = canvas.height - b.h;
+        ctx.fillRect(bx, by, b.w, b.h);
+        // Neon windows
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+        for (let wy = by + 15; wy < canvas.height - 20; wy += 22) {
+          for (let wx = bx + 8; wx < bx + b.w - 10; wx += 14) {
+            ctx.fillRect(wx, wy, 4, 7);
+          }
+        }
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.4)';
+      }
+
+      // 3. Cyberpunk Horizon Grid
+      ctx.strokeStyle = isOverdrive 
+        ? `hsla(${(frameCount * 6) % 360}, 90%, 60%, 0.14)` 
+        : 'rgba(56, 189, 248, 0.07)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < canvas.width; x += 32) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += 32) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+      }
+
+      // 4. Update & Draw Game Entities
+      if (gameState === 'playing') {
+        bird.vy += gravity;
+        bird.y += bird.vy;
+        bird.angle = Math.min(Math.PI / 4, Math.max(-Math.PI / 4, (bird.vy / 10)));
+
+        // Bounds check
+        if (bird.y + bird.r > canvas.height - 20 || bird.y - bird.r < 0) {
+          gameOver(currentQuestion);
+        }
+
+        // Spawn gates every 130 frames (~2.1 seconds)
+        frameCount++;
+        if (frameCount % 130 === 0) {
+          spawnGate();
+        }
+
+        // Update & Draw Gates
+        for (let i = pipes.length - 1; i >= 0; i--) {
+          const p = pipes[i];
+          p.x -= pipeSpeed;
+
+          const botY = p.top + gateGap;
+          const botH = canvas.height - botY;
+
+          // Gate Pillars (Top & Bottom)
+          ctx.fillStyle = '#0f172a';
+          ctx.strokeStyle = isOverdrive ? `hsl(${(frameCount * 8) % 360}, 90%, 65%)` : '#38bdf8';
+          ctx.lineWidth = 3;
+
+          // Top Pillar
+          ctx.fillRect(p.x, 0, p.w, p.top);
+          ctx.strokeRect(p.x, 0, p.w, p.top);
+
+          // Bottom Pillar
+          ctx.fillRect(p.x, botY, p.w, botH);
+          ctx.strokeRect(p.x, botY, p.w, botH);
+
+          // Neon Divider Laser Line between Upper Lane & Lower Lane
+          const midY = p.top + gateGap / 2;
+          ctx.save();
+          ctx.setLineDash([5, 6]);
+          ctx.strokeStyle = isOverdrive ? 'rgba(236, 72, 153, 0.65)' : 'rgba(56, 189, 248, 0.45)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(p.x - 35, midY);
+          ctx.lineTo(p.x + p.w + 35, midY);
+          ctx.stroke();
+          ctx.restore();
+
+          // DRAW VOCABULARY PILLS INSIDE GATES
+          // Top Gate Pill
+          drawGateLabel(p.x - 45, p.top - 36, p.topLabel, p.correctAtTop, p.passed);
+          // Bottom Gate Pill
+          drawGateLabel(p.x - 45, botY + 14, p.botLabel, !p.correctAtTop, p.passed);
+
+          // Check Passage & Answer
+          if (!p.passed && p.x + p.w < bird.x) {
+            p.passed = true;
+            const passedUpper = bird.y < midY;
+            const chosenCorrect = (passedUpper === p.correctAtTop);
+            onAnswer(chosenCorrect, p);
+          }
+
+          // Collision detection with solid pillars
+          if (
+            bird.x + bird.r > p.x && bird.x - bird.r < p.x + p.w &&
+            (bird.y - bird.r < p.top || bird.y + bird.r > botY)
+          ) {
+            gameOver(p.question);
+          }
+
+          if (p.x < -150) pipes.splice(i, 1);
+        }
+      }
+
+      // 5. Draw Particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const pt = particles[i];
+        pt.x += pt.vx;
+        pt.y += pt.vy;
+        pt.life--;
+        ctx.fillStyle = pt.color;
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, Math.max(1, (pt.size || 2.5) * (pt.life / 30)), 0, Math.PI * 2);
+        ctx.fill();
+        if (pt.life <= 0) particles.splice(i, 1);
+      }
+
+      // 6. Draw Floating Score & Combo Texts
+      for (let i = floatingTexts.length - 1; i >= 0; i--) {
+        const ft = floatingTexts[i];
+        ft.y += ft.vy;
+        ft.life--;
+        const alpha = Math.min(1, ft.life / 20);
+        ctx.save();
+        ctx.font = `900 ${ft.size}px system-ui, sans-serif`;
+        ctx.fillStyle = ft.color;
+        ctx.shadowColor = ft.color;
+        ctx.shadowBlur = 10;
+        ctx.globalAlpha = alpha;
+        ctx.textAlign = 'center';
+        ctx.fillText(ft.text, ft.x, ft.y);
+        ctx.restore();
+        if (ft.life <= 0) floatingTexts.splice(i, 1);
+      }
+
+      // 7. Draw CyberBird
+      drawCyberBird(bird.x, bird.y, bird.angle);
+
+      ctx.restore();
+      requestAnimationFrame(loop);
+    }
+
+    function drawGateLabel(x, y, text, isCorrect, passed) {
+      ctx.save();
+      const pillW = 142;
+      const pillH = 34;
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.94)';
+      
+      // Neutral neon cyan while approaching so player must read the word!
+      // Once passed, reveal green for correct answer
+      if (passed) {
+        ctx.strokeStyle = isCorrect ? '#10b981' : 'rgba(100, 116, 139, 0.4)';
+        ctx.shadowColor = isCorrect ? '#10b981' : 'transparent';
+        ctx.shadowBlur = isCorrect ? 12 : 0;
+      } else {
+        ctx.strokeStyle = isOverdrive ? '#ec4899' : '#38bdf8';
+        ctx.shadowColor = isOverdrive ? '#ec4899' : '#38bdf8';
+        ctx.shadowBlur = 6;
+      }
+      ctx.lineWidth = 2;
+      
+      // Rounded pill
+      ctx.beginPath();
+      ctx.roundRect(x, y, pillW, pillH, 10);
+      ctx.fill();
+      ctx.stroke();
+
+      // Text
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 13px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, x + pillW / 2, y + pillH / 2);
+      ctx.restore();
+    }
+
+    function drawCyberBird(x, y, angle) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+
+      // Overdrive Rainbow Aura
+      if (isOverdrive) {
+        ctx.shadowColor = `hsl(${(frameCount * 15) % 360}, 100%, 65%)`;
+        ctx.shadowBlur = 24;
+      } else {
+        ctx.shadowColor = '#38bdf8';
+        ctx.shadowBlur = 15;
+      }
+
+      // Bird Metallic Body (Cyan & White)
+      ctx.fillStyle = isOverdrive ? '#ec4899' : '#0284c7';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 18, 14, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Metallic Wing
+      ctx.fillStyle = isOverdrive ? '#f472b6' : '#38bdf8';
+      ctx.beginPath();
+      ctx.ellipse(-4, 2, 10, 6, -Math.PI / 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Robot Eye (Neon Pink or Yellow)
+      ctx.fillStyle = isOverdrive ? '#fde047' : '#f43f5e';
+      ctx.shadowColor = ctx.fillStyle;
+      ctx.shadowBlur = 10;
+      ctx.beginPath();
+      ctx.arc(8, -4, 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(9, -5, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Cyber Beak (Golden Yellow)
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = '#f59e0b';
+      ctx.beginPath();
+      ctx.moveTo(14, -2);
+      ctx.lineTo(24, 2);
+      ctx.lineTo(14, 6);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    // Start Animation Loop
+    requestAnimationFrame(loop);
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+TITLE: 我的日常日记 • NHẬT KÝ HỌC TIẾNG TRUNG
+LEVEL: DAILY CHINESE JOURNAL • SHADOWING PRACTICE
+
+[SCENE]
+CN: 今天是非常充实的一天，虽然忙碌，但我感到很值得。
+VI: Hôm nay là một ngày rất ý nghĩa, dù bận rộn nhưng tôi thấy rất xứng đáng.
+VOCAB: 充实 (chōngshí): Ý nghĩa, trọn vẹn | 值得 (zhídé): Rất xứng đáng
+
+[SCENE]
+CN: 早上六点起床，泡了一杯温热的咖啡，开始一天的奋斗。
+VI: Sáu giờ sáng thức dậy, pha một ly cà phê ấm, bắt đầu một ngày phấn đấu.
+VOCAB: 泡咖啡 (pào kāfēi): Pha cà phê | 奋斗 (fèndòu): Nỗ lực phấn đấu
+
+[SCENE]
+CN: 虽然工作有时会感到疲惫，但只要每天进步一点点，就是成功。
+VI: Dù công việc đôi khi thấy mệt mỏi, nhưng chỉ cần mỗi ngày tiến bộ một chút, chính là thành công.
+VOCAB: 疲惫 (píbèi): Mệt mỏi | 进步 (jìnbù): Tiến bộ mỗi ngày
+
+[SCENE]
+CN: 深夜看着窗外的万家灯火，我对自己说：“加油，未来在等着你！”
+VI: Đêm muộn ngắm nhìn vạn ánh đèn thành phố, tôi tự nhủ: "Cố lên, tương lai đang đợi bạn!"
+VOCAB: 灯火 (dēnghuǒ): Ánh đèn phố | 未来 (wèilái): Tương lai tươi sáng

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CyberBird • Offline 100%</title>
+  <!-- PWA & iOS Standalone Support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CyberBird">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    body {
+      background: #050811;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, sans-serif;
+      color: #fff;
+    }
+    #game-container {
+      position: relative;
+      width: 100vw;
+      max-width: 420px;
+      height: 100vh;
+      max-height: 800px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      overflow: hidden;
+      background: #0a0f1d;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .hud {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 24px;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .score-badge {
+      font-size: 32px;
+      font-weight: 900;
+      color: #38bdf8;
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+    }
+    .high-badge {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f6d365;
+      background: rgba(0,0,0,0.5);
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(246, 211, 101, 0.3);
+      height: fit-content;
+    }
+    .offline-tag {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 12px;
+      border-radius: 20px;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .offline-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <div class="hud">
+      <div id="score" class="score-badge">0</div>
+      <div id="highscore" class="high-badge">Kỷ lục: 0</div>
+    </div>
+    <div class="offline-tag">
+      <span class="offline-dot"></span> 100% Chơi Offline không cần Server
+    </div>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+    const highscoreEl = document.getElementById('highscore');
+
+    // Load Highscore from phone LocalStorage
+    let highscore = parseInt(localStorage.getItem('cyberbird_high') || '0', 10);
+    highscoreEl.textContent = `Kỷ lục: ${highscore}`;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Synthesize 8-bit Sound Effects via Web Audio API (Zero external mp3 needed!)
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    function playBeep(freq, duration, type = 'sine') {
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    // Game Variables
+    let bird = { x: 60, y: 300, vy: 0, r: 16 };
+    let pipes = [];
+    let score = 0;
+    let gameState = 'start'; // 'start', 'playing', 'over'
+    const gravity = 0.42;
+    const jump = -7.5;
+    const pipeGap = 150;
+    const pipeSpeed = 2.4;
+
+    function resetGame() {
+      bird.y = canvas.height / 2;
+      bird.vy = 0;
+      pipes = [];
+      score = 0;
+      scoreEl.textContent = '0';
+      gameState = 'playing';
+      playBeep(440, 0.1, 'triangle');
+    }
+
+    function flap() {
+      if (gameState === 'start' || gameState === 'over') {
+        resetGame();
+      } else if (gameState === 'playing') {
+        bird.vy = jump;
+        playBeep(600, 0.08, 'sine');
+      }
+    }
+
+    window.addEventListener('keydown', (e) => { if (e.code === 'Space') flap(); });
+    window.addEventListener('pointerdown', flap);
+
+    let frameCount = 0;
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw Cyberpunk Grid Background
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.05)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < canvas.width; x += 30) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += 30) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+      }
+
+      if (gameState === 'playing') {
+        bird.vy += gravity;
+        bird.y += bird.vy;
+
+        // Spawn Pipes
+        frameCount++;
+        if (frameCount % 90 === 0) {
+          const topH = Math.random() * (canvas.height - pipeGap - 160) + 60;
+          pipes.push({ x: canvas.width, top: topH, passed: false });
+        }
+
+        // Move Pipes & Check Collision
+        for (let i = pipes.length - 1; i >= 0; i--) {
+          const p = pipes[i];
+          p.x -= pipeSpeed;
+
+          // Draw Neon Pipes
+          ctx.fillStyle = '#0f172a';
+          ctx.strokeStyle = '#38bdf8';
+          ctx.lineWidth = 3;
+          
+          // Top Pipe
+          ctx.fillRect(p.x, 0, 48, p.top);
+          ctx.strokeRect(p.x, 0, 48, p.top);
+
+          // Bottom Pipe
+          const botY = p.top + pipeGap;
+          const botH = canvas.height - botY;
+          ctx.fillRect(p.x, botY, 48, botH);
+          ctx.strokeRect(p.x, botY, 48, botH);
+
+          // Collision detection
+          if (
+            bird.x + bird.r > p.x && bird.x - bird.r < p.x + 48 &&
+            (bird.y - bird.r < p.top || bird.y + bird.r > botY)
+          ) {
+            gameOver();
+          }
+
+          // Score counting
+          if (!p.passed && p.x + 48 < bird.x) {
+            p.passed = true;
+            score++;
+            scoreEl.textContent = score;
+            playBeep(880, 0.1, 'sine');
+            if (score > highscore) {
+              highscore = score;
+              localStorage.setItem('cyberbird_high', highscore);
+              highscoreEl.textContent = `Kỷ lục: ${highscore}`;
+            }
+          }
+
+          if (p.x < -60) pipes.splice(i, 1);
+        }
+
+        // Floor / Ceiling collision
+        if (bird.y + bird.r > canvas.height || bird.y - bird.r < 0) {
+          gameOver();
+        }
+      }
+
+      // Draw Glowing Bird
+      ctx.save();
+      ctx.translate(bird.x, bird.y);
+      const angle = Math.min(Math.PI / 4, Math.max(-Math.PI / 4, bird.vy * 0.08));
+      ctx.rotate(angle);
+
+      // Glow circle
+      const grad = ctx.createRadialGradient(0, 0, 2, 0, 0, bird.r);
+      grad.addColorStop(0, '#fde047');
+      grad.addColorStop(1, '#eab308');
+      ctx.fillStyle = grad;
+      ctx.shadowColor = '#fde047';
+      ctx.shadowBlur = 15;
+      ctx.beginPath();
+      ctx.arc(0, 0, bird.r, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Eye
+      ctx.fillStyle = '#000';
+      ctx.beginPath();
+      ctx.arc(6, -4, 3, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Wing
+      ctx.fillStyle = '#ca8a04';
+      ctx.beginPath();
+      ctx.ellipse(-4, 2, 8, 4, 0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Start Screen / Game Over Screen Overlay
+      if (gameState === 'start') {
+        ctx.fillStyle = 'rgba(10, 15, 29, 0.75)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 26px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText('CYBER BIRD ⚡', canvas.width / 2, canvas.height / 2 - 40);
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '14px system-ui';
+        ctx.fillText('Chạm vào màn hình để bay', canvas.width / 2, canvas.height / 2 + 10);
+      } else if (gameState === 'over') {
+        ctx.fillStyle = 'rgba(10, 15, 29, 0.85)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ef4444';
+        ctx.font = 'bold 28px system-ui';
+        ctx.textAlign = 'center';
+        ctx.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2 - 40);
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 20px system-ui';
+        ctx.fillText(`Điểm số: ${score}`, canvas.width / 2, canvas.height / 2 + 5);
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '13px system-ui';
+        ctx.fillText('Chạm để chơi lại ngay', canvas.width / 2, canvas.height / 2 + 45);
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    function gameOver() {
+      gameState = 'over';
+      playBeep(220, 0.25, 'sawtooth');
+      if (navigator.vibrate) navigator.vibrate(200);
+    }
+
+    loop();
+  </script>
+</body>
+</html>
