@@ -659,11 +659,13 @@
       <!-- Category Selector for Vocab Mode -->
       <div id="vocab-category-bar" class="category-bar hidden">
         <button class="cat-pill active" onclick="switchCategory('factory', this)">🏭 Xưởng Mũ (27)</button>
-        <button class="cat-pill" onclick="switchCategory('all', this)">🌟 Tất Cả (67)</button>
-        <button class="cat-pill" onclick="switchCategory('tech', this)">💻 Công Nghệ</button>
-        <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực</button>
-        <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật</button>
-        <button class="cat-pill" onclick="switchCategory('greet', this)">💬 Giao Tiếp</button>
+        <button class="cat-pill" onclick="switchCategory('electronics', this)">⚡ Điện Tử & TĐH (15)</button>
+        <button class="cat-pill" onclick="switchCategory('office', this)">💼 Văn Phòng (15)</button>
+        <button class="cat-pill" onclick="switchCategory('tech', this)">💻 Công Nghệ (15)</button>
+        <button class="cat-pill" onclick="switchCategory('social', this)">🗣️ Giao Tiếp (16)</button>
+        <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực (12)</button>
+        <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật (6)</button>
+        <button class="cat-pill" onclick="switchCategory('all', this)">🌟 Tất Cả (120+)</button>
       </div>
 
       <!-- Settings Panel: Flight Speed, Voice Speed, Font Size -->
@@ -703,7 +705,7 @@
 
       <div class="dev-credits">
         <span>Kiến tạo & Tối ưu bởi <b>DEAN OPTIMIZE</b></span>
-        <span class="ver-badge">v2.5.0 PRO BUILD</span>
+        <span class="ver-badge">v2.6.0 PRO BUILD</span>
       </div>
 
       <div id="how-to-box" class="how-to-box">
@@ -877,7 +879,71 @@
       { cat: "greet", vi: "Đi Ngủ", en: "Sleep", zh: "睡觉", pinyin: "shuìjiào", dist_en: "Work", dist_zh: "工作", dist_pinyin: "gōngzuò" },
       { cat: "tech", vi: "Làm Việc", en: "Work", zh: "工作", pinyin: "gōngzuò", dist_en: "Study", dist_zh: "学习", dist_pinyin: "xuéxí" },
       { cat: "tech", vi: "Học Tập", en: "Study", zh: "学习", pinyin: "xuéxí", dist_en: "Play", dist_zh: "玩", dist_pinyin: "wán" },
-      { cat: "greet", vi: "Bạn Bè", en: "Friend", zh: "朋友", pinyin: "péngyou", dist_en: "Teacher", dist_zh: "老师", dist_pinyin: "lǎoshī" }
+      { cat: "greet", vi: "Bạn Bè", en: "Friend", zh: "朋友", pinyin: "péngyou", dist_en: "Teacher", dist_zh: "老师", dist_pinyin: "lǎoshī" },
+
+      // 8. ĐIỆN - ĐIỆN TỬ & TỰ ĐỘNG HÓA (ELECTRONICS & AUTOMATION)
+      { cat: "electronics", vi: "Bảng Mạch (PCB)", en: "Circuit Board", zh: "电路板", pinyin: "diànlùbǎn", dist_en: "Chip", dist_zh: "芯片", dist_pinyin: "xīnpiàn", audio: "audio/dianluban.mp3" },
+      { cat: "electronics", vi: "Hàn Linh Kiện", en: "Solder", zh: "焊接", pinyin: "hànjiē", dist_en: "Cut Wire", dist_zh: "剪线", dist_pinyin: "jiǎnxiàn", audio: "audio/hanjie.mp3" },
+      { cat: "electronics", vi: "Vi Xử Lý / Chip", en: "Microchip", zh: "芯片", pinyin: "xīnpiàn", dist_en: "Diode", dist_zh: "二极管", dist_pinyin: "èrjíguǎn", audio: "audio/xinpian.mp3" },
+      { cat: "electronics", vi: "Cảm Biến", en: "Sensor", zh: "传感器", pinyin: "chuángǎnqì", dist_en: "Transformer", dist_zh: "变压器", dist_pinyin: "biànyāqì", audio: "audio/chuanganqi.mp3" },
+      { cat: "electronics", vi: "Rơ-le Điều Khiển", en: "Relay", zh: "继电器", pinyin: "jìdiànqì", dist_en: "Switch", dist_zh: "开关", dist_pinyin: "kāiguān", audio: "audio/jidianqi.mp3" },
+      { cat: "electronics", vi: "Động Cơ Bước", en: "Stepper Motor", zh: "步进电机", pinyin: "bùjìn diànjī", dist_en: "Fan", dist_zh: "风扇", dist_pinyin: "fēngshàn", audio: "audio/bujindianji.mp3" },
+      { cat: "electronics", vi: "Đồng Hồ Vạn Năng", en: "Multimeter", zh: "万用表", pinyin: "wànyòngbiǎo", dist_en: "Oscilloscope", dist_zh: "示波器", dist_pinyin: "shìbōqì", audio: "audio/wanyongbiao.mp3" },
+      { cat: "electronics", vi: "Ngắn Mạch / Đoản Mạch", en: "Short Circuit", zh: "短路", pinyin: "duǎnlù", dist_en: "Open Circuit", dist_zh: "断路", dist_pinyin: "duànlù", audio: "audio/duanlu.mp3" },
+      { cat: "electronics", vi: "Nguồn Xung", en: "Switching Power", zh: "开关电源", pinyin: "kāiguān diànyuán", dist_en: "Battery", dist_zh: "电池", dist_pinyin: "diànchí", audio: "audio/kaiguandianyuan.mp3" },
+      { cat: "electronics", vi: "Lập Trình PLC", en: "PLC Programming", zh: "PLC编程", pinyin: "PLC biānchéng", dist_en: "Wiring", dist_zh: "接线", dist_pinyin: "jiēxiàn", audio: "audio/plc_biancheng.mp3" },
+      { cat: "electronics", vi: "Tín Hiệu Tương Tự (Analog)", en: "Analog Signal", zh: "模拟信号", pinyin: "mónǐ xìnhào", dist_en: "Digital Signal", dist_zh: "数字信号", dist_pinyin: "shùzì xìnhào", audio: "audio/monixinhao.mp3" },
+      { cat: "electronics", vi: "Cầu Chì Bảo Vệ", en: "Fuse", zh: "保险丝", pinyin: "bǎoxiǎnsī", dist_en: "Ground Wire", dist_zh: "地线", dist_pinyin: "dìxiàn", audio: "audio/baoxiansi.mp3" },
+      { cat: "electronics", vi: "Tụ Điện", en: "Capacitor", zh: "电容", pinyin: "diànróng", dist_en: "Resistor", dist_zh: "电阻", dist_pinyin: "diànzǔ", audio: "audio/dianrong.mp3" },
+      { cat: "electronics", vi: "Điện Trở", en: "Resistor", zh: "电阻", pinyin: "diànzǔ", dist_en: "Inductor", dist_zh: "电感", dist_pinyin: "diàngǎn", audio: "audio/dianzu.mp3" },
+      { cat: "electronics", vi: "Đường Dây Mạch Điện", en: "Circuit Line", zh: "线路", pinyin: "xiànlù", dist_en: "Plug", dist_zh: "插头", dist_pinyin: "chātóu", audio: "audio/xianlu.mp3" },
+
+      // 9. VĂN PHÒNG & THƯƠNG MẠI (OFFICE & BUSINESS TRADE)
+      { cat: "office", vi: "Hợp Đồng Thương Mại", en: "Business Contract", zh: "商业合同", pinyin: "shāngyè hétong", dist_en: "Bill", dist_zh: "账单", dist_pinyin: "zhàngdān", audio: "audio/shangyehetong.mp3" },
+      { cat: "office", vi: "Bảng Báo Giá", en: "Quotation", zh: "报价单", pinyin: "bàojiàdān", dist_en: "Receipt", dist_zh: "收据", dist_pinyin: "shōujù", audio: "audio/baojiadan.mp3" },
+      { cat: "office", vi: "Hóa Đơn Tài Chính", en: "Invoice", zh: "发票", pinyin: "fāpiào", dist_en: "Check", dist_zh: "支票", dist_pinyin: "zhīpiào", audio: "audio/fapiao.mp3" },
+      { cat: "office", vi: "Xuất Nhập Khẩu", en: "Import & Export", zh: "进出口", pinyin: "jìnchūkǒu", dist_en: "Domestic Trade", dist_zh: "内贸", dist_pinyin: "nèimào", audio: "audio/jinchukou.mp3" },
+      { cat: "office", vi: "Thùng Container", en: "Container", zh: "集装箱", pinyin: "jízhuāngxiāng", dist_en: "Truck", dist_zh: "货车", dist_pinyin: "huòchē", audio: "audio/jizhuangxiang.mp3" },
+      { cat: "office", vi: "Gửi Email Báo Cáo", en: "Send Email", zh: "发邮件", pinyin: "fā yóujiàn", dist_en: "Make Call", dist_zh: "打电话", dist_pinyin: "dǎ diànhuà", audio: "audio/fayoujian.mp3" },
+      { cat: "office", vi: "Họp Trực Tuyến", en: "Online Meeting", zh: "线上会议", pinyin: "xiànshàng huìyì", dist_en: "Interview", dist_zh: "面试", dist_pinyin: "miànshì", audio: "audio/xianshanghuiyi.mp3" },
+      { cat: "office", vi: "In Ấn Tài Liệu", en: "Print Documents", zh: "打印资料", pinyin: "dǎyìn zīliào", dist_en: "Copy File", dist_zh: "复印", dist_pinyin: "fùyìn", audio: "audio/dayinziliao.mp3" },
+      { cat: "office", vi: "Duyệt Chi Phí", en: "Approve Expenses", zh: "审批费用", pinyin: "shēnpī fèiyong", dist_en: "Audit", dist_zh: "审计", dist_pinyin: "shěnjì", audio: "audio/shenpifeiyong.mp3" },
+      { cat: "office", vi: "Đàm Phán Giá Cả", en: "Price Negotiation", zh: "价格谈判", pinyin: "jiàgé tánpàn", dist_en: "Auction", dist_zh: "拍卖", dist_pinyin: "pāimài", audio: "audio/jiagetanpan.mp3" },
+      { cat: "office", vi: "Thanh Toán Đặt Cọc", en: "Pay Deposit", zh: "支付定金", pinyin: "zhīfù dìngjīn", dist_en: "Refund", dist_zh: "退款", dist_pinyin: "tuìkuǎn", audio: "audio/zhifudingjin.mp3" },
+      { cat: "office", vi: "Hồ Sơ Khách Hàng", en: "Client File", zh: "客户档案", pinyin: "kèhù dàng'àn", dist_en: "Catalog", dist_zh: "样品册", dist_pinyin: "yàngpǐncè", audio: "audio/kehudangan.mp3" },
+      { cat: "office", vi: "Thông Báo Công Văn", en: "Official Notice", zh: "通知公文", pinyin: "tōngzhī gōngwén", dist_en: "Memo", dist_zh: "备忘录", dist_pinyin: "bèiwànglù", audio: "audio/tongzhigongwen.mp3" },
+      { cat: "office", vi: "Đơn Đặt Hàng (PO)", en: "Purchase Order", zh: "采购订单", pinyin: "cǎigòu dìngdān", dist_en: "Invoice", dist_zh: "发票", dist_pinyin: "fāpiào", audio: "audio/caigoudingdan.mp3" },
+      { cat: "office", vi: "Nghiệm Thu Trả Hàng", en: "Return Inspection", zh: "退货验收", pinyin: "tuìhuò yànshōu", dist_en: "Delivery", dist_zh: "出货", dist_pinyin: "chūhuò", audio: "audio/tuihuoyanshou.mp3" },
+
+      // 10. CÔNG NGHỆ THÔNG TIN & AI (TECH & AI)
+      { cat: "tech", vi: "Trí Tuệ Nhân Tạo (AI)", en: "Artificial Intelligence", zh: "人工智能", pinyin: "réngōng zhìnéng", dist_en: "Big Data", dist_zh: "大数据", dist_pinyin: "dàshùjù", audio: "audio/rengongzhineng.mp3" },
+      { cat: "tech", vi: "Cơ Sở Dữ Liệu", en: "Database", zh: "数据库", pinyin: "shùjùkù", dist_en: "Spreadsheet", dist_zh: "表格", dist_pinyin: "biǎogé", audio: "audio/shujuku.mp3" },
+      { cat: "tech", vi: "Máy Chủ Đám Mây", en: "Cloud Server", zh: "云服务器", pinyin: "yún fúwùqì", dist_en: "Hard Disk", dist_zh: "硬盘", dist_pinyin: "yìngpán", audio: "audio/yunfuwuqi.mp3" },
+      { cat: "tech", vi: "Lập Trình Thuật Toán", en: "Algorithm Coding", zh: "算法编程", pinyin: "suànfǎ biānchéng", dist_en: "Web Design", dist_zh: "网页设计", dist_pinyin: "wǎngyè shèjì", audio: "audio/suanfabiancheng.mp3" },
+      { cat: "tech", vi: "Giao Diện Người Dùng (UI)", en: "User Interface", zh: "用户界面", pinyin: "yònghù jièmiàn", dist_en: "Backend", dist_zh: "后端", dist_pinyin: "hòuduān", audio: "audio/yonghujiemian.mp3" },
+      { cat: "tech", vi: "Sửa Lỗi Lỗ Hổng (Fix Bug)", en: "Patch Bug", zh: "修复漏洞", pinyin: "xiūfù lòudòng", dist_en: "Reboot", dist_zh: "重启", dist_pinyin: "chóngqǐ", audio: "audio/xiufuloudong.mp3" },
+      { cat: "tech", vi: "Mã Nguồn Mở", en: "Open Source", zh: "开源代码", pinyin: "kāiyuán dàimǎ", dist_en: "Copyright", dist_zh: "版权", dist_pinyin: "bǎnquán", audio: "audio/kaiyuandaima.mp3" },
+      { cat: "tech", vi: "Mạng Cục Bộ (LAN/WiFi)", en: "Local Area Network", zh: "局域网", pinyin: "júyùwǎng", dist_en: "Internet", dist_zh: "互联网", dist_pinyin: "hùliánwǎng", audio: "audio/juyuwang.mp3" },
+      { cat: "tech", vi: "An Toàn Thông Tin", en: "Cyber Security", zh: "信息安全", pinyin: "xìnxī ānquán", dist_en: "Firewall", dist_zh: "防火墙", dist_pinyin: "fánghuǒqiáng", audio: "audio/xinxianquan.mp3" },
+      { cat: "tech", vi: "Dữ Liệu Lớn (Big Data)", en: "Big Data", zh: "大数据", pinyin: "dàshùjù", dist_en: "Small Data", dist_zh: "小数据", dist_pinyin: "xiǎoshùjù", audio: "audio/dashuju.mp3" },
+
+      // 11. GIAO TIẾP THỰC CHIẾN & ĐỜI SỐNG (SOCIAL & DINING)
+      { cat: "social", vi: "Mời Ăn Cơm", en: "Treat to Dinner", zh: "请客吃饭", pinyin: "qǐngkè chīfàn", dist_en: "Split Bill", dist_zh: "AA制", dist_pinyin: "AA zhì", audio: "audio/qingkechifan.mp3" },
+      { cat: "social", vi: "Tính Tiền / Thanh Toán", en: "Pay the Bill", zh: "买单", pinyin: "mǎidān", dist_en: "Tip", dist_zh: "小费", dist_pinyin: "xiǎofèi", audio: "audio/maidan.mp3" },
+      { cat: "social", vi: "Quét Mã WeChat", en: "Scan WeChat Code", zh: "扫微信码", pinyin: "sǎo Wēixìn mǎ", dist_en: "Cash", dist_zh: "现金", dist_pinyin: "xiànjīn", audio: "audio/saoweixinma.mp3" },
+      { cat: "social", vi: "Bắt Xe Didi / Taxi", en: "Hail a Taxi", zh: "打滴滴", pinyin: "dǎ Dīdī", dist_en: "Subway", dist_zh: "坐地铁", dist_pinyin: "zuò dìtiě", audio: "audio/dadididi.mp3" },
+      { cat: "social", vi: "Đặt Phòng Khách Sạn", en: "Book Hotel", zh: "预订酒店", pinyin: "yùdìng jiǔdiàn", dist_en: "Rent Car", dist_zh: "租车", dist_pinyin: "zūchē", audio: "audio/yudingjiudian.mp3" },
+      { cat: "social", vi: "Đổi Ngoại Tệ", en: "Exchange Currency", zh: "兑换货币", pinyin: "duìhuàn huòbì", dist_en: "Deposit", dist_zh: "存款", dist_pinyin: "cúnkuǎn", audio: "audio/duihuanhuobi.mp3" },
+      { cat: "social", vi: "Mấy Giờ Gặp Nhau", en: "What Time to Meet", zh: "几点见面", pinyin: "jǐ diǎn jiànmiàn", dist_en: "Where to Go", dist_zh: "去哪里", dist_pinyin: "qù nǎlǐ", audio: "audio/jidianjianmian.mp3" },
+      { cat: "social", vi: "Cạn Ly 100%!", en: "Cheers!", zh: "干杯", pinyin: "gānbēi", dist_en: "Tea", dist_zh: "喝茶", dist_pinyin: "hēchá", audio: "audio/ganbei.mp3" },
+      { cat: "social", vi: "Không Có Gì Đâu / Yên Tâm", en: "No Problem", zh: "没问题", pinyin: "méi wèntí", dist_en: "Trouble", dist_zh: "有麻烦", dist_pinyin: "yǒu máfan", audio: "audio/meiwenti.mp3" },
+      { cat: "social", vi: "Cho Xin WeChat Kết Bạn", en: "Add on WeChat", zh: "加个微信", pinyin: "jiā gè Wēixìn", dist_en: "Phone Call", dist_zh: "打电话", dist_pinyin: "dǎ diànhuà", audio: "audio/jiageweixin.mp3" },
+      { cat: "food", vi: "Lẩu Tứ Xuyên", en: "Hot Pot", zh: "火锅", pinyin: "huǒguō", dist_en: "Barbecue", dist_zh: "烧烤", dist_pinyin: "shāokǎo", audio: "audio/huoguo.mp3" },
+      { cat: "food", vi: "Sủi Cảo", en: "Dumplings", zh: "水饺", pinyin: "shuǐjiǎo", dist_en: "Noodles", dist_zh: "面条", dist_pinyin: "miàntiáo", audio: "audio/shuijiao.mp3" },
+      { cat: "food", vi: "Vịt Quay Bắc Kinh", en: "Roast Duck", zh: "烤鸭", pinyin: "kǎoyā", dist_en: "Chicken", dist_zh: "烤鸡", dist_pinyin: "kǎojī", audio: "audio/kaoya.mp3" },
+      { cat: "food", vi: "Trà Sữa Trân Châu", en: "Bubble Tea", zh: "珍珠奶茶", pinyin: "zhēnzhū nǎichá", dist_en: "Lemon Tea", dist_zh: "柠檬茶", dist_pinyin: "níngméngchá", audio: "audio/zhenzhunaicha.mp3" },
+      { cat: "food", vi: "Món Xào Nóng", en: "Stir-fry Dish", zh: "炒菜", pinyin: "chǎocài", dist_en: "Soup", dist_zh: "热汤", dist_pinyin: "rètāng", audio: "audio/chaocai.mp3" },
+      { cat: "food", vi: "Cơm Trắng", en: "Steamed Rice", zh: "米饭", pinyin: "mǐfàn", dist_en: "Bread", dist_zh: "面包", dist_pinyin: "miànbāo", audio: "audio/mifan.mp3" },
     ];
 
     // ==========================================
@@ -1078,6 +1144,186 @@
         wrong_pinyin: "Jīntiān tiānqì fēicháng hǎo, yángguāng míngmèi.",
         wrong_vi: "Hôm nay thời tiết rất tốt, nắng chan hòa.",
         a_audio: "audio/dlg_13_a.mp3"
+      },
+      {
+        id: 14,
+        speaker: "⚡ Kỹ Sư Điện Tử",
+        q_zh: "这块电路板为什么没有输出电压？",
+        q_pinyin: "Zhè kuài diànlùbǎn wèishénme méiyǒu shūchū diànyā?",
+        q_vi: "Bảng mạch này tại sao không có điện áp đầu ra?",
+        q_audio: "audio/dlg_14_q.mp3",
+        correct_zh: "检查发现保险丝烧断了，需要换新的。",
+        correct_pinyin: "Jiǎnchá fāxiàn bǎoxiǎnsī shāoduàn le, xūyào huàn xīn de.",
+        correct_vi: "Kiểm tra phát hiện cầu chì bị đứt, cần thay mới.",
+        wrong_zh: "明天上午我想去买一件衣服。",
+        wrong_pinyin: "Míngtiān shàngwǔ wǒ xiǎng qù mǎi yī jiàn yīfu.",
+        wrong_vi: "Sáng mai tôi muốn đi mua một chiếc áo.",
+        a_audio: "audio/dlg_14_a.mp3"
+      },
+      {
+        id: 15,
+        speaker: "🤖 Kỹ Thuật Tự Động Hóa",
+        q_zh: "传感器信号灯为什么一直在闪红光？",
+        q_pinyin: "Chuángǎnqì xìnhàodēng wèishénme yīzhí zài shǎn hóngguāng?",
+        q_vi: "Đèn tín hiệu cảm biến tại sao nhấp nháy đỏ liên tục?",
+        q_audio: "audio/dlg_15_q.mp3",
+        correct_zh: "可能是接线松了，重新拧紧就正常了。",
+        correct_pinyin: "Kěnéng shì jiēxiàn sōng le, chóngxīn nǐngjǐn jiù zhèngcháng le.",
+        correct_vi: "Có thể dây bị lỏng, siết chặt lại là bình thường.",
+        wrong_zh: "我喜欢在家里看电视。",
+        wrong_pinyin: "Wǒ xǐhuān zài jiālǐ kàn diànshì.",
+        wrong_vi: "Tôi thích ở nhà xem tivi.",
+        a_audio: "audio/dlg_15_a.mp3"
+      },
+      {
+        id: 16,
+        speaker: "🔌 Quản Đốc Bảo Trì",
+        q_zh: "这台PLC程序修改好并测试了吗？",
+        q_pinyin: "Zhè tái PLC chéngxù xiūgǎi hǎo bìng cèshì le ma?",
+        q_vi: "Chương trình PLC này đã sửa và test xong chưa?",
+        q_audio: "audio/dlg_16_q.mp3",
+        correct_zh: "已经上传测试完成，运行非常稳定。",
+        correct_pinyin: "Yǐjīng shàngchuán cèshì wánchéng, yùnxíng fēicháng wěndìng.",
+        correct_vi: "Đã nạp vào test xong, chạy rất ổn định.",
+        wrong_zh: "昨天的苹果味道很甜。",
+        wrong_pinyin: "Zuótiān de píngguǒ wèidào hěn tián.",
+        wrong_vi: "Quả táo hôm qua vị rất ngọt.",
+        a_audio: "audio/dlg_16_a.mp3"
+      },
+      {
+        id: 17,
+        speaker: "💼 Giám Đốc Kinh Doanh",
+        q_zh: "客户催要那份新产品的报价单！",
+        q_pinyin: "Kèhù cuī yào nà fèn xīn chǎnpǐn de bàojiàdān!",
+        q_vi: "Khách hàng đang giục gửi bảng báo giá sản phẩm mới!",
+        q_audio: "audio/dlg_17_q.mp3",
+        correct_zh: "我已经核算好成本，马上发邮件给客户。",
+        correct_pinyin: "Wǒ yǐjīng hésuàn hǎo chéngběn, mǎshàng fā yóujiàn gěi kèhù.",
+        correct_vi: "Tôi đã tính xong giá thành, gửi email cho khách ngay.",
+        wrong_zh: "外面下大雨了，记得带伞。",
+        wrong_pinyin: "Wàimiàn xià dàyǔ le, jìde dài sǎn.",
+        wrong_vi: "Bên ngoài mưa to rồi, nhớ mang ô nhé.",
+        a_audio: "audio/dlg_17_a.mp3"
+      },
+      {
+        id: 18,
+        speaker: "📦 Chuyên Viên Xuất Nhập Khẩu",
+        q_zh: "这批集装箱的海关申报手续办好了吗？",
+        q_pinyin: "Zhè pī jízhuāngxiāng de hǎiguān shēnbào shǒuxù bàn hǎo le ma?",
+        q_vi: "Thủ tục khai báo hải quan lô container đã xong chưa?",
+        q_audio: "audio/dlg_18_q.mp3",
+        correct_zh: "报关资料全部审核通过，今天可以放行。",
+        correct_pinyin: "Bàoguān zīliào quánbù shěnhè tōngguò, jīntiān kěyǐ fàngxíng.",
+        correct_vi: "Hồ sơ thông quan đã duyệt xong hết, hôm nay được thông quan.",
+        wrong_zh: "我去超市买一点水果。",
+        wrong_pinyin: "Wǒ qù chāoshì mǎi yīdiǎn shuǐguǒ.",
+        wrong_vi: "Tôi đi siêu thị mua một ít trái cây.",
+        a_audio: "audio/dlg_18_a.mp3"
+      },
+      {
+        id: 19,
+        speaker: "📊 Kế Toán Trưởng",
+        q_zh: "供应商的预付款今天能安排支付吗？",
+        q_pinyin: "Gōngyìngshāng de yùfùkuǎn jīntiān néng ānpái zhīfù ma?",
+        q_vi: "Tiền tạm ứng của nhà cung cấp hôm nay có chuyển được không?",
+        q_audio: "audio/dlg_19_q.mp3",
+        correct_zh: "领导已经签字审批，下午网银转账。",
+        correct_pinyin: "Lǐngdǎo yǐjīng qiānzì shēnpī, xiàwǔ wǎngyín zhuǎnzhàng.",
+        correct_vi: "Sếp đã ký duyệt rồi, chiều nay chuyển khoản online.",
+        wrong_zh: "今天晚上我们去跑步吧。",
+        wrong_pinyin: "Jīntiān wǎnshang wǒmen qù pǎobù ba.",
+        wrong_vi: "Tối nay chúng ta đi chạy bộ nhé.",
+        a_audio: "audio/dlg_19_a.mp3"
+      },
+      {
+        id: 20,
+        speaker: "💻 Kỹ Sư Hệ Thống",
+        q_zh: "为什么今天云服务器连接这么慢？",
+        q_pinyin: "Wèishénme jīntiān yún fúwùqì liánjiē zhème màn?",
+        q_vi: "Tại sao hôm nay kết nối máy chủ đám mây lại chậm thế?",
+        q_audio: "audio/dlg_20_q.mp3",
+        correct_zh: "正在备份核心数据库，十分钟后恢复正常。",
+        correct_pinyin: "Zhèngzài bèifèn héxīn shùjùkù, shí fēnzhōng hòu huìfù zhèngcháng.",
+        correct_vi: "Đang sao lưu cơ sở dữ liệu, 10 phút nữa bình thường.",
+        wrong_zh: "操场上有好多人在打篮球。",
+        wrong_pinyin: "Cāochǎng shàng yǒu hǎoduō rén zài dǎ lánqiú.",
+        wrong_vi: "Trên sân có nhiều người đang chơi bóng rổ.",
+        a_audio: "audio/dlg_20_a.mp3"
+      },
+      {
+        id: 21,
+        speaker: "🛡️ Chuyên Viên An Ninh Mạng",
+        q_zh: "发现一个系统漏洞，需要紧急修复！",
+        q_pinyin: "Fāxiàn yī gè xìtǒng lòudòng, xūyào jǐnjí xiūfù!",
+        q_vi: "Phát hiện một lỗ hổng hệ thống, cần sửa gấp!",
+        q_audio: "audio/dlg_21_q.mp3",
+        correct_zh: "收到，我们马上打上安全补丁并重启服务。",
+        correct_pinyin: "Shōudào, wǒmen mǎshàng dǎ shàng ānquán bǔdīng bìng chóngqǐ fúwù.",
+        correct_vi: "Rõ, chúng tôi cài bản vá bảo mật và khởi động lại dịch vụ ngay.",
+        wrong_zh: "我最喜欢的颜色是蓝色。",
+        wrong_pinyin: "Wǒ zuì xǐhuān de yánsè shì lánsè.",
+        wrong_vi: "Màu tôi thích nhất là màu xanh lam.",
+        a_audio: "audio/dlg_21_a.mp3"
+      },
+      {
+        id: 22,
+        speaker: "🤝 Đối Tác Trung Quốc",
+        q_zh: "今晚有空吗？我请大家一起吃四川火锅！",
+        q_pinyin: "Jīnwǎn yǒu kòng ma? Wǒ qǐng dàjiā yīqǐ chī Sìchuān huǒguō!",
+        q_vi: "Tối nay rảnh không? Tôi mời mọi người đi ăn lẩu Tứ Xuyên!",
+        q_audio: "audio/dlg_22_q.mp3",
+        correct_zh: "太感谢了！下班后我们七点在餐厅门口集合。",
+        correct_pinyin: "Tài gǎnxiè le! Xiàbān hòu wǒmen qī diǎn zài cāntīng ménkǒu jíhé.",
+        correct_vi: "Cảm ơn nhiều nhé! Tan làm 7 giờ tập trung trước cửa nhà hàng.",
+        wrong_zh: "电脑键盘上的回车键坏了。",
+        wrong_pinyin: "Diànnǎo jiànpán shàng de huíchējiàn huài le.",
+        wrong_vi: "Phím Enter trên bàn phím máy tính bị hỏng.",
+        a_audio: "audio/dlg_22_a.mp3"
+      },
+      {
+        id: 23,
+        speaker: "🍽️ Thu Ngân Nhà Hàng",
+        q_zh: "你好，请问您微信支付还是支付宝？",
+        q_pinyin: "Nǐ hǎo, qǐngwèn nín Wēixìn zhīfù háishì Zhīfùbǎo?",
+        q_vi: "Xin chào, xin hỏi bạn trả bằng WeChat hay Alipay?",
+        q_audio: "audio/dlg_23_q.mp3",
+        correct_zh: "我扫您的微信收款码，请出示一下。",
+        correct_pinyin: "Wǒ sǎo nín de Wēixìn shōukuǎnmǎ, qǐng chūshì yīxià.",
+        correct_vi: "Tôi quét mã WeChat của bạn, vui lòng đưa mã ra giúp tôi.",
+        wrong_zh: "这辆自行车的轮胎没有气。",
+        wrong_pinyin: "Zhè liàng zìxíngchē de lúntāi méiyǒu qì.",
+        wrong_vi: "Lốp của chiếc xe đạp này hết hơi rồi.",
+        a_audio: "audio/dlg_23_a.mp3"
+      },
+      {
+        id: 24,
+        speaker: "🤝 Khách Hàng Thâm Quyến",
+        q_zh: "很高兴今天认识您，加个微信方便联系吧！",
+        q_pinyin: "Hěn gāoxìng jīntiān rènshi nín, jiā gè Wēixìn fāngbiàn liánxì ba!",
+        q_vi: "Rất vui hôm nay được quen biết bạn, cho xin WeChat nhé!",
+        q_audio: "audio/dlg_24_q.mp3",
+        correct_zh: "好啊，这是我的微信二维码，您扫我。",
+        correct_pinyin: "Hǎo a, zhè shì wǒ de Wēixìn èrwèimǎ, nín sǎo wǒ.",
+        correct_vi: "Được chứ, đây là mã QR WeChat của tôi, bạn quét tôi nhé.",
+        wrong_zh: "天空上的白云像棉花糖一样。",
+        wrong_pinyin: "Tiānkōng shàng de báiyún xiàng miánhuatáng yīyàng.",
+        wrong_vi: "Đám mây trắng trên trời giống như kẹo bông gòn.",
+        a_audio: "audio/dlg_24_a.mp3"
+      },
+      {
+        id: 25,
+        speaker: "🚗 Tài Xế Didi",
+        q_zh: "师傅，请问到国际机场大概需要多长时间？",
+        q_pinyin: "Shīfu, qǐngwèn dào guójì jīchǎng dàgài xūyào duō cháng shíjiān?",
+        q_vi: "Bác tài ơi, đến sân bay quốc tế mất khoảng bao lâu?",
+        q_audio: "audio/dlg_25_q.mp3",
+        correct_zh: "现在不堵车，大概四十分钟就能到。",
+        correct_pinyin: "Xiànzài bù dǔchē, dàgài sìshí fēnzhōng jiù néng dào.",
+        correct_vi: "Bây giờ không kẹt xe, tầm 40 phút là tới nơi.",
+        wrong_zh: "铅笔盒里有三支圆珠笔。",
+        wrong_pinyin: "Qiānbǐhé lǐ yǒu sān zhī yuánzhūbǐ.",
+        wrong_vi: "Trong hộp bút chì có ba cái bút bi.",
+        a_audio: "audio/dlg_25_a.mp3"
       }
     ];
 
@@ -1206,6 +1452,8 @@
         activeVocabList = [...FACTORY_DIALOGUES];
       } else if (cat === 'all') { 
         activeVocabList = [...FULL_VOCAB_DATABASE];
+      } else if (cat === 'social') {
+        activeVocabList = FULL_VOCAB_DATABASE.filter(v => v.cat === 'social' || v.cat === 'greet');
       } else {
         activeVocabList = FULL_VOCAB_DATABASE.filter(v => v.cat === cat);
       }
