@@ -28,12 +28,14 @@ def main():
     cloud_url = "https://rolled-pmc-ver-greatest.trycloudflare.com"
 
     caption = (
-        "✨ <b>CYBERBIRD LINGO PRO v2.5.0 - SONG KIẾM HỢP BÍCH!</b>\n\n"
-        "1️⃣ <b>💬 Hội Thoại Thực Chiến:</b> Hiện tình huống xưởng của Giám Đốc/QC, bay vào câu trả lời logic!\n"
-        "2️⃣ <b>🎯 Luyện Từ Vựng Nhè Nhẹ:</b> Hiện nghĩa Tiếng Việt trên đỉnh, bay đúng vào chữ Hán & Pinyin!\n"
-        "🎮 <b>3 Cấp Độ Tốc Độ:</b> 🟢 Dễ (Chill) • 🟡 Vừa (Chuẩn) • 🔴 Siêu Tốc (Pro)!\n\n"
-        f"🔗 <b>Bấm vào đây để chơi ngay:</b>\n{cloud_url}\n\n"
-        "💡 <i>Hoặc quét mã QR đính kèm để mở ngay trên điện thoại!</i>"
+        "🎧 <b>CYBERBIRD LINGO PRO v2.5.1 - TỐI ƯU HÓA ÂM THANH TINH GỌN!</b>\n\n"
+        "✨ <i>Em đã tinh chỉnh toàn bộ hệ thống âm thanh theo đúng chỉ đạo tinh tế của Sếp:</i>\n\n"
+        "1️⃣ <b>Chống Loạn Âm Khi Bay:</b> Trong lúc bay ở chế độ Hội Thoại, loa chỉ đọc câu hỏi của xưởng. Câu trả lời không đọc khi bay để tránh đè âm — tập trung phản xạ mắt và căn cánh bay!\n"
+        "2️⃣ <b>Chuông Arcade 'Ting Ting' Trong Veo:</b> Thay thế các tiếng nói động viên ('đạt', 'lợi hại') bằng chuông đôi pha lê <i>Ting Ting</i> cổ điển, cực kỳ đã tai và không làm mất tập trung.\n"
+        "3️⃣ <b>Xóa Bỏ 100% Tạp Âm & Tiếng Nhiễu:</b> Khử sạch tiếng xì xào ngẫu nhiên khi đập cánh và tiếng bíp radio rè rè.\n"
+        "4️⃣ <b>Nghe Câu Trả Lời Khi Ôn Tập:</b> Nút <i>'🔊 Nghe lại câu trả lời chuẩn'</i> nằm trọn vẹn ở bảng Flashcard khi dừng game để tĩnh tâm tiếp thu sâu.\n\n"
+        f"🔗 <b>Bấm vào đây để trải nghiệm ngay:</b>\n{cloud_url}\n\n"
+        "💡 <i>Quét mã QR đính kèm hoặc bấm link để test thử âm thanh mới nhé Sếp!</i>"
     )
 
     url = f"https://api.telegram.org/bot{token}/sendPhoto"
