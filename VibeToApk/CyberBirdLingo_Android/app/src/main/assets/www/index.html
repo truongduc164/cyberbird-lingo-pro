@@ -108,10 +108,21 @@
       font-weight: 700;
       cursor: pointer;
       backdrop-filter: blur(8px);
+      transition: all 0.15s;
     }
     .sound-toggle.muted {
       color: #64748b;
       border-color: rgba(100, 116, 139, 0.3);
+    }
+    .sound-toggle.menu-toggle {
+      color: #fde047;
+      border-color: rgba(253, 224, 71, 0.45);
+      background: rgba(245, 158, 11, 0.15);
+    }
+    .sound-toggle.menu-toggle:hover {
+      background: rgba(245, 158, 11, 0.3);
+      border-color: #fde047;
+      box-shadow: 0 0 10px rgba(253, 224, 71, 0.4);
     }
 
     /* Vocabulary Quest Banner */
@@ -202,52 +213,80 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(5, 8, 20, 0.92);
-      backdrop-filter: blur(16px);
+      background: rgba(5, 8, 20, 0.94);
+      backdrop-filter: blur(18px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 16px;
       text-align: center;
       z-index: 30;
+      overflow-y: auto;
       transition: opacity 0.3s;
     }
     .overlay-screen.hidden {
       display: none;
     }
     .game-logo {
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 900;
-      background: linear-gradient(135deg, #38bdf8, #818cf8, #f472b6);
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #f472b6 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 4px;
       letter-spacing: 1.5px;
-      text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.35));
     }
     .game-subtitle {
       font-size: 12px;
       color: #94a3b8;
-      margin-bottom: 18px;
-      max-width: 300px;
+      margin-bottom: 16px;
+      max-width: 320px;
       line-height: 1.4;
     }
     .play-btn {
-      background: linear-gradient(135deg, #0284c7, #2563eb);
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
       color: #fff;
       border: none;
-      font-size: 17px;
-      font-weight: 800;
-      padding: 13px 40px;
+      font-size: 16px;
+      font-weight: 900;
+      padding: 12px 36px;
       border-radius: 28px;
       cursor: pointer;
-      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.6);
-      transition: transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.55);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       letter-spacing: 0.5px;
     }
+    .play-btn:hover {
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.75);
+      transform: translateY(-2px);
+    }
     .play-btn:active {
-      transform: scale(0.96);
+      transform: scale(0.97);
+    }
+    .menu-btn {
+      background: rgba(15, 23, 42, 0.85);
+      color: #38bdf8;
+      border: 1.5px solid rgba(56, 189, 248, 0.45);
+      font-size: 13.5px;
+      font-weight: 800;
+      padding: 11px 26px;
+      border-radius: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+      transition: all 0.2s;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(8px);
+    }
+    .menu-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.45);
+      transform: translateY(-1px);
+    }
+    .menu-btn:active {
+      transform: scale(0.97);
     }
     .category-bar {
       display: flex;
@@ -554,6 +593,7 @@
       <div class="audio-group">
         <button id="btn-audio" class="sound-toggle" onclick="toggleAudio()">🔊 SFX</button>
         <button id="btn-bgm" class="sound-toggle muted" onclick="toggleBGM()">🎵 BGM</button>
+        <button id="btn-menu-top" class="sound-toggle menu-toggle" onclick="returnToMenu()">🏠 Menu</button>
       </div>
     </div>
 
@@ -698,8 +738,11 @@
         </button>
       </div>
 
-      <button class="play-btn" onclick="startGame()">CHƠI LẠI NGAY ⚡</button>
-      <div style="font-size: 11px; color: #64748b; margin-top: 14px;">
+      <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 320px; align-items: center; margin-top: 6px;">
+        <button class="play-btn" style="width: 100%;" onclick="startGame()">CHƠI LẠI NGAY ⚡</button>
+        <button class="menu-btn" style="width: 100%;" onclick="returnToMenu()">🏠 ĐỔI CHẾ ĐỘ & CHỦ ĐỀ</button>
+      </div>
+      <div style="font-size: 11px; color: #64748b; margin-top: 12px;">
         CyberBird Lingo • Engine Architecture by <b>DEAN</b>
       </div>
     </div>
@@ -976,6 +1019,21 @@
         wrong_pinyin: "Zhè běn xiǎoshuō fēicháng yǒu yìsi.",
         wrong_vi: "Quyển tiểu thuyết này rất thú vị.",
         a_audio: "audio/dlg_12_a.mp3"
+      },
+      {
+        id: 13,
+        speaker: "🛠️ Thợ Ép Vỉ / Quản Lý",
+        q_zh: "是不是4号吸塑模有问题？",
+        q_pinyin: "Shì bu shì sì hào xīsùmú yǒu wèntí?",
+        q_vi: "Có phải khuôn vỉ số 4 có vấn đề không?",
+        q_audio: "audio/dlg_13_q.mp3",
+        correct_zh: "我现在做的也是4号模，问题严重！",
+        correct_pinyin: "Wǒ xiànzài zuò de yěshì sì hào mú, wèntí yánzhòng!",
+        correct_vi: "Cái tôi đang làm cũng là khuôn số 4, vấn đề nghiêm trọng!",
+        wrong_zh: "今天天气非常好，阳光明媚。",
+        wrong_pinyin: "Jīntiān tiānqì fēicháng hǎo, yángguāng míngmèi.",
+        wrong_vi: "Hôm nay thời tiết rất tốt, nắng chan hòa.",
+        a_audio: "audio/dlg_13_a.mp3"
       }
     ];
 
@@ -1048,7 +1106,12 @@
     function switchCategory(cat, btn) {
       currentCategory = cat;
       document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
+      if (btn) {
+        btn.classList.add('active');
+      } else {
+        const found = document.querySelector(`.cat-pill[onclick*="'${cat}'"]`);
+        if (found) found.classList.add('active');
+      }
       if (currentPlayMode === 'dialogue') {
         activeVocabList = [...FACTORY_DIALOGUES];
       } else if (cat === 'all') { 
@@ -1222,6 +1285,24 @@
       }
     }
 
+    let currentVoiceAudio = null;
+
+    function stopCurrentVoice() {
+      if (currentVoiceAudio) {
+        try {
+          currentVoiceAudio.pause();
+          currentVoiceAudio.currentTime = 0;
+          currentVoiceAudio.src = "";
+        } catch(e) {}
+        currentVoiceAudio = null;
+      }
+      if ('speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel();
+        } catch(e) {}
+      }
+    }
+
     // Native Speech Synthesis (Offline 100% Fallback)
     function speakText(text, lang) {
       if (!soundEngine.sfxEnabled || !('speechSynthesis' in window)) return;
@@ -1240,18 +1321,28 @@
         if (onEnd) onEnd();
         return;
       }
+      stopCurrentVoice();
       if (q.audio) {
-        const a = new Audio(q.audio);
-        a.volume = 1.0;
-        a.play().then(() => {
-          if (onEnd) a.onended = onEnd;
-        }).catch(() => {
+        try {
+          const a = new Audio(q.audio);
+          currentVoiceAudio = a;
+          a.volume = 1.0;
+          const p = a.play();
+          if (p !== undefined) {
+            p.then(() => {
+              if (onEnd) a.onended = onEnd;
+            }).catch(() => {
+              speakText(q.zh, 'zh-CN');
+              if (onEnd) setTimeout(onEnd, 600);
+            });
+          }
+        } catch(e) {
           speakText(q.zh, 'zh-CN');
-          if (onEnd) setTimeout(onEnd, 700);
-        });
+          if (onEnd) setTimeout(onEnd, 600);
+        }
       } else {
         speakText(q.zh, 'zh-CN');
-        if (onEnd) setTimeout(onEnd, 700);
+        if (onEnd) setTimeout(onEnd, 600);
       }
     }
 
@@ -1264,13 +1355,22 @@
         if (onEnd) onEnd();
         return;
       }
-      const a = new Audio(path);
-      a.volume = 1.0;
-      a.play().then(() => {
-        if (onEnd) a.onended = onEnd;
-      }).catch(() => {
-        if (onEnd) setTimeout(onEnd, 700);
-      });
+      stopCurrentVoice();
+      try {
+        const a = new Audio(path);
+        currentVoiceAudio = a;
+        a.volume = 1.0;
+        const p = a.play();
+        if (p !== undefined) {
+          p.then(() => {
+            if (onEnd) a.onended = onEnd;
+          }).catch(() => {
+            if (onEnd) setTimeout(onEnd, 600);
+          });
+        }
+      } catch(e) {
+        if (onEnd) setTimeout(onEnd, 600);
+      }
     }
 
     // Game State
@@ -1351,6 +1451,9 @@
 
     // Pick new vocabulary target or workplace dialogue question
     function pickNewQuestion() {
+      if (!activeVocabList || activeVocabList.length === 0) {
+        activeVocabList = (currentPlayMode === 'dialogue') ? [...FACTORY_DIALOGUES] : [...FULL_VOCAB_DATABASE];
+      }
       const q = activeVocabList[Math.floor(Math.random() * activeVocabList.length)];
       currentQuestion = q;
       questBanner.classList.add('pulse');
@@ -1360,7 +1463,7 @@
         if (questSpeaker) questSpeaker.textContent = `${q.speaker}:`;
         questTarget.textContent = q.q_zh;
         if (questSub) questSub.textContent = `Nghĩa: ${q.q_vi}`;
-        playDialogueAudio(q.q_audio, q.q_zh);
+        playDialogueAudio(q.q_audio);
       } else {
         if (questSpeaker) questSpeaker.textContent = "🎯 BAY VÀO TỪ:";
         questTarget.textContent = q.vi;
@@ -1409,7 +1512,16 @@
     });
 
     window.addEventListener('pointerdown', (e) => {
-      if (e.target.closest('.top-bar') || e.target.closest('.play-btn') || e.target.closest('.cat-pill') || e.target.closest('.replay-voice-btn') || e.target.closest('.guide-btn') || e.target.closest('#modal-tutorial')) return;
+      if (e.target.closest('.top-bar') || 
+          e.target.closest('.play-btn') || 
+          e.target.closest('.menu-btn') || 
+          e.target.closest('.sound-toggle') || 
+          e.target.closest('.cat-pill') || 
+          e.target.closest('.mode-tab-btn') || 
+          e.target.closest('.diff-btn') || 
+          e.target.closest('.replay-voice-btn') || 
+          e.target.closest('.guide-btn') || 
+          e.target.closest('#modal-tutorial')) return;
       flap();
     });
 
@@ -1422,25 +1534,51 @@
     }
 
     function startGame() {
+      stopCurrentVoice();
       screenStart.classList.add('hidden');
       screenOver.classList.add('hidden');
+      bird.x = 75;
       bird.y = canvas.height / 2;
       bird.vy = 0;
+      bird.angle = 0;
+      pipes = [];
+      particles = [];
+      floatingTexts = [];
+      score = 0;
+      streak = 0;
+      frameCount = 0;
+      isOverdrive = false;
+      questBanner.classList.remove('overdrive');
+      streakBadge.classList.remove('fever');
+      applyDifficultySettings();
+      updateScoreHUD();
+
+      // Spawn the first gate directly (only 1 single question picked & spoken!)
+      spawnGate();
+
+      gameState = 'playing';
+      soundEngine.playCorrect(0);
+      vibrate([25, 40]);
+      if (soundEngine.bgmEnabled) soundEngine.startBGM();
+    }
+
+    function returnToMenu() {
+      stopCurrentVoice();
+      gameState = 'ready';
+      screenOver.classList.add('hidden');
+      screenStart.classList.remove('hidden');
       pipes = [];
       particles = [];
       floatingTexts = [];
       score = 0;
       streak = 0;
       isOverdrive = false;
-      questBanner.classList.remove('overdrive');
-      streakBadge.classList.remove('fever');
-      applyDifficultySettings();
+      bird.x = 75;
+      bird.y = canvas.height / 2;
+      bird.vy = 0;
+      bird.angle = 0;
       updateScoreHUD();
-      pickNewQuestion();
-      gameState = 'playing';
-      soundEngine.playCorrect(0);
-      vibrate([25, 40]);
-      if (soundEngine.bgmEnabled) soundEngine.startBGM();
+      if (soundEngine) soundEngine.stopBGM();
     }
 
     function updateScoreHUD() {
@@ -1478,7 +1616,7 @@
       }
 
       pipes.push({
-        x: canvas.width + 20,
+        x: canvas.width + 30,
         top: topH,
         passed: false,
         question: q,
@@ -1515,15 +1653,8 @@
 
         updateScoreHUD();
 
-        // In Dialogue mode: Zero spoken answer during flight (only pure Ting Ting bell).
-        // Answer voice is reserved exclusively for GameOver Review Flashcard.
-        if (currentPlayMode !== 'dialogue') {
-          playWordAudio(pipe.question, () => {
-            if (currentMode === 'en' || currentMode === 'duo') {
-              speakText(pipe.question.en, 'en-US');
-            }
-          });
-        }
+        // In-flight feedback: Pure crystal Ting Ting bell (zero voice clutter during flight)
+        // Full spoken pronunciation is reserved exclusively for the GameOver Review Flashcard.
 
         // Particle Starburst
         const burstColor = isOverdrive ? `hsl(${(frameCount * 15) % 360}, 100%, 65%)` : '#10b981';
@@ -1549,6 +1680,7 @@
     }
 
     function gameOver(q) {
+      stopCurrentVoice();
       gameState = 'over';
       lastWrongQuestion = q;
       soundEngine.playCrash();
@@ -1593,11 +1725,9 @@
     function replayPronunciation() {
       if (!lastWrongQuestion) return;
       if (currentPlayMode === 'dialogue') {
-        playDialogueAudio(lastWrongQuestion.a_audio, lastWrongQuestion.correct_zh);
+        playDialogueAudio(lastWrongQuestion.a_audio);
       } else {
-        playWordAudio(lastWrongQuestion, () => {
-          speakText(lastWrongQuestion.en, 'en-US');
-        });
+        playWordAudio(lastWrongQuestion);
       }
     }
 
@@ -1688,10 +1818,16 @@
           gameOver(currentQuestion);
         }
 
-        // Spawn gates every 130 frames (~2.1 seconds)
+        // Distance-based gate spawning (uniform spacing regardless of screen refresh rate)
         frameCount++;
-        if (frameCount % 130 === 0) {
+        if (pipes.length === 0) {
           spawnGate();
+        } else {
+          const lastPipe = pipes[pipes.length - 1];
+          const minSpacing = (currentDifficulty === 'easy') ? 340 : ((currentDifficulty === 'hard') ? 280 : 310);
+          if (canvas.width + 30 - lastPipe.x >= minSpacing) {
+            spawnGate();
+          }
         }
 
         // Update & Draw Gates
