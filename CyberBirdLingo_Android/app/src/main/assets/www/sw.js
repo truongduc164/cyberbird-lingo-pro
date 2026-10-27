@@ -1,8 +1,111 @@
-// Simple offline cache service worker
-const CACHE_NAME = 'vibe-cache-v1';
+const CACHE_NAME = 'cyberbird-lingo-v3.0-timeline';
+const ASSETS = [
+  './',
+  './index.html',
+  './manifest.json',
+  './daily_timeline_data.js',
+  './daily_timeline.json',
+  './icon-192.png',
+  './icon-512.png',
+  './apple-touch-icon.png',
+  './audio/toukui.mp3',
+  './audio/kuike.mp3',
+  './audio/huanchongceng.mp3',
+  './audio/fengjing.mp3',
+  './audio/xiabadai.mp3',
+  './audio/kakou.mp3',
+  './audio/neichen.mp3',
+  './audio/tongfengkong.mp3',
+  './audio/liushuixian.mp3',
+  './audio/zhusuji.mp3',
+  './audio/muju.mp3',
+  './audio/penqi.mp3',
+  './audio/zuzhuang.mp3',
+  './audio/zhuangxiang.mp3',
+  './audio/pinjian.mp3',
+  './audio/hege.mp3',
+  './audio/cipin.mp3',
+  './audio/huashang.mp3',
+  './audio/zhuangjiceshi.mp3',
+  './audio/jintianjiaban.mp3',
+  './audio/kaizaohui.mp3',
+  './audio/huibaojindu.mp3',
+  './audio/changzhang.mp3',
+  './audio/zuzhang.mp3',
+  './audio/gandingdan.mp3',
+  './audio/anquandiyi.mp3',
+  './audio/anshijiaohuo.mp3',
+  './audio/praise_taibangle.mp3',
+  './audio/praise_zhengque.mp3',
+  './audio/praise_lihai.mp3',
+  './audio/dlg_01_q.mp3', './audio/dlg_01_a.mp3',
+  './audio/dlg_02_q.mp3', './audio/dlg_02_a.mp3',
+  './audio/dlg_03_q.mp3', './audio/dlg_03_a.mp3',
+  './audio/dlg_04_q.mp3', './audio/dlg_04_a.mp3',
+  './audio/dlg_05_q.mp3', './audio/dlg_05_a.mp3',
+  './audio/dlg_06_q.mp3', './audio/dlg_06_a.mp3',
+  './audio/dlg_07_q.mp3', './audio/dlg_07_a.mp3',
+  './audio/dlg_08_q.mp3', './audio/dlg_08_a.mp3',
+  './audio/dlg_09_q.mp3', './audio/dlg_09_a.mp3',
+  './audio/dlg_10_q.mp3', './audio/dlg_10_a.mp3',
+  './audio/dlg_11_q.mp3', './audio/dlg_11_a.mp3',
+  './audio/dlg_12_q.mp3', './audio/dlg_12_a.mp3'
+];
+
 self.addEventListener('install', (e) => {
-  self.skipWaiting();
+  e.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(ASSETS))
+      .then(() => self.skipWaiting())
+  );
 });
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.map((key) => {
+          if (key !== CACHE_NAME) return caches.delete(key);
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
+});
+
 self.addEventListener('fetch', (e) => {
-  e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+  const url = e.request.url;
+  const isDynamicDoc =
+    e.request.mode === 'navigate' ||
+    url.includes('index.html') ||
+    url.includes('daily_timeline');
+
+  if (isDynamicDoc) {
+    // Network-First with Offline Cache Fallback so Watchdog daily updates appear immediately
+    e.respondWith(
+      fetch(e.request)
+        .then((netRes) => {
+          if (netRes && netRes.status === 200 && url.startsWith('http')) {
+            const clone = netRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+          }
+          return netRes;
+        })
+        .catch(() => caches.match(e.request, { ignoreSearch: true }))
+    );
+    return;
+  }
+
+  // Cache-First + Dynamic Cache for MP3 audio and icons
+  e.respondWith(
+    caches.match(e.request).then((res) => {
+      if (res) return res;
+      return fetch(e.request).then((netRes) => {
+        if (netRes && netRes.status === 200 && url.startsWith('http')) {
+          const clone = netRes.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+        }
+        return netRes;
+      }).catch(() => res);
+    })
+  );
 });

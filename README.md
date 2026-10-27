@@ -1,77 +1,40 @@
-# 📱 VibeToApk Studio
-> **1-Click Packaging for Vibe Coding to Android APK**  
-> Biến ý tưởng Web App từ Vibe Coding thành ứng dụng di động Android (.APK) hoàn chỉnh.
+# 🦅 CyberBird Lingo PRO v3.0 — Living Daily Diary & Timeline Edition
+
+Game bay phản xạ học Tiếng Trung – Tiếng Anh – Tiếng Việt thực chiến dành riêng cho kỹ sư, quản lý sản xuất nhà xưởng & tự động hóa, phát triển bởi **DEAN OPTIMIZE**.
 
 ---
 
-## 💡 1. APK là gì? Tại sao dân "Vibe Coding" trên TikTok lại phát sốt vì nó?
+## 🌟 Điểm Mới Nổi Bật Ở Bản `v3.0.0 PRO`
 
-- **APK (Android Package Kit)** là định dạng file cài đặt ứng dụng cho hệ điều hành Android (tương tự như file `.exe` trên Windows hay `.dmg` trên macOS).
-- **Cơn sốt trên TikTok:**  
-  Trào lưu **"Vibe Coding"** (dùng AI như Claude, ChatGPT, Gemini, DeepSeek gõ vài câu prompt tạo ra ứng dụng web/game chỉ trong vài chục giây) đang bùng nổ mạnh mẽ.  
-  Tuy nhiên, code sinh ra thường chỉ là file web (`index.html`) chạy trên máy tính. Dân vibe coding luôn muốn:  
-  👉 **"Làm sao đóng gói con web app vừa code xong thành 1 file .APK để cài thẳng vào điện thoại Android dùng như app thật hoặc share cho bạn bè tải về?"**
-- Dự án nổi bật trên GitHub: `DeadWaveWave/demo2apk` (đã được clone vào thư mục này để tham khảo).
+1. **📅 Chế Độ Nhật Ký Ngày (`Daily Timeline`) — Học Đúng Thứ Vừa Đụng Thực Tế:**
+   - Tích hợp **Silent Daily Watchdog** ([`central_daily_watchdog.py`](./central_daily_watchdog.py)) chạy ngầm cực êm, tự động tổng hợp dữ liệu giao tiếp thực tế trong ngày từ:
+     - Cơ sở dữ liệu dịch thuật **ReaKey** (`reavault.db` — nhật ký WeChat, Zalo, SOP xưởng mũ `BTN-8-11`, đơn hàng Nhật `7071`, lô thử `SMI-16`, thuật ngữ tủ điện...).
+     - Thư mục chia sẻ mạng Tailscale (`WinShare`) và hộp thư ghi chú nhanh (`inbox_diary/*.txt`, `*.md`).
+   - Tự động lọc câu nhiễu, tách từ vựng cốt lõi (`2–7` ký tự Hán) & dựng tình huống hội thoại hỏi-đáp thực chiến, gắn Pinyin chuẩn dấu và kết xuất giọng đọc Neural `zh-CN-XiaoxiaoNeural` vào `cyberbird_lingo/audio/daily/`.
+   - Cho phép chọn ngày trên thanh Timeline và chọn chế độ bay: **🔥 Trộn Từ & Câu**, **🎯 Chỉ Từ Nhật Ký**, hoặc **💬 Chỉ Câu Thực Chiến**.
 
----
+2. **⚡ Kho Nội Dung Mở Rộng Lên `250+` Đơn Vị Học Thực Chiến:**
+   - **Từ vựng cơ sở + Tủ điện Tự động hóa (`165+` từ):** Gồm 7 chuyên ngành (`🏭 Xưởng Mũ`, `⚡ Điện Tử & TĐH`, `💼 Văn Phòng`, `💻 Công Nghệ`, `🗣️ Giao Tiếp`, `☕ Ẩm Thực`, `🐱 Động Vật`), tích hợp trọn bộ 45 thuật ngữ thiết bị điện công nghiệp (`变频器`, `微型断路器`, `交流接触器`, `伺服电机`, `触摸屏`, `可编程控制器`...).
+   - **Nhật ký thực tế trong ngày (`89+` từ & `6+` câu thực chiến mới mỗi ngày)**.
+   - **Hội thoại phản xạ (`31+` tình huống):** Có bộ lọc chủ đề riêng biệt.
 
-## 🍏 2. Còn iPhone (iOS) thì sao? Có làm giống Android được không?
-
-Đây là câu hỏi rất hay mà mọi người đều thắc mắc:
-- Trên iPhone, định dạng file cài đặt tên là **`.IPA`** (chứ không phải `.APK`).
-- Tuy nhiên, **Apple là một "khu vườn đóng kín" (Walled Garden)** với bảo mật cực kỳ khắt khe:
-  - Bạn **KHÔNG THỂ** gửi file `.ipa` qua Zalo/Telegram rồi bảo người dùng iPhone bấm cài đặt tự do như Android được.
-  - Apple bắt buộc file `.ipa` phải có **Chứng chỉ số (Code Signing Certificate)** từ tài khoản Apple Developer ($99/năm) hoặc phải cài qua máy Mac.
-
-### 🌟 "Vũ khí bí mật" của dân Vibe Coding trên iPhone: **PWA (Progressive Web App)**
-Để giải quyết bài toán trên iPhone mà không tốn $99/năm hay cần máy Mac:
-1. Bạn đưa Web App lên mạng (qua Vercel, Netlify, Cloudflare hoặc GitHub Pages hoàn toàn miễn phí).
-2. Người dùng mở link bằng trình duyệt **Safari trên iPhone**.
-3. Bấm nút **Chia sẻ (Share)** ở đáy màn hình ➔ Chọn **"Thêm vào Màn hình chính" (Add to Home Screen)**.
-4. Ngay lập tức:
-   - Một **Icon ứng dụng độc lập** xuất hiện trên màn hình iPhone (giống hệt app tải từ App Store).
-   - Khi mở lên: **Full màn hình 100%**, ẩn hoàn toàn thanh URL của Safari, có biểu tượng riêng, lưu dữ liệu offline, mượt mà như app gốc!
-   - Đã được nhúng sẵn cấu hình trong dự án `VibeToApk` này!
+3. **🎛️ Trải Nghiệm Điều Khiển & Âm Thanh Chuẩn AAA:**
+   - Tự động đồng bộ tốc độ đọc giọng bản xứ theo cấp độ bay (`🟢 Dễ 0.85x` • `🟡 Vừa 1.0x` • `🔴 Pro 1.2x`) hoặc chỉnh tay độc lập.
+   - Tùy chỉnh cỡ chữ ô cổng bay (`14px` • `16.5px` • `19px`) kết hợp thuật toán `maxWidth` tự co giãn thông minh, đảm bảo câu dài không bao giờ tràn khỏi khung cổng.
+   - Tương thích **100% Offline** trên cả Web PWA (iOS/Android) lẫn gói cài đặt **Android Native APK** nhờ cơ chế kép `daily_timeline.json` + `daily_timeline_data.js`.
 
 ---
 
-## 🛠️ 2. Cấu trúc thư mục VibeToApk (Gọn gàng & Khoa học)
+## 🚀 Hướng Dẫn Khởi Chạy Nhanh
 
-```text
-VibeToApk/
-├── sample_vibe_app/          # Ứng dụng mẫu Vibe Coding (VibeFocus Pomodoro UI cực đẹp)
-│   └── index.html
-├── web_studio/               # Giao diện Web Studio giả lập màn hình iPhone/Android
-│   └── index.html
-├── generated_android_project/# Mã nguồn Android Project native (Java, Gradle, Manifest)
-│   ├── app/src/main/
-│   │   ├── AndroidManifest.xml
-│   │   ├── java/.../MainActivity.java
-│   │   └── assets/www/       # Toàn bộ mã web được nhúng vào đây
-│   └── .github/workflows/
-│       └── build-apk.yml     # Kịch bản GitHub Action tự động build file .apk trên Cloud
-├── VibeFocus_Android_Project.zip # File ZIP đóng gói sẵn sàng chia sẻ/deploy
-├── vibe_packager.py          # Script Python tự động đóng gói 1-Click
-├── run_studio.bat            # Click đúp chuột để mở Web Studio giả lập
-└── demo2apk_repo/            # Mã nguồn nghiên cứu từ dự án hot GitHub
-```
+- **Khởi chạy trọn gói 1-Click (Watchdog + Server + Cloudflare Tunnel):**
+  Nhấp đúp vào [`CHAY_CYBERBIRD_FULL.bat`](./CHAY_CYBERBIRD_FULL.bat).
+- **Chỉ bật Silent Watchdog chạy ngầm hoàn toàn ẩn cửa sổ:**
+  Nhấp đúp vào [`START_SILENT_WATCHDOG.vbs`](./START_SILENT_WATCHDOG.vbs).
+- **Đóng gói ra dự án Android Studio & GitHub Actions APK:**
+  ```powershell
+  python vibe_packager.py -i cyberbird_lingo -o CyberBirdLingo_Android -n "CyberBirdLingo" -p "com.dean.cyberbirdlingo"
+  ```
 
 ---
-
-## 🚀 3. Cách sử dụng (3 bước đơn giản):
-
-1. **Xem thử giao diện ứng dụng trên màn hình điện thoại:**
-   - Nhấp đúp chuột vào file `run_studio.bat`.
-   - Trình duyệt sẽ mở giả lập điện thoại cho phép bạn bấm thử app Pomodoro trực tiếp.
-
-2. **Đóng gói app của riêng bạn:**
-   - Đặt file HTML của bạn vào thư mục (hoặc chỉ định đường dẫn).
-   - Chạy lệnh:
-     ```bash
-     python vibe_packager.py -i <duong_dan_file_html> -n "TenAppCuaBan"
-     ```
-   - Hệ thống sẽ tự động tạo project Android và file ZIP hoàn chỉnh.
-
-3. **Lấy file APK cài vào điện thoại:**
-   - **Cách 1 (Miễn phí & Không cần cài Android Studio):** Tải file ZIP lên GitHub cá nhân, tab **Actions** của GitHub sẽ tự động biên dịch và tạo link tải file `.apk` về điện thoại trong 2 phút!
-   - **Cách 2 (Cài nhanh qua PWA):** Mở app trên Chrome điện thoại và chọn menu **"Thêm vào màn hình chính" (Install App)**.
+*Phát triển & Tối ưu bởi **DEAN OPTIMIZE**.*

@@ -79,6 +79,8 @@ public class MainActivity extends Activity {{
         settings.setDatabaseEnabled(true);
         settings.setAllowFileAccess(true);
         settings.setAllowContentAccess(true);
+        settings.setAllowFileAccessFromFileURLs(true);
+        settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
@@ -236,15 +238,18 @@ def package_vibe_app(input_dir: Path, output_dir: Path, app_name: str = "VibeFoc
             elif item.is_dir() and item.name != "output":
                 shutil.copytree(item, assets_www / item.name, dirs_exist_ok=True)
                 
-    # Also add PWA manifest & sw
-    generate_pwa_files(app_name, assets_www)
-    print("      ✓ Injected PWA manifest.json & sw.js")
+    # Also add PWA manifest & sw only if missing so custom offline caches are preserved
+    if not (assets_www / "manifest.json").exists() or not (assets_www / "sw.js").exists():
+        generate_pwa_files(app_name, assets_www)
+        print("      ✓ Injected fallback PWA manifest.json & sw.js")
+    else:
+        print("      ✓ Preserved custom PWA manifest.json & sw.js")
 
     # 2. Write Android Java & Manifest
     print(f"[2/4] Generating Android Native Java & Manifest...")
     (src_main / "AndroidManifest.xml").write_text(generate_android_manifest(app_name, package_name), encoding="utf-8")
     (java_dir / "MainActivity.java").write_text(generate_main_activity(package_name), encoding="utf-8")
-    (app_dir / "build.gradle").write_text(generate_build_gradle(package_name, version_code=240, version_name="2.4.0"), encoding="utf-8")
+    (app_dir / "build.gradle").write_text(generate_build_gradle(package_name, version_code=300, version_name="3.0.0"), encoding="utf-8")
     print("      ✓ AndroidManifest.xml (Hardware Accelerated, Fullscreen)")
     print(f"      ✓ MainActivity.java ({package_name})")
 

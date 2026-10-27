@@ -315,8 +315,8 @@
     }
     .mode-tabs {
       display: flex;
-      gap: 6px;
-      margin-bottom: 12px;
+      gap: 5px;
+      margin-bottom: 10px;
       background: rgba(15, 23, 42, 0.85);
       padding: 4px;
       border-radius: 16px;
@@ -326,17 +326,62 @@
       background: transparent;
       border: none;
       color: #94a3b8;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 800;
-      padding: 8px 14px;
+      padding: 7px 10px;
       border-radius: 12px;
       cursor: pointer;
       transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
     .mode-tab-btn.active {
       background: linear-gradient(135deg, #0284c7, #2563eb);
       color: #fff;
       box-shadow: 0 4px 15px rgba(2, 132, 199, 0.5);
+    }
+    .tl-live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      display: inline-block;
+    }
+    /* Daily Diary Timeline Panel */
+    .timeline-panel {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      border-radius: 15px;
+      padding: 8px 11px;
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 335px;
+      text-align: left;
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.14);
+    }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #10b981;
+      margin-bottom: 5px;
+      letter-spacing: 0.3px;
+    }
+    .timeline-digest {
+      font-size: 10.5px;
+      color: #cbd5e1;
+      line-height: 1.42;
+      background: rgba(30, 41, 59, 0.72);
+      border-left: 3px solid #10b981;
+      border-radius: 8px;
+      padding: 6px 8px;
+      margin-top: 6px;
+      max-height: 58px;
+      overflow-y: auto;
     }
     /* Settings Panel: Flight Speed, Voice Speed, Font Size */
     .settings-panel {
@@ -634,7 +679,7 @@
 
     <!-- 100% Offline PWA Indicator -->
     <div class="offline-tag">
-      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN STUDIO</b> • v2.5.0 PRO
+      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN OPTIMIZE</b> • v3.0.0 PRO
     </div>
 
     <!-- Main Game Canvas -->
@@ -644,28 +689,57 @@
     <div id="screen-start" class="overlay-screen">
       <div class="dev-tag">⚡ DEVELOPED BY <b>DEAN</b></div>
       <div class="game-logo">CYBERBIRD LINGO</div>
-      <div class="game-subtitle">Vừa chơi Flappy Bird vừa luyện phản xạ từ vựng Tiếng Anh & Tiếng Trung siêu cuốn!</div>
+      <div class="game-subtitle">Phản xạ Từ Vựng, Hội Thoại Thực Chiến & Nhật Ký Công Việc Hằng Ngày Tự Động!</div>
       
-      <!-- Main Game Mode Tabs -->
+      <!-- Main Game Mode Tabs (3 Pillars) -->
       <div class="mode-tabs">
-        <button id="tab-dialogue" class="mode-tab-btn active" onclick="selectPlayMode('dialogue')">
-          💬 Hội Thoại Xưởng
+        <button id="tab-timeline" class="mode-tab-btn active" onclick="selectPlayMode('timeline')">
+          <span class="tl-live-dot"></span> 📅 Nhật Ký Ngày
+        </button>
+        <button id="tab-dialogue" class="mode-tab-btn" onclick="selectPlayMode('dialogue')">
+          💬 Hội Thoại
         </button>
         <button id="tab-vocab" class="mode-tab-btn" onclick="selectPlayMode('vocab')">
-          🎯 Bay Vào Từ Vựng
+          🎯 Từ Vựng
         </button>
+      </div>
+
+      <!-- Daily Diary Timeline Panel (Silent Watchdog Synced) -->
+      <div id="timeline-panel" class="timeline-panel">
+        <div class="timeline-header">
+          <span id="tl-sync-badge">🕵️‍♂️ SILENT WATCHDOG • ĐỒNG BỘ TỰ ĐỘNG</span>
+          <span id="tl-count-badge" style="color:#fde047;">95 mục</span>
+        </div>
+        <div id="timeline-date-pills" class="category-bar" style="margin-bottom:5px;"></div>
+        <div id="timeline-filter-pills" class="category-bar" style="margin-bottom:4px;">
+          <button class="cat-pill tl-mix-pill active" onclick="setTimelineMix('all', this)">🔥 Trộn Từ & Câu</button>
+          <button class="cat-pill tl-mix-pill" onclick="setTimelineMix('vocab', this)">🎯 Chỉ Từ Nhật Ký</button>
+          <button class="cat-pill tl-mix-pill" onclick="setTimelineMix('dialogue', this)">💬 Chỉ Câu Thực Chiến</button>
+        </div>
+        <div id="timeline-summary-card" class="timeline-digest">
+          📌 Đang nạp tóm tắt nhật ký thao tác & giao tiếp trong ngày...
+        </div>
+      </div>
+
+      <!-- Category Selector for Dialogue Mode -->
+      <div id="dialogue-category-bar" class="category-bar hidden">
+        <button class="cat-pill dlg-pill active" onclick="switchDialogueTopic('all', this)">🌟 Tất Cả (31+)</button>
+        <button class="cat-pill dlg-pill" onclick="switchDialogueTopic('factory', this)">🏭 Xưởng & QC</button>
+        <button class="cat-pill dlg-pill" onclick="switchDialogueTopic('tech', this)">⚡ Điện & IT</button>
+        <button class="cat-pill dlg-pill" onclick="switchDialogueTopic('office', this)">💼 Thương Mại</button>
+        <button class="cat-pill dlg-pill" onclick="switchDialogueTopic('social', this)">🗣️ Đời Sống & WeChat</button>
       </div>
 
       <!-- Category Selector for Vocab Mode -->
       <div id="vocab-category-bar" class="category-bar hidden">
         <button class="cat-pill active" onclick="switchCategory('factory', this)">🏭 Xưởng Mũ (27)</button>
-        <button class="cat-pill" onclick="switchCategory('electronics', this)">⚡ Điện Tử & TĐH (15)</button>
+        <button class="cat-pill" onclick="switchCategory('electronics', this)">⚡ Điện & TĐH (60)</button>
         <button class="cat-pill" onclick="switchCategory('office', this)">💼 Văn Phòng (15)</button>
         <button class="cat-pill" onclick="switchCategory('tech', this)">💻 Công Nghệ (15)</button>
         <button class="cat-pill" onclick="switchCategory('social', this)">🗣️ Giao Tiếp (16)</button>
         <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực (12)</button>
         <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật (6)</button>
-        <button class="cat-pill" onclick="switchCategory('all', this)">🌟 Tất Cả (120+)</button>
+        <button class="cat-pill" onclick="switchCategory('all', this)">🌟 Tất Cả (165+)</button>
       </div>
 
       <!-- Settings Panel: Flight Speed, Voice Speed, Font Size -->
@@ -705,15 +779,14 @@
 
       <div class="dev-credits">
         <span>Kiến tạo & Tối ưu bởi <b>DEAN OPTIMIZE</b></span>
-        <span class="ver-badge">v2.6.0 PRO BUILD</span>
+        <span class="ver-badge">v3.0.0 PRO • TIMELINE</span>
       </div>
 
       <div id="how-to-box" class="how-to-box">
         <div id="how-to-text">
-          🕹️ <b>Quy tắc Hội Thoại Xưởng:</b><br>
-          1. Đọc câu hỏi tình huống của Giám đốc hoặc QC trên thanh đỉnh.<br>
-          2. Chạm màn hình bay lướt vào giữa <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có <b>CÂU TRẢ LỜI LOGIC</b>.<br>
-          3. Bay vào câu trả lời vô lý là sai! Luyện phản xạ đối đáp công xưởng!
+          🕹️ <b>Quy tắc Nhật Ký Ngày (Timeline):</b><br>
+          1. Watchdog tự động tóm tắt nhật ký thao tác, WeChat, Zalo & tủ điện mỗi ngày.<br>
+          2. Chạm màn hình lái chim bay vào đúng từ vựng hoặc câu thực chiến bạn vừa gặp trong ngày!
         </div>
       </div>
     </div>
@@ -789,11 +862,12 @@
         <button class="menu-btn" style="width: 100%;" onclick="returnToMenu()">🏠 ĐỔI CHẾ ĐỘ & CHỦ ĐỀ</button>
       </div>
       <div style="font-size: 11px; color: #64748b; margin-top: 12px;">
-        CyberBird Lingo • Engine Architecture by <b>DEAN</b>
+        CyberBird Lingo v3.0 • Engine Architecture by <b>DEAN OPTIMIZE</b>
       </div>
     </div>
   </div>
 
+  <script src="daily_timeline_data.js"></script>
   <script>
     // ==========================================
     // RICH VOCABULARY DATABASE (BILINGUAL)
@@ -1327,13 +1401,52 @@
       }
     ];
 
-    let currentPlayMode = "dialogue"; // 'dialogue' or 'vocab'
-    let currentCategory = "dialogue";
+    let currentPlayMode = "timeline"; // 'timeline', 'dialogue', or 'vocab'
+    let currentCategory = "daily";
+    let currentDialogueTopic = "all";
+    let selectedTimelineDate = "latest";
+    let selectedTimelineMix = "all"; // 'all', 'vocab', 'dialogue'
     let currentDifficulty = "normal"; // 'easy', 'normal', 'hard'
     let currentVoiceSpeed = 1.0;
     let currentFontSizeMode = 'large'; // 'norm', 'large', 'huge'
     let currentFontSizePx = 16.5;
     let activeVocabList = [...FACTORY_DIALOGUES];
+
+    function isDialogueItem(q) {
+      return Boolean(q && q.q_zh);
+    }
+
+    function getTimelineData() {
+      const tl = window.CYBERBIRD_DAILY_TIMELINE;
+      if (tl && Array.isArray(tl.days) && tl.days.length > 0) return tl;
+      return { updated_at: "", total_days: 0, total_vocab: 0, total_dialogues: 0, days: [] };
+    }
+
+    function getAllAutomationGlossaryVocab() {
+      const tl = getTimelineData();
+      const out = [];
+      const seen = new Set(FULL_VOCAB_DATABASE.map(v => v.zh));
+      for (const d of tl.days) {
+        for (const v of (d.vocab || [])) {
+          if (v.subcat === 'automation_glossary' && !seen.has(v.zh)) {
+            seen.add(v.zh);
+            out.push({ ...v, cat: 'electronics' });
+          }
+        }
+      }
+      return out;
+    }
+
+    function getAllDailyDialogues() {
+      const tl = getTimelineData();
+      const out = [];
+      for (const d of tl.days) {
+        for (const dlg of (d.dialogues || [])) {
+          out.push(dlg);
+        }
+      }
+      return out;
+    }
 
     function setDifficulty(lvl, btn) {
       currentDifficulty = lvl;
@@ -1404,17 +1517,155 @@
       }
     }
 
+    function rebuildTimelinePool() {
+      const tl = getTimelineData();
+      const summaryEl = document.getElementById('timeline-summary-card');
+      const countBadge = document.getElementById('tl-count-badge');
+      const syncBadge = document.getElementById('tl-sync-badge');
+
+      if (!tl.days || tl.days.length === 0) {
+        activeVocabList = [...FACTORY_DIALOGUES, ...FULL_VOCAB_DATABASE.slice(0, 30)];
+        if (summaryEl) summaryEl.textContent = "📌 Chưa có nhật ký mới — đang dùng bộ câu hỏi tổng hợp mặc định.";
+        return;
+      }
+
+      if (selectedTimelineDate === 'latest' || (!tl.days.some(d => d.date === selectedTimelineDate) && selectedTimelineDate !== 'all_days')) {
+        selectedTimelineDate = tl.days[0].date;
+      }
+
+      let vPool = [];
+      let dPool = [];
+      let digestText = "";
+
+      if (selectedTimelineDate === 'all_days') {
+        for (const d of tl.days) {
+          vPool.push(...(d.vocab || []));
+          dPool.push(...(d.dialogues || []));
+        }
+        digestText = `📅 Tổng hợp ${tl.days.length} ngày nhật ký: ${tl.days.map(d => d.label + ': ' + d.summary).join(' | ')}`;
+      } else {
+        const chosen = tl.days.find(d => d.date === selectedTimelineDate) || tl.days[0];
+        vPool = [...(chosen.vocab || [])];
+        dPool = [...(chosen.dialogues || [])];
+        digestText = `📌 ${chosen.label}: ${chosen.summary}`;
+      }
+
+      if (selectedTimelineMix === 'vocab') {
+        activeVocabList = vPool.length > 0 ? vPool : dPool;
+      } else if (selectedTimelineMix === 'dialogue') {
+        activeVocabList = dPool.length > 0 ? dPool : vPool;
+      } else {
+        // Weighted mix so real daily dialogues show up ~35% of gates alongside crisp daily vocab!
+        const boostedDialogues = dPool.length > 0 ? [...dPool, ...dPool, ...dPool] : [];
+        activeVocabList = [...boostedDialogues, ...vPool];
+      }
+
+      if (activeVocabList.length === 0) activeVocabList = [...FACTORY_DIALOGUES];
+      if (summaryEl) summaryEl.textContent = digestText;
+      if (countBadge) countBadge.textContent = `${vPool.length} từ • ${dPool.length} câu`;
+      if (syncBadge && tl.updated_at) {
+        syncBadge.textContent = `🕵️‍♂️ WATCHDOG SYNC • ${tl.updated_at.slice(11, 16)}`;
+      }
+    }
+
+    function renderTimelineUI() {
+      const tl = getTimelineData();
+      const dateBar = document.getElementById('timeline-date-pills');
+      if (!dateBar) return;
+      dateBar.innerHTML = '';
+      if (!tl.days || tl.days.length === 0) return;
+
+      tl.days.forEach((d, idx) => {
+        const btn = document.createElement('button');
+        const isActive = (selectedTimelineDate === 'latest' && idx === 0) || (selectedTimelineDate === d.date);
+        btn.className = 'cat-pill tl-date-pill' + (isActive ? ' active' : '');
+        btn.textContent = `📅 ${d.label} (${(d.vocab || []).length + (d.dialogues || []).length})`;
+        btn.onclick = () => selectTimelineDate(d.date, btn);
+        dateBar.appendChild(btn);
+      });
+
+      if (tl.days.length > 1) {
+        const allBtn = document.createElement('button');
+        allBtn.className = 'cat-pill tl-date-pill' + (selectedTimelineDate === 'all_days' ? ' active' : '');
+        allBtn.textContent = `🌟 Tất Cả (${tl.days.length} ngày)`;
+        allBtn.onclick = () => selectTimelineDate('all_days', allBtn);
+        dateBar.appendChild(allBtn);
+      }
+      if (currentPlayMode === 'timeline') rebuildTimelinePool();
+    }
+
+    function selectTimelineDate(dt, btn) {
+      selectedTimelineDate = dt;
+      document.querySelectorAll('.tl-date-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      rebuildTimelinePool();
+    }
+
+    function setTimelineMix(mixMode, btn) {
+      selectedTimelineMix = mixMode;
+      document.querySelectorAll('.tl-mix-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      rebuildTimelinePool();
+    }
+
+    function refreshDailyTimelineLive() {
+      if (!location.protocol.startsWith('http')) return;
+      fetch('daily_timeline.json?t=' + Date.now(), { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (data && Array.isArray(data.days) && data.days.length > 0) {
+            window.CYBERBIRD_DAILY_TIMELINE = data;
+            renderTimelineUI();
+          }
+        })
+        .catch(() => {});
+    }
+
+    function switchDialogueTopic(topic, btn) {
+      currentDialogueTopic = topic;
+      document.querySelectorAll('.dlg-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      const allDlgs = [...getAllDailyDialogues(), ...FACTORY_DIALOGUES];
+      if (topic === 'factory') {
+        activeVocabList = allDlgs.filter(d => (typeof d.id === 'string' && d.id.startsWith('daily_')) || (d.id >= 1 && d.id <= 13));
+      } else if (topic === 'tech') {
+        activeVocabList = allDlgs.filter(d => [14, 15, 19, 20, 21].includes(d.id));
+      } else if (topic === 'office') {
+        activeVocabList = allDlgs.filter(d => [16, 17, 18].includes(d.id));
+      } else if (topic === 'social') {
+        activeVocabList = allDlgs.filter(d => [22, 23, 24, 25].includes(d.id) || (d.speaker && d.speaker.includes('Bạn Cũ')));
+      } else {
+        activeVocabList = allDlgs;
+      }
+      if (activeVocabList.length === 0) activeVocabList = allDlgs;
+    }
+
     function selectPlayMode(mode) {
       currentPlayMode = mode;
       document.querySelectorAll('.mode-tab-btn').forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById(`tab-${mode}`);
       if (activeBtn) activeBtn.classList.add('active');
 
+      const tlPanel = document.getElementById('timeline-panel');
+      const dlgBar = document.getElementById('dialogue-category-bar');
       const vocabBar = document.getElementById('vocab-category-bar');
       const howToText = document.getElementById('how-to-text');
 
-      if (mode === 'vocab') {
-        if (vocabBar) vocabBar.classList.remove('hidden');
+      if (tlPanel) tlPanel.classList.toggle('hidden', mode !== 'timeline');
+      if (dlgBar) dlgBar.classList.toggle('hidden', mode !== 'dialogue');
+      if (vocabBar) vocabBar.classList.toggle('hidden', mode !== 'vocab');
+
+      if (mode === 'timeline') {
+        renderTimelineUI();
+        rebuildTimelinePool();
+        if (howToText) {
+          howToText.innerHTML = `
+            🕹️ <b>Quy tắc Nhật Ký Ngày (Timeline):</b><br>
+            1. <b>Silent Watchdog</b> tự tóm tắt nhật ký WeChat, Zalo, tủ điện & file Share mỗi ngày.<br>
+            2. Bay xuyên qua chính những từ vựng & câu thực chiến bạn vừa đụng thực tế để nhớ cực dai!
+          `;
+        }
+      } else if (mode === 'vocab') {
         switchCategory('factory');
         if (howToText) {
           howToText.innerHTML = `
@@ -1425,15 +1676,12 @@
           `;
         }
       } else {
-        if (vocabBar) vocabBar.classList.add('hidden');
-        currentCategory = 'dialogue';
-        activeVocabList = [...FACTORY_DIALOGUES];
+        switchDialogueTopic(currentDialogueTopic || 'all');
         if (howToText) {
           howToText.innerHTML = `
-            🕹️ <b>Quy tắc Hội Thoại Xưởng:</b><br>
-            1. Đọc câu hỏi tình huống của Giám đốc hoặc QC trên thanh đỉnh.<br>
-            2. Chạm màn hình bay lướt vào giữa <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có <b>CÂU TRẢ LỜI LOGIC</b>.<br>
-            3. Bay vào câu trả lời vô lý là sai! Luyện phản xạ đối đáp công xưởng!
+            🕹️ <b>Quy tắc Hội Thoại Thực Chiến:</b><br>
+            1. Đọc câu hỏi tình huống của Giám đốc, Kỹ sư hoặc Đối tác trên thanh đỉnh.<br>
+            2. Chạm màn hình bay lướt vào <b>LÀN TRÊN</b> hoặc <b>LÀN DƯỚI</b> có <b>CÂU TRẢ LỜI LOGIC</b>!
           `;
         }
       }
@@ -1441,23 +1689,23 @@
 
     function switchCategory(cat, btn) {
       currentCategory = cat;
-      document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('#vocab-category-bar .cat-pill').forEach(b => b.classList.remove('active'));
       if (btn) {
         btn.classList.add('active');
       } else {
-        const found = document.querySelector(`.cat-pill[onclick*="'${cat}'"]`);
+        const found = document.querySelector(`#vocab-category-bar .cat-pill[onclick*="'${cat}'"]`);
         if (found) found.classList.add('active');
       }
-      if (currentPlayMode === 'dialogue') {
-        activeVocabList = [...FACTORY_DIALOGUES];
-      } else if (cat === 'all') { 
-        activeVocabList = [...FULL_VOCAB_DATABASE];
+      const extraGlossary = getAllAutomationGlossaryVocab();
+      const fullPool = [...FULL_VOCAB_DATABASE, ...extraGlossary];
+      if (cat === 'all') { 
+        activeVocabList = fullPool;
       } else if (cat === 'social') {
-        activeVocabList = FULL_VOCAB_DATABASE.filter(v => v.cat === 'social' || v.cat === 'greet');
+        activeVocabList = fullPool.filter(v => v.cat === 'social' || v.cat === 'greet');
       } else {
-        activeVocabList = FULL_VOCAB_DATABASE.filter(v => v.cat === cat);
+        activeVocabList = fullPool.filter(v => v.cat === cat);
       }
-      if (activeVocabList.length === 0) activeVocabList = [...FULL_VOCAB_DATABASE];
+      if (activeVocabList.length === 0) activeVocabList = fullPool;
     }
 
     // ==========================================
@@ -1799,13 +2047,13 @@
       questBanner.classList.add('pulse');
       setTimeout(() => questBanner.classList.remove('pulse'), 250);
 
-      if (currentPlayMode === 'dialogue') {
+      if (isDialogueItem(q)) {
         if (questSpeaker) questSpeaker.textContent = `${q.speaker}:`;
         questTarget.textContent = q.q_zh;
         if (questSub) questSub.textContent = `Nghĩa: ${q.q_vi}`;
         playDialogueAudio(q.q_audio);
       } else {
-        if (questSpeaker) questSpeaker.textContent = "🎯 BAY VÀO TỪ:";
+        if (questSpeaker) questSpeaker.textContent = (q.cat === 'daily') ? "📅 NHẬT KÝ NGÀY:" : "🎯 BAY VÀO TỪ:";
         questTarget.textContent = q.vi;
         if (questSub) questSub.textContent = `Tìm: ${q.zh} (${q.pinyin}) • ${q.en}`;
         playWordAudio(q);
@@ -1862,6 +2110,7 @@
           e.target.closest('.vspeed-btn') || 
           e.target.closest('.fsize-btn') || 
           e.target.closest('.settings-panel') || 
+          e.target.closest('.timeline-panel') || 
           e.target.closest('.opt-btn') || 
           e.target.closest('.replay-voice-btn') || 
           e.target.closest('.guide-btn') || 
@@ -1923,6 +2172,7 @@
       bird.angle = 0;
       updateScoreHUD();
       if (soundEngine) soundEngine.stopBGM();
+      refreshDailyTimelineLive();
     }
 
     function updateScoreHUD() {
@@ -1945,7 +2195,7 @@
       const correctAtTop = Math.random() > 0.5;
 
       let topLabel = "", botLabel = "";
-      if (currentPlayMode === 'dialogue') {
+      if (isDialogueItem(q)) {
         topLabel = correctAtTop ? q.correct_zh : q.wrong_zh;
         botLabel = correctAtTop ? q.wrong_zh : q.correct_zh;
       } else if (currentMode === 'zh') {
@@ -1986,7 +2236,7 @@
           vibrate([60, 40, 80]);
         } else {
           soundEngine.playCorrect(streak);
-          if (currentPlayMode === 'dialogue') {
+          if (isDialogueItem(pipe.question)) {
             addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} ĐÁP LOGIC! x2 👏` : `+${pts} ĐÁP LOGIC! 👏`, isOverdrive ? "#ec4899" : "#10b981", 16);
           } else {
             addFloatingText(bird.x, bird.y - 25, isOverdrive ? `+${pts} CHÍNH XÁC! x2 🎯` : `+${pts} CHÍNH XÁC! 🎯`, isOverdrive ? "#ec4899" : "#10b981", 17);
@@ -2049,14 +2299,14 @@
       if (q) {
         const fcTitle = document.querySelector('.fc-title');
         const replayBtn = document.querySelector('.replay-voice-btn');
-        if (currentPlayMode === 'dialogue') {
-          if (fcTitle) fcTitle.textContent = "HỘI THOẠI XƯỞNG THỰC CHIẾN:";
+        if (isDialogueItem(q)) {
+          if (fcTitle) fcTitle.textContent = "HỘI THOẠI THỰC CHIẾN:";
           if (replayBtn) replayBtn.innerHTML = '🔊 Nghe lại câu trả lời chuẩn';
           fcTargetWord.innerHTML = `<span style="font-size:14px; color:#fde68a;">${q.speaker}:</span><br>"${q.q_zh}"`;
           fcPinyin.textContent = `Nghĩa: ${q.q_vi}`;
           fcMeaning.innerHTML = `<span style="color:#10b981; font-weight:800;">✅ ĐÁP LOGIC:</span> "${q.correct_zh}"<br><span style="color:#94a3b8; font-size:11.5px;">(${q.correct_vi})</span><br><span style="color:#ef4444; font-size:11.5px;">❌ VÔ LÝ: "${q.wrong_zh}"</span>`;
         } else {
-          if (fcTitle) fcTitle.textContent = "GHI NHỚ TỪ VỪNG:";
+          if (fcTitle) fcTitle.textContent = (q.cat === 'daily') ? "📅 NHẬT KÝ NGÀY:" : "GHI NHỚ TỪ VỪNG:";
           if (replayBtn) replayBtn.innerHTML = '🔊 Nghe lại phát âm';
           fcTargetWord.textContent = `${q.zh} (${q.pinyin})`;
           fcPinyin.textContent = `${q.en || ''}`;
@@ -2068,7 +2318,7 @@
 
     function replayPronunciation() {
       if (!lastWrongQuestion) return;
-      if (currentPlayMode === 'dialogue') {
+      if (isDialogueItem(lastWrongQuestion)) {
         playDialogueAudio(lastWrongQuestion.a_audio);
       } else {
         playWordAudio(lastWrongQuestion);
@@ -2203,12 +2453,12 @@
           const midY = p.top + gateGap / 2;
           const upperCenterY = p.top + (gateGap / 4);
           const lowerCenterY = midY + (gateGap / 4);
-          const isDlg = (currentPlayMode === 'dialogue');
+          const isDlg = isDialogueItem(p.question);
           // Scale tunnel width and font size based on currentFontSizeMode
           const extraW = (currentFontSizeMode === 'huge') ? 35 : ((currentFontSizeMode === 'large') ? 18 : 0);
-          const tunnelW = (isDlg ? 220 : 170) + extraW;
+          const tunnelW = (isDlg ? 228 : 182) + extraW;
           const tunnelH = Math.max(38, (gateGap / 2) - 16);
-          const tunnelX = p.x - (isDlg ? (85 + extraW / 2) : (58 + extraW / 2));
+          const tunnelX = p.x - (isDlg ? (89 + extraW / 2) : (64 + extraW / 2));
 
           // 2. UPPER CYBER PORTAL (LÀN TRÊN)
           const upBorderColor = p.passed 
@@ -2225,14 +2475,14 @@
           ctx.fill();
           ctx.stroke();
 
-          // Upper Lane Text (Crisp, high-contrast, scalable font!)
+          // Upper Lane Text (Crisp, high-contrast, scalable font + auto-fit maxWidth!)
           ctx.fillStyle = '#ffffff';
           ctx.font = `bold ${currentFontSizePx}px system-ui, -apple-system, sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
           ctx.shadowBlur = 4;
-          ctx.fillText(`▲ ${p.topLabel}`, tunnelX + tunnelW / 2, upperCenterY);
+          ctx.fillText(`▲ ${p.topLabel}`, tunnelX + tunnelW / 2, upperCenterY, tunnelW - 14);
           ctx.restore();
 
           // 3. LOWER CYBER PORTAL (LÀN DƯỚI)
@@ -2250,14 +2500,14 @@
           ctx.fill();
           ctx.stroke();
 
-          // Lower Lane Text (Crisp, high-contrast, scalable font!)
+          // Lower Lane Text (Crisp, high-contrast, scalable font + auto-fit maxWidth!)
           ctx.fillStyle = '#ffffff';
           ctx.font = `bold ${currentFontSizePx}px system-ui, -apple-system, sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
           ctx.shadowBlur = 4;
-          ctx.fillText(`▼ ${p.botLabel}`, tunnelX + tunnelW / 2, lowerCenterY);
+          ctx.fillText(`▼ ${p.botLabel}`, tunnelX + tunnelW / 2, lowerCenterY, tunnelW - 14);
           ctx.restore();
 
           // 4. Laser Divider between Upper and Lower Portals (at midY)
@@ -2422,7 +2672,9 @@
       ctx.restore();
     }
 
-    // Start Animation Loop
+    // Initialize Daily Diary Timeline & Start Animation Loop
+    selectPlayMode('timeline');
+    refreshDailyTimelineLive();
     requestAnimationFrame(loop);
   </script>
 </body>

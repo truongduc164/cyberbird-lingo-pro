@@ -1,8 +1,10 @@
-const CACHE_NAME = 'cyberbird-lingo-v3-dualmodes';
+const CACHE_NAME = 'cyberbird-lingo-v3.0-timeline';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './daily_timeline_data.js',
+  './daily_timeline.json',
   './icon-192.png',
   './icon-512.png',
   './apple-touch-icon.png',
@@ -52,7 +54,9 @@ const ASSETS = [
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(ASSETS))
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -69,11 +73,34 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  const url = e.request.url;
+  const isDynamicDoc =
+    e.request.mode === 'navigate' ||
+    url.includes('index.html') ||
+    url.includes('daily_timeline');
+
+  if (isDynamicDoc) {
+    // Network-First with Offline Cache Fallback so Watchdog daily updates appear immediately
+    e.respondWith(
+      fetch(e.request)
+        .then((netRes) => {
+          if (netRes && netRes.status === 200 && url.startsWith('http')) {
+            const clone = netRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+          }
+          return netRes;
+        })
+        .catch(() => caches.match(e.request, { ignoreSearch: true }))
+    );
+    return;
+  }
+
+  // Cache-First + Dynamic Cache for MP3 audio and icons
   e.respondWith(
     caches.match(e.request).then((res) => {
       if (res) return res;
       return fetch(e.request).then((netRes) => {
-        if (netRes && netRes.status === 200 && e.request.url.startsWith('http')) {
+        if (netRes && netRes.status === 200 && url.startsWith('http')) {
           const clone = netRes.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
         }

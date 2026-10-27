@@ -1,0 +1,5 @@
+Thả bất kỳ file ghi chú (.txt, .md), nhắc nhở hoặc câu tiếng Trung - Việt theo định dạng:
+Tiếng Việt | Tiếng Trung
+Ví dụ:
+Kiểm tra ngoại quan mũ | 检查头盔外观
+Watchdog sẽ tự động đọc ngầm, tạo giọng đọc Xiaoxiao và đưa lên Timeline của ngày hôm đó!
