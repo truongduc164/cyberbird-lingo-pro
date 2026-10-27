@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>CyberBird Lingo • Game Học Tiếng Anh & Trung Offline</title>
+  <title>CyberBird Lingo • by DEAN (v2.4.0 PRO)</title>
+  <meta name="author" content="DEAN">
+  <meta name="version" content="2.4.0">
+  <meta name="copyright" content="DEAN STUDIO">
   <!-- PWA & iOS Standalone Support -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -360,6 +363,45 @@
       background: #10b981;
       box-shadow: 0 0 6px #10b981;
     }
+    .dev-tag {
+      font-size: 10.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 3px 12px;
+      border-radius: 12px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      display: inline-block;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+    .dev-tag b {
+      color: #f59e0b;
+      font-weight: 900;
+    }
+    .dev-credits {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #94a3b8;
+    }
+    .dev-credits b {
+      color: #38bdf8;
+      font-weight: 800;
+    }
+    .ver-badge {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 2px 7px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -391,7 +433,7 @@
 
     <!-- 100% Offline PWA Indicator -->
     <div class="offline-tag">
-      <span class="offline-dot"></span> 100% Chơi Offline PWA (iPhone & Android)
+      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN STUDIO</b> • v2.4.0
     </div>
 
     <!-- Main Game Canvas -->
@@ -399,6 +441,7 @@
 
     <!-- Start Screen Overlay -->
     <div id="screen-start" class="overlay-screen">
+      <div class="dev-tag">⚡ DEVELOPED BY <b>DEAN</b></div>
       <div class="game-logo">CYBERBIRD LINGO</div>
       <div class="game-subtitle">Vừa chơi Flappy Bird vừa luyện phản xạ từ vựng Tiếng Anh & Tiếng Trung siêu cuốn!</div>
       
@@ -413,6 +456,12 @@
       </div>
 
       <button class="play-btn" onclick="startGame()">BẮT ĐẦU BAY 🚀</button>
+
+      <div class="dev-credits">
+        <span>Kiến tạo & Tối ưu bởi <b>DEAN OPTIMIZE</b></span>
+        <span class="ver-badge">v2.4.0 PRO BUILD</span>
+      </div>
+
       <div class="how-to-box">
         🕹️ <b>Cách chơi đỉnh cao:</b><br>
         1. Nhìn từ tiếng Việt mục tiêu ở trên banner.<br>
@@ -439,6 +488,9 @@
       </div>
 
       <button class="play-btn" onclick="startGame()">CHƠI LẠI NGAY ⚡</button>
+      <div style="font-size: 11px; color: #64748b; margin-top: 14px;">
+        CyberBird Lingo • Engine Architecture by <b>DEAN</b>
+      </div>
     </div>
   </div>
 

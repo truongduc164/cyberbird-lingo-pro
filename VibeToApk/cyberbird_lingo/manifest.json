@@ -1,11 +1,13 @@
 {
-  "name": "CyberBird Lingo ⚡ Học Anh - Trung",
-  "short_name": "CyberLingo",
-  "description": "Game Flappy Bird học từ vựng Tiếng Anh & Tiếng Trung HSK phong cách Cyberpunk chơi Offline 100%",
+  "name": "CyberBird Lingo by DEAN",
+  "short_name": "CyberBird DEAN",
+  "version": "2.4.0",
+  "author": "DEAN",
+  "description": "Game Flappy Bird học từ vựng Tiếng Anh & Tiếng Trung HSK by DEAN • Cyberpunk Edition chơi Offline 100%",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#050811",
-  "theme_color": "#050811",
+  "background_color": "#030712",
+  "theme_color": "#030712",
   "orientation": "portrait",
   "icons": [
     {

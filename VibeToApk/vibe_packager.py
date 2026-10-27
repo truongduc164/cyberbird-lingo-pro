@@ -102,34 +102,34 @@ public class MainActivity extends Activity {{
 """
 
 
-def generate_build_gradle() -> str:
-    return """plugins {
+def generate_build_gradle(package_name: str = "com.vibecoding.app", version_code: int = 240, version_name: str = "2.4.0") -> str:
+    return f"""plugins {{
     id 'com.android.application'
-}
+}}
 
-android {
-    namespace 'com.vibecoding.app'
+android {{
+    namespace '{package_name}'
     compileSdk 34
 
-    defaultConfig {
-        applicationId "com.vibecoding.app"
+    defaultConfig {{
+        applicationId "{package_name}"
         minSdk 21
         targetSdk 34
-        versionCode 1
-        versionName "1.0.0"
-    }
+        versionCode {version_code}
+        versionName "{version_name}"
+    }}
 
-    buildTypes {
-        release {
+    buildTypes {{
+        release {{
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+        }}
+    }}
+}}
 
-dependencies {
+dependencies {{
     implementation 'androidx.appcompat:appcompat:1.6.1'
-}
+}}
 """
 
 
@@ -244,7 +244,7 @@ def package_vibe_app(input_dir: Path, output_dir: Path, app_name: str = "VibeFoc
     print(f"[2/4] Generating Android Native Java & Manifest...")
     (src_main / "AndroidManifest.xml").write_text(generate_android_manifest(app_name, package_name), encoding="utf-8")
     (java_dir / "MainActivity.java").write_text(generate_main_activity(package_name), encoding="utf-8")
-    (app_dir / "build.gradle").write_text(generate_build_gradle(), encoding="utf-8")
+    (app_dir / "build.gradle").write_text(generate_build_gradle(package_name, version_code=240, version_name="2.4.0"), encoding="utf-8")
     print("      ✓ AndroidManifest.xml (Hardware Accelerated, Fullscreen)")
     print(f"      ✓ MainActivity.java ({package_name})")
 
