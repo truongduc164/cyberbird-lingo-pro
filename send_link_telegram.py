@@ -11,7 +11,7 @@ if sys.platform == "win32":
         sys.stderr.reconfigure(encoding="utf-8")
     except Exception:
         pass
-WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
+WORKSPACE_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(WORKSPACE_ROOT))
 
 from telegram_video_hub import load_config
