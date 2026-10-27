@@ -447,10 +447,11 @@
       
       <!-- Category Selector -->
       <div class="category-bar">
-        <button class="cat-pill active" onclick="switchCategory('all', this)">🌟 Tất Cả (40)</button>
-        <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật</button>
-        <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực</button>
+        <button class="cat-pill active" onclick="switchCategory('factory', this)">🏭 Xưởng Mũ Bảo Hiểm (27)</button>
+        <button class="cat-pill" onclick="switchCategory('all', this)">🌟 Tất Cả (67)</button>
         <button class="cat-pill" onclick="switchCategory('tech', this)">💻 Công Nghệ</button>
+        <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực</button>
+        <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật</button>
         <button class="cat-pill" onclick="switchCategory('greet', this)">💬 Giao Tiếp</button>
         <button class="cat-pill" onclick="switchCategory('nature', this)">☀️ Tự Nhiên</button>
       </div>
@@ -499,6 +500,35 @@
     // RICH VOCABULARY DATABASE (BILINGUAL)
     // ==========================================
     const FULL_VOCAB_DATABASE = [
+      // 0. XƯỞNG MŨ BẢO HIỂM & SẢN XUẤT THỰC CHIẾN (CHỦ ĐỀ ĐẶC QUYỀN CỦA DEAN)
+      { cat: "factory", vi: "Mũ Bảo Hiểm", en: "Helmet", zh: "头盔", pinyin: "tóukuī", dist_en: "Hard Hat", dist_zh: "安全帽", dist_pinyin: "ānquánmào", audio: "audio/toukui.mp3" },
+      { cat: "factory", vi: "Vỏ Mũ (Ép nhựa)", en: "Helmet Shell", zh: "盔壳", pinyin: "kuīké", dist_en: "Inner Liner", dist_zh: "内胆", dist_pinyin: "nèidǎn", audio: "audio/kuike.mp3" },
+      { cat: "factory", vi: "Xốp EPS Giảm Chấn", en: "EPS Foam", zh: "缓冲层", pinyin: "huǎnchōngcéng", dist_en: "Outer Shell", dist_zh: "外壳", dist_pinyin: "wàiké", audio: "audio/huanchongceng.mp3" },
+      { cat: "factory", vi: "Kính Chắn Gió", en: "Visor", zh: "风镜", pinyin: "fēngjìng", dist_en: "Mirror", dist_zh: "镜片", dist_pinyin: "jìngpiàn", audio: "audio/fengjing.mp3" },
+      { cat: "factory", vi: "Dây Quai Cài Mũ", en: "Chin Strap", zh: "下巴带", pinyin: "xiàbadài", dist_en: "Zipper", dist_zh: "拉链", dist_pinyin: "lāliàn", audio: "audio/xiabadai.mp3" },
+      { cat: "factory", vi: "Khóa Cài Mũ", en: "Buckle", zh: "卡扣", pinyin: "kǎkòu", dist_en: "Button", dist_zh: "按钮", dist_pinyin: "ànniǔ", audio: "audio/kakou.mp3" },
+      { cat: "factory", vi: "Lót Mũ (Đệm êm)", en: "Inner Padding", zh: "内衬", pinyin: "nèichèn", dist_en: "Sponge", dist_zh: "海绵", dist_pinyin: "hǎimián", audio: "audio/neichen.mp3" },
+      { cat: "factory", vi: "Lỗ Thông Gió", en: "Air Vent", zh: "通风孔", pinyin: "tōngfēngkǒng", dist_en: "Drain Hole", dist_zh: "排水孔", dist_pinyin: "páishuǐkǒng", audio: "audio/tongfengkong.mp3" },
+      { cat: "factory", vi: "Dây Chuyền Sản Xuất", en: "Assembly Line", zh: "流水线", pinyin: "liúshuǐxiàn", dist_en: "Packing Line", dist_zh: "包装线", dist_pinyin: "bāozhuāngxiàn", audio: "audio/liushuixian.mp3" },
+      { cat: "factory", vi: "Máy Ép Nhựa (Chế tạo vỏ)", en: "Injection Molder", zh: "注塑机", pinyin: "zhùsùjī", dist_en: "Press Machine", dist_zh: "压模机", dist_pinyin: "yāmójī", audio: "audio/zhusuji.mp3" },
+      { cat: "factory", vi: "Khuôn Mẫu Mũ", en: "Mold", zh: "模具", pinyin: "mújù", dist_en: "Spare Part", dist_zh: "零件", dist_pinyin: "língjiàn", audio: "audio/muju.mp3" },
+      { cat: "factory", vi: "Sơn Phủ / Phun Sơn", en: "Spray Paint", zh: "喷漆", pinyin: "pēnqī", dist_en: "Plating", dist_zh: "电镀", dist_pinyin: "diàndù", audio: "audio/penqi.mp3" },
+      { cat: "factory", vi: "Lắp Ráp Mũ", en: "Assemble", zh: "组装", pinyin: "zǔzhuāng", dist_en: "Disassemble", dist_zh: "拆卸", dist_pinyin: "chāixiè", audio: "audio/zuzhuang.mp3" },
+      { cat: "factory", vi: "Đóng Gói Thùng", en: "Box Packing", zh: "装箱", pinyin: "zhuāngxiāng", dist_en: "Wrap", dist_zh: "打包", dist_pinyin: "dǎbāo", audio: "audio/zhuangxiang.mp3" },
+      { cat: "factory", vi: "Kiểm Tra Chất Lượng (KCS)", en: "QC / QA", zh: "品检", pinyin: "pǐnjiǎn", dist_en: "Repair", dist_zh: "维修", dist_pinyin: "wéixiū", audio: "audio/pinjian.mp3" },
+      { cat: "factory", vi: "Đạt Tiêu Chuẩn (Hàng Đạt)", en: "Qualified / Pass", zh: "合格", pinyin: "hégé", dist_en: "Scrap", dist_zh: "报废", dist_pinyin: "bàofèi", audio: "audio/hege.mp3" },
+      { cat: "factory", vi: "Hàng Lỗi / Phế Phẩm", en: "Defective Item", zh: "次品", pinyin: "cìpǐn", dist_en: "Finished Good", dist_zh: "成品", dist_pinyin: "chéngpǐn", audio: "audio/cipin.mp3" },
+      { cat: "factory", vi: "Vết Xước / Lỗi Sơn", en: "Scratch", zh: "划伤", pinyin: "huáshāng", dist_en: "Paint Drop", dist_zh: "掉漆", dist_pinyin: "diàoqī", audio: "audio/huashang.mp3" },
+      { cat: "factory", vi: "Thử Nghiệm Va Đập", en: "Impact Test", zh: "撞击测试", pinyin: "zhuàngjī cèshì", dist_en: "Pressure Test", dist_zh: "压力测试", dist_pinyin: "yālì cèshì", audio: "audio/zhuangjiceshi.mp3" },
+      { cat: "factory", vi: "Hôm Nay Tăng Ca", en: "Overtime Today", zh: "今天加班", pinyin: "jīntiān jiābān", dist_en: "Holiday Tomorrow", dist_zh: "明天放假", dist_pinyin: "míngtiān fàngjià", audio: "audio/jintianjiaban.mp3" },
+      { cat: "factory", vi: "Họp Giao Ban", en: "Morning Briefing", zh: "开早会", pinyin: "kāi zǎohuì", dist_en: "Leave Request", dist_zh: "请假", dist_pinyin: "qǐngjià", audio: "audio/kaizaohui.mp3" },
+      { cat: "factory", vi: "Báo Cáo Tiến Độ", en: "Progress Report", zh: "汇报进度", pinyin: "huìbào jìndù", dist_en: "Delay Delivery", dist_zh: "推迟交货", dist_pinyin: "tuīchí jiāohuò", audio: "audio/huibaojindu.mp3" },
+      { cat: "factory", vi: "Giám Đốc Xưởng", en: "Factory Director", zh: "厂长", pinyin: "chǎngzhǎng", dist_en: "Team Leader", dist_zh: "组长", dist_pinyin: "zǔzhǎng", audio: "audio/changzhang.mp3" },
+      { cat: "factory", vi: "Tổ Trưởng", en: "Team Leader", zh: "组长", pinyin: "zǔzhǎng", dist_en: "Worker", dist_zh: "工人", dist_pinyin: "gōngrén", audio: "audio/zuzhang.mp3" },
+      { cat: "factory", vi: "Kịp Tiến Độ Đơn Hàng", en: "Rush Order", zh: "赶订单", pinyin: "gǎn dìngdān", dist_en: "Cancel Order", dist_zh: "取消订单", dist_pinyin: "qǔxiāo dìngdān", audio: "audio/gandingdan.mp3" },
+      { cat: "factory", vi: "An Toàn Là Trên Hết", en: "Safety First", zh: "安全第一", pinyin: "ānquán dìyī", dist_en: "Caution", dist_zh: "注意安全", dist_pinyin: "zhùyì ānquán", audio: "audio/anquandiyi.mp3" },
+      { cat: "factory", vi: "Giao Hàng Đúng Hạn", en: "On-time Delivery", zh: "按时交货", pinyin: "ànshí jiāohuò", dist_en: "Late Delivery", dist_zh: "延迟发货", dist_pinyin: "yánchí fāhuò", audio: "audio/anshijiaohuo.mp3" },
+
       // 1. Animals
       { cat: "animal", vi: "Con Mèo", en: "Cat", zh: "猫", pinyin: "māo", dist_en: "Dog", dist_zh: "狗", dist_pinyin: "gǒu" },
       { cat: "animal", vi: "Con Chó", en: "Dog", zh: "狗", pinyin: "gǒu", dist_en: "Cat", dist_zh: "猫", dist_pinyin: "māo" },
@@ -553,8 +583,8 @@
       { cat: "greet", vi: "Bạn Bè", en: "Friend", zh: "朋友", pinyin: "péngyou", dist_en: "Teacher", dist_zh: "老师", dist_pinyin: "lǎoshī" }
     ];
 
-    let currentCategory = "all";
-    let activeVocabList = [...FULL_VOCAB_DATABASE];
+    let currentCategory = "factory";
+    let activeVocabList = FULL_VOCAB_DATABASE.filter(v => v.cat === "factory");
 
     function switchCategory(cat, btn) {
       currentCategory = cat;
@@ -784,16 +814,46 @@
       }
     }
 
-    // Native Speech Synthesis (Offline 100%)
+    // Native Speech Synthesis (Offline 100% Fallback)
     function speakText(text, lang) {
       if (!soundEngine.sfxEnabled || !('speechSynthesis' in window)) return;
       try {
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = lang;
-        u.rate = 0.95;
+        u.rate = 0.90;
         window.speechSynthesis.speak(u);
       } catch (e) {}
+    }
+
+    // Studio Neural Edge Audio Player with Web Speech fallback
+    function playWordAudio(q, onEnd) {
+      if (!soundEngine.sfxEnabled || !q) {
+        if (onEnd) onEnd();
+        return;
+      }
+      if (q.audio) {
+        const a = new Audio(q.audio);
+        a.volume = 1.0;
+        a.play().then(() => {
+          if (onEnd) a.onended = onEnd;
+        }).catch(() => {
+          speakText(q.zh, 'zh-CN');
+          if (onEnd) setTimeout(onEnd, 700);
+        });
+      } else {
+        speakText(q.zh, 'zh-CN');
+        if (onEnd) setTimeout(onEnd, 700);
+      }
+    }
+
+    function playPraiseAudio() {
+      if (!soundEngine.sfxEnabled) return;
+      const praises = ['audio/praise_taibangle.mp3', 'audio/praise_zhengque.mp3', 'audio/praise_lihai.mp3'];
+      const pick = praises[Math.floor(Math.random() * praises.length)];
+      const a = new Audio(pick);
+      a.volume = 0.95;
+      a.play().catch(() => {});
     }
 
     // Game State
@@ -869,16 +929,18 @@
       questTarget.textContent = q.vi;
       questBanner.classList.add('pulse');
       setTimeout(() => questBanner.classList.remove('pulse'), 250);
+      // Kích hoạt phát âm chuẩn ngay khi xuất hiện cổng (Thính giác + Thị giác song hành)
+      playWordAudio(q);
       return q;
     }
 
-    // Bird & Physics
+    // Bird & Physics (Tuned for Relaxed Learning & Cyber Glide)
     let bird = { x: 75, y: 360, vy: 0, r: 18, angle: 0 };
     let pipes = [];
-    const gravity = 0.44;
-    const jump = -7.8;
-    const gateGap = 210;
-    const pipeSpeed = 2.4;
+    const gravity = 0.38;   // Rơi êm ái hơn 15% để kịp đọc chữ Hán
+    const jump = -6.9;      // Cú đập cánh mềm, kiểm soát độ cao cực dễ
+    const gateGap = 240;    // Cổng mở rộng 240px lượn cực thoáng
+    let pipeSpeed = 2.1;    // Tốc độ lướt vừa tầm mắt
 
     function flap() {
       if (gameState === 'playing') {
@@ -1009,15 +1071,16 @@
 
         updateScoreHUD();
 
-        // Native Pronunciation Aloud!
-        const q = pipe.question;
-        if (currentMode === 'zh') {
-          speakText(q.zh, 'zh-CN');
-        } else if (currentMode === 'en') {
-          speakText(q.en, 'en-US');
-        } else {
-          speakText(q.zh, 'zh-CN');
-          setTimeout(() => speakText(q.en, 'en-US'), 700);
+        // Native Pronunciation Aloud with Studio Quality + Praise
+        playWordAudio(pipe.question, () => {
+          if (currentMode === 'en' || currentMode === 'duo') {
+            speakText(pipe.question.en, 'en-US');
+          }
+        });
+
+        // Praise Voice on Combo Streak
+        if (streak >= 3 && streak % 3 === 0) {
+          setTimeout(playPraiseAudio, 450);
         }
 
         // Particle Starburst
@@ -1075,8 +1138,9 @@
 
     function replayPronunciation() {
       if (!lastWrongQuestion) return;
-      speakText(lastWrongQuestion.zh, 'zh-CN');
-      setTimeout(() => speakText(lastWrongQuestion.en, 'en-US'), 750);
+      playWordAudio(lastWrongQuestion, () => {
+        speakText(lastWrongQuestion.en, 'en-US');
+      });
     }
 
     // Parallax City Skylines & Stars
