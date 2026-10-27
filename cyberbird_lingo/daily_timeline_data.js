@@ -1,17 +1,122 @@
-// Auto-generated silently by central_daily_watchdog.py — DO NOT EDIT MANUALLY
+// Auto-generated silently by central_daily_watchdog.py from Z:\ DeanHub (Read-Only) — DO NOT EDIT MANUALLY
 window.CYBERBIRD_DAILY_TIMELINE = {
-  "updated_at": "2026-10-27 21:39:58",
+  "updated_at": "2026-10-28 06:45:14",
+  "source_hub": "Z:\\",
   "total_days": 1,
-  "total_vocab": 89,
-  "total_dialogues": 6,
+  "total_vocab": 97,
+  "total_dialogues": 10,
   "days": [
     {
       "date": "2026-10-27",
-      "label": "Hôm nay (27/10)",
-      "summary": "Cập nhật SOP vỏ ABS & hộp màu BTN-8-11 • FQC toàn kiểm đơn Nhật 7071 (lỗi sót tem hộp màu) • Theo dõi chạy thử lô nhỏ SMI-16 (in-hút-cắt định hình) • Lưu ý kỹ thuật mã SP-165 & tem niên hạn • Trò chuyện WeChat hỏi thăm công việc, phúc lợi & thuê trọ • Giới thiệu nhà máy Việt Nam, bộ phận chất lượng & kế hoạch xuất hàng • Tra cứu chuyên sâu 45 thuật ngữ Tủ điện - Tự động hóa - Nghiệm thu",
-      "vocab_count": 89,
-      "dialogue_count": 6,
+      "label": "Ngày 27/10/2026",
+      "summary": "⏰ Nhắc việc (16:00): check mail Oracle hoàn 2 đô • Xử lý lỗi khuôn hút nhựa số 4 (4号吸塑模) & khuôn 2 lòng (2穴模) • QC yêu cầu nhặt hàng vênh mép (翘边) & điều tra nguyên nhân cải tiến • Cập nhật SOP vỏ ABS & hộp màu BTN-8-11 • FQC toàn kiểm đơn Nhật 7071 (lỗi sót tem hộp màu) • Theo dõi chạy thử lô nhỏ SMI-16 (in-hút-cắt định hình) • Lưu ý kỹ thuật mã SP-165 & tem niên hạn • Trò chuyện WeChat hỏi thăm công việc & bộ phận định hình • Giới thiệu nhà máy Việt Nam, bộ phận QC & kế hoạch xuất hàng • Tra cứu 45 thuật ngữ Tủ điện - Tự động hóa",
+      "vocab_count": 97,
+      "dialogue_count": 10,
       "vocab": [
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Khuôn Hút Định Hình Nhựa",
+          "en": "Blister / Vacuum Mold",
+          "zh": "吸塑模",
+          "pinyin": "xī sù mó",
+          "dist_en": "Meeting Table",
+          "dist_zh": "会议桌",
+          "dist_pinyin": "huì yì zhuō",
+          "audio": "audio/daily/dv_926fd6c206.mp3",
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Khuôn Số 4",
+          "en": "Mold #4",
+          "zh": "4号模",
+          "pinyin": "4 hào mó",
+          "dist_en": "Water Cup",
+          "dist_zh": "水杯",
+          "dist_pinyin": "shuǐ bēi",
+          "audio": "audio/daily/dv_27fa66a827.mp3",
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Khuôn 2 Lòng (2 Hốc)",
+          "en": "2-Cavity Mold",
+          "zh": "2穴模",
+          "pinyin": "2 xué mó",
+          "dist_en": "Printer",
+          "dist_zh": "打印机",
+          "dist_pinyin": "dǎ yìn jī",
+          "audio": "audio/daily/dv_8429e51bc4.mp3",
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Bộ Phận Định Hình (Hút Nhựa)",
+          "en": "Vacuum Forming Dept",
+          "zh": "吸塑部门",
+          "pinyin": "xī sù bù mén",
+          "dist_en": "Warehouse",
+          "dist_zh": "仓库",
+          "dist_pinyin": "cāng kù",
+          "audio": "audio/daily/dv_ab5586de6a.mp3",
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Cong Vênh Mép (Bavia/Vênh)",
+          "en": "Warped / Lifted Edge",
+          "zh": "翘边",
+          "pinyin": "qiào biān",
+          "dist_en": "Forklift",
+          "dist_zh": "叉车",
+          "dist_pinyin": "chā chē",
+          "audio": "audio/daily/dv_e15b9cb773.mp3",
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Lựa / Nhặt Riêng Ra",
+          "en": "Pick / Sort Out",
+          "zh": "挑出来",
+          "pinyin": "tiāo chū lái",
+          "dist_en": "Caliper",
+          "dist_zh": "卡尺",
+          "dist_pinyin": "kǎ chǐ",
+          "audio": "audio/daily/dv_833201d517.mp3",
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Kiểm Tra Rõ Nguyên Nhân",
+          "en": "Verify Root Cause",
+          "zh": "查核原因",
+          "pinyin": "chá hé yuán yīn",
+          "dist_en": "Gloves",
+          "dist_zh": "手套",
+          "dist_pinyin": "shǒu tào",
+          "audio": "audio/daily/dv_307f8e1236.mp3",
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Khẩn Trương Khắc Phục",
+          "en": "Promptly Improve",
+          "zh": "速查改善",
+          "pinyin": "sù chá gǎi shàn",
+          "dist_en": "Tape",
+          "dist_zh": "胶带",
+          "dist_pinyin": "jiāo dài",
+          "audio": "audio/daily/dv_6e50368b99.mp3",
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
         {
           "cat": "daily",
           "date": "2026-10-27",
@@ -23,7 +128,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "会议桌",
           "dist_pinyin": "huì yì zhuō",
           "audio": "audio/daily/dv_52f1425cb0.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -36,7 +141,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "水杯",
           "dist_pinyin": "shuǐ bēi",
           "audio": "audio/daily/dv_cfff6a8b20.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -49,7 +154,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "打印机",
           "dist_pinyin": "dǎ yìn jī",
           "audio": "audio/daily/dv_f70678ea5a.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -62,7 +167,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "仓库",
           "dist_pinyin": "cāng kù",
           "audio": "audio/daily/dv_a283c7f7af.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -75,7 +180,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "叉车",
           "dist_pinyin": "chā chē",
           "audio": "audio/daily/dv_4d908cd2dc.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -88,7 +193,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "卡尺",
           "dist_pinyin": "kǎ chǐ",
           "audio": "audio/daily/dv_e595e14831.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -101,7 +206,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "手套",
           "dist_pinyin": "shǒu tào",
           "audio": "audio/daily/dv_3ebd3420bc.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -114,7 +219,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "胶带",
           "dist_pinyin": "jiāo dài",
           "audio": "audio/daily/dv_2bc2f8c90c.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -127,7 +232,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "会议桌",
           "dist_pinyin": "huì yì zhuō",
           "audio": "audio/daily/dv_3c0999ef87.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -140,7 +245,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "水杯",
           "dist_pinyin": "shuǐ bēi",
           "audio": "audio/daily/dv_d51ccbb1a0.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -153,7 +258,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "打印机",
           "dist_pinyin": "dǎ yìn jī",
           "audio": "audio/daily/dv_7eb6bc78ea.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -166,7 +271,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "仓库",
           "dist_pinyin": "cāng kù",
           "audio": "audio/daily/dv_f537a76dc2.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -179,7 +284,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "叉车",
           "dist_pinyin": "chā chē",
           "audio": "audio/daily/dv_089f085c6d.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -192,7 +297,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "卡尺",
           "dist_pinyin": "kǎ chǐ",
           "audio": "audio/daily/dv_6f9384973e.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -205,7 +310,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "手套",
           "dist_pinyin": "shǒu tào",
           "audio": "audio/daily/dv_b404963060.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -218,7 +323,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "胶带",
           "dist_pinyin": "jiāo dài",
           "audio": "audio/daily/dv_93aa99e059.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -231,7 +336,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "会议桌",
           "dist_pinyin": "huì yì zhuō",
           "audio": "audio/daily/dv_3dfc25a557.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -244,7 +349,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "水杯",
           "dist_pinyin": "shuǐ bēi",
           "audio": "audio/daily/dv_6fb4cfa18e.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -257,7 +362,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "打印机",
           "dist_pinyin": "dǎ yìn jī",
           "audio": "audio/daily/dv_246eef42c1.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -270,7 +375,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "仓库",
           "dist_pinyin": "cāng kù",
           "audio": "audio/daily/dv_1f7be057aa.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -283,7 +388,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "叉车",
           "dist_pinyin": "chā chē",
           "audio": "audio/daily/dv_e6095e9861.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
         },
         {
           "cat": "daily",
@@ -296,7 +401,20 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "dist_zh": "卡尺",
           "dist_pinyin": "kǎ chǐ",
           "audio": "audio/daily/dv_94595cd17d.mp3",
-          "source": "Nhật ký Xưởng / WeChat"
+          "source": "Ổ Z: / WeChat Xưởng"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Bạn thật tuyệt",
+          "en": "You are great",
+          "zh": "你很棒",
+          "pinyin": "nǐ hěn bàng",
+          "dist_en": "Gloves",
+          "dist_zh": "手套",
+          "dist_pinyin": "shǒu tào",
+          "audio": "audio/daily/dv_8cd9572729.mp3",
+          "source": "Ổ Z: DeanHub"
         },
         {
           "cat": "daily",
@@ -305,9 +423,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (zalo)",
           "zh": "朋友",
           "pinyin": "péng yǒu",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
+          "dist_en": "Tape",
+          "dist_zh": "胶带",
+          "dist_pinyin": "jiāo dài",
           "audio": "audio/daily/dv_9d53230a95.mp3",
           "source": "Nhật ký zalo"
         },
@@ -318,9 +436,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "你好吗",
           "pinyin": "nǐ hǎo ma",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
+          "dist_en": "Meeting Table",
+          "dist_zh": "会议桌",
+          "dist_pinyin": "huì yì zhuō",
           "audio": "audio/daily/dv_7c62edd327.mp3",
           "source": "Nhật ký weixin"
         },
@@ -331,9 +449,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "最近工作还好吗",
           "pinyin": "zuì jìn gōng zuò hái hǎo ma",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
+          "dist_en": "Water Cup",
+          "dist_zh": "水杯",
+          "dist_pinyin": "shuǐ bēi",
           "audio": "audio/daily/dv_8f95fdcd81.mp3",
           "source": "Nhật ký weixin"
         },
@@ -344,9 +462,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "我很累，你呢",
           "pinyin": "wǒ hěn lèi， nǐ ne",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
+          "dist_en": "Printer",
+          "dist_zh": "打印机",
+          "dist_pinyin": "dǎ yìn jī",
           "audio": "audio/daily/dv_1454e0f01f.mp3",
           "source": "Nhật ký weixin"
         },
@@ -357,9 +475,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (Weixin)",
           "zh": "你好啊兄弟",
           "pinyin": "nǐ hǎo a xiōng dì",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
+          "dist_en": "Warehouse",
+          "dist_zh": "仓库",
+          "dist_pinyin": "cāng kù",
           "audio": "audio/daily/dv_65a9bc8a6e.mp3",
           "source": "Nhật ký Weixin"
         },
@@ -370,9 +488,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "这是正确的",
           "pinyin": "zhè shì zhèng què de",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
+          "dist_en": "Forklift",
+          "dist_zh": "叉车",
+          "dist_pinyin": "chā chē",
           "audio": "audio/daily/dv_8f368a1412.mp3",
           "source": "Nhật ký weixin"
         },
@@ -383,9 +501,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "专业的",
           "pinyin": "zhuān yè de",
-          "dist_en": "Forklift",
-          "dist_zh": "叉车",
-          "dist_pinyin": "chā chē",
+          "dist_en": "Caliper",
+          "dist_zh": "卡尺",
+          "dist_pinyin": "kǎ chǐ",
           "audio": "audio/daily/dv_ea860287ce.mp3",
           "source": "Nhật ký weixin"
         },
@@ -396,9 +514,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "工资还好吗",
           "pinyin": "gōng zī hái hǎo ma",
-          "dist_en": "Caliper",
-          "dist_zh": "卡尺",
-          "dist_pinyin": "kǎ chǐ",
+          "dist_en": "Gloves",
+          "dist_zh": "手套",
+          "dist_pinyin": "shǒu tào",
           "audio": "audio/daily/dv_b3d8906dc2.mp3",
           "source": "Nhật ký weixin"
         },
@@ -409,9 +527,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "对了，我忘了",
           "pinyin": "duì le， wǒ wàng le",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
+          "dist_en": "Tape",
+          "dist_zh": "胶带",
+          "dist_pinyin": "jiāo dài",
           "audio": "audio/daily/dv_608ab95226.mp3",
           "source": "Nhật ký weixin"
         },
@@ -422,9 +540,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "比老公司好",
           "pinyin": "bǐ lǎo gōng sī hǎo",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
+          "dist_en": "Meeting Table",
+          "dist_zh": "会议桌",
+          "dist_pinyin": "huì yì zhuō",
           "audio": "audio/daily/dv_f18e96215f.mp3",
           "source": "Nhật ký weixin"
         },
@@ -435,9 +553,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "工作很辛苦吗",
           "pinyin": "gōng zuò hěn xīn kǔ ma",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
+          "dist_en": "Water Cup",
+          "dist_zh": "水杯",
+          "dist_pinyin": "shuǐ bēi",
           "audio": "audio/daily/dv_410434ce23.mp3",
           "source": "Nhật ký weixin"
         },
@@ -448,9 +566,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "怎么这么好吃",
           "pinyin": "zěn me zhè me hǎo chī",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
+          "dist_en": "Printer",
+          "dist_zh": "打印机",
+          "dist_pinyin": "dǎ yìn jī",
           "audio": "audio/daily/dv_11547d0c29.mp3",
           "source": "Nhật ký weixin"
         },
@@ -461,9 +579,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "高兴",
           "pinyin": "gāo xìng",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
+          "dist_en": "Warehouse",
+          "dist_zh": "仓库",
+          "dist_pinyin": "cāng kù",
           "audio": "audio/daily/dv_60b633faa9.mp3",
           "source": "Nhật ký weixin"
         },
@@ -474,9 +592,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "那家公司在哪里",
           "pinyin": "nà jiā gōng sī zài nǎ lǐ",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
+          "dist_en": "Forklift",
+          "dist_zh": "叉车",
+          "dist_pinyin": "chā chē",
           "audio": "audio/daily/dv_fd8d2a31d2.mp3",
           "source": "Nhật ký weixin"
         },
@@ -487,9 +605,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "在你家附近吗",
           "pinyin": "zài nǐ jiā fù jìn ma",
-          "dist_en": "Forklift",
-          "dist_zh": "叉车",
-          "dist_pinyin": "chā chē",
+          "dist_en": "Caliper",
+          "dist_zh": "卡尺",
+          "dist_pinyin": "kǎ chǐ",
           "audio": "audio/daily/dv_a6d7a6ed4a.mp3",
           "source": "Nhật ký weixin"
         },
@@ -500,9 +618,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (weixin)",
           "zh": "太累了",
           "pinyin": "tài lèi le",
-          "dist_en": "Caliper",
-          "dist_zh": "卡尺",
-          "dist_pinyin": "kǎ chǐ",
+          "dist_en": "Gloves",
+          "dist_zh": "手套",
+          "dist_pinyin": "shǒu tào",
           "audio": "audio/daily/dv_9fdb94877a.mp3",
           "source": "Nhật ký weixin"
         },
@@ -513,9 +631,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (chrome)",
           "zh": "延迟 / 延期",
           "pinyin": "yán chí  /  yán qī",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
+          "dist_en": "Tape",
+          "dist_zh": "胶带",
+          "dist_pinyin": "jiāo dài",
           "audio": "audio/daily/dv_bcb26f8574.mp3",
           "source": "Nhật ký chrome"
         },
@@ -526,9 +644,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (workbuddyai)",
           "zh": "非常感谢你",
           "pinyin": "fēi cháng gǎn xiè nǐ",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
+          "dist_en": "Meeting Table",
+          "dist_zh": "会议桌",
+          "dist_pinyin": "huì yì zhuō",
           "audio": "audio/daily/dv_9393a6bf5d.mp3",
           "source": "Nhật ký workbuddyai"
         },
@@ -539,9 +657,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (chrome)",
           "zh": "工作交流",
           "pinyin": "gōng zuò jiāo liú",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
+          "dist_en": "Water Cup",
+          "dist_zh": "水杯",
+          "dist_pinyin": "shuǐ bēi",
           "audio": "audio/daily/dv_0c02d43c4a.mp3",
           "source": "Nhật ký chrome"
         },
@@ -552,9 +670,9 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (zalo)",
           "zh": "给我耳机吧",
           "pinyin": "gěi wǒ ěr jī ba",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
+          "dist_en": "Printer",
+          "dist_zh": "打印机",
+          "dist_pinyin": "dǎ yìn jī",
           "audio": "audio/daily/dv_7c8213eaad.mp3",
           "source": "Nhật ký zalo"
         },
@@ -565,24 +683,11 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "en": "Log (Antigravity)",
           "zh": "或者",
           "pinyin": "huò zhě",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
-          "audio": "audio/daily/dv_072ca6daf7.mp3",
-          "source": "Nhật ký Antigravity"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Bạn ơi tôi mệt",
-          "en": "Log (chrome)",
-          "zh": "嘿我累了",
-          "pinyin": "hēi wǒ lèi le",
           "dist_en": "Warehouse",
           "dist_zh": "仓库",
           "dist_pinyin": "cāng kù",
-          "audio": "audio/daily/dv_2e0819c57b.mp3",
-          "source": "Nhật ký chrome"
+          "audio": "audio/daily/dv_072ca6daf7.mp3",
+          "source": "Nhật ký Antigravity"
         },
         {
           "cat": "daily",
@@ -1220,7 +1325,41 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "id": "daily_2026-10-27_1",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "📋 Quản Lý Kỹ Thuật (WeChat)",
+          "speaker": "🏭 Tổ Trưởng Định Hình (Ổ Z: WeChat)",
+          "q_zh": "是不是4号吸塑模有问题？我现在做的也是4号模严重！",
+          "q_pinyin": "shì bú shì 4 hào xī sù mó yǒu wèn tí？ wǒ xiàn zài zuò de yě shì 4 hào mó yán zhòng！",
+          "q_vi": "Có phải khuôn hút nhựa số 4 có vấn đề không? Hàng tôi đang chạy khuôn số 4 cũng bị lỗi nặng!",
+          "q_audio": "audio/daily/dq_3f31e18a0b.mp3",
+          "correct_zh": "马上停下4号模检查，通知模具部过来修模！",
+          "correct_pinyin": "mǎ shàng tíng xià 4 hào mó jiǎn chá， tōng zhī mú jù bù guò lái xiū mó！",
+          "correct_vi": "Cho dừng khuôn số 4 kiểm tra ngay, báo bộ phận khuôn qua sửa khuôn!",
+          "wrong_zh": "周末我们一起去公园骑自行车吧。",
+          "wrong_pinyin": "zhōu mò wǒ men yì qǐ qù gōng yuán qí zì xíng chē ba。",
+          "wrong_vi": "Cuối tuần chúng mình cùng ra công viên đạp xe nhé.",
+          "a_audio": "audio/daily/da_f5f77fa2d8.mp3"
+        },
+        {
+          "id": "daily_2026-10-27_2",
+          "cat": "daily",
+          "date": "2026-10-27",
+          "speaker": "🔍 Chủ Nhiệm QC (Ổ Z: WeChat)",
+          "q_zh": "程主任请速查核原因改善，先把有翘边的挑出来！",
+          "q_pinyin": "chéng zhǔ rèn qǐng sù chá hé yuán yīn gǎi shàn， xiān bǎ yǒu qiào biān de tiāo chū lái！",
+          "q_vi": "Chủ nhiệm Trình vui lòng kiểm tra nhanh nguyên nhân để khắc phục, trước mắt nhặt riêng hàng bị vênh mép ra!",
+          "q_audio": "audio/daily/dq_245483c2bf.mp3",
+          "correct_zh": "收到，产线正在逐个挑出翘边品，同时排查模具温度！",
+          "correct_pinyin": "shōu dào， chǎn xiàn zhèng zài zhú gè tiāo chū qiào biān pǐn， tóng shí pái chá mú jù wēn dù！",
+          "correct_vi": "Đã nhận, chuyền đang nhặt riêng hàng vênh mép và kiểm tra nhiệt độ khuôn!",
+          "wrong_zh": "这家咖啡店的拿铁味道很不错。",
+          "wrong_pinyin": "zhè jiā kā fēi diàn de ná tiě wèi dào hěn bú cuò。",
+          "wrong_vi": "Món cà phê Latte của quán này vị rất ngon.",
+          "a_audio": "audio/daily/da_686651ddcd.mp3"
+        },
+        {
+          "id": "daily_2026-10-27_3",
+          "cat": "daily",
+          "date": "2026-10-27",
+          "speaker": "📋 Quản Lý Kỹ Thuật (Ổ Z: WeChat)",
           "q_zh": "BTN-8-11装ABS壳和装彩盒的作业指导书更新了，请帮打印下发！",
           "q_pinyin": "BTN-8-11 zhuāng ABS ké hé zhuāng cǎi hé de zuò yè zhǐ dǎo shū gēng xīn le， qǐng bāng dǎ yìn xià fā！",
           "q_vi": "SOP lắp vỏ ABS & đóng hộp màu mã BTN-8-11 đã cập nhật, nhờ in phát xuống xưởng!",
@@ -1234,10 +1373,10 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "a_audio": "audio/daily/da_324f7ba763.mp3"
         },
         {
-          "id": "daily_2026-10-27_2",
+          "id": "daily_2026-10-27_4",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "🔍 Phó Tổng Tiêu (WeChat QC)",
+          "speaker": "🔍 Phó Tổng Tiêu (QC Xuất Nhật)",
           "q_zh": "7071出日本单安排全检一次，检查漏彩盒贴纸的问题！",
           "q_pinyin": "7071 chū rì běn dān ān pái quán jiǎn yī cì， jiǎn chá lòu cǎi hé tiē zhǐ de wèn tí！",
           "q_vi": "Đơn 7071 xuất Nhật sắp xếp kiểm 100% một lượt, kiểm tra lỗi sót tem hộp màu!",
@@ -1251,7 +1390,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "a_audio": "audio/daily/da_7a0d43e1f1.mp3"
         },
         {
-          "id": "daily_2026-10-27_3",
+          "id": "daily_2026-10-27_5",
           "cat": "daily",
           "date": "2026-10-27",
           "speaker": "🏭 Kỹ Sư Dự Án SMI-16",
@@ -1268,7 +1407,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "a_audio": "audio/daily/da_19bec1acec.mp3"
         },
         {
-          "id": "daily_2026-10-27_4",
+          "id": "daily_2026-10-27_6",
           "cat": "daily",
           "date": "2026-10-27",
           "speaker": "👷 Đồng Nghiệp Kỹ Thuật (Zalo)",
@@ -1285,10 +1424,10 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "a_audio": "audio/daily/da_ab8e62c21d.mp3"
         },
         {
-          "id": "daily_2026-10-27_5",
+          "id": "daily_2026-10-27_7",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "💬 Bạn Cũ Trung Quốc (WeChat)",
+          "speaker": "💬 Bạn Cũ Trung Quốc (Ổ Z: WeChat)",
           "q_zh": "新公司加班多吗？你现在住宿舍还是租房住？",
           "q_pinyin": "xīn gōng sī jiā bān duō ma？ nǐ xiàn zài zhù sù shě hái shì zū fáng zhù？",
           "q_vi": "Công ty mới tăng ca nhiều không? Giờ bạn ở ký túc xá hay thuê trọ?",
@@ -1302,7 +1441,7 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "a_audio": "audio/daily/da_b9d612c79d.mp3"
         },
         {
-          "id": "daily_2026-10-27_6",
+          "id": "daily_2026-10-27_8",
           "cat": "daily",
           "date": "2026-10-27",
           "speaker": "🤝 Đối Tác Trung Quốc (WeChat)",
@@ -1317,6 +1456,40 @@ window.CYBERBIRD_DAILY_TIMELINE = {
           "wrong_pinyin": "jīn tiān xià wǔ chāo shì xī guā dǎ zhé。",
           "wrong_vi": "Chiều nay siêu thị giảm giá dưa hấu.",
           "a_audio": "audio/daily/da_79ca570cf0.mp3"
+        },
+        {
+          "id": "daily_2026-10-27_z_9",
+          "cat": "daily",
+          "date": "2026-10-27",
+          "speaker": "💬 Nhật Ký Ổ Z: DeanHub",
+          "q_zh": "之前和你一起在吸塑部门工作的人已经辞职了",
+          "q_pinyin": "zhī qián hé nǐ yì qǐ zài xī sù bù mén gōng zuò de rén yǐ jīng cí zhí le",
+          "q_vi": "Người làm việc với bạn ở khoa vỉ đã từ chức.",
+          "q_audio": "audio/daily/dq_33f7adca8c.mp3",
+          "correct_zh": "已经核对清楚了，我马上整理好发给您确认。",
+          "correct_pinyin": "yǐ jīng hé duì qīng chǔ le， wǒ mǎ shàng zhěng lǐ hǎo fā gěi nín què rèn。",
+          "correct_vi": "Đã đối chiếu rõ ràng rồi, tôi tổng hợp gửi anh/chị xác nhận ngay.",
+          "wrong_zh": "今天下午超市西瓜打折。",
+          "wrong_pinyin": "jīn tiān xià wǔ chāo shì xī guā dǎ zhé。",
+          "wrong_vi": "Chiều nay siêu thị giảm giá dưa hấu.",
+          "a_audio": "audio/daily/da_0e7895d4e2.mp3"
+        },
+        {
+          "id": "daily_2026-10-27_z_10",
+          "cat": "daily",
+          "date": "2026-10-27",
+          "speaker": "💬 Nhật Ký Ổ Z: DeanHub",
+          "q_zh": "以前一起工作的都辞职了，就剩两个人",
+          "q_pinyin": "yǐ qián yì qǐ gōng zuò de dōu cí zhí le， jiù shèng liǎng gè rén",
+          "q_vi": "Những người từng làm việc với tôi trước đây đều đã từ chức, chỉ còn lại hai người.",
+          "q_audio": "audio/daily/dq_65c3134565.mp3",
+          "correct_zh": "已经核对清楚了，我马上整理好发给您确认。",
+          "correct_pinyin": "yǐ jīng hé duì qīng chǔ le， wǒ mǎ shàng zhěng lǐ hǎo fā gěi nín què rèn。",
+          "correct_vi": "Đã đối chiếu rõ ràng rồi, tôi tổng hợp gửi anh/chị xác nhận ngay.",
+          "wrong_zh": "电影院的爆米花卖完了。",
+          "wrong_pinyin": "diàn yǐng yuàn de bào mǐ huā mài wán le。",
+          "wrong_vi": "Bắp rang bơ ở rạp chiếu phim bán hết rồi.",
+          "a_audio": "audio/daily/da_0e7895d4e2.mp3"
         }
       ]
     }

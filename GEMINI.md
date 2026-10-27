@@ -1,31 +1,27 @@
-# 🎮 Dự Án 23: CyberBird Lingo PRO v3.0 — Living Daily Diary & Timeline Edition
+# 🎮 Dự Án 23: CyberBird Lingo PRO v3.1 — Living Daily Diary (`Z:\` DeanHub Edition)
 
-> **Phạm vi dự án (Isolated Workspace):** Phát triển độc lập Game học ngoại ngữ phản xạ bay **CyberBird Lingo PRO** (`cyberbird_lingo/`), hệ thống tổng hợp nhật ký ngầm **Silent Daily Watchdog** (`central_daily_watchdog.py`), và bộ đóng gói ứng dụng Android Native/PWA 1-Click **VibeToApk** (`vibe_packager.py`, `CyberBirdLingo_Android/`).
+> **Phạm vi dự án (Isolated Workspace):** Phát triển độc lập Game học ngoại ngữ phản xạ bay **CyberBird Lingo PRO** (`cyberbird_lingo/`), hệ thống tổng hợp nhật ký ngầm từ **Ổ Share VPS 24/7 `Z:\` (`\\100.77.193.96\DeanHub`)** qua **Silent Daily Watchdog** (`central_daily_watchdog.py`), và bộ đóng gói ứng dụng Android Native/PWA 1-Click **VibeToApk** (`vibe_packager.py`, `CyberBirdLingo_Android/`).
 
-## 📌 Trạng Thái Hiện Tại (`v3.0.0-pro`)
-- **3 Chế Độ Bay Phản Xạ Chuyên Sâu:**
-  1. `📅 Nhật Ký Ngày (Timeline)`: Tự động nạp từ vựng & hội thoại thực tế mỗi ngày từ nhật ký dịch thuật ReaKey (`reavault.db`), thư mục chia sẻ Tailscale (`WinShare`) và `inbox_diary/` — hỗ trợ lọc `[🔥 Trộn Từ & Câu | 🎯 Chỉ Từ Nhật Ký | 💬 Chỉ Câu Thực Chiến]` và chọn từng ngày trên Timeline.
-  2. `🎯 Từ Vựng (165+ từ)`: Đã tích hợp thêm 45 thuật ngữ tủ điện & tự động hóa công nghiệp (`变频器`, `微型断路器`, `交流接触器`, `伺服电机`, `触摸屏`...) cùng 7 chủ đề (`🏭 Xưởng Mũ`, `⚡ Điện Tử & TĐH`, `💼 Văn Phòng`, `💻 Công Nghệ`, `🗣️ Giao Tiếp`, `☕ Ẩm Thực`, `🐱 Động Vật`).
-  3. `💬 Hội Thoại Thực Chiến (31+ tình huống)`: Có thanh lọc chủ đề riêng (`🌟 Tất Cả`, `🏭 Nhà Xưởng`, `💻 IT & Kỹ Thuật`, `💼 Văn Phòng`, `🤝 Đời Sống`).
-- **Silent Daily Watchdog (`central_daily_watchdog.py` + `START_SILENT_WATCHDOG.vbs`):**
-  - Chạy hoàn toàn im lặng dưới nền (`pythonw.exe`, zero popup), quét tự động mỗi 5 phút.
-  - Tự lọc nhiễu, gắn Pinyin thanh điệu (`pypinyin`), sinh giọng đọc Neural `zh-CN-XiaoxiaoNeural` (`cyberbird_lingo/audio/daily/`), và xuất đồng thời `daily_timeline.json` (Live HTTP) + `daily_timeline_data.js` (Offline APK / `file://` không dính lỗi CORS).
-- **Tính năng UX & Offline PWA / APK:**
-  - Tự động đồng bộ tốc độ đọc theo cấp độ (`0.85x / 1.0x / 1.2x`), tùy chỉnh cỡ chữ ô cổng bay (`14px / 16.5px / 19px`) kèm cơ chế tự co chữ `maxWidth` chống tràn cổng.
-  - Service Worker `cyberbird-lingo-v3.0-timeline` cơ chế **Network-First** cho HTML & dữ liệu nhật ký, **Cache-First** cho âm thanh MP3.
+## 📌 Kiến Trúc Đồng Bộ Hằng Ngày Qua Ổ Share `Z:\` (`v3.1.0-pro`)
+- **Nguồn trung tâm 24/7 (`Z:\` -> `\\100.77.193.96\DeanHub` — CHỈ ĐỌC 100%, KHÔNG GHI LÊN Ổ Z:):**
+  1. `Z:\_system\nhat_ky.db`: Tự động chụp bản sao ra thư mục tạm (`Zero-Lock`, không bao giờ khóa DB của VPS) để đọc toàn bộ `clipboard_text`, `note`, `starred` (⭐ `#ghim`), `rescue_file` và `reminders` từ cả **máy Dell công xưởng**, **laptop T14**, lẫn **Bot Telegram `@Dean_keyboard_bot`**.
+  2. `Z:\03_Nhat_Ky_Hang_Ngay\YYYY-MM-DD.md`: Sổ nhật ký Markdown hằng ngày.
+  3. `Z:\01_Files_Cuu_Ho\`: Chỉ đọc file văn bản cứu hộ (`.txt`, `.md`). Tuyệt đối **KHÔNG lưu/sao chép ngược** bộ game hay file âm thanh lên `Z:\04_Kho_Chung_Dung_Chung` để bảo vệ dung lượng VPS!
+  4. `15. REA\ReaKey\server\data\reavault.db` & `inbox_diary/`: Kết hợp kho 45 thuật ngữ Tủ điện & Tự động hóa (`glossary`) + lịch sử dịch nhanh ReaKey.
+- **Tự Động Hóa Đầu-Cuối (`central_daily_watchdog.py`):**
+  - Tự động kết nối lại ổ `Z:\` nếu máy vừa thức dậy từ chế độ Sleep.
+  - Tự lọc rác, tự dịch Tiếng Trung -> Tiếng Việt & Tiếng Anh (lưu đệm vĩnh viễn tại `.translation_cache.json`), tự dựng câu trả lời logic thực chiến nhà xưởng, gắn Pinyin thanh điệu và sinh giọng đọc `zh-CN-XiaoxiaoNeural`.
+  - **100% file cập nhật (`daily_timeline.json`, `daily_timeline_data.js`, `audio/daily/*.mp3`) chỉ lưu gọn trong thư mục dự án `D:\0.PROGRAMME\4. DEAN OPTIMIZE\23. CyberBird-Lingo-Game\cyberbird_lingo\`**!
 
 ## ⚡ Lệnh Chạy Nhanh
 ```powershell
-# 1. Đồng bộ Nhật Ký Ngày tức thì (1 lần):
+# 1. Đồng bộ ngay lập tức từ Ổ Z:\ (1 lần):
 python central_daily_watchdog.py --once
 
-# 2. Kích hoạt Watchdog chạy ngầm hoàn toàn im lặng (Zero Window):
-wscript.exe START_SILENT_WATCHDOG.vbs
-
-# 3. Khởi động trọn bộ (Watchdog + Web Server 8099 + Cloudflare Tunnel):
+# 2. Khởi động trọn bộ (Watchdog Z:\ + Web Server 8099 + Cloudflare Tunnel):
 .\CHAY_CYBERBIRD_FULL.bat
 
-# 4. Đóng gói Android Native Project (v3.0.0) + ZIP:
+# 3. Đóng gói Android Native Project + ZIP:
 python vibe_packager.py -i cyberbird_lingo -o CyberBirdLingo_Android -n "CyberBirdLingo" -p "com.dean.cyberbirdlingo"
 ```
 
