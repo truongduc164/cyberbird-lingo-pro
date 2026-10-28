@@ -667,24 +667,18 @@ def run_sync(force: bool = False, force_ai: bool = False, publish_cloud: bool = 
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Central Daily Watchdog v3.2 (AI Curator + Permanent Cloud OTA)")
-    parser.add_argument("--once", action="store_true", help="Chạy đồng bộ 1 lần rồi thoát")
-    parser.add_argument("--daemon", action="store_true", help="Chạy ngầm theo dõi liên tục")
-    parser.add_argument("--interval", type=int, default=300, help="Chu kỳ quét giây khi chạy daemon (mặc định 300s)")
-    parser.add_argument("--force", action="store_true", help="Bắt buộc tổng hợp lại ngay cả khi chưa đổi file")
+    parser = argparse.ArgumentParser(description="Central Daily Batch Digest v3.2.1 (End-of-Workday AI Curator + Cloud OTA)")
+    parser.add_argument("--scheduled", action="store_true", help="Chạy chốt sổ định kỳ 1 lần (chỉ gọi AI & push nếu có dữ liệu mới) rồi tự thoát ngay")
+    parser.add_argument("--once", action="store_true", help="Chạy kiểm tra & cập nhật ngay 1 lần rồi tự thoát")
     parser.add_argument("--force-ai", action="store_true", help="Bắt buộc gọi lại AI biên tập lại từ đầu")
     parser.add_argument("--no-cloud", action="store_true", help="Chỉ cập nhật cục bộ, tạm chưa push GitHub Pages")
     args = parser.parse_args()
 
-    if args.daemon:
-        print(f"🕵️‍♂️ Central Daily Watchdog v3.2 (AI Curator + Cloud OTA) khởi chạy ngầm ({args.interval}s)...")
-        run_sync(force=args.force, force_ai=args.force_ai, publish_cloud=not args.no_cloud)
-        while True:
-            time.sleep(max(60, args.interval))
-            try:
-                run_sync(force=False, force_ai=False, publish_cloud=not args.no_cloud)
-            except Exception as exc:
-                print(f"[WARN] Watchdog cycle error: {exc}")
+    # Scheduled mode: smart fingerprint check -> if nothing new on Z:\ or ReaKey, exits in 0.05s!
+    if args.scheduled:
+        changed = run_sync(force=False, force_ai=args.force_ai, publish_cloud=not args.no_cloud)
+        if not changed:
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] ✅ Không có nhật ký mới kể từ lần chốt sổ trước — tự thoát nhẹ nhàng.")
     else:
         run_sync(force=True, force_ai=args.force_ai, publish_cloud=not args.no_cloud)
 
