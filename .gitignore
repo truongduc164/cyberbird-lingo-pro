@@ -19,9 +19,17 @@ venv/
 .venv/
 env/
 
-# Nested git repositories / submodules
+# Nested git repositories / submodules & local secrets/caches
 MoneyPrinterTurbo/
 VibeToApk/demo2apk_repo/
+demo2apk_repo/
+.gh_pages_deploy/
+.env
+.env.*
+telegram_config.json
+.watchdog_state.json
+.translation_cache.json
+.ai_curated_days_cache.json
 
 # OS artifacts
 Thumbs.db

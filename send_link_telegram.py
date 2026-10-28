@@ -17,7 +17,8 @@ sys.path.insert(0, str(WORKSPACE_ROOT))
 
 from telegram_video_hub import load_config
 
-DEFAULT_CLOUD_URL = "https://arrive-variety-download-hunting.trycloudflare.com"
+# Link Cố Định Vĩnh Viễn 24/7 trên GitHub Pages CDN — Không bao giờ đổi địa chỉ!
+PERMANENT_URL = "https://truongduc164.github.io/cyberbird-lingo/"
 
 
 def generate_qr(target_url: str) -> Path:
@@ -51,18 +52,17 @@ def main():
         print("Missing bot credentials")
         return
 
-    cloud_url = sys.argv[1].strip() if len(sys.argv) > 1 and sys.argv[1].strip() else DEFAULT_CLOUD_URL
+    cloud_url = sys.argv[1].strip() if len(sys.argv) > 1 and sys.argv[1].strip() else PERMANENT_URL
     qr_path = generate_qr(cloud_url)
-    print(f"Generated fresh QR for: {cloud_url} -> {qr_path}")
+    print(f"Generated permanent QR for: {cloud_url} -> {qr_path}")
 
     caption = (
-        "🦅 <b>CYBERBIRD LINGO PRO v3.1.1 — LINK MỚI VÀO CHƠI NGAY!</b>\n\n"
-        "✅ Đã làm mới đường truyền + đưa nút <b>🚀 BẮT ĐẦU BAY NGAY</b> lên ngay chính giữa màn hình iPhone (chạm 1 phát bay luôn + tự lưu Offline 100% MP3)!\n\n"
-        f"👉 <a href=\"{cloud_url}\"><b>BẤM VÀO ĐÂY ĐỂ MỞ GAME NGAY</b></a>\n"
-        f"🔗 {cloud_url}\n\n"
-        "📡 <i>Dự phòng cố định:</i>\n"
-        "• Cùng Wi-Fi: http://192.168.2.19:8099\n"
-        "• Tailscale: http://100.84.141.94:8099"
+        "🦅 <b>CYBERBIRD LINGO PRO v3.2 — LINK CỐ ĐỊNH VĨNH VIỄN & AI BIÊN TẬP BÀI HỌC!</b>\n\n"
+        "✨ <b>2 nâng cấp lớn đã hoàn tất:</b>\n"
+        "1️⃣ <b>Link Cố Định 24/7 (Bỏ hẳn trycloudflare):</b> Lưu 1 lần ra Màn hình chính iPhone/Android là dùng trọn đời, tự động cập nhật bài mới mỗi ngày cho mọi máy khách kể cả khi tắt PC!\n"
+        "2️⃣ <b>AI Biên Tập Viên Sư Phạm:</b> Tự khử lỗi OCR/tên riêng, đúc kết chủ đề + mẹo nhớ + từ vựng & hội thoại trau chuốt dễ học!\n\n"
+        f"👉 <a href=\"{cloud_url}\"><b>MỞ GAME CỐ ĐỊNH VĨNH VIỄN TẠI ĐÂY</b></a>\n"
+        f"🔗 {cloud_url}"
     )
     print(f"Caption length: {len(caption)} chars")
 
@@ -75,12 +75,12 @@ def main():
 
     if qr_path.exists():
         with open(qr_path, "rb") as f:
-            files = {"photo": ("qr_cyberbird_lingo_v311.png", f, "image/png")}
+            files = {"photo": ("qr_cyberbird_permanent_v32.png", f, "image/png")}
             r = requests.post(url, data=data, files=files, timeout=30)
             res = r.json()
             print("sendPhoto response:", res.get("ok"))
             if res.get("ok"):
-                print(f"✅ Đã gửi link & QR code v3.1.1 trực tiếp về Telegram (Msg ID: {res['result']['message_id']})")
+                print(f"✅ Đã gửi Link Cố Định Vĩnh Viễn & QR v3.2 về Telegram (Msg ID: {res['result']['message_id']})")
                 return
             else:
                 print("sendPhoto error:", res)

@@ -1,706 +1,569 @@
 {
-  "updated_at": "2026-10-28 06:51:17",
-  "source_hub": "Z:\\",
-  "total_days": 1,
-  "total_vocab": 97,
-  "total_dialogues": 10,
+  "updated_at": "2026-10-28 11:39:37",
+  "permanent_url": "https://truongduc164.github.io/cyberbird-lingo/",
+  "curation_engine": "DeepSeek Pedagogical AI v3.2",
+  "total_days": 2,
+  "total_vocab": 76,
+  "total_dialogues": 14,
   "days": [
+    {
+      "date": "2026-10-28",
+      "label": "Hôm nay (28/10)",
+      "topic_title": "Xử Lý Lỗi Nhãn Dán Và Bề Mặt Sản Phẩm",
+      "summary": "Hôm nay bạn đã nắm được quy trình xử lý các lỗi thường gặp trên sản phẩm như nhãn dán bị bong tróc, bề mặt bị trầy xước và cách vệ sinh bề mặt trước khi dán. Bạn cũng đã học được các thuật ngữ quan trọng như 标签脱落, 起翘, 刮伤 và 分箱包装 để giao tiếp hiệu quả với đồng nghiệp và đối tác.",
+      "learning_tip": "💡 Mẹo thực chiến: Phân biệt 脱落 (bong tróc, rơi ra) và 起翘 (cong vênh, bong mép) – 脱落 thường chỉ vật gì đó rơi hẳn ra, còn 起翘 chỉ trạng thái mép bị hở lên nhưng vẫn còn dính một phần.",
+      "ai_curated": true,
+      "vocab_count": 16,
+      "dialogue_count": 7,
+      "vocab": [
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Nhãn bị bong tróc",
+          "en": "Label peeling off",
+          "zh": "标签脱落",
+          "pinyin": "biāo qiān tuō luò",
+          "dist_en": "Wrong label applied",
+          "dist_zh": "标签贴错",
+          "dist_pinyin": "biāo qiān tiē cuò",
+          "audio": "audio/daily/dv_68b5d0f41b.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Bong mép, cong vênh",
+          "en": "Lifting, warping",
+          "zh": "起翘",
+          "pinyin": "qǐ qiào",
+          "dist_en": "Bubbling",
+          "dist_zh": "起泡",
+          "dist_pinyin": "qǐ pào",
+          "audio": "audio/daily/dv_a7c208bf43.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Bề mặt bị trầy xước",
+          "en": "Surface scratch",
+          "zh": "表面刮伤",
+          "pinyin": "biǎo miàn guā shāng",
+          "dist_en": "Surface scuff mark",
+          "dist_zh": "表面划痕",
+          "dist_pinyin": "biǎo miàn huà hén",
+          "audio": "audio/daily/dv_1f404c5a90.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Tỷ lệ lỗi",
+          "en": "Defect rate",
+          "zh": "不良率",
+          "pinyin": "bù liáng lǜ",
+          "dist_en": "Pass rate",
+          "dist_zh": "合格率",
+          "dist_pinyin": "hé gé lǜ",
+          "audio": "audio/daily/dv_5448436a1f.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Dung dịch vệ sinh bề mặt",
+          "en": "Surface cleaner",
+          "zh": "抹面水",
+          "pinyin": "mǒ miàn shuǐ",
+          "dist_en": "Detergent",
+          "dist_zh": "清洁剂",
+          "dist_pinyin": "qīng jié jì",
+          "audio": "audio/daily/dv_f62d83944b.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Mài, đánh bóng",
+          "en": "Polishing, sanding",
+          "zh": "打磨",
+          "pinyin": "dǎ mó",
+          "dist_en": "Buffing",
+          "dist_zh": "抛光",
+          "dist_pinyin": "pāo guāng",
+          "audio": "audio/daily/dv_4940c8e2e9.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Đóng gói riêng từng thùng",
+          "en": "Separate carton packing",
+          "zh": "分箱包装",
+          "pinyin": "fēn xiāng bāo zhuāng",
+          "dist_en": "Mixed packing",
+          "dist_zh": "混装",
+          "dist_pinyin": "hùn zhuāng",
+          "audio": "audio/daily/dv_ffdc6811ee.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Tem dán bên trong",
+          "en": "Inner sticker",
+          "zh": "内贴纸",
+          "pinyin": "nèi tiē zhǐ",
+          "dist_en": "Outer sticker",
+          "dist_zh": "外贴纸",
+          "dist_pinyin": "wài tiē zhǐ",
+          "audio": "audio/daily/dv_0c8f470ad1.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Phun dầu, sơn phun",
+          "en": "Spray painting",
+          "zh": "喷油",
+          "pinyin": "pēn yóu",
+          "dist_en": "Spray lacquer",
+          "dist_zh": "喷漆",
+          "dist_pinyin": "pēn qī",
+          "audio": "audio/daily/dv_ccf1fdf602.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Vết dầu mỡ",
+          "en": "Oil stain",
+          "zh": "渍油",
+          "pinyin": "zì yóu",
+          "dist_en": "Grease dirt",
+          "dist_zh": "油污",
+          "dist_pinyin": "yóu wū",
+          "audio": "audio/daily/dv_6988553d19.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Con dấu ngày tháng",
+          "en": "Date stamp",
+          "zh": "日期印章",
+          "pinyin": "rì qī yìn zhāng",
+          "dist_en": "Date label",
+          "dist_zh": "日期标签",
+          "dist_pinyin": "rì qī biāo qiān",
+          "audio": "audio/daily/dv_b0ed853579.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Thông tin địa chỉ",
+          "en": "Address information",
+          "zh": "地址信息",
+          "pinyin": "dì zhǐ xìn xī",
+          "dist_en": "Contact info",
+          "dist_zh": "联系方式",
+          "dist_pinyin": "lián xì fāng shì",
+          "audio": "audio/daily/dv_505ea466f2.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Ngôn ngữ sách hướng dẫn",
+          "en": "Manual language",
+          "zh": "手册语言",
+          "pinyin": "shǒu cè yǔ yán",
+          "dist_en": "Instruction book",
+          "dist_zh": "说明书",
+          "dist_pinyin": "shuō míng shū",
+          "audio": "audio/daily/dv_f70f77f07e.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Nội dung thị trường",
+          "en": "Market content",
+          "zh": "市场内容",
+          "pinyin": "shì chǎng nèi róng",
+          "dist_en": "Market requirement",
+          "dist_zh": "市场要求",
+          "dist_pinyin": "shì chǎng yāo qiú",
+          "audio": "audio/daily/dv_5428caae43.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Biện pháp chất lượng",
+          "en": "Quality countermeasure",
+          "zh": "品质对策",
+          "pinyin": "pǐn zhì duì cè",
+          "dist_en": "Quality issue",
+          "dist_zh": "品质问题",
+          "dist_pinyin": "pǐn zhì wèn tí",
+          "audio": "audio/daily/dv_78edfb6808.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-28",
+          "vi": "Phiếu liên lạc",
+          "en": "Contact slip",
+          "zh": "联络票",
+          "pinyin": "lián luò piào",
+          "dist_en": "Communication form",
+          "dist_zh": "联络单",
+          "dist_pinyin": "lián luò dān",
+          "audio": "audio/daily/dv_f384683fd1.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        }
+      ],
+      "dialogues": [
+        {
+          "id": "daily_2026-10-28_ai_1",
+          "cat": "daily",
+          "date": "2026-10-28",
+          "speaker": "🔍 Kỹ Sư QC Ngoại Quan",
+          "q_zh": "这批货仍然存在标签脱落的问题，不良率高达80%，请立即分析原因并给出对策。",
+          "q_pinyin": "zhè pī huò réng rán cún zài biāo qiān tuō luò de wèn tí， bù liáng lǜ gāo dá 80%， qǐng lì jí fēn xī yuán yīn bìng gěi chū duì cè。",
+          "q_vi": "Lô hàng này vẫn còn tình trạng nhãn bị bong tróc, tỷ lệ lỗi lên đến 80%, hãy phân tích nguyên nhân và đưa ra biện pháp ngay.",
+          "q_audio": "audio/daily/dq_5eb8a090ae.mp3",
+          "correct_zh": "我们已确认是表面清洁不彻底，会加强打磨和擦拭工序。",
+          "correct_pinyin": "wǒ men yǐ què rèn shì biǎo miàn qīng jié bù chè dǐ， huì jiā qiáng dǎ mó hé cā shì gōng xù。",
+          "correct_vi": "Chúng tôi đã xác nhận do vệ sinh bề mặt chưa sạch, sẽ tăng cường công đoạn mài và lau chùi.",
+          "wrong_zh": "这批货的标签颜色不对，需要重新印刷并更换供应商。",
+          "wrong_pinyin": "zhè pī huò de biāo qiān yán sè bú duì， xū yào chóng xīn yìn shuā bìng gēng huàn gōng yìng shāng。",
+          "wrong_vi": "Nhãn của lô hàng này sai màu, cần in lại và thay nhà cung cấp.",
+          "a_audio": "audio/daily/da_4d05ac1e96.mp3"
+        },
+        {
+          "id": "daily_2026-10-28_ai_2",
+          "cat": "daily",
+          "date": "2026-10-28",
+          "speaker": "🏭 Tổ Trưởng Sản Xuất",
+          "q_zh": "机车盔的内贴纸很多起翘，上次要求用抹面水擦过再贴，这两天都没擦。",
+          "q_pinyin": "jī chē kuī de nèi tiē zhǐ hěn duō qǐ qiào， shàng cì yāo qiú yòng mǒ miàn shuǐ cā guò zài tiē， zhè liǎng tiān dōu méi cā。",
+          "q_vi": "Tem dán bên trong mũ bảo hiểm bị bong mép nhiều, lần trước yêu cầu dùng dung dịch vệ sinh lau rồi mới dán, hai hôm nay đều không lau.",
+          "q_audio": "audio/daily/dq_9fcf8e3539.mp3",
+          "correct_zh": "明白，我会监督员工按标准操作，先清洁再贴。",
+          "correct_pinyin": "míng bái， wǒ huì jiān dū yuán gōng àn biāo zhǔn cāo zuò， xiān qīng jié zài tiē。",
+          "correct_vi": "Rõ, tôi sẽ giám sát nhân viên làm đúng tiêu chuẩn, vệ sinh trước rồi mới dán.",
+          "wrong_zh": "内贴纸起翘是因为胶水过期，换新胶水就能解决。",
+          "wrong_pinyin": "nèi tiē zhǐ qǐ qiào shì yīn wèi jiāo shuǐ guò qī， huàn xīn jiāo shuǐ jiù néng jiě jué。",
+          "wrong_vi": "Tem bên trong bị bong mép là do keo hết hạn, thay keo mới là giải quyết được.",
+          "a_audio": "audio/daily/da_c003826674.mp3"
+        },
+        {
+          "id": "daily_2026-10-28_ai_3",
+          "cat": "daily",
+          "date": "2026-10-28",
+          "speaker": "📦 Quản Lý Đóng Gói",
+          "q_zh": "如样拟现件！粉多的产品请单独分箱包装，避免混装。",
+          "q_pinyin": "rú yàng nǐ xiàn jiàn！ fěn duō de chǎn pǐn qǐng dān dú fēn xiāng bāo zhuāng， bì miǎn hùn zhuāng。",
+          "q_vi": "Làm theo mẫu! Sản phẩm có nhiều bụi phải đóng gói riêng từng thùng, tránh đóng lẫn.",
+          "q_audio": "audio/daily/dq_28ce67480d.mp3",
+          "correct_zh": "收到，我会按样品标准分箱，粉多的单独处理。",
+          "correct_pinyin": "shōu dào， wǒ huì àn yàng pǐn biāo zhǔn fēn xiāng， fěn duō de dān dú chǔ lǐ。",
+          "correct_vi": "Đã nhận, tôi sẽ phân loại thùng theo tiêu chuẩn mẫu, hàng nhiều bụi xử lý riêng.",
+          "wrong_zh": "分箱包装太耗时，建议全部混装后再抽检。",
+          "wrong_pinyin": "fēn xiāng bāo zhuāng tài hào shí， jiàn yì quán bù hùn zhuāng hòu zài chōu jiǎn。",
+          "wrong_vi": "Đóng gói riêng từng thùng mất thời gian quá, đề nghị đóng lẫn hết rồi kiểm tra sau.",
+          "a_audio": "audio/daily/da_48d94d5b9e.mp3"
+        },
+        {
+          "id": "daily_2026-10-28_ai_4",
+          "cat": "daily",
+          "date": "2026-10-28",
+          "speaker": "⚡ Kỹ Sư Kỹ Thuật",
+          "q_zh": "这个没擦过去渍油，只要打磨落实到位就可以了，不用额外清洁。",
+          "q_pinyin": "zhè ge méi cā guò qù zì yóu， zhǐ yào dǎ mó luò shí dào wèi jiù kě yǐ le， bù yòng é wài qīng jié。",
+          "q_vi": "Cái này chưa lau vết dầu mỡ, chỉ cần mài kỹ là được, không cần vệ sinh thêm.",
+          "q_audio": "audio/daily/dq_2b75f3089d.mp3",
+          "correct_zh": "不行，渍油会影响附着力，必须清洁后再打磨。",
+          "correct_pinyin": "bù xíng， zì yóu huì yǐng xiǎng fù zhuó lì， bì xū qīng jié hòu zài dǎ mó。",
+          "correct_vi": "Không được, vết dầu mỡ sẽ ảnh hưởng đến độ bám dính, phải vệ sinh rồi mới mài.",
+          "wrong_zh": "那先喷油再打磨，这样油渍就被盖住了。",
+          "wrong_pinyin": "nà xiān pēn yóu zài dǎ mó， zhè yàng yóu zì jiù bèi gài zhù le。",
+          "wrong_vi": "Vậy phun dầu trước rồi mài, làm vậy vết dầu sẽ bị che đi.",
+          "a_audio": "audio/daily/da_2510b71a20.mp3"
+        },
+        {
+          "id": "daily_2026-10-28_ai_5",
+          "cat": "daily",
+          "date": "2026-10-28",
+          "speaker": "🤝 Đối Tác Trung Quốc",
+          "q_zh": "为什么要去掉日期印章、帽子贴纸和地址信息印章？手册语言不同，所有市场内容不再相同，请解释。",
+          "q_pinyin": "wèi shén me yào qù diào rì qī yìn zhāng、 mào zi tiē zhǐ hé dì zhǐ xìn xī yìn zhāng？ shǒu cè yǔ yán bù tóng， suǒ yǒu shì chǎng nèi róng bù zài xiāng tóng， qǐng jiě shì。",
+          "q_vi": "Tại sao phải bỏ con dấu ngày tháng, tem dán mũ và con dấu thông tin địa chỉ? Ngôn ngữ sách hướng dẫn khác nhau, nội dung cho tất cả thị trường không còn giống nhau, hãy giải thích.",
+          "q_audio": "audio/daily/dq_535ebc9062.mp3",
+          "correct_zh": "因为不同市场要求不同，我们会按市场分别更新手册和标签。",
+          "correct_pinyin": "yīn wèi bù tóng shì chǎng yāo qiú bù tóng， wǒ men huì àn shì chǎng fēn bié gēng xīn shǒu cè hé biāo qiān。",
+          "correct_vi": "Vì yêu cầu các thị trường khác nhau, chúng tôi sẽ cập nhật sách hướng dẫn và nhãn riêng cho từng thị trường.",
+          "wrong_zh": "这些印章是旧版设计，新版本已经全部取消，不再使用。",
+          "wrong_pinyin": "zhè xiē yìn zhāng shì jiù bǎn shè jì， xīn bǎn běn yǐ jīng quán bù qǔ xiāo， bù zài shǐ yòng。",
+          "wrong_vi": "Những con dấu này là thiết kế cũ, bản mới đã bỏ hết, không dùng nữa.",
+          "a_audio": "audio/daily/da_decaaeaf12.mp3"
+        },
+        {
+          "id": "daily_2026-10-28_ai_6",
+          "cat": "daily",
+          "date": "2026-10-28",
+          "speaker": "🔍 Kỹ Sư QC Ngoại Quan",
+          "q_zh": "表面刮伤不合格，请记录在品质对策联络票上并通知责任人。",
+          "q_pinyin": "biǎo miàn guā shāng bù hé gé， qǐng jì lù zài pǐn zhì duì cè lián luò piào shàng bìng tōng zhī zé rèn rén。",
+          "q_vi": "Bề mặt bị trầy xước không đạt, hãy ghi vào phiếu liên lạc biện pháp chất lượng và thông báo người phụ trách.",
+          "q_audio": "audio/daily/dq_88dda56f37.mp3",
+          "correct_zh": "好的，我马上填写联络票并联系责任人处理。",
+          "correct_pinyin": "hǎo de， wǒ mǎ shàng tián xiě lián luò piào bìng lián xì zé rèn rén chǔ lǐ。",
+          "correct_vi": "Được, tôi sẽ điền phiếu liên lạc ngay và liên hệ người phụ trách xử lý.",
+          "wrong_zh": "刮伤不严重，可以放行，不用记录在联络票上。",
+          "wrong_pinyin": "guā shāng bù yán zhòng， kě yǐ fàng xíng， bù yòng jì lù zài lián luò piào shàng。",
+          "wrong_vi": "Trầy xước không nghiêm trọng, có thể cho qua, không cần ghi vào phiếu liên lạc.",
+          "a_audio": "audio/daily/da_d6967f62bb.mp3"
+        },
+        {
+          "id": "daily_2026-10-28_ai_7",
+          "cat": "daily",
+          "date": "2026-10-28",
+          "speaker": "🏭 Tổ Trưởng Sản Xuất",
+          "q_zh": "帽沿喷油那边已经领了料，请注意这个问题，避免再次发生。",
+          "q_pinyin": "mào yán pēn yóu nà biān yǐ jīng lǐng le liào， qǐng zhù yì zhè ge wèn tí， bì miǎn zài cì fā shēng。",
+          "q_vi": "Bên phun dầu vành mũ đã nhận nguyên liệu, hãy chú ý vấn đề này, tránh tái diễn.",
+          "q_audio": "audio/daily/dq_f069630e67.mp3",
+          "correct_zh": "收到，我会提醒喷油组注意操作规范。",
+          "correct_pinyin": "shōu dào， wǒ huì tí xǐng pēn yóu zǔ zhù yì cāo zuò guī fàn。",
+          "correct_vi": "Đã nhận, tôi sẽ nhắc nhóm phun dầu chú ý quy trình thao tác.",
+          "wrong_zh": "喷油组已经换人了，这个问题不会再出现。",
+          "wrong_pinyin": "pēn yóu zǔ yǐ jīng huàn rén le， zhè ge wèn tí bú huì zài chū xiàn。",
+          "wrong_vi": "Nhóm phun dầu đã thay người rồi, vấn đề này sẽ không xảy ra nữa.",
+          "a_audio": "audio/daily/da_8437a46d59.mp3"
+        }
+      ]
+    },
     {
       "date": "2026-10-27",
       "label": "Ngày 27/10/2026",
-      "summary": "⏰ Nhắc việc (16:00): check mail Oracle hoàn 2 đô • Xử lý lỗi khuôn hút nhựa số 4 (4号吸塑模) & khuôn 2 lòng (2穴模) • QC yêu cầu nhặt hàng vênh mép (翘边) & điều tra nguyên nhân cải tiến • Cập nhật SOP vỏ ABS & hộp màu BTN-8-11 • FQC toàn kiểm đơn Nhật 7071 (lỗi sót tem hộp màu) • Theo dõi chạy thử lô nhỏ SMI-16 (in-hút-cắt định hình) • Lưu ý kỹ thuật mã SP-165 & tem niên hạn • Trò chuyện WeChat hỏi thăm công việc & bộ phận định hình • Giới thiệu nhà máy Việt Nam, bộ phận QC & kế hoạch xuất hàng • Tra cứu 45 thuật ngữ Tủ điện - Tự động hóa",
-      "vocab_count": 97,
-      "dialogue_count": 10,
+      "topic_title": "Giao Tiếp Công Xưởng: Hỏi Thăm Công Việc & Xử Lý Lỗi Sản Xuất",
+      "summary": "Hôm nay bạn đã luyện được kỹ năng hỏi thăm công việc, tình hình tăng ca và phúc lợi, đồng thời nắm được cách trao đổi về lỗi khuôn và yêu cầu kiểm tra chất lượng. Các từ khóa trọng tâm: 加班, 辞职, 吸塑, 翘边, 变频器, 出货计划.",
+      "learning_tip": "💡 Mẹo thực chiến: Phân biệt 延期 (trì hoãn) và 延迟 (chậm trễ) – 延期 thường dùng cho kế hoạch, 延迟 cho thời gian cụ thể; khi nói về lỗi sản phẩm, dùng 有…问题 (có vấn đề về…) để chỉ nguyên nhân.",
+      "ai_curated": true,
+      "vocab_count": 60,
+      "dialogue_count": 7,
       "vocab": [
         {
           "cat": "daily",
           "date": "2026-10-27",
-          "vi": "Khuôn Hút Định Hình Nhựa",
-          "en": "Blister / Vacuum Mold",
-          "zh": "吸塑模",
-          "pinyin": "xī sù mó",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
-          "audio": "audio/daily/dv_926fd6c206.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
+          "vi": "Tăng ca",
+          "en": "Overtime",
+          "zh": "加班",
+          "pinyin": "jiā bān",
+          "dist_en": "On duty",
+          "dist_zh": "值班",
+          "dist_pinyin": "zhí bān",
+          "audio": "audio/daily/dv_b64a217312.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
         },
         {
           "cat": "daily",
           "date": "2026-10-27",
-          "vi": "Khuôn Số 4",
-          "en": "Mold #4",
-          "zh": "4号模",
-          "pinyin": "4 hào mó",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
-          "audio": "audio/daily/dv_27fa66a827.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Khuôn 2 Lòng (2 Hốc)",
-          "en": "2-Cavity Mold",
-          "zh": "2穴模",
-          "pinyin": "2 xué mó",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
-          "audio": "audio/daily/dv_8429e51bc4.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Bộ Phận Định Hình (Hút Nhựa)",
-          "en": "Vacuum Forming Dept",
-          "zh": "吸塑部门",
-          "pinyin": "xī sù bù mén",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
-          "audio": "audio/daily/dv_ab5586de6a.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Cong Vênh Mép (Bavia/Vênh)",
-          "en": "Warped / Lifted Edge",
-          "zh": "翘边",
-          "pinyin": "qiào biān",
-          "dist_en": "Forklift",
-          "dist_zh": "叉车",
-          "dist_pinyin": "chā chē",
-          "audio": "audio/daily/dv_e15b9cb773.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Lựa / Nhặt Riêng Ra",
-          "en": "Pick / Sort Out",
-          "zh": "挑出来",
-          "pinyin": "tiāo chū lái",
-          "dist_en": "Caliper",
-          "dist_zh": "卡尺",
-          "dist_pinyin": "kǎ chǐ",
-          "audio": "audio/daily/dv_833201d517.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Kiểm Tra Rõ Nguyên Nhân",
-          "en": "Verify Root Cause",
-          "zh": "查核原因",
-          "pinyin": "chá hé yuán yīn",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
-          "audio": "audio/daily/dv_307f8e1236.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Khẩn Trương Khắc Phục",
-          "en": "Promptly Improve",
-          "zh": "速查改善",
-          "pinyin": "sù chá gǎi shàn",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
-          "audio": "audio/daily/dv_6e50368b99.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Hướng Dẫn Thao Tác (SOP)",
-          "en": "Work Instruction (SOP)",
-          "zh": "作业指导书",
-          "pinyin": "zuò yè zhǐ dǎo shū",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
-          "audio": "audio/daily/dv_52f1425cb0.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Lắp Vỏ Nhựa ABS",
-          "en": "Assemble ABS Shell",
-          "zh": "装ABS壳",
-          "pinyin": "zhuāng ABS ké",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
-          "audio": "audio/daily/dv_cfff6a8b20.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Hàng Mẫu Kinh Doanh",
-          "en": "Sales Sample",
-          "zh": "销样",
-          "pinyin": "xiāo yàng",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
-          "audio": "audio/daily/dv_f70678ea5a.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "In & Phát Xuống Xưởng",
-          "en": "Print & Distribute",
-          "zh": "打印下发",
-          "pinyin": "dǎ yìn xià fā",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
-          "audio": "audio/daily/dv_a283c7f7af.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Gia Công Kiểm Lại",
-          "en": "Rework & Inspect",
-          "zh": "返工检查",
-          "pinyin": "fǎn gōng jiǎn chá",
-          "dist_en": "Forklift",
-          "dist_zh": "叉车",
-          "dist_pinyin": "chā chē",
-          "audio": "audio/daily/dv_4d908cd2dc.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Sót Tem Hộp Màu",
-          "en": "Missing Color-Box Sticker",
-          "zh": "漏彩盒贴纸",
-          "pinyin": "lòu cǎi hé tiē zhǐ",
-          "dist_en": "Caliper",
-          "dist_zh": "卡尺",
-          "dist_pinyin": "kǎ chǐ",
-          "audio": "audio/daily/dv_e595e14831.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Kiểm Tra Toàn Bộ 100%",
-          "en": "100% Full Inspection",
-          "zh": "全检",
-          "pinyin": "quán jiǎn",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
-          "audio": "audio/daily/dv_3ebd3420bc.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "FQC Kiểm Xác Suất",
-          "en": "FQC Spot Check",
-          "zh": "FQC抽查",
-          "pinyin": "FQC chōu chá",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
-          "audio": "audio/daily/dv_2bc2f8c90c.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Sản Xuất Thử Lô Nhỏ",
-          "en": "Small-Batch Pilot Run",
-          "zh": "小批量试产",
-          "pinyin": "xiǎo pī liàng shì chǎn",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
-          "audio": "audio/daily/dv_3c0999ef87.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Theo Dõi Bất Thường",
-          "en": "Track Abnormalities",
-          "zh": "追踪异常",
-          "pinyin": "zhuī zōng yì cháng",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
-          "audio": "audio/daily/dv_d51ccbb1a0.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "In - Hút - Cắt Định Hình",
-          "en": "Print, Vacuum Form & Trim",
-          "zh": "印吸切成型",
-          "pinyin": "yìn xī qiè chéng xíng",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
-          "audio": "audio/daily/dv_7eb6bc78ea.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Kế Hoạch Khắc Phục (CAP)",
-          "en": "Corrective Action Plan",
-          "zh": "改善对策",
-          "pinyin": "gǎi shàn duì cè",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
-          "audio": "audio/daily/dv_f537a76dc2.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Điểm Cần Lưu Ý",
-          "en": "Key Points to Note",
-          "zh": "需要注意的点",
-          "pinyin": "xū yào zhù yì de diǎn",
-          "dist_en": "Forklift",
-          "dist_zh": "叉车",
-          "dist_pinyin": "chā chē",
-          "audio": "audio/daily/dv_089f085c6d.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Tem Niên Hạn Sử Dụng",
-          "en": "Service-Life Label",
-          "zh": "年限标",
-          "pinyin": "nián xiàn biāo",
-          "dist_en": "Caliper",
-          "dist_zh": "卡尺",
-          "dist_pinyin": "kǎ chǐ",
-          "audio": "audio/daily/dv_6f9384973e.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Thuê Nhà Ở Riêng",
-          "en": "Rent an Apartment",
-          "zh": "租房住",
-          "pinyin": "zū fáng zhù",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
-          "audio": "audio/daily/dv_b404963060.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Ở Ký Túc Xá",
-          "en": "Live in Dormitory",
-          "zh": "住宿舍",
-          "pinyin": "zhù sù shě",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
-          "audio": "audio/daily/dv_93aa99e059.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Chế Độ Phúc Lợi",
-          "en": "Welfare & Benefits",
-          "zh": "福利待遇",
-          "pinyin": "fú lì dài yù",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
-          "audio": "audio/daily/dv_3dfc25a557.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Nghỉ Việc (Từ Chức)",
+          "vi": "Nghỉ việc",
           "en": "Resign",
           "zh": "辞职",
           "pinyin": "cí zhí",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
+          "dist_en": "Retire",
+          "dist_zh": "退休",
+          "dist_pinyin": "tuì xiū",
           "audio": "audio/daily/dv_6fb4cfa18e.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
+          "source": "✨ AI Biên Tập Sư Phạm"
         },
         {
           "cat": "daily",
           "date": "2026-10-27",
-          "vi": "Bộ Phận Chất Lượng (QC)",
-          "en": "Quality Department",
-          "zh": "质量部门",
-          "pinyin": "zhì liàng bù mén",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
-          "audio": "audio/daily/dv_246eef42c1.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
+          "vi": "Hút nhựa",
+          "en": "Blister",
+          "zh": "吸塑",
+          "pinyin": "xī sù",
+          "dist_en": "Injection molding",
+          "dist_zh": "注塑",
+          "dist_pinyin": "zhù sù",
+          "audio": "audio/daily/dv_06bd247339.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
         },
         {
           "cat": "daily",
           "date": "2026-10-27",
-          "vi": "Kế Hoạch Xuất Hàng",
-          "en": "Shipment Schedule",
-          "zh": "出货计划",
-          "pinyin": "chū huò jì huà",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
-          "audio": "audio/daily/dv_1f7be057aa.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
+          "vi": "Cong mép",
+          "en": "Warped edge",
+          "zh": "翘边",
+          "pinyin": "qiào biān",
+          "dist_en": "Chipped corner",
+          "dist_zh": "缺角",
+          "dist_pinyin": "quē jiǎo",
+          "audio": "audio/daily/dv_e15b9cb773.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
         },
         {
           "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Gia Hạn / Trễ Tiến Độ",
-          "en": "Delay / Postpone",
-          "zh": "延期",
-          "pinyin": "yán qī",
-          "dist_en": "Forklift",
-          "dist_zh": "叉车",
-          "dist_pinyin": "chā chē",
-          "audio": "audio/daily/dv_e6095e9861.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Thì Ra Là Vậy",
-          "en": "So That's How It Is",
-          "zh": "原来是这样",
-          "pinyin": "yuán lái shì zhè yàng",
-          "dist_en": "Caliper",
-          "dist_zh": "卡尺",
-          "dist_pinyin": "kǎ chǐ",
-          "audio": "audio/daily/dv_94595cd17d.mp3",
-          "source": "Ổ Z: / WeChat Xưởng"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Bạn thật tuyệt",
-          "en": "You are great",
-          "zh": "你很棒",
-          "pinyin": "nǐ hěn bàng",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
-          "audio": "audio/daily/dv_8cd9572729.mp3",
-          "source": "Ổ Z: DeanHub"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Bạn ơi",
-          "en": "Log (zalo)",
-          "zh": "朋友",
-          "pinyin": "péng yǒu",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
-          "audio": "audio/daily/dv_9d53230a95.mp3",
-          "source": "Nhật ký zalo"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Bạn có khỏe không",
-          "en": "Log (weixin)",
-          "zh": "你好吗",
-          "pinyin": "nǐ hǎo ma",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
-          "audio": "audio/daily/dv_7c62edd327.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Công việc dạo này ổn chứ",
-          "en": "Log (weixin)",
-          "zh": "最近工作还好吗",
-          "pinyin": "zuì jìn gōng zuò hái hǎo ma",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
-          "audio": "audio/daily/dv_8f95fdcd81.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Tôi mệt quá còn bạn thì sao",
-          "en": "Log (weixin)",
-          "zh": "我很累，你呢",
-          "pinyin": "wǒ hěn lèi， nǐ ne",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
-          "audio": "audio/daily/dv_1454e0f01f.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Chào anh trai",
-          "en": "Log (Weixin)",
-          "zh": "你好啊兄弟",
-          "pinyin": "nǐ hǎo a xiōng dì",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
-          "audio": "audio/daily/dv_65a9bc8a6e.mp3",
-          "source": "Nhật ký Weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Đúng rồi",
-          "en": "Log (weixin)",
-          "zh": "这是正确的",
-          "pinyin": "zhè shì zhèng què de",
-          "dist_en": "Forklift",
-          "dist_zh": "叉车",
-          "dist_pinyin": "chā chē",
-          "audio": "audio/daily/dv_8f368a1412.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Chuyên nghiệp",
-          "en": "Log (weixin)",
-          "zh": "专业的",
-          "pinyin": "zhuān yè de",
-          "dist_en": "Caliper",
-          "dist_zh": "卡尺",
-          "dist_pinyin": "kǎ chǐ",
-          "audio": "audio/daily/dv_ea860287ce.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Tiền lương có ổn không",
-          "en": "Log (weixin)",
-          "zh": "工资还好吗",
-          "pinyin": "gōng zī hái hǎo ma",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
-          "audio": "audio/daily/dv_b3d8906dc2.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Đúng , tôi quên mất",
-          "en": "Log (weixin)",
-          "zh": "对了，我忘了",
-          "pinyin": "duì le， wǒ wàng le",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
-          "audio": "audio/daily/dv_608ab95226.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Hơn công ty cũ rồi nhĩ",
-          "en": "Log (weixin)",
-          "zh": "比老公司好",
-          "pinyin": "bǐ lǎo gōng sī hǎo",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
-          "audio": "audio/daily/dv_f18e96215f.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Công việc có vất vả lắm không",
-          "en": "Log (weixin)",
-          "zh": "工作很辛苦吗",
-          "pinyin": "gōng zuò hěn xīn kǔ ma",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
-          "audio": "audio/daily/dv_410434ce23.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Sao ngon vậy",
-          "en": "Log (weixin)",
-          "zh": "怎么这么好吃",
-          "pinyin": "zěn me zhè me hǎo chī",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
-          "audio": "audio/daily/dv_11547d0c29.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Sướng",
-          "en": "Log (weixin)",
-          "zh": "高兴",
-          "pinyin": "gāo xìng",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
-          "audio": "audio/daily/dv_60b633faa9.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Công ty đó ở đâu",
-          "en": "Log (weixin)",
-          "zh": "那家公司在哪里",
-          "pinyin": "nà jiā gōng sī zài nǎ lǐ",
-          "dist_en": "Forklift",
-          "dist_zh": "叉车",
-          "dist_pinyin": "chā chē",
-          "audio": "audio/daily/dv_fd8d2a31d2.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Có gần nhà của bạn không",
-          "en": "Log (weixin)",
-          "zh": "在你家附近吗",
-          "pinyin": "zài nǐ jiā fù jìn ma",
-          "dist_en": "Caliper",
-          "dist_zh": "卡尺",
-          "dist_pinyin": "kǎ chǐ",
-          "audio": "audio/daily/dv_a6d7a6ed4a.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Mệt mỏi quá",
-          "en": "Log (weixin)",
-          "zh": "太累了",
-          "pinyin": "tài lèi le",
-          "dist_en": "Gloves",
-          "dist_zh": "手套",
-          "dist_pinyin": "shǒu tào",
-          "audio": "audio/daily/dv_9fdb94877a.mp3",
-          "source": "Nhật ký weixin"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Delay / gia hạn",
-          "en": "Log (chrome)",
-          "zh": "延迟 / 延期",
-          "pinyin": "yán chí  /  yán qī",
-          "dist_en": "Tape",
-          "dist_zh": "胶带",
-          "dist_pinyin": "jiāo dài",
-          "audio": "audio/daily/dv_bcb26f8574.mp3",
-          "source": "Nhật ký chrome"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Cảm ơn bạn rất nhiều",
-          "en": "Log (workbuddyai)",
-          "zh": "非常感谢你",
-          "pinyin": "fēi cháng gǎn xiè nǐ",
-          "dist_en": "Meeting Table",
-          "dist_zh": "会议桌",
-          "dist_pinyin": "huì yì zhuō",
-          "audio": "audio/daily/dv_9393a6bf5d.mp3",
-          "source": "Nhật ký workbuddyai"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Trao đổi công việc",
-          "en": "Log (chrome)",
-          "zh": "工作交流",
-          "pinyin": "gōng zuò jiāo liú",
-          "dist_en": "Water Cup",
-          "dist_zh": "水杯",
-          "dist_pinyin": "shuǐ bēi",
-          "audio": "audio/daily/dv_0c02d43c4a.mp3",
-          "source": "Nhật ký chrome"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Tặng tai nghe cho tôi",
-          "en": "Log (zalo)",
-          "zh": "给我耳机吧",
-          "pinyin": "gěi wǒ ěr jī ba",
-          "dist_en": "Printer",
-          "dist_zh": "打印机",
-          "dist_pinyin": "dǎ yìn jī",
-          "audio": "audio/daily/dv_7c8213eaad.mp3",
-          "source": "Nhật ký zalo"
-        },
-        {
-          "cat": "daily",
-          "date": "2026-10-27",
-          "vi": "Hoặc",
-          "en": "Log (Antigravity)",
-          "zh": "或者",
-          "pinyin": "huò zhě",
-          "dist_en": "Warehouse",
-          "dist_zh": "仓库",
-          "dist_pinyin": "cāng kù",
-          "audio": "audio/daily/dv_072ca6daf7.mp3",
-          "source": "Nhật ký Antigravity"
-        },
-        {
-          "cat": "daily",
-          "subcat": "automation_glossary",
           "date": "2026-10-27",
           "vi": "Biến tần",
           "en": "Inverter",
           "zh": "变频器",
           "pinyin": "biàn pín qì",
-          "dist_en": "Intermediate relay",
-          "dist_zh": "中间继电器",
-          "dist_pinyin": "zhōng jiān jì diàn qì",
-          "audio": "audio/daily/dg_82e83f969b.mp3",
-          "source": "ReaKey Glossary"
+          "dist_en": "Transformer",
+          "dist_zh": "变压器",
+          "dist_pinyin": "biàn yā qì",
+          "audio": "audio/daily/dv_82e83f969b.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Kế hoạch xuất hàng",
+          "en": "Shipping plan",
+          "zh": "出货计划",
+          "pinyin": "chū huò jì huà",
+          "dist_en": "Production plan",
+          "dist_zh": "生产计划",
+          "dist_pinyin": "shēng chǎn jì huà",
+          "audio": "audio/daily/dv_1f7be057aa.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Trì hoãn",
+          "en": "Postpone",
+          "zh": "延期",
+          "pinyin": "yán qī",
+          "dist_en": "Advance",
+          "dist_zh": "提前",
+          "dist_pinyin": "tí qián",
+          "audio": "audio/daily/dv_e6095e9861.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Chậm trễ",
+          "en": "Delay",
+          "zh": "延迟",
+          "pinyin": "yán chí",
+          "dist_en": "On time",
+          "dist_zh": "准时",
+          "dist_pinyin": "zhǔn shí",
+          "audio": "audio/daily/dv_db732ecb48.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Bộ phận chất lượng",
+          "en": "Quality department",
+          "zh": "质量部门",
+          "pinyin": "zhì liàng bù mén",
+          "dist_en": "Production department",
+          "dist_zh": "生产部门",
+          "dist_pinyin": "shēng chǎn bù mén",
+          "audio": "audio/daily/dv_246eef42c1.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Ký túc xá",
+          "en": "Dormitory",
+          "zh": "宿舍",
+          "pinyin": "sù shè",
+          "dist_en": "Rented house",
+          "dist_zh": "租房",
+          "dist_pinyin": "zū fáng",
+          "audio": "audio/daily/dv_ee38f508be.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Phúc lợi",
+          "en": "Benefits",
+          "zh": "福利",
+          "pinyin": "fú lì",
+          "dist_en": "Salary",
+          "dist_zh": "工资",
+          "dist_pinyin": "gōng zī",
+          "audio": "audio/daily/dv_86b2999e8f.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Kiểm tra xác minh",
+          "en": "Verify",
+          "zh": "查核",
+          "pinyin": "chá hé",
+          "dist_en": "Inspect",
+          "dist_zh": "检查",
+          "dist_pinyin": "jiǎn chá",
+          "audio": "audio/daily/dv_bfa45f214c.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Cải thiện",
+          "en": "Improve",
+          "zh": "改善",
+          "pinyin": "gǎi shàn",
+          "dist_en": "Change",
+          "dist_zh": "改变",
+          "dist_pinyin": "gǎi biàn",
+          "audio": "audio/daily/dv_34453f5a2d.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Khuôn",
+          "en": "Mold",
+          "zh": "模具",
+          "pinyin": "mú jù",
+          "dist_en": "Tool",
+          "dist_zh": "工具",
+          "dist_pinyin": "gōng jù",
+          "audio": "audio/daily/dv_75c6002562.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Lựa ra",
+          "en": "Pick out",
+          "zh": "挑出来",
+          "pinyin": "tiāo chū lái",
+          "dist_en": "Put in",
+          "dist_zh": "放进去",
+          "dist_pinyin": "fàng jìn qù",
+          "audio": "audio/daily/dv_833201d517.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
+        },
+        {
+          "cat": "daily",
+          "date": "2026-10-27",
+          "vi": "Đơn hàng",
+          "en": "Order",
+          "zh": "订单",
+          "pinyin": "dìng dān",
+          "dist_en": "Contract",
+          "dist_zh": "合同",
+          "dist_pinyin": "hé tóng",
+          "audio": "audio/daily/dv_4c117f2037.mp3",
+          "source": "✨ AI Biên Tập Sư Phạm"
         },
         {
           "cat": "daily",
@@ -714,7 +577,7 @@
           "dist_zh": "时间继电器",
           "dist_pinyin": "shí jiān jì diàn qì",
           "audio": "audio/daily/dg_f7b7b70548.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -728,7 +591,7 @@
           "dist_zh": "配电柜",
           "dist_pinyin": "pèi diàn guì",
           "audio": "audio/daily/dg_afadb6228b.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -742,7 +605,7 @@
           "dist_zh": "控制柜",
           "dist_pinyin": "kòng zhì guì",
           "audio": "audio/daily/dg_eada4329a9.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -756,7 +619,7 @@
           "dist_zh": "可编程控制器",
           "dist_pinyin": "kě biān chéng kòng zhì qì",
           "audio": "audio/daily/dg_d7e6cad736.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -770,7 +633,7 @@
           "dist_zh": "触摸屏",
           "dist_pinyin": "chù mō píng",
           "audio": "audio/daily/dg_90800c027e.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -784,7 +647,7 @@
           "dist_zh": "伺服电机",
           "dist_pinyin": "cì fú diàn jī",
           "audio": "audio/daily/dg_1ca31e4391.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -798,7 +661,7 @@
           "dist_zh": "伺服驱动器",
           "dist_pinyin": "cì fú qū dòng qì",
           "audio": "audio/daily/dg_f73a831c09.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -812,7 +675,7 @@
           "dist_zh": "步进电机",
           "dist_pinyin": "bù jìn diàn jī",
           "audio": "audio/daily/dg_9abcdb1e8a.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -826,7 +689,7 @@
           "dist_zh": "软启动器",
           "dist_pinyin": "ruǎn qǐ dòng qì",
           "audio": "audio/daily/dg_902e8d35f0.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -840,7 +703,7 @@
           "dist_zh": "开关电源",
           "dist_pinyin": "kāi guān diàn yuán",
           "audio": "audio/daily/dg_08a15db791.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -854,7 +717,7 @@
           "dist_zh": "控制变压器",
           "dist_pinyin": "kòng zhì biàn yā qì",
           "audio": "audio/daily/dg_4d8d64f7dd.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -868,7 +731,7 @@
           "dist_zh": "电流互感器",
           "dist_pinyin": "diàn liú hù gǎn qì",
           "audio": "audio/daily/dg_f1507f0269.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -882,7 +745,7 @@
           "dist_zh": "浪涌保护器",
           "dist_pinyin": "làng yǒng bǎo hù qì",
           "audio": "audio/daily/dg_82232182a2.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -896,7 +759,7 @@
           "dist_zh": "接近开关",
           "dist_pinyin": "jiē jìn kāi guān",
           "audio": "audio/daily/dg_1af7d9f177.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -910,7 +773,7 @@
           "dist_zh": "光电传感器",
           "dist_pinyin": "guāng diàn chuán gǎn qì",
           "audio": "audio/daily/dg_ba5d15d67f.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -924,7 +787,7 @@
           "dist_zh": "压力变送器",
           "dist_pinyin": "yā lì biàn sòng qì",
           "audio": "audio/daily/dg_6173d1b93c.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -938,7 +801,7 @@
           "dist_zh": "行程开关",
           "dist_pinyin": "xíng chéng kāi guān",
           "audio": "audio/daily/dg_74d82bafca.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -952,7 +815,7 @@
           "dist_zh": "编码器",
           "dist_pinyin": "biān mǎ qì",
           "audio": "audio/daily/dg_2c3559e684.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -966,7 +829,7 @@
           "dist_zh": "温控器",
           "dist_pinyin": "wēn kòng qì",
           "audio": "audio/daily/dg_6a64c0eacc.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -980,7 +843,7 @@
           "dist_zh": "电磁阀",
           "dist_pinyin": "diàn cí fá",
           "audio": "audio/daily/dg_ed610fcbc0.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -994,7 +857,7 @@
           "dist_zh": "急停按钮",
           "dist_pinyin": "jí tíng àn niǔ",
           "audio": "audio/daily/dg_63ee5b9237.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1008,7 +871,7 @@
           "dist_zh": "指示灯",
           "dist_pinyin": "zhǐ shì dēng",
           "audio": "audio/daily/dg_49d21ea33d.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1022,7 +885,7 @@
           "dist_zh": "铜排",
           "dist_pinyin": "tóng pái",
           "audio": "audio/daily/dg_de3c2a3d70.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1036,7 +899,7 @@
           "dist_zh": "接线端子排",
           "dist_pinyin": "jiē xiàn duān zi pái",
           "audio": "audio/daily/dg_a4d25c70a5.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1050,7 +913,7 @@
           "dist_zh": "冷压端子",
           "dist_pinyin": "lěng yā duān zi",
           "audio": "audio/daily/dg_b1dfa093b0.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1064,7 +927,7 @@
           "dist_zh": "屏蔽控制电缆",
           "dist_pinyin": "píng bì kòng zhì diàn lǎn",
           "audio": "audio/daily/dg_6e29d89ce9.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1078,7 +941,7 @@
           "dist_zh": "电缆桥架",
           "dist_pinyin": "diàn lǎn qiáo jià",
           "audio": "audio/daily/dg_ff6bd60164.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1092,7 +955,7 @@
           "dist_zh": "IP65防护等级",
           "dist_pinyin": "IP65 fáng hù děng jí",
           "audio": "audio/daily/dg_b3f365085a.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1106,7 +969,7 @@
           "dist_zh": "电力电容器",
           "dist_pinyin": "diàn lì diàn róng qì",
           "audio": "audio/daily/dg_267d468385.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1120,7 +983,7 @@
           "dist_zh": "电抗器",
           "dist_pinyin": "diàn kàng qì",
           "audio": "audio/daily/dg_7c23b7da59.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1134,7 +997,7 @@
           "dist_zh": "多功能电力仪表",
           "dist_pinyin": "duō gōng néng diàn lì yí biǎo",
           "audio": "audio/daily/dg_6773fc87b0.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1148,7 +1011,7 @@
           "dist_zh": "电气原理图",
           "dist_pinyin": "diàn qì yuán lǐ tú",
           "audio": "audio/daily/dg_d79d9f8bcc.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1162,7 +1025,7 @@
           "dist_zh": "验收报告",
           "dist_pinyin": "yàn shōu bào gào",
           "audio": "audio/daily/dg_c4f66870e9.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1176,7 +1039,7 @@
           "dist_zh": "报价单",
           "dist_pinyin": "bào jià dān",
           "audio": "audio/daily/dg_c7376a3a59.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1190,7 +1053,7 @@
           "dist_zh": "交货期",
           "dist_pinyin": "jiāo huò qī",
           "audio": "audio/daily/dg_29aa358cdd.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1204,7 +1067,7 @@
           "dist_zh": "原产地证与质量证书",
           "dist_pinyin": "yuán chǎn dì zhèng yǔ zhì liàng zhèng shū",
           "audio": "audio/daily/dg_25a276b10c.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1218,7 +1081,7 @@
           "dist_zh": "质保期",
           "dist_pinyin": "zhì bǎo qī",
           "audio": "audio/daily/dg_b47caf9775.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1232,7 +1095,7 @@
           "dist_zh": "变频器",
           "dist_pinyin": "biàn pín qì",
           "audio": "audio/daily/dg_9d0db20679.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1246,7 +1109,7 @@
           "dist_zh": "微型断路器",
           "dist_pinyin": "wēi xíng duàn lù qì",
           "audio": "audio/daily/dg_196238fc00.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1260,7 +1123,7 @@
           "dist_zh": "塑壳断路器",
           "dist_pinyin": "sù ké duàn lù qì",
           "audio": "audio/daily/dg_8c326c8fcb.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1274,7 +1137,7 @@
           "dist_zh": "框架断路器",
           "dist_pinyin": "kuāng jià duàn lù qì",
           "audio": "audio/daily/dg_de8b94bac2.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1288,7 +1151,7 @@
           "dist_zh": "漏电断路器",
           "dist_pinyin": "lòu diàn duàn lù qì",
           "audio": "audio/daily/dg_ff5eeee296.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1302,7 +1165,7 @@
           "dist_zh": "交流接触器",
           "dist_pinyin": "jiāo liú jiē chù qì",
           "audio": "audio/daily/dg_330704beb5.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         },
         {
           "cat": "daily",
@@ -1316,179 +1179,128 @@
           "dist_zh": "热继电器",
           "dist_pinyin": "rè jì diàn qì",
           "audio": "audio/daily/dg_2d3e0f382f.mp3",
-          "source": "ReaKey Glossary"
+          "source": "⚡ Từ điển Tủ điện & TĐH"
         }
       ],
       "dialogues": [
         {
-          "id": "daily_2026-10-27_1",
+          "id": "daily_2026-10-27_ai_1",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "🏭 Tổ Trưởng Định Hình (Ổ Z: WeChat)",
-          "q_zh": "是不是4号吸塑模有问题？我现在做的也是4号模严重！",
-          "q_pinyin": "shì bú shì 4 hào xī sù mó yǒu wèn tí？ wǒ xiàn zài zuò de yě shì 4 hào mó yán zhòng！",
-          "q_vi": "Có phải khuôn hút nhựa số 4 có vấn đề không? Hàng tôi đang chạy khuôn số 4 cũng bị lỗi nặng!",
-          "q_audio": "audio/daily/dq_3f31e18a0b.mp3",
-          "correct_zh": "马上停下4号模检查，通知模具部过来修模！",
-          "correct_pinyin": "mǎ shàng tíng xià 4 hào mó jiǎn chá， tōng zhī mú jù bù guò lái xiū mó！",
-          "correct_vi": "Cho dừng khuôn số 4 kiểm tra ngay, báo bộ phận khuôn qua sửa khuôn!",
-          "wrong_zh": "周末我们一起去公园骑自行车吧。",
-          "wrong_pinyin": "zhōu mò wǒ men yì qǐ qù gōng yuán qí zì xíng chē ba。",
-          "wrong_vi": "Cuối tuần chúng mình cùng ra công viên đạp xe nhé.",
-          "a_audio": "audio/daily/da_f5f77fa2d8.mp3"
+          "speaker": "🤝 Đối Tác Trung Quốc",
+          "q_zh": "最近工作还好吗？加班多吗？有什么好处？",
+          "q_pinyin": "zuì jìn gōng zuò hái hǎo ma？ jiā bān duō ma？ yǒu shén me hǎo chù？",
+          "q_vi": "Dạo này công việc ổn không? Có tăng ca nhiều không và phúc lợi thế nào?",
+          "q_audio": "audio/daily/dq_3d167e6833.mp3",
+          "correct_zh": "加班比以前少了，但福利还不错。",
+          "correct_pinyin": "jiā bān bǐ yǐ qián shǎo le， dàn fú lì hái bú cuò。",
+          "correct_vi": "Tăng ca ít hơn trước nhưng phúc lợi vẫn ổn.",
+          "wrong_zh": "加班很多，但工资很低。",
+          "wrong_pinyin": "jiā bān hěn duō， dàn gōng zī hěn dī。",
+          "wrong_vi": "Tăng ca rất nhiều nhưng lương thấp.",
+          "a_audio": "audio/daily/da_83993ffda5.mp3"
         },
         {
-          "id": "daily_2026-10-27_2",
+          "id": "daily_2026-10-27_ai_2",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "🔍 Chủ Nhiệm QC (Ổ Z: WeChat)",
-          "q_zh": "程主任请速查核原因改善，先把有翘边的挑出来！",
-          "q_pinyin": "chéng zhǔ rèn qǐng sù chá hé yuán yīn gǎi shàn， xiān bǎ yǒu qiào biān de tiāo chū lái！",
-          "q_vi": "Chủ nhiệm Trình vui lòng kiểm tra nhanh nguyên nhân để khắc phục, trước mắt nhặt riêng hàng bị vênh mép ra!",
-          "q_audio": "audio/daily/dq_245483c2bf.mp3",
-          "correct_zh": "收到，产线正在逐个挑出翘边品，同时排查模具温度！",
-          "correct_pinyin": "shōu dào， chǎn xiàn zhèng zài zhú gè tiāo chū qiào biān pǐn， tóng shí pái chá mú jù wēn dù！",
-          "correct_vi": "Đã nhận, chuyền đang nhặt riêng hàng vênh mép và kiểm tra nhiệt độ khuôn!",
-          "wrong_zh": "这家咖啡店的拿铁味道很不错。",
-          "wrong_pinyin": "zhè jiā kā fēi diàn de ná tiě wèi dào hěn bú cuò。",
-          "wrong_vi": "Món cà phê Latte của quán này vị rất ngon.",
-          "a_audio": "audio/daily/da_686651ddcd.mp3"
+          "speaker": "🏭 Tổ Trưởng Sản Xuất",
+          "q_zh": "之前和你一起在吸塑部门工作的人已经辞职了。",
+          "q_pinyin": "zhī qián hé nǐ yì qǐ zài xī sù bù mén gōng zuò de rén yǐ jīng cí zhí le。",
+          "q_vi": "Người trước đây làm cùng anh ở bộ phận hút nhựa đã nghỉ việc rồi.",
+          "q_audio": "audio/daily/dq_70d3aa408e.mp3",
+          "correct_zh": "我知道了，我会安排新人接手。",
+          "correct_pinyin": "wǒ zhī dào le， wǒ huì ān pái xīn rén jiē shǒu。",
+          "correct_vi": "Tôi biết rồi, tôi sẽ sắp xếp người mới tiếp nhận.",
+          "wrong_zh": "那太好了，我们不需要他。",
+          "wrong_pinyin": "nà tài hǎo le， wǒ men bù xū yào tā。",
+          "wrong_vi": "Vậy thì tốt quá, chúng ta không cần anh ta.",
+          "a_audio": "audio/daily/da_d4466df7a8.mp3"
         },
         {
-          "id": "daily_2026-10-27_3",
+          "id": "daily_2026-10-27_ai_3",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "📋 Quản Lý Kỹ Thuật (Ổ Z: WeChat)",
-          "q_zh": "BTN-8-11装ABS壳和装彩盒的作业指导书更新了，请帮打印下发！",
-          "q_pinyin": "BTN-8-11 zhuāng ABS ké hé zhuāng cǎi hé de zuò yè zhǐ dǎo shū gēng xīn le， qǐng bāng dǎ yìn xià fā！",
-          "q_vi": "SOP lắp vỏ ABS & đóng hộp màu mã BTN-8-11 đã cập nhật, nhờ in phát xuống xưởng!",
-          "q_audio": "audio/daily/dq_83fd3f3029.mp3",
-          "correct_zh": "收到，我马上打印并发给产线组长。",
-          "correct_pinyin": "shōu dào， wǒ mǎ shàng dǎ yìn bìng fā gěi chǎn xiàn zǔ zhǎng。",
-          "correct_vi": "Đã nhận, tôi in ngay và phát cho tổ trưởng chuyền.",
-          "wrong_zh": "我今天中午想吃牛肉面。",
-          "wrong_pinyin": "wǒ jīn tiān zhōng wǔ xiǎng chī niú ròu miàn。",
-          "wrong_vi": "Trưa nay tôi muốn ăn mì bò.",
-          "a_audio": "audio/daily/da_324f7ba763.mp3"
+          "speaker": "🔍 Kỹ Sư QC Ngoại Quan",
+          "q_zh": "是不是4号吸塑模有问题？我现在做的也是4号模严重。",
+          "q_pinyin": "shì bú shì 4 hào xī sù mó yǒu wèn tí？ wǒ xiàn zài zuò de yě shì 4 hào mó yán zhòng。",
+          "q_vi": "Có phải khuôn hút nhựa số 4 có vấn đề không? Tôi đang làm cũng thấy khuôn số 4 bị nghiêm trọng.",
+          "q_audio": "audio/daily/dq_6d70879603.mp3",
+          "correct_zh": "我马上检查4号模，把有翘边的挑出来。",
+          "correct_pinyin": "wǒ mǎ shàng jiǎn chá 4 hào mó， bǎ yǒu qiào biān de tiāo chū lái。",
+          "correct_vi": "Tôi sẽ kiểm tra ngay khuôn số 4 và lựa ra những sản phẩm bị cong mép.",
+          "wrong_zh": "不用检查，继续生产吧。",
+          "wrong_pinyin": "bù yòng jiǎn chá， jì xù shēng chǎn ba。",
+          "wrong_vi": "Không cần kiểm tra, cứ tiếp tục sản xuất đi.",
+          "a_audio": "audio/daily/da_297ae0994f.mp3"
         },
         {
-          "id": "daily_2026-10-27_4",
+          "id": "daily_2026-10-27_ai_4",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "🔍 Phó Tổng Tiêu (QC Xuất Nhật)",
-          "q_zh": "7071出日本单安排全检一次，检查漏彩盒贴纸的问题！",
-          "q_pinyin": "7071 chū rì běn dān ān pái quán jiǎn yī cì， jiǎn chá lòu cǎi hé tiē zhǐ de wèn tí！",
-          "q_vi": "Đơn 7071 xuất Nhật sắp xếp kiểm 100% một lượt, kiểm tra lỗi sót tem hộp màu!",
-          "q_audio": "audio/daily/dq_6adc4041c1.mp3",
-          "correct_zh": "明白，马上安排产线返工全检，FQC再抽查！",
-          "correct_pinyin": "míng bái， mǎ shàng ān pái chǎn xiàn fǎn gōng quán jiǎn，FQC zài chōu chá！",
-          "correct_vi": "Rõ, sắp xếp chuyền kiểm lại 100% ngay, FQC rút kiểm lại!",
-          "wrong_zh": "这双运动鞋穿起来很舒服。",
-          "wrong_pinyin": "zhè shuāng yùn dòng xié chuān qǐ lái hěn shū fú。",
-          "wrong_vi": "Đôi giày thể thao này đi rất êm chân.",
-          "a_audio": "audio/daily/da_7a0d43e1f1.mp3"
+          "speaker": "📦 Quản Lý Đóng Gói",
+          "q_zh": "出货计划有延迟吗？需要延期吗？",
+          "q_pinyin": "chū huò jì huà yǒu yán chí ma？ xū yào yán qī ma？",
+          "q_vi": "Kế hoạch xuất hàng có bị chậm trễ không? Có cần trì hoãn không?",
+          "q_audio": "audio/daily/dq_26b5675deb.mp3",
+          "correct_zh": "目前没有延迟，按原计划出货。",
+          "correct_pinyin": "mù qián méi yǒu yán chí， àn yuán jì huà chū huò。",
+          "correct_vi": "Hiện tại không có chậm trễ, xuất hàng theo kế hoạch ban đầu.",
+          "wrong_zh": "有延迟，需要延期一周。",
+          "wrong_pinyin": "yǒu yán chí， xū yào yán qī yī zhōu。",
+          "wrong_vi": "Có chậm trễ, cần trì hoãn một tuần.",
+          "a_audio": "audio/daily/da_4422a4ad98.mp3"
         },
         {
-          "id": "daily_2026-10-27_5",
+          "id": "daily_2026-10-27_ai_5",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "🏭 Kỹ Sư Dự Án SMI-16",
-          "q_zh": "SMI-16各环节小批量试产的时间和异常记录好了吗？",
-          "q_pinyin": "SMI-16 gè huán jié xiǎo pī liàng shì chǎn de shí jiān hé yì cháng jì lù hǎo le ma？",
-          "q_vi": "Thời gian và bất thường chạy thử lô nhỏ mã SMI-16 các khâu đã ghi nhận xong chưa?",
-          "q_audio": "audio/daily/dq_1df019061c.mp3",
-          "correct_zh": "记录好了，印吸切成型的数据都在报告里。",
-          "correct_pinyin": "jì lù hǎo le， yìn xī qiè chéng xíng de shù jù dōu zài bào gào lǐ。",
-          "correct_vi": "Ghi xong rồi, dữ liệu in-hút-cắt định hình đều nằm trong báo cáo.",
-          "wrong_zh": "电影院的爆米花卖完了。",
-          "wrong_pinyin": "diàn yǐng yuàn de bào mǐ huā mài wán le。",
-          "wrong_vi": "Bắp rang bơ ở rạp chiếu phim bán hết rồi.",
-          "a_audio": "audio/daily/da_19bec1acec.mp3"
+          "speaker": "⚡ Kỹ Sư Kỹ Thuật",
+          "q_zh": "下订单500套型号为A102的变频器，可以吗？",
+          "q_pinyin": "xià dìng dān 500 tào xíng hào wèi A102 de biàn pín qì， kě yǐ ma？",
+          "q_vi": "Đặt 500 bộ biến tần mã A102 nhé, được không?",
+          "q_audio": "audio/daily/dq_12309fcd69.mp3",
+          "correct_zh": "可以，我马上安排生产。",
+          "correct_pinyin": "kě yǐ， wǒ mǎ shàng ān pái shēng chǎn。",
+          "correct_vi": "Được, tôi sẽ sắp xếp sản xuất ngay.",
+          "wrong_zh": "不行，我们只做其他型号。",
+          "wrong_pinyin": "bù xíng， wǒ men zhǐ zuò qí tā xíng hào。",
+          "wrong_vi": "Không được, chúng tôi chỉ làm mã khác.",
+          "a_audio": "audio/daily/da_ec155d485a.mp3"
         },
         {
-          "id": "daily_2026-10-27_6",
+          "id": "daily_2026-10-27_ai_6",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "👷 Đồng Nghiệp Kỹ Thuật (Zalo)",
-          "q_zh": "请问SP-165生产时有哪些需要注意的点？",
-          "q_pinyin": "qǐng wèn SP-165 shēng chǎn shí yǒu nǎ xiē xū yào zhù yì de diǎn？",
-          "q_vi": "Xin hỏi mã SP-165 khi sản xuất có những điểm gì cần lưu ý?",
-          "q_audio": "audio/daily/dq_91ecbb3dc9.mp3",
-          "correct_zh": "要特别注意贴准年限标，不能漏贴或贴歪。",
-          "correct_pinyin": "yào tè bié zhù yì tiē zhǔn nián xiàn biāo， bù néng lòu tiē huò tiē wāi。",
-          "correct_vi": "Phải đặc biệt chú ý dán chuẩn tem niên hạn, không sót hoặc lệch.",
-          "wrong_zh": "图书馆周日不对外开放。",
-          "wrong_pinyin": "tú shū guǎn zhōu rì bú duì wài kāi fàng。",
-          "wrong_vi": "Thư viện Chủ nhật không mở cửa đón khách.",
-          "a_audio": "audio/daily/da_ab8e62c21d.mp3"
+          "speaker": "🤝 Đối Tác Trung Quốc",
+          "q_zh": "你们工厂在越南哪个位置？",
+          "q_pinyin": "nǐ men gōng chǎng zài yuè nán nǎ ge wèi zhì？",
+          "q_vi": "Nhà máy của các bạn ở vị trí nào tại Việt Nam?",
+          "q_audio": "audio/daily/dq_b8cc9bd19a.mp3",
+          "correct_zh": "在越南平阳省，欢迎来参观。",
+          "correct_pinyin": "zài yuè nán píng yáng shěng， huān yíng lái cān guān。",
+          "correct_vi": "Ở tỉnh Bình Dương, Việt Nam, hoan nghênh đến tham quan.",
+          "wrong_zh": "在河内，但不太方便。",
+          "wrong_pinyin": "zài hé nèi， dàn bù tài fāng biàn。",
+          "wrong_vi": "Ở Hà Nội, nhưng không tiện lắm.",
+          "a_audio": "audio/daily/da_99b7533f72.mp3"
         },
         {
-          "id": "daily_2026-10-27_7",
+          "id": "daily_2026-10-27_ai_7",
           "cat": "daily",
           "date": "2026-10-27",
-          "speaker": "💬 Bạn Cũ Trung Quốc (Ổ Z: WeChat)",
-          "q_zh": "新公司加班多吗？你现在住宿舍还是租房住？",
-          "q_pinyin": "xīn gōng sī jiā bān duō ma？ nǐ xiàn zài zhù sù shě hái shì zū fáng zhù？",
-          "q_vi": "Công ty mới tăng ca nhiều không? Giờ bạn ở ký túc xá hay thuê trọ?",
-          "q_audio": "audio/daily/dq_18b7d684a2.mp3",
-          "correct_zh": "看订单情况，我是自己在外面租房住的。",
-          "correct_pinyin": "kàn dìng dān qíng kuàng， wǒ shì zì jǐ zài wài miàn zū fáng zhù de。",
-          "correct_vi": "Tùy theo đơn hàng thôi, mình tự thuê nhà ở bên ngoài.",
-          "wrong_zh": "请把空调温度调高两度。",
-          "wrong_pinyin": "qǐng bǎ kōng tiáo wēn dù diào gāo liǎng dù。",
-          "wrong_vi": "Làm ơn tăng nhiệt độ máy lạnh lên 2 độ.",
-          "a_audio": "audio/daily/da_b9d612c79d.mp3"
-        },
-        {
-          "id": "daily_2026-10-27_8",
-          "cat": "daily",
-          "date": "2026-10-27",
-          "speaker": "🤝 Đối Tác Trung Quốc (WeChat)",
-          "q_zh": "你们工厂在越南哪个位置？你在哪个部门工作？",
-          "q_pinyin": "nǐ men gōng chǎng zài yuè nán nǎ ge wèi zhì？ nǐ zài nǎ ge bù mén gōng zuò？",
-          "q_vi": "Nhà máy các bạn ở đâu tại Việt Nam? Bạn làm ở bộ phận nào?",
-          "q_audio": "audio/daily/dq_b792aa9f62.mp3",
-          "correct_zh": "我们在工业区，我目前在质量部门负责品检。",
-          "correct_pinyin": "wǒ men zài gōng yè qū， wǒ mù qián zài zhì liàng bù mén fù zé pǐn jiǎn。",
-          "correct_vi": "Chúng tôi ở khu công nghiệp, tôi đang phụ trách QC ở bộ phận chất lượng.",
-          "wrong_zh": "今天下午超市西瓜打折。",
-          "wrong_pinyin": "jīn tiān xià wǔ chāo shì xī guā dǎ zhé。",
-          "wrong_vi": "Chiều nay siêu thị giảm giá dưa hấu.",
-          "a_audio": "audio/daily/da_79ca570cf0.mp3"
-        },
-        {
-          "id": "daily_2026-10-27_z_9",
-          "cat": "daily",
-          "date": "2026-10-27",
-          "speaker": "💬 Nhật Ký Ổ Z: DeanHub",
-          "q_zh": "之前和你一起在吸塑部门工作的人已经辞职了",
-          "q_pinyin": "zhī qián hé nǐ yì qǐ zài xī sù bù mén gōng zuò de rén yǐ jīng cí zhí le",
-          "q_vi": "Người làm việc với bạn ở khoa vỉ đã từ chức.",
-          "q_audio": "audio/daily/dq_33f7adca8c.mp3",
-          "correct_zh": "已经核对清楚了，我马上整理好发给您确认。",
-          "correct_pinyin": "yǐ jīng hé duì qīng chǔ le， wǒ mǎ shàng zhěng lǐ hǎo fā gěi nín què rèn。",
-          "correct_vi": "Đã đối chiếu rõ ràng rồi, tôi tổng hợp gửi anh/chị xác nhận ngay.",
-          "wrong_zh": "今天下午超市西瓜打折。",
-          "wrong_pinyin": "jīn tiān xià wǔ chāo shì xī guā dǎ zhé。",
-          "wrong_vi": "Chiều nay siêu thị giảm giá dưa hấu.",
-          "a_audio": "audio/daily/da_0e7895d4e2.mp3"
-        },
-        {
-          "id": "daily_2026-10-27_z_10",
-          "cat": "daily",
-          "date": "2026-10-27",
-          "speaker": "💬 Nhật Ký Ổ Z: DeanHub",
-          "q_zh": "以前一起工作的都辞职了，就剩两个人",
-          "q_pinyin": "yǐ qián yì qǐ gōng zuò de dōu cí zhí le， jiù shèng liǎng gè rén",
-          "q_vi": "Những người từng làm việc với tôi trước đây đều đã từ chức, chỉ còn lại hai người.",
-          "q_audio": "audio/daily/dq_65c3134565.mp3",
-          "correct_zh": "已经核对清楚了，我马上整理好发给您确认。",
-          "correct_pinyin": "yǐ jīng hé duì qīng chǔ le， wǒ mǎ shàng zhěng lǐ hǎo fā gěi nín què rèn。",
-          "correct_vi": "Đã đối chiếu rõ ràng rồi, tôi tổng hợp gửi anh/chị xác nhận ngay.",
-          "wrong_zh": "电影院的爆米花卖完了。",
-          "wrong_pinyin": "diàn yǐng yuàn de bào mǐ huā mài wán le。",
-          "wrong_vi": "Bắp rang bơ ở rạp chiếu phim bán hết rồi.",
-          "a_audio": "audio/daily/da_0e7895d4e2.mp3"
+          "speaker": "🔍 Kỹ Sư QC Ngoại Quan",
+          "q_zh": "请速查核原因改善，谢谢！",
+          "q_pinyin": "qǐng sù chá hé yuán yīn gǎi shàn， xiè xiè！",
+          "q_vi": "Vui lòng nhanh chóng kiểm tra nguyên nhân và cải thiện, cảm ơn!",
+          "q_audio": "audio/daily/dq_f17c0e6fe6.mp3",
+          "correct_zh": "好的，我马上查核并改善。",
+          "correct_pinyin": "hǎo de， wǒ mǎ shàng chá hé bìng gǎi shàn。",
+          "correct_vi": "Được, tôi sẽ kiểm tra và cải thiện ngay.",
+          "wrong_zh": "原因不清楚，无法改善。",
+          "wrong_pinyin": "yuán yīn bù qīng chǔ， wú fǎ gǎi shàn。",
+          "wrong_vi": "Nguyên nhân không rõ, không thể cải thiện.",
+          "a_audio": "audio/daily/da_b0a864b164.mp3"
         }
       ]
     }

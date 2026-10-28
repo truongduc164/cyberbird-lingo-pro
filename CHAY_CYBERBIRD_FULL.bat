@@ -1,25 +1,18 @@
 @echo off
 chcp 65001 >nul
-title CyberBird Lingo PRO v3.1.1 - Full Launcher (DEAN OPTIMIZE)
+title CyberBird Lingo PRO v3.2 - AI Curator & Cloud OTA (DEAN OPTIMIZE)
 cd /d "%~dp0"
 
-echo ==============================================================
-echo   CYBERBIRD LINGO PRO v3.1.1 - DAILY TIMELINE ^& OFFLINE VAULT
-echo ==============================================================
+echo ====================================================================
+echo   CYBERBIRD LINGO PRO v3.2 - AI PEDAGOGICAL CURATOR ^& CLOUD OTA 24/7
+echo ====================================================================
 
-echo [1/3] Dong bo ngay du lieu Nhat Ky Ngay (Read-Only Z: Watchdog)...
+echo [1/2] Bien tap Nhat Ky Ngay bang AI ^& day OTA len Link Co Dinh Vinh Vien:
+echo       https://truongduc164.github.io/cyberbird-lingo/
 python central_daily_watchdog.py --once
+
+echo [2/2] Kich hoat Silent Watchdog chay ngam (5 phut/lan) tu dong update moi ngay...
 wscript.exe "%~dp0START_SILENT_WATCHDOG.vbs"
-echo       -^> Da kich hoat Silent Watchdog chay ngam (5 phut/lan).
-
-echo [2/3] Khoi dong Local Web Server tai http://127.0.0.1:8099 ...
-start "CyberBird HTTP 8099" /min cmd /c "python -m http.server 8099 --directory cyberbird_lingo"
-
-if exist "C:\Program Files (x86)\cloudflared\cloudflared.exe" (
-    echo [3/3] Mo Cloudflare Tunnel ^& tu dong gui Link + QR moi ve Telegram...
-    python start_tunnel_and_notify.py
-) else (
-    echo [3/3] Mo trinh duyet tai http://127.0.0.1:8099 ...
-    start http://127.0.0.1:8099
-    pause
-)
+echo       -^> Da san sang! Moi thiet bi (iPhone/Android/PC) tu dong nhan bai hoc moi
+echo           tai: https://truongduc164.github.io/cyberbird-lingo/
+start https://truongduc164.github.io/cyberbird-lingo/
