@@ -3,16 +3,22 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Temporary rendering directories
+# Temporary rendering & agent directories
 temp_*/
 .telegravity_uploads/
+.agents/
 *.log
 
-# Media binaries (avoid git bloat)
+# Media & Android build binaries (avoid git bloat & signing leaks)
 storage/*.mp4
 storage/*.avi
 realistic_assets/*.mp4
 *.mp4
+*.apk
+*.aab
+*.keystore
+*.jks
+local.properties
 
 # Python virtual envs
 venv/
@@ -27,6 +33,7 @@ demo2apk_repo/
 .env
 .env.*
 telegram_config.json
+telegram_video_hub/config.json
 .watchdog_state.json
 .translation_cache.json
 .ai_curated_days_cache.json

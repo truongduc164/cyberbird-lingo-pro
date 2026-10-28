@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-CENTRAL DAILY WATCHDOG — CYBERBIRD LINGO PRO v3.2 (DEAN OPTIMIZE)
-=================================================================
-AI Pedagogical Curator + 24/7 Cloud Pages Auto-OTA Synchronizer:
+CENTRAL DAILY WATCHDOG — CYBERBIRD LINGO PRO v3.3.1 (DEAN OPTIMIZE)
+===================================================================
+AI Pedagogical Curator (Antigravity Native Flash $0) + 24/7 Cloud Pages Auto-OTA:
   1. CHỈ ĐỌC (100% Read-Only, tốn 0 KB trên VPS) từ Ổ Đĩa Mạng `Z:\\` (`\\\\100.77.193.96\\DeanHub`):
      - `Z:\\_system\\nhat_ky.db` (copy ra thư mục tạm trước khi đọc để Zero-Lock trên VPS)
      - `Z:\\03_Nhat_Ky_Hang_Ngay\\YYYY-MM-DD.md`
      - `Z:\\01_Files_Cuu_Ho\\`
      - Kết hợp `15. REA/ReaKey/server/data/reavault.db` (`entries` + 45 thuật ngữ `glossary`) & `inbox_diary/`.
-  2. DÙNG AI BIÊN TẬP SƯ PHẠM (`ai_diary_curator.py` — DeepSeek LLM):
+  2. DÙNG AI BIÊN TẬP SƯ PHẠM (`ai_diary_curator.py` — Antigravity Flash Bridge $0):
+     - Kết nối trực tiếp `language_server.exe --model=flash` nội bộ ($0 chi phí API ngoài).
      - TUYỆT ĐỐI KHÔNG BÊ NGUYÊN XI tin nhắn thô, lỗi OCR ('不合拾', '熬分箱'), tên cá nhân hay nhắc việc riêng tư.
      - Tự động tổng kết thành chủ đề bài học (`topic_title`), bản đúc kết sư phạm (`summary`), mẹo ghi nhớ (`learning_tip`),
        từ vựng chọn lọc có từ nhiễu cùng trường nghĩa & hội thoại công xưởng trau chuốt tự nhiên!

@@ -808,7 +808,7 @@
       <!-- Daily Diary Timeline Panel (AI Pedagogical Curator + Cloud OTA Synced) -->
       <div id="timeline-panel" class="timeline-panel">
         <div class="timeline-header">
-          <span id="tl-sync-badge">🤖 AI BIÊN TẬP BÀI HỌC • TỰ ĐỘNG MỖI NGÀY</span>
+          <span id="tl-sync-badge">🤖 AI TỔNG KẾT ĐỊNH KỲ CUỐI NGÀY</span>
           <span id="tl-count-badge" style="color:#fde047;">95 mục</span>
         </div>
         <div id="timeline-date-pills" class="category-bar" style="margin-bottom:5px;"></div>
@@ -1975,13 +1975,6 @@
           syncOfflineAudioVault();
         });
     }
-
-    // Gentle auto-check every 3 minutes while idle on menu so every open client stays up-to-date automatically
-    setInterval(() => {
-      if (gameState !== 'playing' && document.visibilityState === 'visible') {
-        refreshDailyTimelineLive();
-      }
-    }, 180000);
 
     function switchDialogueTopic(topic, btn) {
       currentDialogueTopic = topic;

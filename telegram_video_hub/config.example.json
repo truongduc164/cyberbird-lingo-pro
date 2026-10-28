@@ -1,0 +1,8 @@
+{
+  "bot_token": "YOUR_TELEGRAM_BOT_TOKEN",
+  "chat_id": "YOUR_TELEGRAM_CHAT_ID",
+  "message_thread_id": null,
+  "max_file_size_mb": 49.0,
+  "auto_compress_if_large": true,
+  "enable_streaming": true
+}
