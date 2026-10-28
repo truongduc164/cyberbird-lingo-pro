@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>CyberBird Lingo • by DEAN OPTIMIZE (v3.0.2 PRO)</title>
+  <title>CyberBird Lingo • by DEAN OPTIMIZE (v3.1.1 PRO)</title>
   <meta name="author" content="DEAN OPTIMIZE">
-  <meta name="version" content="3.0.2">
+  <meta name="version" content="3.1.1">
   <meta name="copyright" content="DEAN OPTIMIZE">
   <!-- PWA & iOS Standalone Support -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,6 +42,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      min-height: 100dvh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       color: #fff;
     }
@@ -50,12 +51,21 @@
       width: 100vw;
       max-width: 440px;
       height: 100vh;
-      max-height: 840px;
+      height: 100dvh;
+      max-height: 860px;
       box-shadow: 0 25px 60px rgba(0,0,0,0.85);
       overflow: hidden;
       background: #050814;
       border-radius: 14px;
       border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    @media (max-width: 480px) {
+      #game-container {
+        max-width: 100vw;
+        max-height: 100dvh;
+        border-radius: 0;
+        border: none;
+      }
     }
     canvas {
       width: 100%;
@@ -228,40 +238,60 @@
       text-align: center;
       z-index: 30;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      overscroll-behavior: contain;
       transition: opacity 0.3s;
+    }
+    #screen-start {
+      justify-content: flex-start;
+      padding: 46px 14px 36px;
+    }
+    #screen-start > * {
+      flex-shrink: 0;
     }
     .overlay-screen.hidden {
       display: none;
     }
     .game-logo {
-      font-size: 32px;
+      font-size: 29px;
       font-weight: 900;
       background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #f472b6 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       letter-spacing: 1.5px;
       filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.35));
     }
     .game-subtitle {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #94a3b8;
-      margin-bottom: 16px;
-      max-width: 320px;
-      line-height: 1.4;
+      margin-bottom: 10px;
+      max-width: 330px;
+      line-height: 1.35;
     }
     .play-btn {
-      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #059669 100%);
       color: #fff;
-      border: none;
-      font-size: 16px;
+      border: 1.5px solid rgba(56, 189, 248, 0.65);
+      font-size: 17px;
       font-weight: 900;
-      padding: 12px 36px;
+      padding: 13px 32px;
       border-radius: 28px;
       cursor: pointer;
-      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.55);
+      box-shadow: 0 8px 26px rgba(2, 132, 199, 0.6);
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
+    }
+    .hero-play-btn {
+      width: 100%;
+      max-width: 335px;
+      margin: 2px 0 8px;
+      animation: heroPulse 2.2s infinite ease-in-out;
+    }
+    @keyframes heroPulse {
+      0%, 100% { box-shadow: 0 6px 22px rgba(2, 132, 199, 0.55); transform: scale(1); }
+      50% { box-shadow: 0 10px 30px rgba(16, 185, 129, 0.65); transform: scale(1.018); }
     }
     .play-btn:hover {
       box-shadow: 0 10px 30px rgba(2, 132, 199, 0.75);
@@ -389,11 +419,14 @@
       overflow-y: auto;
     }
     .offline-vault-box {
-      margin-top: 6px;
-      padding: 6px 8px;
-      border-radius: 9px;
-      background: rgba(2, 132, 199, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
+      width: 100%;
+      max-width: 335px;
+      margin: 2px 0 10px;
+      padding: 7px 10px;
+      border-radius: 12px;
+      background: rgba(2, 132, 199, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      text-align: left;
     }
     .offline-vault-row {
       display: flex;
@@ -733,7 +766,7 @@
 
     <!-- 100% Offline PWA Indicator -->
     <div class="offline-tag">
-      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN OPTIMIZE</b> • v3.0.2 PRO
+      <span class="offline-dot"></span> 100% Offline PWA • <b>DEAN OPTIMIZE</b> • v3.1.1 PRO
     </div>
 
     <!-- Main Game Canvas -->
@@ -773,19 +806,6 @@
         <div id="timeline-summary-card" class="timeline-digest">
           📌 Đang nạp tóm tắt nhật ký thao tác & giao tiếp trong ngày...
         </div>
-        <div id="offline-vault-box" class="offline-vault-box">
-          <div class="offline-vault-row">
-            <span id="offline-vault-status">💾 Kho Offline iPhone: Đang kiểm tra...</span>
-            <span id="offline-vault-mb" style="color:#fde047;">0.0 MB</span>
-          </div>
-          <div class="offline-bar-track">
-            <div id="offline-bar-fill" class="offline-bar-fill"></div>
-          </div>
-          <div class="offline-btn-row">
-            <button class="offline-mini-btn" onclick="manualSyncOffline()">📥 Tải / Cập Nhật Offline</button>
-            <button class="offline-mini-btn test-ok" onclick="testOfflineVoiceSample()">🔊 Nghe Thử Offline ✈️</button>
-          </div>
-        </div>
       </div>
 
       <!-- Category Selector for Dialogue Mode -->
@@ -807,6 +827,24 @@
         <button class="cat-pill" onclick="switchCategory('food', this)">☕ Ẩm Thực (12)</button>
         <button class="cat-pill" onclick="switchCategory('animal', this)">🐱 Động Vật (6)</button>
         <button class="cat-pill" onclick="switchCategory('all', this)">🌟 Tất Cả (165+)</button>
+      </div>
+
+      <!-- Primary Above-the-Fold Play Button (1-Tap Instant Entry on All Phone Screens!) -->
+      <button class="play-btn hero-play-btn" onclick="startGame()">🚀 BẮT ĐẦU BAY NGAY</button>
+
+      <!-- iPhone / Mobile Offline Audio Vault Status -->
+      <div id="offline-vault-box" class="offline-vault-box">
+        <div class="offline-vault-row">
+          <span id="offline-vault-status">💾 Kho Offline iPhone: Đang kiểm tra...</span>
+          <span id="offline-vault-mb" style="color:#fde047;">0.0 MB</span>
+        </div>
+        <div class="offline-bar-track">
+          <div id="offline-bar-fill" class="offline-bar-fill"></div>
+        </div>
+        <div class="offline-btn-row">
+          <button class="offline-mini-btn" onclick="manualSyncOffline()">📥 Tải / Cập Nhật Offline</button>
+          <button class="offline-mini-btn test-ok" onclick="testOfflineVoiceSample()">🔊 Nghe Thử Offline ✈️</button>
+        </div>
       </div>
 
       <!-- Settings Panel: Flight Speed, Voice Speed, Font Size -->
@@ -839,14 +877,11 @@
         </div>
       </div>
 
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-        <button class="play-btn" onclick="startGame()">BẮT ĐẦU BAY 🚀</button>
-        <button class="guide-btn" onclick="openTutorial()">📖 HƯỚNG DẪN CÁCH ĐIỀU KHIỂN & LUẬT CHƠI</button>
-      </div>
+      <button class="guide-btn" onclick="openTutorial()">📖 HƯỚNG DẪN CÁCH ĐIỀU KHIỂN & LUẬT CHƠI</button>
 
       <div class="dev-credits">
         <span>Kiến tạo & Tối ưu bởi <b>DEAN OPTIMIZE</b></span>
-        <span class="ver-badge">v3.0.2 PRO • OFFLINE VAULT</span>
+        <span class="ver-badge">v3.1.1 PRO • OFFLINE VAULT</span>
       </div>
 
       <div id="how-to-box" class="how-to-box">
@@ -936,6 +971,21 @@
 
   <script src="daily_timeline_data.js"></script>
   <script>
+    // Polyfill CanvasRenderingContext2D.roundRect for older iOS Safari (< 16) & Android WebViews
+    if (typeof CanvasRenderingContext2D !== 'undefined' && !CanvasRenderingContext2D.prototype.roundRect) {
+      CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, radii) {
+        let r = Array.isArray(radii) ? radii[0] : (Number(radii) || 0);
+        r = Math.min(r, w / 2, h / 2);
+        this.moveTo(x + r, y);
+        this.arcTo(x + w, y, x + w, y + h, r);
+        this.arcTo(x + w, y + h, x, y + h, r);
+        this.arcTo(x, y + h, x, y, r);
+        this.arcTo(x, y, x + w, y, r);
+        this.closePath();
+        return this;
+      };
+    }
+
     // ==========================================
     // RICH VOCABULARY DATABASE (BILINGUAL)
     // ==========================================
@@ -1483,7 +1533,7 @@
       return Boolean(q && q.q_zh);
     }
 
-    const OFFLINE_VAULT_CACHE = 'cyberbird-lingo-v3.1-offline-vault';
+    const OFFLINE_VAULT_CACHE = 'cyberbird-lingo-v3.2-offline-vault';
     let offlineVaultSyncing = false;
     let offlineVaultReadyCount = 0;
 
@@ -1662,7 +1712,10 @@
       dateBar.innerHTML = '';
       if (!tl.days || tl.days.length === 0) return;
 
-      tl.days.forEach((d, idx) => {
+      const recentDays = tl.days.slice(0, 5);
+      const olderDays = tl.days.slice(5);
+
+      recentDays.forEach((d, idx) => {
         const btn = document.createElement('button');
         const isActive = (selectedTimelineDate === 'latest' && idx === 0) || (selectedTimelineDate === d.date);
         btn.className = 'cat-pill tl-date-pill' + (isActive ? ' active' : '');
@@ -1670,6 +1723,27 @@
         btn.onclick = () => selectTimelineDate(d.date, btn);
         dateBar.appendChild(btn);
       });
+
+      if (olderDays.length > 0) {
+        const sel = document.createElement('select');
+        sel.className = 'cat-pill tl-date-pill';
+        sel.style.background = '#0f172a';
+        const defOpt = document.createElement('option');
+        defOpt.value = '';
+        defOpt.textContent = `📚 Ngày cũ (${olderDays.length})...`;
+        sel.appendChild(defOpt);
+        olderDays.forEach((d) => {
+          const opt = document.createElement('option');
+          opt.value = d.date;
+          opt.selected = (selectedTimelineDate === d.date);
+          opt.textContent = `${d.label} (${(d.vocab || []).length + (d.dialogues || []).length})`;
+          sel.appendChild(opt);
+        });
+        sel.onchange = () => {
+          if (sel.value) selectTimelineDate(sel.value, sel);
+        };
+        dateBar.appendChild(sel);
+      }
 
       if (tl.days.length > 1) {
         const allBtn = document.createElement('button');
@@ -2332,20 +2406,10 @@
     });
 
     window.addEventListener('pointerdown', (e) => {
+      if (gameState !== 'playing') return;
       if (e.target.closest('.top-bar') || 
-          e.target.closest('.play-btn') || 
-          e.target.closest('.menu-btn') || 
-          e.target.closest('.sound-toggle') || 
-          e.target.closest('.cat-pill') || 
-          e.target.closest('.mode-tab-btn') || 
-          e.target.closest('.diff-btn') || 
-          e.target.closest('.vspeed-btn') || 
-          e.target.closest('.fsize-btn') || 
-          e.target.closest('.settings-panel') || 
-          e.target.closest('.timeline-panel') || 
-          e.target.closest('.opt-btn') || 
-          e.target.closest('.replay-voice-btn') || 
-          e.target.closest('.guide-btn') || 
+          e.target.closest('#screen-start') || 
+          e.target.closest('#screen-over') || 
           e.target.closest('#modal-tutorial')) return;
       flap();
     });
@@ -2907,6 +2971,11 @@
     window.addEventListener('online', () => refreshDailyTimelineLive());
     window.addEventListener('offline', () => {
       updateOfflineVaultHUD(offlineVaultReadyCount, Math.max(offlineVaultReadyCount, offlineBlobMap.size));
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && gameState !== 'playing') {
+        refreshDailyTimelineLive();
+      }
     });
 
     // Initialize Daily Diary Timeline & Start Animation Loop

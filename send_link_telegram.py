@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 import sys
 from pathlib import Path
+import qrcode
 import requests
 
 if sys.platform == "win32":
     try:
-        sys.stdout.reconfigure(encoding="utf-8")
-        sys.stderr.reconfigure(encoding="utf-8")
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     except Exception:
         pass
 
@@ -15,6 +16,31 @@ WORKSPACE_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(WORKSPACE_ROOT))
 
 from telegram_video_hub import load_config
+
+DEFAULT_CLOUD_URL = "https://arrive-variety-download-hunting.trycloudflare.com"
+
+
+def generate_qr(target_url: str) -> Path:
+    qr = qrcode.QRCode(
+        version=2,
+        error_correction=qrcode.constants.ERROR_CORRECT_H,
+        box_size=12,
+        border=3,
+    )
+    qr.add_data(target_url)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="#0284c7", back_color="white")
+
+    qr_path = WORKSPACE_ROOT / "qr_cyberbird_lingo.png"
+    img.save(qr_path)
+
+    desktop_qr = Path("C:/Users/User/Desktop/qr_cyberbird_lingo.png")
+    if desktop_qr.parent.exists():
+        try:
+            img.save(desktop_qr)
+        except Exception:
+            pass
+    return qr_path
 
 
 def main():
@@ -25,41 +51,43 @@ def main():
         print("Missing bot credentials")
         return
 
-    qr_path = WORKSPACE_ROOT / "qr_cyberbird_lingo.png"
-    if not qr_path.exists():
-        qr_path = Path("C:/Users/User/Desktop/qr_cyberbird_lingo.png")
-
-    cloud_url = "https://level-lang-satisfactory-stevens.trycloudflare.com"
+    cloud_url = sys.argv[1].strip() if len(sys.argv) > 1 and sys.argv[1].strip() else DEFAULT_CLOUD_URL
+    qr_path = generate_qr(cloud_url)
+    print(f"Generated fresh QR for: {cloud_url} -> {qr_path}")
 
     caption = (
-        "🦅 <b>CYBERBIRD LINGO PRO v3.0 — NHẬT KÝ NGÀY & SILENT WATCHDOG!</b>\n\n"
-        "✨ <i>Dự án độc lập <code>23. CyberBird-Lingo-Game</code> đã hoàn thiện bản v3.0:</i>\n"
-        "• 📅 <b>Nhật Ký Ngày (Timeline):</b> Watchdog chạy ngầm tự tổng hợp WeChat/Zalo/Tủ điện (<b>89 từ + 6 hội thoại</b> hôm nay: <code>BTN-8-11</code>, <code>7071</code>, <code>SMI-16</code>, <code>SP-165</code> + 137 file âm thanh Xiaoxiao).\n"
-        "• ⚡ <b>165+ Từ Vựng & 31+ Hội Thoại:</b> Tích hợp 45 thuật ngữ Tủ Điện & Tự Động Hóa + lọc chủ đề + gói <b>APK Offline v3.0</b>.\n\n"
-        f"🔗 <b>Chơi ngay tại đây:</b>\n{cloud_url}\n\n"
-        "💡 <i>Quét mã QR hoặc bấm link trên iPhone / Android để bay thử ngay nhé Sếp!</i>"
+        "🦅 <b>CYBERBIRD LINGO PRO v3.1.1 — LINK MỚI VÀO CHƠI NGAY!</b>\n\n"
+        "✅ Đã làm mới đường truyền + đưa nút <b>🚀 BẮT ĐẦU BAY NGAY</b> lên ngay chính giữa màn hình iPhone (chạm 1 phát bay luôn + tự lưu Offline 100% MP3)!\n\n"
+        f"👉 <a href=\"{cloud_url}\"><b>BẤM VÀO ĐÂY ĐỂ MỞ GAME NGAY</b></a>\n"
+        f"🔗 {cloud_url}\n\n"
+        "📡 <i>Dự phòng cố định:</i>\n"
+        "• Cùng Wi-Fi: http://192.168.2.19:8099\n"
+        "• Tailscale: http://100.84.141.94:8099"
     )
+    print(f"Caption length: {len(caption)} chars")
 
     url = f"https://api.telegram.org/bot{token}/sendPhoto"
     data = {
         "chat_id": chat_id,
         "caption": caption,
-        "parse_mode": "HTML"
+        "parse_mode": "HTML",
     }
 
     if qr_path.exists():
         with open(qr_path, "rb") as f:
-            files = {"photo": ("qr_cyberbird_lingo_v3.png", f, "image/png")}
+            files = {"photo": ("qr_cyberbird_lingo_v311.png", f, "image/png")}
             r = requests.post(url, data=data, files=files, timeout=30)
             res = r.json()
             print("sendPhoto response:", res.get("ok"))
             if res.get("ok"):
-                print(f"✅ Đã gửi link & QR code v3.0 trực tiếp về Telegram (Msg ID: {res['result']['message_id']})")
+                print(f"✅ Đã gửi link & QR code v3.1.1 trực tiếp về Telegram (Msg ID: {res['result']['message_id']})")
                 return
+            else:
+                print("sendPhoto error:", res)
 
     msg_url = f"https://api.telegram.org/bot{token}/sendMessage"
     r = requests.post(msg_url, json={"chat_id": chat_id, "text": caption, "parse_mode": "HTML"}, timeout=30)
-    print("Sent message:", r.status_code)
+    print("Sent fallback message:", r.status_code)
 
 
 if __name__ == "__main__":

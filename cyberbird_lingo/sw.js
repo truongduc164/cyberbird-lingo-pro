@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cyberbird-lingo-v3.1-offline-vault';
+const CACHE_NAME = 'cyberbird-lingo-v3.2-offline-vault';
 const CORE_ASSETS = [
   './',
   './index.html',
@@ -83,6 +83,16 @@ async function serveAudioWithOfflineRange(request) {
   }
 }
 
+async function matchDynamicOfflineFallback(request, cleanUrl) {
+  const exact = await caches.match(cleanUrl, { ignoreSearch: true });
+  if (exact) return exact;
+  if (request.mode === 'navigate' || cleanUrl.endsWith('/') || cleanUrl.includes('index.html')) {
+    return (await caches.match('./index.html', { ignoreSearch: true })) ||
+           (await caches.match('./', { ignoreSearch: true }));
+  }
+  return null;
+}
+
 self.addEventListener('fetch', (e) => {
   const url = e.request.url;
 
@@ -92,7 +102,7 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // 2. Network-First with Canonical Offline Cache Fallback for HTML & Daily Timeline JSON/JS
+  // 2. Network-First with Canonical Offline Cache Fallback (even if tunnel returns 502/530!)
   const isDynamicDoc =
     e.request.mode === 'navigate' ||
     url.includes('index.html') ||
@@ -102,14 +112,19 @@ self.addEventListener('fetch', (e) => {
     const cleanUrl = url.split('?')[0];
     e.respondWith(
       fetch(e.request)
-        .then((netRes) => {
+        .then(async (netRes) => {
           if (netRes && netRes.status === 200 && cleanUrl.startsWith('http')) {
             const clone = netRes.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(new Request(cleanUrl), clone));
+            return netRes;
           }
-          return netRes;
+          const fallback = await matchDynamicOfflineFallback(e.request, cleanUrl);
+          return fallback || netRes;
         })
-        .catch(() => caches.match(cleanUrl, { ignoreSearch: true }))
+        .catch(async () => {
+          const fallback = await matchDynamicOfflineFallback(e.request, cleanUrl);
+          return fallback || Response.error();
+        })
     );
     return;
   }
